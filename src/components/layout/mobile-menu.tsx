@@ -7,8 +7,6 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { Flag } from '@/components/brand/flags';
-import { Logo } from '@/components/brand/logo';
-import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 
 import { cn } from '@/lib/utils';
 
@@ -21,13 +19,18 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 interface MobileMenuProps {
   dict: Dictionary;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export function MobileMenu({ dict }: MobileMenuProps) {
+export function MobileMenu({ dict, onOpenChange }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [onOpenChange, open]);
 
   useEffect(() => {
     document.documentElement.classList.toggle('lenis-stopped', open);
@@ -48,12 +51,12 @@ export function MobileMenu({ dict }: MobileMenuProps) {
     <div className='md:hidden'>
       <button
         type='button'
-        onClick={() => setOpen(true)}
-        aria-label={dict.nav.menuOpen}
+        onClick={() => setOpen((isOpen) => !isOpen)}
+        aria-label={open ? dict.nav.menuClose : dict.nav.menuOpen}
         aria-expanded={open}
-        className='flex h-10 w-10 items-center justify-center border border-ink/30 bg-white/70'
+        className='relative z-[70] flex h-10 w-10 items-center justify-center border border-ink/20 bg-background shadow-sm'
       >
-        <Menu className='h-4 w-4' />
+        {open ? <X className='h-4 w-4' /> : <Menu className='h-4 w-4' />}
       </button>
 
       <AnimatePresence>
@@ -63,31 +66,15 @@ export function MobileMenu({ dict }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className='fixed inset-0 z-[70] flex flex-col bg-background'
+            transition={{ duration: 0.25 }}
+            className='fixed inset-0 z-[60] bg-background/98 backdrop-blur-xl'
             data-lenis-prevent
           >
-            <div className='fw-container flex h-[4.25rem] items-center justify-between border-b'>
-              <Logo />
-              <div className='flex items-center gap-2'>
-                <LocaleSwitcher
-                  current={dict.locale}
-                  label={dict.nav.language}
-                />
-                <button
-                  type='button'
-                  onClick={() => setOpen(false)}
-                  aria-label={dict.nav.menuClose}
-                  className='flex h-10 w-10 items-center justify-center border border-ink/30 bg-white/70'
-                >
-                  <X className='h-4 w-4' />
-                </button>
-              </div>
-            </div>
+            <div className='absolute inset-x-0 top-0 h-[4.25rem] border-b border-line/10 bg-background' />
 
             <nav
               aria-label='Mobile'
-              className='fw-container flex flex-1 flex-col justify-center gap-1 py-10'
+              className='fw-container relative flex min-h-[100svh] flex-1 flex-col overflow-y-auto pt-[5.25rem] pb-6'
             >
               {links.map((item, index) => {
                 const active =
@@ -143,7 +130,7 @@ export function MobileMenu({ dict }: MobileMenuProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease, delay: 0.4 }}
-              className='fw-container border-t py-6'
+              className='fw-container border-t border-line/10 py-6'
             >
               <Link
                 href={paths.contact}

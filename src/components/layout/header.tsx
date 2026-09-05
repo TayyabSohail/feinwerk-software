@@ -25,6 +25,7 @@ export function Header({ dict }: HeaderProps) {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const items = [
     { label: dict.nav.home, href: paths.home },
     ...primaryNav(dict),
@@ -51,9 +52,11 @@ export function Header({ dict }: HeaderProps) {
       initial={false}
       className={cn(
         'fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500',
-        scrolled
-          ? 'border-line bg-background/85 backdrop-blur-xl'
-          : 'border-transparent bg-transparent',
+        mobileMenuOpen
+          ? 'border-line bg-background'
+          : scrolled
+            ? 'border-line bg-background/85 backdrop-blur-xl'
+            : 'border-transparent bg-transparent',
       )}
     >
       <div className='fw-container flex h-[4.25rem] items-center justify-between'>
@@ -90,7 +93,7 @@ export function Header({ dict }: HeaderProps) {
           })}
         </nav>
 
-        <div className='flex items-center gap-3'>
+        <div className='flex shrink-0 items-center gap-3'>
           <LocaleSwitcher
             current={dict.locale}
             label={dict.nav.language}
@@ -102,7 +105,7 @@ export function Header({ dict }: HeaderProps) {
           >
             {dict.nav.contact}
           </Link>
-          <MobileMenu dict={dict} />
+          <MobileMenu dict={dict} onOpenChange={setMobileMenuOpen} />
         </div>
       </div>
     </motion.header>
