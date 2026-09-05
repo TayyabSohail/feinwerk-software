@@ -19,32 +19,32 @@ export const testimonials: Testimonial[] = [
     quote:
       'Every shilling on the platform has to reconcile, and it does. Feinwerk built the wallet, the rent distribution and the resale market so that nothing rounds in our favour and nothing moves without an admin seeing it. That is exactly the level of care a members club handling real money needs.',
     author: 'Founder',
-    company: 'Vestafi',
-    project: 'vestafi',
+    company: 'Property members club (confidential)',
+    project: 'brickfold',
     result: '42 screens, one exact ledger',
   },
   {
     quote:
       'We were paying for five SEO tools and still working by hand. Feinwerk replaced them with one platform, moved the heavy generation into background jobs and halved our keyword tracking bill along the way. Thirty articles in ten minutes was not a slide, it was a demo.',
     author: 'Product lead',
-    company: 'SEOMaven',
-    project: 'seomaven',
+    company: 'SEO platform (confidential)',
+    project: 'rankloom',
     result: '3x lower cost per article',
   },
   {
     quote:
       'Live bidding with a thousand students hitting the same listing is the kind of thing that breaks quietly. It never did. Bids settle in under two hundred milliseconds and the server decides the winner, not the fastest browser. The parent dashboard was the detail that won our landlords over.',
     author: 'Co-founder',
-    company: 'UniBid',
-    project: 'unibid',
+    company: 'Student housing marketplace (confidential)',
+    project: 'bidnest',
     result: '1,000+ concurrent bidders',
   },
   {
     quote:
       'Support tickets dropped by seventy percent the month payouts and shipping went automatic. Sellers see their orders, their money and their DHL tracking in one place, and the personalised feed kept shoppers on the site far longer than the generic one ever did.',
     author: 'Head of operations',
-    company: 'Anina',
-    project: 'anina',
+    company: 'Ecommerce marketplace (confidential)',
+    project: 'curio-market',
     result: '70% fewer support tickets',
   },
   {

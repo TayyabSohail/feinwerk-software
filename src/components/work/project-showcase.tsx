@@ -171,12 +171,6 @@ function ProjectTile({
             <span aria-hidden='true' className='h-px w-3 bg-brand' />
             {project.category}
           </span>
-          <span
-            aria-hidden='true'
-            className='absolute right-5 top-4 z-10 font-display text-3xl font-bold text-white/25'
-          >
-            {String(index + 1).padStart(2, '0')}
-          </span>
         </div>
 
         <div

@@ -14,9 +14,7 @@ export function OrganizationJsonLd() {
       '@type': 'Person',
       name: siteConfig.founder.name,
       jobTitle: siteConfig.founder.role,
-      sameAs: [siteConfig.founder.linkedin, siteConfig.founder.github],
     },
-    sameAs: siteConfig.socials.map((social) => social.href),
     address: siteConfig.locations.map((location) => ({
       '@type': 'PostalAddress',
       addressLocality: location.city,
@@ -24,7 +22,7 @@ export function OrganizationJsonLd() {
     })),
     contactPoint: siteConfig.locations.map((location) => ({
       '@type': 'ContactPoint',
-      telephone: location.phone.replace(/\s/g, ''),
+      email: siteConfig.email,
       contactType: 'sales',
       areaServed: location.countryCode,
       availableLanguage: ['en', 'de', 'ur'],

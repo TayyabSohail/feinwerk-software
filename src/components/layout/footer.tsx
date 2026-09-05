@@ -1,6 +1,4 @@
-import { Clock, Phone } from 'lucide-react';
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 import { Flag } from '@/components/brand/flags';
 import { Logo } from '@/components/brand/logo';
@@ -8,15 +6,10 @@ import { Silk } from '@/components/effects/silk';
 import { BackToTop } from '@/components/layout/back-to-top';
 
 import { siteConfig } from '@/config/site';
-import { paths } from '@/constants/paths';
+import { primaryNav } from '@/constants/navigation';
+import { isSectionLink, paths } from '@/constants/paths';
 import { services } from '@/data/services';
 import type { Dictionary } from '@/i18n/dictionaries/en';
-
-const SOCIAL_ICONS = {
-  linkedin: FaLinkedin,
-  github: FaGithub,
-  whatsapp: FaWhatsapp,
-} as const;
 
 interface FooterProps {
   dict: Dictionary;
@@ -26,12 +19,10 @@ export function Footer({ dict }: FooterProps) {
   const year = new Date().getFullYear();
   const t = dict.footer;
 
+  // Same links, same order as the header, so the two never disagree.
   const companyLinks = [
-    { label: dict.nav.about, href: paths.about },
-    { label: dict.howItWorks.kicker, href: paths.process },
-    { label: dict.nav.careers, href: paths.careers },
+    ...primaryNav(dict),
     { label: dict.nav.contact, href: paths.contact },
-    { label: t.caseStudies, href: paths.work },
   ];
 
   return (
@@ -77,17 +68,6 @@ export function Footer({ dict }: FooterProps) {
                   />
                   {location.city}, {location.country}
                 </p>
-                <a
-                  href={location.phoneHref}
-                  className='fw-link mt-1 inline-flex items-center gap-2 text-muted-foreground'
-                >
-                  <Phone className='h-3 w-3' />
-                  {location.phone}
-                </a>
-                <p className='mt-1 flex items-center gap-2 text-xs text-muted-foreground'>
-                  <Clock className='h-3 w-3' />
-                  {location.hours}
-                </p>
               </div>
             ))}
           </FooterColumn>
@@ -99,24 +79,9 @@ export function Footer({ dict }: FooterProps) {
             >
               {siteConfig.email}
             </a>
-            <ul className='mt-2 flex gap-2'>
-              {siteConfig.socials.map((social) => {
-                const Icon = SOCIAL_ICONS[social.id];
-                return (
-                  <li key={social.id}>
-                    <a
-                      href={social.href}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      aria-label={social.label}
-                      className='flex h-9 w-9 items-center justify-center border text-muted-foreground transition-colors hover:border-brand hover:text-brand-text'
-                    >
-                      <Icon className='h-4 w-4' />
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            <p className='text-xs text-muted-foreground'>
+              {siteConfig.responseTime}
+            </p>
           </FooterColumn>
         </div>
 
@@ -181,6 +146,7 @@ function FooterLink({
   return (
     <Link
       href={href}
+      scroll={!isSectionLink(href)}
       className='fw-link w-fit text-foreground/80 transition-colors hover:text-foreground'
     >
       {children}

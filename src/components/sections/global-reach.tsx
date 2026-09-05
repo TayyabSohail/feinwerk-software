@@ -55,12 +55,6 @@ export function GlobalReach({ dict }: GlobalReachProps) {
                 <p className='fw-display mt-3 text-xl text-ink'>
                   {location.city}, {location.country}
                 </p>
-                <a
-                  href={location.phoneHref}
-                  className='fw-link mt-1 inline-block text-sm text-ink/70'
-                >
-                  {location.phone}
-                </a>
               </StaggerItem>
             ))}
           </Stagger>

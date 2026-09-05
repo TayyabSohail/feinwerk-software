@@ -11,19 +11,12 @@ import { MobileMenu } from '@/components/layout/mobile-menu';
 
 import { cn } from '@/lib/utils';
 
-import { paths } from '@/constants/paths';
+import { primaryNav } from '@/constants/navigation';
+import { isSectionLink, paths } from '@/constants/paths';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface HeaderProps {
   dict: Dictionary;
-}
-
-export function navItems(dict: Dictionary) {
-  return [
-    { label: dict.nav.services, href: paths.services },
-    { label: dict.nav.work, href: paths.work },
-    { label: dict.nav.about, href: paths.about },
-  ];
 }
 
 /** Full-width bar: wordmark left, mono nav right, filled CONTACT button. */
@@ -31,13 +24,15 @@ export function Header({ dict }: HeaderProps) {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
-  const items = navItems(dict);
+  const items = primaryNav(dict);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 12);
   });
 
-  const isActive = (href: string) => pathname.startsWith(href);
+  // Section links such as /#pricing never read as the current page.
+  const isActive = (href: string) =>
+    !isSectionLink(href) && pathname.startsWith(href);
 
   return (
     <motion.header
@@ -59,6 +54,8 @@ export function Header({ dict }: HeaderProps) {
               <Link
                 key={item.href}
                 href={item.href}
+                // Lenis animates section links; Next's own jump would fight it.
+                scroll={!isSectionLink(item.href)}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
                   'fw-link font-mono text-[11px] font-medium uppercase tracking-[0.2em] transition-colors',

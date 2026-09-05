@@ -5,16 +5,20 @@ import { SectionHeading } from '@/components/common/section-heading';
 import { ProjectShowcase } from '@/components/work/project-showcase';
 
 import { paths } from '@/constants/paths';
-import { getCategories, projects } from '@/data/projects';
+import { getCategories, getShowcaseProjects } from '@/data/projects';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface FeaturedWorkProps {
   dict: Dictionary;
 }
 
-/** Every project on a device mockup, with tab filters. */
+/**
+ * Every main product on a device mockup, with tab filters. Projects flagged
+ * `notable` are left to the "Notable projects" band on /work.
+ */
 export function FeaturedWork({ dict }: FeaturedWorkProps) {
   const t = dict.work;
+  const showcase = getShowcaseProjects();
 
   return (
     <section id='work' className='fw-section fw-rule fw-band-white'>
@@ -32,8 +36,8 @@ export function FeaturedWork({ dict }: FeaturedWorkProps) {
 
         <div className='mt-12'>
           <ProjectShowcase
-            projects={projects}
-            categories={getCategories()}
+            projects={showcase}
+            categories={getCategories(showcase)}
             labels={t.filters}
             filterLabel={t.filterLabel}
             actionLabel={t.view}

@@ -2,6 +2,9 @@
  * Services offered. Drives /services, /services/[slug], the homepage grid,
  * the footer column and the contact form's "What do you need?" select.
  */
+/** Capabilities are what we build; engagement models are how we work together. */
+export type ServiceKind = 'capability' | 'engagement';
+
 export type ServiceIcon =
   | 'layers'
   | 'sparkles'
@@ -12,8 +15,8 @@ export type ServiceIcon =
 
 export interface Service {
   slug: string;
-  /** Two-digit index shown on cards. */
-  index: string;
+  /** Which group the service is listed under. */
+  kind: ServiceKind;
   title: string;
   /** Short line under the title on cards. */
   tagline: string;
@@ -35,12 +38,14 @@ export interface Service {
     pricing: string;
   };
   faqs: { question: string; answer: string }[];
+  /** Call to action on engagement cards, e.g. "Start a sprint". */
+  cta?: string;
 }
 
 export const services: Service[] = [
   {
     slug: 'product-engineering',
-    index: '01',
+    kind: 'capability',
     title: 'Full-Stack Product Engineering',
     tagline: 'Web platforms, marketplaces and SaaS, built end to end.',
     summary:
@@ -70,7 +75,7 @@ export const services: Service[] = [
       'TanStack',
       'Zod',
     ],
-    proof: ['vestafi', 'unibid', 'anina', 'bitsmiths-hrm'],
+    proof: ['brickfold', 'bidnest', 'curio-market', 'bitsmiths-hrm'],
     engagement: {
       timeline: '6-16 weeks to first release',
       team: 'Lead engineer + 1-3 engineers, design as needed',
@@ -91,7 +96,7 @@ export const services: Service[] = [
   },
   {
     slug: 'ai-automation',
-    index: '02',
+    kind: 'capability',
     title: 'AI Systems & Automation',
     tagline: 'Agents, retrieval and voice, grounded in your own data.',
     summary:
@@ -148,7 +153,7 @@ export const services: Service[] = [
   },
   {
     slug: 'cloud-devops',
-    index: '03',
+    kind: 'capability',
     title: 'Cloud, DevOps & Automation',
     tagline: 'Infrastructure that scales cleanly and costs less.',
     summary:
@@ -178,7 +183,7 @@ export const services: Service[] = [
       'Monitoring',
       'PostgreSQL',
     ],
-    proof: ['seomaven', 'bitsmiths-hrm', 'qa-compliance-agent'],
+    proof: ['rankloom', 'bitsmiths-hrm', 'qa-compliance-agent'],
     engagement: {
       timeline: '1-4 weeks per initiative',
       team: 'Platform engineer, part-time or embedded',
@@ -194,7 +199,7 @@ export const services: Service[] = [
   },
   {
     slug: 'web-design-development',
-    index: '04',
+    kind: 'capability',
     title: 'Web Design & Development',
     tagline: 'Marketing sites that load fast and convert.',
     summary:
@@ -238,9 +243,10 @@ export const services: Service[] = [
   },
   {
     slug: 'mvp-sprint',
-    index: '05',
+    kind: 'engagement',
     title: 'MVP in Weeks',
     tagline: 'From brief to a production-ready first release.',
+    cta: 'Start a sprint',
     summary:
       'For founders and teams who need a real product in the market fast. We scope ruthlessly, build the core loop on a proven stack, and ship a production-ready MVP with billing, auth and analytics already in place.',
     icon: 'rocket',
@@ -257,7 +263,7 @@ export const services: Service[] = [
       'Internal ventures inside larger companies',
     ],
     stack: ['Next.js', 'Supabase', 'Stripe', 'Vercel', 'PostHog', 'Resend'],
-    proof: ['bitsmiths-studio', 'unibid', 'ai-interview-assistant'],
+    proof: ['bitsmiths-studio', 'bidnest', 'ai-interview-assistant'],
     engagement: {
       timeline: '4-8 weeks',
       team: 'Lead engineer + engineer + designer',
@@ -273,9 +279,10 @@ export const services: Service[] = [
   },
   {
     slug: 'team-extension',
-    index: '06',
+    kind: 'engagement',
     title: 'Dedicated Engineering Team',
     tagline: 'Senior engineers embedded in your team.',
+    cta: 'Build your team',
     summary:
       'A dedicated, senior team working inside your tools and processes. Ideal when you have a roadmap and need reliable capacity without the overhead of hiring, in European and Asian time zones.',
     icon: 'wrench',
@@ -292,7 +299,7 @@ export const services: Service[] = [
       'Long-running platform ownership',
     ],
     stack: ['Next.js', 'TypeScript', 'Python', 'PostgreSQL', 'AWS', 'Docker'],
-    proof: ['vestafi', 'anina', 'seomaven'],
+    proof: ['brickfold', 'curio-market', 'rankloom'],
     engagement: {
       timeline: 'Ongoing, 3-month minimum',
       team: '1-5 engineers',
@@ -311,3 +318,13 @@ export const services: Service[] = [
 export function getServiceBySlug(slug: string): Service | undefined {
   return services.find((service) => service.slug === slug);
 }
+
+/** The four things we build, in display order. */
+export const capabilities = services.filter(
+  (service) => service.kind === 'capability',
+);
+
+/** The two ways to work with us, in display order. */
+export const engagements = services.filter(
+  (service) => service.kind === 'engagement',
+);

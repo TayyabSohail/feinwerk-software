@@ -159,7 +159,6 @@ function MasonryColumns({
                 >
                   <ProjectCard
                     project={project}
-                    index={visualIndex}
                     priority={visualIndex < 3}
                     actionLabel={actionLabel}
                   />

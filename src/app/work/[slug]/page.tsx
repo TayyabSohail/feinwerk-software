@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { ProjectVisual } from '@/components/mockups/project-visual';
+import { ProjectMockup } from '@/components/mockups/project-mockup';
 import { Parallax } from '@/components/motion/parallax';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
 import { ScrollHighlight } from '@/components/motion/scroll-highlight';
@@ -11,6 +11,7 @@ import { TextReveal } from '@/components/motion/text-reveal';
 import { CtaBanner } from '@/components/sections/cta-banner';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 import { Button } from '@/components/ui/button';
+import { ProjectGallery } from '@/components/work/project-gallery';
 
 import { getTechMeta } from '@/lib/tech-icons';
 import { cn } from '@/lib/utils';
@@ -128,7 +129,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </a>
               ) : (
                 <span className='inline-flex h-12 items-center rounded-full border border-line px-5 text-sm text-muted-foreground'>
-                  Private deployment, client project
+                  {project.anonymised
+                    ? 'Client project, name changed on request'
+                    : 'Private deployment, client project'}
                 </span>
               )}
             </Reveal>
@@ -155,16 +158,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
             style={{ background: project.accent }}
           />
           <Parallax distance={40} scaleFrom={0.97}>
-            <ProjectVisual
+            <ProjectMockup
               project={project}
               priority
+              centered
               sizes='(min-width: 1280px) 84rem, 100vw'
-              aspect={
-                project.visual === 'render' || project.visual === 'mark'
-                  ? 'aspect-[16/9]'
-                  : undefined
-              }
-              className={cn(project.visual === 'render' && 'shadow-mockup')}
+              className='aspect-[16/9] shadow-mockup'
             />
           </Parallax>
         </Reveal>
@@ -196,8 +195,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </Stagger>
       </section>
 
+      {/* More screens of the product */}
+      <ProjectGallery project={project} />
+
       {/* Architecture + features */}
-      <section className='fw-container py-16 lg:py-24'>
+      <section className='fw-container pb-16 lg:pb-24'>
         <div className='grid gap-10 lg:grid-cols-[0.8fr_1.2fr]'>
           <Reveal className='lg:sticky lg:top-32 lg:self-start'>
             <p className='fw-kicker'>How it is built</p>
@@ -240,14 +242,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </h2>
         </Reveal>
         <Stagger className='mt-10 grid gap-4'>
-          {project.challenges.map((item, index) => (
+          {project.challenges.map((item) => (
             <StaggerItem
               key={item.challenge}
-              className='fw-card grid gap-6 p-7 sm:p-9 md:grid-cols-[auto_1fr_1fr]'
+              className='fw-card grid gap-6 p-7 sm:p-9 md:grid-cols-2'
             >
-              <span className='fw-display text-3xl text-muted-foreground/50'>
-                {String(index + 1).padStart(2, '0')}
-              </span>
               <div>
                 <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
                   Challenge
@@ -428,11 +427,10 @@ function AdjacentLink({
       )}
     >
       <div className='w-28 shrink-0'>
-        <ProjectVisual
+        <ProjectMockup
           project={project}
-          aspect='aspect-[4/3]'
           sizes='112px'
-          className='rounded-none'
+          className='aspect-[4/3]'
         />
       </div>
       <div className='min-w-0'>

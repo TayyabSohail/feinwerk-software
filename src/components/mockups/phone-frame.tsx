@@ -7,28 +7,24 @@ interface PhoneFrameProps {
   alt?: string;
   sizes?: string;
   className?: string;
-  objectPosition?: string;
   /** Custom screen content instead of a screenshot. */
   children?: React.ReactNode;
 }
 
-/** A phone drawn in CSS around a screenshot (or custom screen content). */
+/**
+ * A phone drawn in CSS around a 390x844 screen. Corner radii, bezel and the
+ * camera island are all proportional, so the frame looks right at any size.
+ */
 export function PhoneFrame({
   src,
   alt = '',
-  sizes = '220px',
+  sizes = '240px',
   className,
-  objectPosition = 'left top',
   children,
 }: PhoneFrameProps) {
   return (
-    <div
-      className={cn(
-        'relative aspect-[9/19] w-full rounded-[2.4rem] border border-black/25 bg-[#101015] p-[6px] shadow-[0_40px_70px_-30px_rgba(20,19,26,0.6)]',
-        className,
-      )}
-    >
-      <div className='relative h-full w-full overflow-hidden rounded-[2rem] bg-black'>
+    <div className={cn('fw-phone relative aspect-[390/844] w-full', className)}>
+      <div className='fw-phone-screen relative h-full w-full overflow-hidden bg-black'>
         {children ??
           (src && (
             <Image
@@ -36,19 +32,17 @@ export function PhoneFrame({
               alt={alt}
               fill
               sizes={sizes}
-              className='object-cover'
-              style={{ objectPosition }}
+              className='object-cover object-top'
             />
           ))}
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent'
+          className='pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent'
         />
       </div>
-      <span
-        aria-hidden='true'
-        className='absolute left-1/2 top-[14px] h-[22px] w-[74px] -translate-x-1/2 rounded-full bg-[#101015]'
-      />
+      <span aria-hidden='true' className='fw-phone-island' />
+      <span aria-hidden='true' className='fw-phone-button fw-phone-button-left' />
+      <span aria-hidden='true' className='fw-phone-button fw-phone-button-right' />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Clock, MessageCircle, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 import { Flag } from '@/components/brand/flags';
 import { LocalTime } from '@/components/common/local-time';
@@ -44,27 +44,12 @@ export function Locations({ className }: LocationsProps) {
           <ul className='mt-6 space-y-3 border-t border-line pt-5 text-sm'>
             <li>
               <a
-                href={location.phoneHref}
+                href={`mailto:${siteConfig.email}`}
                 className='fw-link inline-flex items-center gap-2.5 text-foreground'
               >
-                <Phone className='h-4 w-4 text-brand-text' />
-                {location.phone}
+                <Mail className='h-4 w-4 text-brand-text' />
+                {siteConfig.email}
               </a>
-            </li>
-            <li>
-              <a
-                href={location.whatsapp}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='fw-link inline-flex items-center gap-2.5 text-foreground'
-              >
-                <MessageCircle className='h-4 w-4 text-brand-text' />
-                WhatsApp
-              </a>
-            </li>
-            <li className='flex items-center gap-2.5 text-muted-foreground'>
-              <Clock className='h-4 w-4 text-brand-text' />
-              {location.hours}
             </li>
           </ul>
         </StaggerItem>

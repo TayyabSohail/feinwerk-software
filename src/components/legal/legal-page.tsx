@@ -62,15 +62,12 @@ export function LegalPage({
               Contents
             </p>
             <ol className='mt-4 space-y-2 text-sm'>
-              {sections.map((section, index) => (
+              {sections.map((section) => (
                 <li key={section.id}>
                   <a
                     href={`#${section.id}`}
-                    className='fw-link flex gap-3 text-foreground/80 hover:text-foreground'
+                    className='fw-link flex text-foreground/80 hover:text-foreground'
                   >
-                    <span className='font-mono text-xs text-muted-foreground'>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
                     {section.title}
                   </a>
                 </li>
@@ -104,10 +101,7 @@ export function LegalPage({
               delay={Math.min(index * 0.03, 0.2)}
             >
               <div id={section.id}>
-                <h2 className='flex items-baseline gap-4 text-2xl font-semibold tracking-tight text-foreground'>
-                  <span className='font-mono text-xs text-muted-foreground'>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                <h2 className='text-2xl font-semibold tracking-tight text-foreground'>
                   {section.title}
                 </h2>
                 <div

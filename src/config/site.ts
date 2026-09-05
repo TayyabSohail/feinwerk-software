@@ -11,7 +11,7 @@ export const siteConfig = {
   legalName: 'Feinwerk Software',
   tagline: 'Precision-engineered software.',
   description:
-    'Feinwerk Software is a software engineering studio building full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. From Rawalpindi and Fellbach, shipped worldwide.',
+    'Feinwerk Software is a software engineering studio building full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. From Islamabad and Fellbach, shipped worldwide.',
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
   // Email lives here so it can be swapped once the company inbox exists.
@@ -20,46 +20,27 @@ export const siteConfig = {
   availability: 'Accepting new projects',
   locations: [
     {
-      id: 'rawalpindi',
-      city: 'Rawalpindi',
+      id: 'islamabad',
+      city: 'Islamabad',
       country: 'Pakistan',
       countryCode: 'PK',
-      label: 'Engineering hub',
-      phone: '+92 333 8199915',
-      phoneHref: 'tel:+923338199915',
-      whatsapp: 'https://wa.me/923338199915',
+      label: 'Asian Office',
       timezone: 'Asia/Karachi',
       utc: 'UTC+5',
-      hours: 'Mon-Fri, 09:00-18:00 PKT',
     },
     {
       id: 'fellbach',
       city: 'Fellbach',
       country: 'Germany',
       countryCode: 'DE',
-      label: 'European office',
-      phone: '+49 176 35725765',
-      phoneHref: 'tel:+4917635725765',
-      whatsapp: 'https://wa.me/4917635725765',
+      label: 'European Office',
       timezone: 'Europe/Berlin',
       utc: 'UTC+1 / UTC+2',
-      hours: 'Mon-Fri, 09:00-18:00 CET',
     },
-  ],
-  socials: [
-    {
-      id: 'linkedin',
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/muhammad-tayyab-sohail/',
-    },
-    { id: 'github', label: 'GitHub', href: 'https://github.com/TayyabSohail' },
-    { id: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/923338199915' },
   ],
   founder: {
     name: 'Tayyab Sohail',
     role: 'Founder & Lead Engineer',
-    linkedin: 'https://www.linkedin.com/in/muhammad-tayyab-sohail/',
-    github: 'https://github.com/TayyabSohail',
     portfolio: 'https://tayyab-portfolio-chi.vercel.app/',
   },
   calLink: env.NEXT_PUBLIC_CAL_LINK
@@ -67,15 +48,17 @@ export const siteConfig = {
     : null,
   nav: [
     { label: 'Services', href: paths.services },
-    { label: 'Work', href: paths.work },
+    { label: 'Projects', href: paths.work },
+    { label: 'Pricing', href: paths.pricing },
     { label: 'About', href: paths.about },
     { label: 'Contact', href: paths.contact },
   ],
   footerNav: {
     company: [
+      { label: 'Services', href: paths.services },
+      { label: 'Projects', href: paths.work },
+      { label: 'Pricing', href: paths.pricing },
       { label: 'About', href: paths.about },
-      { label: 'How we work', href: paths.process },
-      { label: 'Careers', href: paths.careers },
       { label: 'Contact', href: paths.contact },
     ],
     legal: [

@@ -1,4 +1,4 @@
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Link from 'next/link';
 
 import { Reveal } from '@/components/motion/reveal';
@@ -18,7 +18,6 @@ interface CtaBannerProps {
 /** Closing call to action: an ink panel with one large button. */
 export function CtaBanner({ dict, title, accentWords, body }: CtaBannerProps) {
   const t = dict.cta;
-  const primary = siteConfig.locations[0];
 
   return (
     <section className='fw-container pb-6 pt-10'>
@@ -59,13 +58,6 @@ export function CtaBanner({ dict, title, accentWords, body }: CtaBannerProps) {
             >
               <Mail className='h-4 w-4' />
               {siteConfig.email}
-            </a>
-            <a
-              href={primary.phoneHref}
-              className='inline-flex h-14 items-center gap-2 border border-white/25 px-5 font-mono text-[11px] uppercase tracking-[0.18em] text-white transition-colors hover:border-brand'
-            >
-              <Phone className='h-4 w-4' />
-              {primary.phone}
             </a>
           </Reveal>
         </div>

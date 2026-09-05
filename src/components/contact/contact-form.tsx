@@ -88,17 +88,12 @@ export function ContactForm({ defaultService }: ContactFormProps) {
         </h3>
         <p className='mt-3 max-w-md text-base leading-relaxed text-muted-foreground'>
           Thank you. We read every enquiry personally and reply{' '}
-          {siteConfig.responseTime}. If it is urgent, WhatsApp is the fastest
-          route.
+          {siteConfig.responseTime}. If it is urgent, email us directly.
         </p>
         <div className='mt-6 flex flex-wrap gap-3'>
-          <a
-            href={siteConfig.locations[0].whatsapp}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
+          <a href={`mailto:${siteConfig.email}`}>
             <Button variant='outline' icon={ArrowUpRight}>
-              Message on WhatsApp
+              Email us
             </Button>
           </a>
           <Button variant='ghost' onClick={() => setSent(false)}>

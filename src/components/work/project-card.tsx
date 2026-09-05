@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
-import { ProjectVisual } from '@/components/mockups/project-visual';
+import { ProjectMockup } from '@/components/mockups/project-mockup';
 
 import { getTechMeta } from '@/lib/tech-icons';
 import { cn } from '@/lib/utils';
@@ -11,7 +11,6 @@ import type { Project } from '@/data/projects';
 
 interface ProjectCardProps {
   project: Project;
-  index: number;
   priority?: boolean;
   className?: string;
   /** Text for the footer action. */
@@ -21,30 +20,24 @@ interface ProjectCardProps {
 const VISIBLE_TECH = 4;
 
 /**
- * Portfolio-style project tile: cover with category chip, ghosted index,
+ * Portfolio-style project tile: the product on devices, category chip,
  * title, tagline, capability badges, tech chips, full-bleed action footer.
  * The whole card is the link, so it is the one card type that lifts.
  */
 export function ProjectCard({
   project,
-  index,
   priority,
   className,
   actionLabel = 'View project',
 }: ProjectCardProps) {
   const visibleTech = project.tech.slice(0, VISIBLE_TECH);
   const overflow = project.tech.length - visibleTech.length;
-  const aspect =
-    project.visual === 'poster'
-      ? 'aspect-[40/21]'
-      : project.visual === 'mark'
-        ? 'aspect-square'
-        : 'aspect-[4/3]';
 
   return (
     <Link
       href={paths.caseStudy(project.slug)}
       aria-label={`${project.title}: ${project.tagline}`}
+      data-cursor='view'
       className={cn(
         'fw-card fw-card-link group relative isolate block min-w-0 max-w-full',
         className,
@@ -52,30 +45,19 @@ export function ProjectCard({
     >
       <div className='fw-grid-surface absolute inset-0 -z-10 opacity-0 transition duration-500 group-hover:opacity-100' />
 
-      <div className='relative border-b bg-surface-2'>
-        <div className='transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]'>
-          <ProjectVisual
-            project={project}
-            priority={priority}
-            aspect={aspect}
-            sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
-            className='rounded-none border-0'
-          />
-        </div>
-        <span className='absolute bottom-4 left-4 inline-flex items-center gap-2 border border-ink/15 bg-white/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-ink backdrop-blur-md'>
+      <div className='relative border-b'>
+        <ProjectMockup
+          project={project}
+          priority={priority}
+          sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
+        />
+        <span className='absolute left-4 top-4 inline-flex items-center gap-2 border border-white/20 bg-black/40 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white backdrop-blur-md'>
           <span aria-hidden='true' className='h-px w-3 bg-brand' />
           {project.category}
         </span>
       </div>
 
       <div className='relative p-5 sm:p-6'>
-        <span
-          aria-hidden='true'
-          className='absolute -top-3 right-4 -z-10 font-display text-6xl font-bold text-ink/[0.05] transition duration-300 group-hover:text-brand/15'
-        >
-          {String(index + 1).padStart(2, '0')}
-        </span>
-
         <h3 className='fw-display text-2xl text-ink transition-colors duration-300 group-hover:text-brand-text'>
           {project.title}
         </h3>

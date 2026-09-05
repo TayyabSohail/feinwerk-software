@@ -7,12 +7,18 @@
  */
 
 /** What the product is. Shown as context; also drives the /work filter. */
-export type ProjectCategory = 'SaaS' | 'Marketplace' | 'AI' | 'Website';
+export type ProjectCategory =
+  | 'SaaS'
+  | 'Marketplace'
+  | 'AI'
+  | 'Mobile'
+  | 'Website';
 
 export const CATEGORY_ORDER: ProjectCategory[] = [
   'SaaS',
   'Marketplace',
   'AI',
+  'Mobile',
   'Website',
 ];
 
@@ -30,15 +36,33 @@ export const CAPABILITY_ORDER: ProjectCapability[] = [
   'Web',
 ];
 
+/** Whether the product is shown on a laptop with a phone, or on phones only. */
+export type ProjectPlatform = 'web' | 'app';
+
 /**
- * How the cover should be presented:
- *
- * - `render`     already a 3D device render; shown as-is with a soft shadow.
- * - `screenshot` a raw product screenshot; wrapped in a browser frame mockup.
- * - `mark`       a logo or square artwork; centred on a patterned plate.
- * - `poster`     wide 1200x630 art; shown edge to edge.
+ * Real captures of the product at device resolution, stored in
+ * `/public/work/screens/`. Desktop is a 16:10 capture (2160x1350), mobile a
+ * 390x844 phone capture at 2x. Regenerate with `scripts/capture-screens.mjs`.
  */
-export type ProjectVisual = 'render' | 'screenshot' | 'mark' | 'poster';
+export interface ProjectScreens {
+  desktop: string;
+  mobile: string;
+  /** Second phone screen, shown behind the first on app projects. */
+  mobileAlt?: string;
+}
+
+/**
+ * One more screen of the product for the case-study gallery, captured the
+ * same way as `ProjectScreens`. App projects only have the phone capture.
+ */
+export interface ProjectGalleryScreen {
+  /** Short name of the screen, e.g. "Vault". */
+  title: string;
+  /** One sentence on what the screen does. */
+  caption: string;
+  desktop?: string;
+  mobile: string;
+}
 
 export interface TechGroup {
   category: string;
@@ -56,23 +80,16 @@ export interface Project {
   summary: string;
   /** Paragraph of context for the case-study lede. */
   description: string;
+  /** Social share image; usually the desktop screen. */
   coverImage: string;
   coverWidth: number;
   coverHeight: number;
-  visual: ProjectVisual;
-  /** Dominant colour used for glows and the browser-frame chrome tint. */
+  platform: ProjectPlatform;
+  screens: ProjectScreens;
+  /** Further screens shown on the case-study page, in this order. */
+  gallery: ProjectGalleryScreen[];
+  /** Dominant colour used for glows and the plate tint behind the devices. */
   accent: string;
-  /**
-   * For `render` covers: how far to zoom into the photographed screen so the
-   * device mockups can show the UI rather than a photo of a laptop.
-   */
-  screenFocus?: { scale: number; position: string };
-  /**
-   * Device-native captures of the live product (1600x1000 desktop and
-   * 390x844 mobile), so laptop and phone screens show the real UI edge to
-   * edge instead of a cropped cover.
-   */
-  screens?: { desktop: string; mobile: string };
   /** Flat list, used for chips and quick scanning. */
   tech: string[];
   /** Grouped stack, rendered on the case study. */
@@ -84,8 +101,18 @@ export interface Project {
   industry: string;
   year: string;
   liveUrl?: string;
+  /**
+   * Product name changed and live link withheld at the client's request.
+   * Screens are recreations of the product, not captures of it.
+   */
+  anonymised?: boolean;
   /** Featured projects appear in the homepage showcase, in this order. */
   featured?: number;
+  /**
+   * Smaller builds, apps and side projects. Listed under "Notable projects"
+   * on /work instead of the main showcase; still get a full case-study page.
+   */
+  notable?: boolean;
   /** Headline metric for cards and the homepage outcomes strip. */
   headline: { value: string; label: string };
   problem: string;
@@ -98,22 +125,45 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'vestafi',
-    title: 'Vestafi',
-    client: 'Vestafi',
+    slug: 'brickfold',
+    title: 'Brickfold',
+    client: 'Confidential (property members club)',
     tagline: 'Fractional property ownership for East Africa',
     summary:
       'A members club where Ugandans co-own income-producing apartments from 1,000,000 UGX.',
     description:
-      'Property is sold in one indivisible lump, and that lump costs more than most people will ever have in the bank at once. Vestafi breaks the lump. Vetted members pool capital to co-own real, income-producing apartments in Uganda, earn their proportional share of monthly rent, and sell their stake to other members when they want out.',
-    coverImage: '/work/vestafi.png',
-    coverWidth: 1082,
-    coverHeight: 549,
-    visual: 'screenshot',
+      'Property is sold in one indivisible lump, and that lump costs more than most people will ever have in the bank at once. Brickfold breaks the lump. Vetted members pool capital to co-own real, income-producing apartments in Uganda, earn their proportional share of monthly rent, and sell their stake to other members when they want out.',
+    coverImage: '/work/screens/brickfold-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
     screens: {
-      desktop: '/work/screens/vestafi-desktop.png',
-      mobile: '/work/screens/vestafi-mobile.png',
+      desktop: '/work/screens/brickfold-desktop.webp',
+      mobile: '/work/screens/brickfold-mobile.webp',
     },
+    gallery: [
+      {
+        title: 'Apartment marketplace',
+        caption:
+          'Units open for ownership with funding progress, yield and the minimum stake.',
+        desktop: '/work/screens/brickfold-listings-desktop.webp',
+        mobile: '/work/screens/brickfold-listings-mobile.webp',
+      },
+      {
+        title: 'Vault',
+        caption:
+          'Every deposit, investment, rent credit and withdrawal in one exact ledger.',
+        desktop: '/work/screens/brickfold-vault-desktop.webp',
+        mobile: '/work/screens/brickfold-vault-mobile.webp',
+      },
+      {
+        title: 'Approval desk',
+        caption:
+          'Admins approve every money movement and change platform rules without a release.',
+        desktop: '/work/screens/brickfold-admin-desktop.webp',
+        mobile: '/work/screens/brickfold-admin-mobile.webp',
+      },
+    ],
     accent: '#22c55e',
     tech: [
       'Next.js',
@@ -144,7 +194,7 @@ export const projects: Project[] = [
     services: ['product-engineering', 'team-extension'],
     industry: 'Fintech / Real estate',
     year: '2025-2026',
-    liveUrl: 'https://www.vestafi.co/',
+    anonymised: true,
     featured: 1,
     headline: { value: '42', label: 'screens, one exact ledger' },
     problem:
@@ -190,22 +240,44 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'seomaven',
-    title: 'SEOMaven',
-    client: 'SEOMaven',
+    slug: 'rankloom',
+    title: 'Rankloom',
+    client: 'Confidential (SEO platform)',
     tagline: 'AI-driven platform for smarter SEO growth',
     summary: 'AI-powered SEO and content platform.',
     description:
       'One platform for keyword research, AI content generation and rank tracking, replacing the tool-hopping that ate SEO teams days.',
-    coverImage: '/work/seomaven.png',
-    coverWidth: 1800,
+    coverImage: '/work/screens/rankloom-desktop.webp',
+    coverWidth: 2160,
     coverHeight: 1350,
-    visual: 'render',
+    platform: 'web',
     screens: {
-      desktop: '/work/screens/seomaven-desktop.png',
-      mobile: '/work/screens/seomaven-mobile.png',
+      desktop: '/work/screens/rankloom-desktop.webp',
+      mobile: '/work/screens/rankloom-mobile.webp',
     },
-    screenFocus: { scale: 2.05, position: '50% 40%' },
+    gallery: [
+      {
+        title: 'Keyword research',
+        caption:
+          'Live volume, difficulty and intent, with local insights from Google Maps.',
+        desktop: '/work/screens/rankloom-keywords-desktop.webp',
+        mobile: '/work/screens/rankloom-keywords-mobile.webp',
+      },
+      {
+        title: 'Content assistant',
+        caption:
+          'Batch article generation as a resumable job, with an SEO score per draft.',
+        desktop: '/work/screens/rankloom-editor-desktop.webp',
+        mobile: '/work/screens/rankloom-editor-mobile.webp',
+      },
+      {
+        title: 'Rank tracking',
+        caption:
+          'Daily positions, movers and the background jobs that refresh them.',
+        desktop: '/work/screens/rankloom-tracking-desktop.webp',
+        mobile: '/work/screens/rankloom-tracking-mobile.webp',
+      },
+    ],
     accent: '#8b5cf6',
     tech: [
       'Next.js',
@@ -240,7 +312,7 @@ export const projects: Project[] = [
     services: ['ai-automation', 'cloud-devops', 'product-engineering'],
     industry: 'Marketing technology',
     year: '2024-2025',
-    liveUrl: 'https://seomaven.ai',
+    anonymised: true,
     featured: 2,
     headline: { value: '3x', label: 'lower cost per article' },
     problem:
@@ -278,22 +350,44 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'unibid',
-    title: 'UniBid',
-    client: 'UniBid',
+    slug: 'bidnest',
+    title: 'Bidnest',
+    client: 'Confidential (student housing marketplace)',
     tagline: 'Off-campus home rentals, on your terms',
     summary: 'Bidding-based off-campus rentals marketplace.',
     description:
       'Students bid on off-campus housing in real time, with role-scoped dashboards for students, parents and landlords.',
-    coverImage: '/work/unibid.png',
-    coverWidth: 1800,
+    coverImage: '/work/screens/bidnest-desktop.webp',
+    coverWidth: 2160,
     coverHeight: 1350,
-    visual: 'render',
+    platform: 'web',
     screens: {
-      desktop: '/work/screens/unibid-desktop.png',
-      mobile: '/work/screens/unibid-mobile.png',
+      desktop: '/work/screens/bidnest-desktop.webp',
+      mobile: '/work/screens/bidnest-mobile.webp',
     },
-    screenFocus: { scale: 1.9, position: '44% 39%' },
+    gallery: [
+      {
+        title: 'Listing and live bid',
+        caption:
+          'Bid history updates in under 200 ms, with a parent co-signer on the bid.',
+        desktop: '/work/screens/bidnest-listing-desktop.webp',
+        mobile: '/work/screens/bidnest-listing-mobile.webp',
+      },
+      {
+        title: 'Student dashboard',
+        caption:
+          'Active bids, lease progress and services booked from partners.',
+        desktop: '/work/screens/bidnest-dashboard-desktop.webp',
+        mobile: '/work/screens/bidnest-dashboard-mobile.webp',
+      },
+      {
+        title: 'Messaging',
+        caption:
+          'Students, landlords and providers in one thread, with bookings on the record.',
+        desktop: '/work/screens/bidnest-messages-desktop.webp',
+        mobile: '/work/screens/bidnest-messages-mobile.webp',
+      },
+    ],
     accent: '#38bdf8',
     tech: [
       'Next.js',
@@ -322,7 +416,7 @@ export const projects: Project[] = [
     services: ['product-engineering', 'mvp-sprint'],
     industry: 'Property technology',
     year: '2024',
-    liveUrl: 'https://unibid.ai',
+    anonymised: true,
     featured: 3,
     headline: { value: '1,000+', label: 'concurrent bidders, no conflicts' },
     problem:
@@ -361,22 +455,43 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'anina',
-    title: 'Anina',
-    client: 'Anina',
+    slug: 'curio-market',
+    title: 'Curio Market',
+    client: 'Confidential (ecommerce marketplace)',
     tagline: 'A personalised multi-seller marketplace',
     summary: 'Personalised multi-seller ecommerce marketplace.',
     description:
       'A multi-seller marketplace with personalised recommendations, Stripe Connect payouts and automated DHL tracking.',
-    coverImage: '/work/anina.png',
-    coverWidth: 1800,
+    coverImage: '/work/screens/curio-market-desktop.webp',
+    coverWidth: 2160,
     coverHeight: 1350,
-    visual: 'render',
+    platform: 'web',
     screens: {
-      desktop: '/work/screens/anina-desktop.png',
-      mobile: '/work/screens/anina-mobile.png',
+      desktop: '/work/screens/curio-market-desktop.webp',
+      mobile: '/work/screens/curio-market-mobile.webp',
     },
-    screenFocus: { scale: 2.2, position: '41% 43%' },
+    gallery: [
+      {
+        title: 'Taste quiz',
+        caption: 'Eight questions turn a shopper’s taste into a personal feed.',
+        desktop: '/work/screens/curio-market-quiz-desktop.webp',
+        mobile: '/work/screens/curio-market-quiz-mobile.webp',
+      },
+      {
+        title: 'Personalised marketplace',
+        caption:
+          'Products from many sellers ranked by match and filtered by mood.',
+        desktop: '/work/screens/curio-market-market-desktop.webp',
+        mobile: '/work/screens/curio-market-market-mobile.webp',
+      },
+      {
+        title: 'Seller dashboard',
+        caption:
+          'Orders with DHL tracking and scheduled Stripe Connect payouts.',
+        desktop: '/work/screens/curio-market-seller-desktop.webp',
+        mobile: '/work/screens/curio-market-seller-mobile.webp',
+      },
+    ],
     accent: '#a3a3a3',
     tech: [
       'Next.js',
@@ -400,7 +515,7 @@ export const projects: Project[] = [
     services: ['product-engineering', 'team-extension'],
     industry: 'Ecommerce',
     year: '2024-2025',
-    liveUrl: 'https://anina.app/',
+    anonymised: true,
     featured: 4,
     headline: { value: '70%', label: 'fewer support tickets' },
     problem:
@@ -445,14 +560,37 @@ export const projects: Project[] = [
       'Onboarding, leave, medical claims, overtime and payroll for Bitsmiths Studio.',
     description:
       'An internal HR platform where employees are invited, onboarded and activated; they file leave, medical claims and overtime; admins approve each one, and approved items sweep into a monthly payroll run that calculates payslips, locks them, and exports to Payoneer.',
-    coverImage: '/work/bitsmiths-hrm.png',
-    coverWidth: 861,
-    coverHeight: 935,
-    visual: 'screenshot',
+    coverImage: '/work/screens/bitsmiths-hrm-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
     screens: {
-      desktop: '/work/bitsmiths-hrm.png',
-      mobile: '/work/screens/bitsmiths-hrm-mobile.png',
+      desktop: '/work/screens/bitsmiths-hrm-desktop.webp',
+      mobile: '/work/screens/bitsmiths-hrm-mobile.webp',
     },
+    gallery: [
+      {
+        title: 'Leave requests',
+        caption:
+          'Requests routed to the lead and admin, with balances that update on approval.',
+        desktop: '/work/screens/bitsmiths-hrm-leave-desktop.webp',
+        mobile: '/work/screens/bitsmiths-hrm-leave-mobile.webp',
+      },
+      {
+        title: 'Payroll cycle',
+        caption:
+          'The monthly register with overtime and deductions, approved in two steps.',
+        desktop: '/work/screens/bitsmiths-hrm-payroll-desktop.webp',
+        mobile: '/work/screens/bitsmiths-hrm-payroll-mobile.webp',
+      },
+      {
+        title: 'Payslip',
+        caption:
+          'Earnings, deductions and the audit trail of who generated, reviewed and paid it.',
+        desktop: '/work/screens/bitsmiths-hrm-payslip-desktop.webp',
+        mobile: '/work/screens/bitsmiths-hrm-payslip-mobile.webp',
+      },
+    ],
     accent: '#10b981',
     tech: [
       'Next.js',
@@ -531,14 +669,35 @@ export const projects: Project[] = [
     summary: 'Marketing site for a studio that ships MVPs in 30 days.',
     description:
       'The studio marketing site, built on a CMS so case studies, articles and testimonials publish without a deploy.',
-    coverImage: '/work/bitsmiths-studio.png',
-    coverWidth: 970,
-    coverHeight: 894,
-    visual: 'screenshot',
+    coverImage: '/work/screens/bitsmiths-studio-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
     screens: {
-      desktop: '/work/screens/bitsmiths-studio-desktop.png',
-      mobile: '/work/screens/bitsmiths-studio-mobile.png',
+      desktop: '/work/screens/bitsmiths-studio-desktop.webp',
+      mobile: '/work/screens/bitsmiths-studio-mobile.webp',
     },
+    gallery: [
+      {
+        title: 'Blog',
+        caption: 'Posts and updates published from the CMS onto the homepage.',
+        desktop: '/work/screens/bitsmiths-studio-blogs-desktop.webp',
+        mobile: '/work/screens/bitsmiths-studio-blogs-mobile.webp',
+      },
+      {
+        title: 'Services',
+        caption:
+          'The service catalogue, written and ordered by the team in the CMS.',
+        desktop: '/work/screens/bitsmiths-studio-services-desktop.webp',
+        mobile: '/work/screens/bitsmiths-studio-services-mobile.webp',
+      },
+      {
+        title: 'Pricing',
+        caption: 'Plans and the enquiry path at the end of the page.',
+        desktop: '/work/screens/bitsmiths-studio-pricing-desktop.webp',
+        mobile: '/work/screens/bitsmiths-studio-pricing-mobile.webp',
+      },
+    ],
     accent: '#22c55e',
     tech: ['Next.js', 'TypeScript', 'React', 'TailwindCSS', 'Directus'],
     techStack: [
@@ -597,10 +756,41 @@ export const projects: Project[] = [
       'Multi-tenant AI platform automating real estate agency operations.',
     description:
       'A unified operating system for real estate agencies, bringing CRM, compliance, marketing, document generation and e-signing into one multi-tenant platform.',
-    coverImage: '/work/real-estate-management-system.svg',
-    coverWidth: 1200,
-    coverHeight: 630,
-    visual: 'poster',
+    coverImage: '/work/screens/real-estate-management-system-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
+    screens: {
+      desktop: '/work/screens/real-estate-management-system-desktop.webp',
+      mobile: '/work/screens/real-estate-management-system-mobile.webp',
+    },
+    gallery: [
+      {
+        title: 'Leasing pipeline',
+        caption:
+          'Leads scored by the CRM agent and moved through viewing, offer and contract.',
+        desktop: '/work/screens/real-estate-management-system-crm-desktop.webp',
+        mobile: '/work/screens/real-estate-management-system-crm-mobile.webp',
+      },
+      {
+        title: 'Agreement generation',
+        caption:
+          'Tenancy agreements generated from templates and sent for e-signature.',
+        desktop:
+          '/work/screens/real-estate-management-system-documents-desktop.webp',
+        mobile:
+          '/work/screens/real-estate-management-system-documents-mobile.webp',
+      },
+      {
+        title: 'AI agents',
+        caption:
+          'CRM, compliance and knowledge agents scoped to each agency’s own data.',
+        desktop:
+          '/work/screens/real-estate-management-system-agents-desktop.webp',
+        mobile:
+          '/work/screens/real-estate-management-system-agents-mobile.webp',
+      },
+    ],
     accent: '#3b82f6',
     tech: [
       'React',
@@ -665,10 +855,37 @@ export const projects: Project[] = [
       'AI compliance agent generating clause-level tracked-change findings.',
     description:
       'An AI review workflow that checks uploaded reports against established standards and returns clause-level tracked changes with a clear explanation for every finding.',
-    coverImage: '/work/qa-compliance-agent.svg',
-    coverWidth: 1200,
-    coverHeight: 630,
-    visual: 'poster',
+    coverImage: '/work/screens/qa-compliance-agent-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
+    screens: {
+      desktop: '/work/screens/qa-compliance-agent-desktop.webp',
+      mobile: '/work/screens/qa-compliance-agent-mobile.webp',
+    },
+    gallery: [
+      {
+        title: 'Review queue',
+        caption:
+          'Documents split into clauses and checked against the selected standards.',
+        desktop: '/work/screens/qa-compliance-agent-queue-desktop.webp',
+        mobile: '/work/screens/qa-compliance-agent-queue-mobile.webp',
+      },
+      {
+        title: 'Findings report',
+        caption:
+          'Findings by severity, exported as tracked changes and margin comments.',
+        desktop: '/work/screens/qa-compliance-agent-report-desktop.webp',
+        mobile: '/work/screens/qa-compliance-agent-report-mobile.webp',
+      },
+      {
+        title: 'Standards library',
+        caption:
+          'The paragraphs every finding cites, with the firm’s own guidance alongside.',
+        desktop: '/work/screens/qa-compliance-agent-standards-desktop.webp',
+        mobile: '/work/screens/qa-compliance-agent-standards-mobile.webp',
+      },
+    ],
     accent: '#f59e0b',
     tech: ['Python', 'FastAPI', 'AWS', 'Claude (Anthropic)'],
     techStack: [
@@ -723,10 +940,37 @@ export const projects: Project[] = [
       'End-to-end AI interview platform with live voice and transcription.',
     description:
       'An end-to-end interview platform that plans, schedules and conducts live AI voice interviews, then delivers the transcript automatically when the session ends.',
-    coverImage: '/work/ai-interview-assistant.svg',
-    coverWidth: 1200,
-    coverHeight: 630,
-    visual: 'poster',
+    coverImage: '/work/screens/ai-interview-assistant-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
+    screens: {
+      desktop: '/work/screens/ai-interview-assistant-desktop.webp',
+      mobile: '/work/screens/ai-interview-assistant-mobile.webp',
+    },
+    gallery: [
+      {
+        title: 'Candidates',
+        caption:
+          'Every round scored on the same rubric, with live sessions one click away.',
+        desktop: '/work/screens/ai-interview-assistant-candidates-desktop.webp',
+        mobile: '/work/screens/ai-interview-assistant-candidates-mobile.webp',
+      },
+      {
+        title: 'Interview report',
+        caption:
+          'Rubric scores, timestamped highlights and a recommendation to review.',
+        desktop: '/work/screens/ai-interview-assistant-report-desktop.webp',
+        mobile: '/work/screens/ai-interview-assistant-report-mobile.webp',
+      },
+      {
+        title: 'Role setup',
+        caption:
+          'Question structure, adaptive follow-ups and voice settings per role.',
+        desktop: '/work/screens/ai-interview-assistant-roles-desktop.webp',
+        mobile: '/work/screens/ai-interview-assistant-roles-mobile.webp',
+      },
+    ],
     accent: '#ec4899',
     tech: ['Next.js', 'OpenAI Realtime API'],
     techStack: [
@@ -781,10 +1025,37 @@ export const projects: Project[] = [
     summary: 'Multi-tenant AI chatbot platform.',
     description:
       'Resellers provision AI support agents for their shops in bulk, with each tenant isolated and each answer grounded in that shop own content.',
-    coverImage: '/work/snobbots.png',
-    coverWidth: 1024,
-    coverHeight: 1024,
-    visual: 'mark',
+    coverImage: '/work/screens/snobbots-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
+    screens: {
+      desktop: '/work/screens/snobbots-desktop.webp',
+      mobile: '/work/screens/snobbots-mobile.webp',
+    },
+    gallery: [
+      {
+        title: 'Handover inbox',
+        caption:
+          'Conversations the bot could not close, with the order and customer beside them.',
+        desktop: '/work/screens/snobbots-inbox-desktop.webp',
+        mobile: '/work/screens/snobbots-inbox-mobile.webp',
+      },
+      {
+        title: 'Knowledge base',
+        caption:
+          'The catalogue, orders API and policies each bot is allowed to answer from.',
+        desktop: '/work/screens/snobbots-knowledge-desktop.webp',
+        mobile: '/work/screens/snobbots-knowledge-mobile.webp',
+      },
+      {
+        title: 'Shop widget',
+        caption:
+          'The customer-facing chat as it appears on a client’s storefront.',
+        desktop: '/work/screens/snobbots-widget-desktop.webp',
+        mobile: '/work/screens/snobbots-widget-mobile.webp',
+      },
+    ],
     accent: '#06b6d4',
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Pinecone', 'RAG', 'LLM'],
     techStack: [
@@ -840,10 +1111,37 @@ export const projects: Project[] = [
     summary: 'Full-stack AI platform for adaptive rehabilitation.',
     description:
       'A connected rehabilitation journey spanning intake, movement assessment, adaptive exercise planning, daily progress and AI-assisted video feedback.',
-    coverImage: '/work/ai-physiotherapy.png',
-    coverWidth: 1024,
-    coverHeight: 1024,
-    visual: 'mark',
+    coverImage: '/work/screens/ai-physiotherapy-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
+    screens: {
+      desktop: '/work/screens/ai-physiotherapy-desktop.webp',
+      mobile: '/work/screens/ai-physiotherapy-mobile.webp',
+    },
+    gallery: [
+      {
+        title: 'Movement assessment',
+        caption:
+          'Pose analysis on an uploaded clip, with joint angles and form feedback.',
+        desktop: '/work/screens/ai-physiotherapy-assessment-desktop.webp',
+        mobile: '/work/screens/ai-physiotherapy-assessment-mobile.webp',
+      },
+      {
+        title: 'Eight-week plan',
+        caption:
+          'Phases, this week’s sessions and every adaptation with its reason.',
+        desktop: '/work/screens/ai-physiotherapy-plan-desktop.webp',
+        mobile: '/work/screens/ai-physiotherapy-plan-mobile.webp',
+      },
+      {
+        title: 'Clinician view',
+        caption:
+          'Patients by attention needed and AI plan changes waiting for approval.',
+        desktop: '/work/screens/ai-physiotherapy-clinician-desktop.webp',
+        mobile: '/work/screens/ai-physiotherapy-clinician-mobile.webp',
+      },
+    ],
     accent: '#14b8a6',
     tech: ['React', 'Python', 'FastAPI', 'LangChain', 'OpenAI'],
     techStack: [
@@ -899,14 +1197,34 @@ export const projects: Project[] = [
     summary: 'Company website built for performance and SEO.',
     description:
       'A company site rebuilt on Next.js for speed and search. 40% faster, and finally ranking.',
-    coverImage: '/work/new-web-order.png',
-    coverWidth: 255,
-    coverHeight: 232,
-    visual: 'mark',
+    coverImage: '/work/screens/new-web-order-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
     screens: {
-      desktop: '/work/screens/new-web-order-desktop.png',
-      mobile: '/work/screens/new-web-order-mobile.png',
+      desktop: '/work/screens/new-web-order-desktop.webp',
+      mobile: '/work/screens/new-web-order-mobile.webp',
     },
+    gallery: [
+      {
+        title: 'Projects',
+        caption: 'The project index, rebuilt as static pages.',
+        desktop: '/work/screens/new-web-order-projects-desktop.webp',
+        mobile: '/work/screens/new-web-order-projects-mobile.webp',
+      },
+      {
+        title: 'Services',
+        caption: 'Service pages generated from structured content.',
+        desktop: '/work/screens/new-web-order-services-desktop.webp',
+        mobile: '/work/screens/new-web-order-services-mobile.webp',
+      },
+      {
+        title: 'About',
+        caption: 'The company page on the same layout system.',
+        desktop: '/work/screens/new-web-order-about-desktop.webp',
+        mobile: '/work/screens/new-web-order-about-mobile.webp',
+      },
+    ],
     accent: '#f97316',
     tech: ['Next.js', 'TypeScript', 'TailwindCSS'],
     techStack: [
@@ -946,6 +1264,199 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: 'bidnest-mobile',
+    title: 'Bidnest Mobile App',
+    client: 'Confidential (student housing marketplace)',
+    tagline: 'The bidding marketplace, packaged for iOS and Android',
+    summary:
+      'The Bidnest marketplace wrapped with Capacitor so students and parents can bid from their phones.',
+    description:
+      'The same codebase that runs the Bidnest web platform, wrapped with Capacitor into native iOS and Android apps. One team ships the web platform and both app stores from a single repository, and every marketplace flow works inside the native shell without being rebuilt.',
+    coverImage: '/work/screens/bidnest-mobile-mobile.webp',
+    coverWidth: 780,
+    coverHeight: 1688,
+    platform: 'app',
+    screens: {
+      desktop: '/work/screens/bidnest-desktop.webp',
+      mobile: '/work/screens/bidnest-mobile-mobile.webp',
+      mobileAlt: '/work/screens/bidnest-mobile-alt.webp',
+    },
+    gallery: [
+      {
+        title: 'Student dashboard',
+        caption: 'Bids, lease steps and services inside the native shell.',
+        mobile: '/work/screens/bidnest-mobile-dashboard-mobile.webp',
+      },
+      {
+        title: 'Messaging',
+        caption:
+          'Threads with landlords and providers, opened by deep link from notifications.',
+        mobile: '/work/screens/bidnest-mobile-messages-mobile.webp',
+      },
+      {
+        title: 'Browse',
+        caption: 'The map and search from the web platform, tuned for touch.',
+        mobile: '/work/screens/bidnest-mobile-browse-mobile.webp',
+      },
+    ],
+    accent: '#38bdf8',
+    tech: [
+      'Capacitor',
+      'Next.js',
+      'TypeScript',
+      'TailwindCSS',
+      'ShadCN',
+      'Supabase',
+      'PostgreSQL',
+      'WebSockets',
+      'Stripe',
+      'Resend',
+      'Twilio',
+      'PostHog',
+    ],
+    techStack: [
+      { category: 'Native shell', tools: ['Capacitor', 'iOS', 'Android'] },
+      { category: 'Frontend', tools: ['Next.js', 'TypeScript'] },
+      { category: 'Styling', tools: ['TailwindCSS', 'ShadCN'] },
+      { category: 'Backend', tools: ['Supabase', 'PostgreSQL'] },
+      { category: 'Real-time', tools: ['WebSockets'] },
+      { category: 'Payments', tools: ['Stripe'] },
+      { category: 'Notifications', tools: ['Resend', 'Twilio'] },
+      { category: 'Analytics', tools: ['PostHog'] },
+    ],
+    category: 'Mobile',
+    capabilities: ['Full-Stack', 'Cloud & Automation'],
+    services: ['product-engineering', 'mvp-sprint'],
+    industry: 'Property technology',
+    year: '2024',
+    anonymised: true,
+    notable: true,
+    headline: { value: '1', label: 'codebase for web, iOS and Android' },
+    problem:
+      'Students live on their phones. A bid placed from a laptop can be outbid while they are in a lecture, and a browser tab does not wake anyone up. Building two native apps from scratch would have doubled the work for a marketplace that already existed.',
+    approach:
+      'Rather than rebuild the product natively, we wrapped the existing Next.js application with Capacitor, tuned the bidding and messaging screens for touch and safe areas, and shipped the result to both stores from the same repository as the website.',
+    outcomes: [
+      '1 codebase shipping the website, the iOS app and the Android app.',
+      '2 app stores served from the same release branch as the web platform.',
+      '0 features rebuilt: every marketplace flow works inside the native shell.',
+    ],
+    architecture:
+      'Capacitor hosts the production web build inside a native WebView on iOS and Android. Native plugins cover what the browser cannot; everything else, from real-time bids to Stripe checkout, is the same code that serves the web platform, so a fix ships to three platforms at once.',
+    keyFeatures: [
+      'Native iOS and Android builds from the web codebase',
+      'Same bidding, messaging and payment flows as the web platform',
+      'Touch-first layouts with safe-area handling',
+      'Session kept on device between launches',
+      'Deep links from notifications into the exact listing',
+      'Offline screen instead of a browser error',
+    ],
+    challenges: [
+      {
+        challenge:
+          'WebSocket connections drop when the app moves to the background, so bids could arrive late after resume.',
+        solution:
+          'Reconnect on resume with a full state re-sync, so the listing shows the committed bid history the moment the app returns.',
+      },
+      {
+        challenge:
+          'Store review rejects apps that behave like a website in a frame.',
+        solution:
+          'Native navigation gestures, safe-area layouts and an offline screen, with the web chrome removed inside the shell.',
+      },
+    ],
+  },
+  {
+    slug: 'tayyab-sohail-portfolio',
+    title: 'Tayyab Sohail Portfolio',
+    client: 'Tayyab Sohail',
+    tagline: 'Case-study portfolio for a senior engineer',
+    summary:
+      'A personal site where every project is a full case study, generated from one typed data file.',
+    description:
+      'The portfolio of our founder: a Next.js site where the project grid, every case-study page, the sitemap and the social previews are generated from a single typed data file. It ships as static HTML, animates without hurting load time and books calls through an embedded calendar.',
+    coverImage: '/work/screens/tayyab-sohail-portfolio-desktop.webp',
+    coverWidth: 2160,
+    coverHeight: 1350,
+    platform: 'web',
+    screens: {
+      desktop: '/work/screens/tayyab-sohail-portfolio-desktop.webp',
+      mobile: '/work/screens/tayyab-sohail-portfolio-mobile.webp',
+    },
+    gallery: [
+      {
+        title: 'Tech stack',
+        caption: 'Tools and frameworks, grouped by layer.',
+        desktop: '/work/screens/tayyab-sohail-portfolio-stack-desktop.webp',
+        mobile: '/work/screens/tayyab-sohail-portfolio-stack-mobile.webp',
+      },
+      {
+        title: 'Contact',
+        caption:
+          'A message form and an embedded Cal.com booking on one screen.',
+        desktop: '/work/screens/tayyab-sohail-portfolio-contact-desktop.webp',
+        mobile: '/work/screens/tayyab-sohail-portfolio-contact-mobile.webp',
+      },
+    ],
+    accent: '#10b981',
+    tech: [
+      'Next.js',
+      'TypeScript',
+      'React',
+      'TailwindCSS',
+      'Framer Motion',
+      'Cal.com',
+      'Vercel',
+    ],
+    techStack: [
+      { category: 'Frontend', tools: ['Next.js', 'TypeScript', 'React'] },
+      { category: 'Styling & motion', tools: ['TailwindCSS', 'Framer Motion'] },
+      { category: 'Booking', tools: ['Cal.com'] },
+      { category: 'Hosting', tools: ['Vercel'] },
+    ],
+    category: 'Website',
+    capabilities: ['Web'],
+    services: ['web-design-development', 'mvp-sprint'],
+    industry: 'Software engineering',
+    year: '2025',
+    liveUrl: 'https://tayyab-portfolio-chi.vercel.app',
+    notable: true,
+    headline: { value: '12', label: 'case studies from one data file' },
+    problem:
+      'A CV lists technologies; it does not show how a product was built or what changed after it shipped. Most portfolio sites are a grid of thumbnails with nothing behind them, and keeping a dozen project pages consistent by hand is where they fall apart.',
+    approach:
+      'We treated the portfolio like a product. Every project is a typed record with problem, approach, architecture, features, challenges and outcomes, and the site renders the grid, the case-study pages, the sitemap and the social previews from that one array.',
+    outcomes: [
+      '12 case studies generated from a single typed data file.',
+      '0 CMS and 0 database: every page is built statically at deploy time.',
+      '1 click from any case study to a booked call.',
+    ],
+    architecture:
+      'Next.js App Router with static generation for every case-study route. Project data lives in one TypeScript array so the type checker refuses a build when a section is missing. Motion runs on Framer Motion after first paint; call booking is an embedded Cal.com widget.',
+    keyFeatures: [
+      'Filterable project grid by category and capability',
+      'Case-study page generated per project',
+      'Previous and next navigation across projects',
+      'Sitemap and social images derived from the same data',
+      'Embedded call booking',
+      'Downloadable résumé',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Twelve hand-written case studies drifted apart in structure and tone.',
+        solution:
+          'One typed schema for all projects, with the compiler failing the build when a field is missing.',
+      },
+      {
+        challenge:
+          'Animated pages tend to score badly on load and layout stability.',
+        solution:
+          'Static generation, fonts loaded through next/font and motion that starts only after the first paint.',
+      },
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -965,8 +1476,21 @@ export function getProjectsBySlugs(slugs: readonly string[]): Project[] {
     .filter((project): project is Project => Boolean(project));
 }
 
-export function getCategories(): ProjectCategory[] {
-  const present = new Set(projects.map((project) => project.category));
+/** Main products: every project not flagged `notable`. */
+export function getShowcaseProjects(): Project[] {
+  return projects.filter((project) => !project.notable);
+}
+
+/** Smaller builds and side projects, for the "Notable projects" band. */
+export function getNotableProjects(): Project[] {
+  return projects.filter((project) => project.notable === true);
+}
+
+/** Categories present in `list`, in display order. */
+export function getCategories(
+  list: readonly Project[] = projects,
+): ProjectCategory[] {
+  const present = new Set(list.map((project) => project.category));
   return CATEGORY_ORDER.filter((category) => present.has(category));
 }
 

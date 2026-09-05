@@ -19,12 +19,12 @@ export type IndustryId = (typeof INDUSTRY_IDS)[number];
 
 /** Case-study slugs from data/projects.ts that back each industry. */
 export const industryProjects: Record<IndustryId, string[]> = {
-  fintech: ['vestafi'],
-  realEstate: ['vestafi', 'unibid', 'real-estate-management-system'],
-  ecommerce: ['anina', 'snobbots'],
+  fintech: ['brickfold'],
+  realEstate: ['brickfold', 'bidnest', 'real-estate-management-system'],
+  ecommerce: ['curio-market', 'snobbots'],
   hr: ['bitsmiths-hrm'],
   healthcare: ['ai-physiotherapy'],
   recruiting: ['ai-interview-assistant'],
-  martech: ['seomaven'],
+  martech: ['rankloom'],
   compliance: ['qa-compliance-agent'],
 };

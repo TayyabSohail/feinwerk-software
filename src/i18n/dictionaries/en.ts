@@ -5,6 +5,7 @@ export const en = {
   nav: {
     services: 'Services',
     work: 'Projects',
+    pricing: 'Pricing',
     about: 'About',
     contact: 'Contact',
     home: 'Home',
@@ -21,20 +22,31 @@ export const en = {
     body: 'Feinwerk Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed price and a committed delivery date.',
     primary: 'Request a proposal',
     secondary: 'View our work',
-    proof: [
-      'Fixed-price engagements',
-      'Committed delivery dates',
-      'Weekly progress reviews',
-      'Full IP ownership',
-    ],
-    live: 'In production',
-    privateLabel: 'Private deployment',
+    stack: {
+      kicker: 'Every build ships with',
+      blocks: [
+        'Next.js',
+        'Postgres',
+        'Auth',
+        'Payments',
+        'CI/CD',
+        'LLM agents',
+        'Kubernetes',
+        'React Native',
+        'Test suite',
+        'Monitoring',
+        'Fixed price',
+        'Weekly demo',
+        'Handover docs',
+        'Shipped',
+      ],
+    },
   },
   work: {
     kicker: 'Selected work',
     title: 'Products we have shipped',
     description:
-      'Twelve platforms in production: marketplaces that move real money, AI systems that answer from the right documents, internal tools that reconcile to the last unit.',
+      'Twelve products in production: marketplaces that move real money, AI systems that answer from the right documents, internal tools that reconcile to the last unit.',
     all: 'All projects',
     view: 'View project',
     filterLabel: 'Filter projects',
@@ -43,41 +55,121 @@ export const en = {
       SaaS: 'SaaS',
       Marketplace: 'Marketplaces',
       AI: 'AI',
+      Mobile: 'Mobile',
       Website: 'Websites',
       'Full-Stack': 'Full-stack',
       'Cloud & Automation': 'Cloud & automation',
       Web: 'Web',
     },
     count: '{n} projects',
+    notable: {
+      kicker: 'Also shipped',
+      title: 'Notable projects',
+      description:
+        'Apps, sites and side builds alongside the main products. Each one has its own page, and the list grows as new work ships.',
+    },
   },
   services: {
-    kicker: 'What we build',
+    kicker: 'Services',
     title: 'The whole product, one senior team',
     description:
-      'Interface, API, data, AI and the cloud underneath. Pick a shape, or describe the problem and we propose one.',
+      'Four capabilities cover the interface, API, data, AI and the cloud underneath. Two engagement models decide how we work together.',
     all: 'All services',
     explore: 'See the service',
+    groups: {
+      capability: {
+        label: 'What we build',
+        note: 'Pick one or combine them. One team owns the whole stack.',
+      },
+      engagement: {
+        label: 'How we work together',
+        note: 'Priced for a result, not for hours.',
+      },
+    },
+    meta: {
+      timeline: 'Timeline',
+      team: 'Team',
+      pricing: 'Pricing',
+    },
+  },
+  pricing: {
+    kicker: 'Pricing plans',
+    title: 'Choose the plan that works best for your business',
+    description:
+      'Three fixed-price packages. Each one starts with a written scope and a committed date, and ends with a product you own outright.',
+    period: 'one time',
+    cta: 'Get Started Now',
+    note: 'Prices in USD, excluding VAT. Need something in between? Send a brief and you have a fixed quote within five working days.',
+    plans: [
+      {
+        id: 'consulting' as const,
+        name: 'Consulting & Strategy',
+        tagline: 'Expert guidance to accelerate your growth.',
+        price: '$2,999',
+        features: [
+          'Future-proof tech blueprint',
+          '6-month growth roadmap',
+          'Best-in-class tech stack',
+          'Enterprise scaling strategy',
+          'ROI-focused planning',
+          'Hiring & team planning',
+          'Risk mitigation strategy',
+          '90-day growth blueprint',
+        ],
+      },
+      {
+        id: 'mvp' as const,
+        name: 'MVP Development',
+        tagline: 'Market-ready MVP in 30 days or less.',
+        price: '$4,999',
+        features: [
+          'Market-ready MVP in 30 days',
+          'Professional design that converts',
+          'Essential features your users need',
+          'Built to scale: handle 100k+ users',
+          'Perfect experience on any device',
+          'Built-in growth tracking',
+          '14 days of launch support',
+          'Full ownership of your product',
+        ],
+      },
+      {
+        id: 'product' as const,
+        name: 'Full-Scale Product',
+        tagline: 'A complete product, launched and handed over in 45 days.',
+        price: '$9,999',
+        features: [
+          'Launch-ready product within 45 days',
+          'Premium UI/UX that outshines competitors',
+          'Start making money from day one',
+          'AI-powered insights dashboard',
+          'Bank-level security protocols',
+          'Lightning-fast performance',
+          '30 days of dedicated support',
+          'Complete technical handover',
+        ],
+      },
+    ],
   },
   technologies: {
     kicker: 'Trusted technology',
     statement: 'Built on the tools that matter.',
     statementMuted:
-      'We use the same models, frameworks and infrastructure behind the products you already rely on, so nothing we ship is an experiment on your budget.',
+      'Proven models, frameworks and infrastructure. No experiments on your budget.',
     stackLabel: 'The stack, by layer',
     layers: [
       { label: 'Interface', note: 'What your users see and touch.' },
-      {
-        label: 'Backend & data',
-        note: 'Where the truth lives and reconciles.',
-      },
+      { label: 'Mobile', note: 'iOS and Android, native or cross-platform.' },
+      { label: 'Backend & data', note: 'Where the truth lives.' },
       {
         label: 'AI systems',
-        note: 'Models, retrieval and agents, grounded in your data.',
+        note: 'Models, retrieval and agents on your data.',
       },
       {
-        label: 'Cloud & delivery',
-        note: 'Where it runs, ships and keeps running.',
+        label: 'Automation',
+        note: 'Work that runs without a human in the loop.',
       },
+      { label: 'Cloud & delivery', note: 'Where it runs and keeps running.' },
     ],
   },
   industries: {
@@ -127,7 +219,7 @@ export const en = {
     kicker: 'Global reach',
     title: 'Engineering depth that ships across time zones',
     description:
-      'Clients in Europe, Asia, Africa and North America. Engineering in Rawalpindi, a client office in Fellbach, and a working day that covers both.',
+      'Clients in Europe, Asia, Africa and North America. An Asian office in Islamabad, a European office in Fellbach, and a working day that covers both.',
     bullets: [
       'Fixed price and fixed date on every proposal',
       'GDPR-compliant processing, DPA and NDA on request',
@@ -143,12 +235,7 @@ export const en = {
     items: [
       { value: '150+', label: 'Projects delivered' },
       { value: '40+', label: 'Clients on four continents' },
-      { value: '1M+', label: 'End users on products we built' },
-      { value: '99.9%', label: 'Uptime across live platforms' },
-      { value: '12', label: 'Industries served' },
-      { value: '70%', label: 'Less manual work after automation' },
       { value: '6 wks', label: 'Typical time to first release' },
-      { value: '24h', label: 'Reply time on every message' },
     ],
   },
   howItWorks: {
@@ -158,21 +245,25 @@ export const en = {
       'One call, a written plan, weekly demos, then a launch you can put in the calendar. You stay in control the whole way.',
     stepLabel: 'Step',
     cta: 'Book the first call',
+    note: 'One call. Five working days to a fixed price and a launch date.',
     steps: [
       {
         title: 'Tell us what has to exist',
+        when: 'Day 1',
         summary:
           'A 30-minute call. Walk us through the product, the users and the deadline. Within five working days you have a written scope, a fixed price and a launch date.',
         outputs: ['Written scope', 'Fixed price', 'Launch date'],
       },
       {
         title: 'Watch it get built',
+        when: 'Every Friday',
         summary:
           'A working version you can click on every Friday, with a short written update. Change your mind early and it costs nothing.',
         outputs: ['Weekly demo', 'Staging access', 'Written update'],
       },
       {
         title: 'Launch and keep it',
+        when: 'Launch day',
         summary:
           'We ship, monitor the first weeks live, and hand over everything with documentation. Stay on a retainer or take it in-house. Yours either way.',
         outputs: ['Monitoring', 'Documentation', 'Full hand-over'],

@@ -18,7 +18,7 @@ export const faqs: Faq[] = [
   {
     question: 'Where is the team based?',
     answer:
-      'Engineering runs from Rawalpindi, Pakistan, with a European office in Fellbach, Germany. That gives clients in Europe a local contact and a working-hours overlap with the whole team.',
+      'Our Asian office is in Islamabad and our European office is in Fellbach, Germany. That gives clients in Europe a local contact and a working-hours overlap with the whole team.',
   },
   {
     question: 'Who owns the code and the accounts?',

@@ -1,7 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { FileSignature, PhoneCall, Rocket } from 'lucide-react';
 import Link from 'next/link';
 
 import { SectionHeading } from '@/components/common/section-heading';
@@ -17,14 +13,14 @@ interface HowItWorksProps {
   className?: string;
 }
 
-const ICONS = [PhoneCall, FileSignature, Rocket];
-
 /**
- * Three connected steps on the same light grid as the rest of the page, with
- * a line that draws itself across the three panels.
+ * Three moments on the calendar, side by side on the same hairline grid as
+ * the rest of the page: when it happens in big type, what happens, and what
+ * you hold at the end of it. No cards, no numbering, about one screen tall.
  */
 export function HowItWorks({ dict, className }: HowItWorksProps) {
   const t = dict.howItWorks;
+  const last = t.steps.length - 1;
 
   return (
     <section
@@ -38,78 +34,55 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
           description={t.description}
         />
 
-        <div className='relative mt-16'>
-          {/* Connecting line */}
-          <div
-            aria-hidden='true'
-            className='absolute left-0 right-0 top-9 hidden h-px bg-ink/10 lg:block'
-          >
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: '0px 0px -20% 0px' }}
-              transition={{
-                duration: 1.8,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.3,
-              }}
-              className='block h-full origin-left bg-brand'
-            />
-          </div>
+        <Stagger
+          stagger={0.15}
+          className='mt-14 grid border-t lg:mt-16 lg:grid-cols-3'
+        >
+          {t.steps.map((step, index) => (
+            <StaggerItem
+              key={step.title}
+              className={cn(
+                'flex flex-col py-8 lg:py-10',
+                index > 0 && 'border-t lg:border-l lg:border-t-0 lg:pl-10',
+                index < last && 'lg:pr-10',
+              )}
+            >
+              <p className='fw-display text-4xl text-ink lg:text-5xl'>
+                {step.when}
+              </p>
+              <h3 className='fw-display mt-5 text-2xl text-ink'>
+                {step.title}
+              </h3>
+              <p className='mb-8 mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base'>
+                {step.summary}
+              </p>
 
-          <Stagger stagger={0.15} className='grid gap-6 lg:grid-cols-3'>
-            {t.steps.map((step, index) => {
-              const Icon = ICONS[index];
-              return (
-                <StaggerItem key={step.title} className='relative'>
-                  {/* Node on the line */}
-                  <span
-                    aria-hidden='true'
-                    className='absolute -top-[5px] left-8 z-[2] hidden h-[11px] w-[11px] border border-brand bg-surface lg:block'
-                  />
-                  <div className='fw-card fw-spot relative flex h-full flex-col p-8'>
-                    <div className='flex items-start justify-between'>
-                      <span className='fw-display text-6xl text-brand-text'>
-                        0{index + 1}
-                      </span>
-                      <span className='flex h-11 w-11 items-center justify-center border bg-surface-2 text-ink'>
-                        <Icon className='h-5 w-5' strokeWidth={1.5} />
-                      </span>
-                    </div>
-                    <p className='mt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground'>
-                      {t.stepLabel} {index + 1}.0
-                    </p>
-                    <h3 className='fw-display mt-2 text-2xl text-ink'>
-                      {step.title}
-                    </h3>
-                    <p className='mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base'>
-                      {step.summary}
-                    </p>
-                    <ul className='mt-6 flex flex-wrap gap-1.5 border-t pt-5'>
-                      {step.outputs.map((output) => (
-                        <li
-                          key={output}
-                          className='border border-brand/40 bg-brand-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-brand-text'
-                        >
-                          {output}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </Stagger>
-        </div>
+              <ul className='mt-auto space-y-2.5 border-t pt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink'>
+                {step.outputs.map((output) => (
+                  <li key={output} className='flex items-center gap-3'>
+                    <span
+                      aria-hidden='true'
+                      className='h-1.5 w-1.5 shrink-0 bg-brand'
+                    />
+                    {output}
+                  </li>
+                ))}
+              </ul>
+            </StaggerItem>
+          ))}
+        </Stagger>
 
-        <Reveal className='mt-14 flex justify-center'>
+        <Reveal className='flex flex-col gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between'>
           <Link
             href={paths.contact}
-            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
+            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 self-start px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
           >
             {t.cta}
             <span className='h-2.5 w-2.5 bg-brand' />
           </Link>
+          <p className='max-w-sm font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-ink/50 sm:text-right'>
+            {t.note}
+          </p>
         </Reveal>
       </div>
     </section>

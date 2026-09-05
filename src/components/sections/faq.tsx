@@ -58,14 +58,9 @@ export function FaqSection({
                 className='border-b-0'
               >
                 <AccordionTrigger className='py-6 text-left text-lg font-medium tracking-tight hover:no-underline [&[data-state=open]]:text-brand-text'>
-                  <span className='flex items-start gap-5'>
-                    <span className='mt-1.5 font-mono text-[10px] text-muted-foreground'>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    {item.question}
-                  </span>
+                  {item.question}
                 </AccordionTrigger>
-                <AccordionContent className='pb-7 pl-9 text-base leading-relaxed text-muted-foreground'>
+                <AccordionContent className='pb-7 text-base leading-relaxed text-muted-foreground'>
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>

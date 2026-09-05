@@ -1,5 +1,4 @@
 export interface ProcessStep {
-  number: string;
   title: string;
   duration: string;
   summary: string;
@@ -9,7 +8,6 @@ export interface ProcessStep {
 /** How an engagement runs, in three steps a client actually experiences. */
 export const processSteps: ProcessStep[] = [
   {
-    number: '01',
     title: 'Brief',
     duration: 'Week 1',
     summary:
@@ -17,7 +15,6 @@ export const processSteps: ProcessStep[] = [
     outcome: 'You know exactly what you will get, when, and for how much.',
   },
   {
-    number: '02',
     title: 'Build',
     duration: 'Weeks 2-8',
     summary:
@@ -25,7 +22,6 @@ export const processSteps: ProcessStep[] = [
     outcome: 'No surprises at the end, because there is no "the end".',
   },
   {
-    number: '03',
     title: 'Launch',
     duration: 'Launch week and after',
     summary:

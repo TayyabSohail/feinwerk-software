@@ -13,7 +13,8 @@ import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { cn } from '@/lib/utils';
 
 import { siteConfig } from '@/config/site';
-import { paths } from '@/constants/paths';
+import { primaryNav } from '@/constants/navigation';
+import { isSectionLink, paths } from '@/constants/paths';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -39,11 +40,8 @@ export function MobileMenu({ dict }: MobileMenuProps) {
 
   const links = [
     { label: dict.nav.home, href: paths.home },
-    { label: dict.nav.services, href: paths.services },
-    { label: dict.nav.work, href: paths.work },
-    { label: dict.nav.about, href: paths.about },
+    ...primaryNav(dict),
     { label: dict.nav.contact, href: paths.contact },
-    { label: dict.nav.careers, href: paths.careers },
   ];
 
   return (
@@ -95,7 +93,8 @@ export function MobileMenu({ dict }: MobileMenuProps) {
                 const active =
                   item.href === paths.home
                     ? pathname === item.href
-                    : pathname.startsWith(item.href);
+                    : !isSectionLink(item.href) &&
+                      pathname.startsWith(item.href);
                 return (
                   <div
                     key={item.href}
@@ -113,14 +112,16 @@ export function MobileMenu({ dict }: MobileMenuProps) {
                     >
                       <Link
                         href={item.href}
+                        // Same-page section links do not change the pathname,
+                        // so the menu has to close itself. Lenis animates
+                        // them; Next's own jump would fight it.
+                        onClick={() => setOpen(false)}
+                        scroll={!isSectionLink(item.href)}
                         className={cn(
                           'flex items-baseline gap-4 py-3',
                           active ? 'text-brand-text' : 'text-foreground',
                         )}
                       >
-                        <span className='font-mono text-xs text-muted-foreground'>
-                          0{index + 1}
-                        </span>
                         <span className='fw-display text-display-md uppercase'>
                           {item.label}
                         </span>
@@ -154,9 +155,7 @@ export function MobileMenu({ dict }: MobileMenuProps) {
                       />
                       {location.city}
                     </p>
-                    <a href={location.phoneHref} className='mt-1 block'>
-                      {location.phone}
-                    </a>
+                    <p className='mt-1'>{location.country}</p>
                   </div>
                 ))}
               </div>

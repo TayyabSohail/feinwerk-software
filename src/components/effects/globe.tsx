@@ -11,7 +11,7 @@ interface GlobeProps {
 }
 
 const DEFAULT_MARKERS: GlobeProps['markers'] = [
-  { location: [33.6, 73.07], size: 0.05 }, // Rawalpindi
+  { location: [33.69, 73.05], size: 0.05 }, // Islamabad
   { location: [48.81, 9.28], size: 0.05 }, // Fellbach
   { location: [0.35, 32.58], size: 0.03 }, // Kampala
   { location: [40.71, -74.0], size: 0.03 }, // New York

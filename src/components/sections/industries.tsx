@@ -42,13 +42,10 @@ export function Industries({ dict }: IndustriesProps) {
               <StaggerItem
                 key={id}
                 className={cn(
-                  'grid grid-cols-[2.5rem_1fr] gap-x-4 border-t py-7 sm:grid-cols-[3.5rem_1fr] sm:py-8',
+                  'border-t py-7 sm:py-8',
                   index % 2 === 0 ? 'lg:border-r lg:pr-12' : 'lg:pl-12',
                 )}
               >
-                <span className='pt-2 font-mono text-[11px] text-brand-text'>
-                  {String(index + 1).padStart(2, '0')}
-                </span>
                 <div className='min-w-0'>
                   <h3 className='fw-display text-3xl text-ink sm:text-4xl'>
                     {item.name}

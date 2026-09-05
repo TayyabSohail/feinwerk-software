@@ -6,6 +6,7 @@ export const paths = {
   caseStudy: (slug: string) => `/work/${slug}` as const,
   about: '/about',
   process: '/about#how-it-works',
+  pricing: '/#pricing',
   careers: '/careers',
   contact: '/contact',
   legal: {
@@ -20,3 +21,6 @@ export const paths = {
     register: '/auth/register',
   },
 } as const;
+
+/** True for a link into a section of a page (/#pricing) rather than a page. */
+export const isSectionLink = (href: string) => href.includes('#');

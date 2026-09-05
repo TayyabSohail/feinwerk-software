@@ -1,5 +1,5 @@
 import { SectionHeading } from '@/components/common/section-heading';
-import { Stagger, StaggerItem } from '@/components/motion/reveal';
+import { CountUp } from '@/components/motion/count-up';
 
 import { cn } from '@/lib/utils';
 
@@ -9,7 +9,7 @@ interface NumbersProps {
   dict: Dictionary;
 }
 
-/** Eight figures in an ink panel with hairline cells. Static, no counting. */
+/** Three company figures in one ink panel. Each counts up fast on entering view. */
 export function Numbers({ dict }: NumbersProps) {
   const t = dict.numbers;
 
@@ -22,37 +22,26 @@ export function Numbers({ dict }: NumbersProps) {
           description={t.description}
         />
 
-        <Stagger
-          stagger={0.05}
-          className='fw-card fw-card-ink mt-14 grid sm:grid-cols-2 lg:grid-cols-4'
-        >
-          {t.items.map((item, index) => (
-            <StaggerItem
-              key={item.label}
-              className={cn(
-                'relative border-white/10 p-8 sm:p-9',
-                index % 2 === 1 && 'sm:border-l',
-                index % 4 !== 0 && 'lg:border-l',
-                index >= 2 && 'sm:border-t',
-                index < 4 && 'lg:border-t-0',
-                index >= 4 && 'lg:border-t',
-              )}
-            >
-              <p className='fw-display text-5xl text-white sm:text-6xl'>
-                {item.value}
-              </p>
-              <p className='mt-3 max-w-[18ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-white/55'>
-                {item.label}
-              </p>
-              <span
-                aria-hidden='true'
-                className='absolute right-6 top-6 font-mono text-[10px] text-brand'
+        <div className='fw-card fw-card-ink mt-14'>
+          <div className='grid sm:grid-cols-3'>
+            {t.items.map((item, i) => (
+              <div
+                key={item.label}
+                className={cn(
+                  'relative border-white/10 p-8 sm:p-10 lg:p-12',
+                  i > 0 && 'border-t sm:border-l sm:border-t-0',
+                )}
               >
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </StaggerItem>
-          ))}
-        </Stagger>
+                <p className='fw-display text-6xl tabular-nums text-white sm:text-7xl lg:text-8xl'>
+                  <CountUp value={item.value} delay={i * 0.08} />
+                </p>
+                <p className='mt-5 max-w-[20ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-white/55'>
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -11,6 +11,8 @@ interface LetterRevealProps {
   delay?: number;
   /** Seconds between letters. */
   stagger?: number;
+  /** Words (0-based) rendered in the accent colour. */
+  accentWords?: number[];
   once?: boolean;
 }
 
@@ -26,6 +28,7 @@ export function LetterReveal({
   as = 'h1',
   delay = 0,
   stagger = 0.022,
+  accentWords = [],
   once = true,
 }: LetterRevealProps) {
   const reduce = useReducedMotion();
@@ -46,7 +49,10 @@ export function LetterReveal({
         <span
           key={`${word}-${wordIndex}`}
           aria-hidden='true'
-          className='mr-[0.28em] inline-flex overflow-hidden pb-[0.06em] last:mr-0'
+          className={cn(
+            'mr-[0.28em] inline-flex overflow-hidden pb-[0.06em] last:mr-0',
+            accentWords.includes(wordIndex) && 'text-brand-text',
+          )}
         >
           {word.split('').map((letter, letterIndex) => {
             const i = index++;
