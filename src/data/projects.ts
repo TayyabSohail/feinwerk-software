@@ -67,6 +67,12 @@ export interface Project {
    * device mockups can show the UI rather than a photo of a laptop.
    */
   screenFocus?: { scale: number; position: string };
+  /**
+   * Device-native captures of the live product (1600x1000 desktop and
+   * 390x844 mobile), so laptop and phone screens show the real UI edge to
+   * edge instead of a cropped cover.
+   */
+  screens?: { desktop: string; mobile: string };
   /** Flat list, used for chips and quick scanning. */
   tech: string[];
   /** Grouped stack, rendered on the case study. */
@@ -104,6 +110,10 @@ export const projects: Project[] = [
     coverWidth: 1082,
     coverHeight: 549,
     visual: 'screenshot',
+    screens: {
+      desktop: '/work/screens/vestafi-desktop.png',
+      mobile: '/work/screens/vestafi-mobile.png',
+    },
     accent: '#22c55e',
     tech: [
       'Next.js',
@@ -191,6 +201,10 @@ export const projects: Project[] = [
     coverWidth: 1800,
     coverHeight: 1350,
     visual: 'render',
+    screens: {
+      desktop: '/work/screens/seomaven-desktop.png',
+      mobile: '/work/screens/seomaven-mobile.png',
+    },
     screenFocus: { scale: 2.05, position: '50% 40%' },
     accent: '#8b5cf6',
     tech: [
@@ -275,6 +289,10 @@ export const projects: Project[] = [
     coverWidth: 1800,
     coverHeight: 1350,
     visual: 'render',
+    screens: {
+      desktop: '/work/screens/unibid-desktop.png',
+      mobile: '/work/screens/unibid-mobile.png',
+    },
     screenFocus: { scale: 1.9, position: '44% 39%' },
     accent: '#38bdf8',
     tech: [
@@ -354,6 +372,10 @@ export const projects: Project[] = [
     coverWidth: 1800,
     coverHeight: 1350,
     visual: 'render',
+    screens: {
+      desktop: '/work/screens/anina-desktop.png',
+      mobile: '/work/screens/anina-mobile.png',
+    },
     screenFocus: { scale: 2.2, position: '41% 43%' },
     accent: '#a3a3a3',
     tech: [
@@ -427,6 +449,10 @@ export const projects: Project[] = [
     coverWidth: 861,
     coverHeight: 935,
     visual: 'screenshot',
+    screens: {
+      desktop: '/work/bitsmiths-hrm.png',
+      mobile: '/work/screens/bitsmiths-hrm-mobile.png',
+    },
     accent: '#10b981',
     tech: [
       'Next.js',
@@ -509,6 +535,10 @@ export const projects: Project[] = [
     coverWidth: 970,
     coverHeight: 894,
     visual: 'screenshot',
+    screens: {
+      desktop: '/work/screens/bitsmiths-studio-desktop.png',
+      mobile: '/work/screens/bitsmiths-studio-mobile.png',
+    },
     accent: '#22c55e',
     tech: ['Next.js', 'TypeScript', 'React', 'TailwindCSS', 'Directus'],
     techStack: [
@@ -873,6 +903,10 @@ export const projects: Project[] = [
     coverWidth: 255,
     coverHeight: 232,
     visual: 'mark',
+    screens: {
+      desktop: '/work/screens/new-web-order-desktop.png',
+      mobile: '/work/screens/new-web-order-mobile.png',
+    },
     accent: '#f97316',
     tech: ['Next.js', 'TypeScript', 'TailwindCSS'],
     techStack: [

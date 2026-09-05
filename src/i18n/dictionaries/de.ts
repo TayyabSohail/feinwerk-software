@@ -64,23 +64,68 @@ export const de: Dictionary = {
     statement: 'Gebaut auf den Werkzeugen, die zählen.',
     statementMuted:
       'Wir nutzen dieselben Modelle, Frameworks und Infrastruktur wie die Produkte, auf die Sie sich bereits verlassen. Nichts, was wir liefern, ist ein Experiment auf Ihre Kosten.',
-    stats: [
-      { value: '1.000+', label: 'Gleichzeitige Nutzer auf einem Marktplatz' },
-      { value: '70%', label: 'Weniger Support-Tickets nach Automatisierung' },
-      { value: '3x', label: 'Geringere Kosten pro KI-generiertem Artikel' },
+    stackLabel: 'Der Stack, nach Ebene',
+    layers: [
+      { label: 'Oberfläche', note: 'Was Ihre Nutzer sehen und bedienen.' },
+      {
+        label: 'Backend & Daten',
+        note: 'Wo die Wahrheit liegt und abgestimmt wird.',
+      },
+      {
+        label: 'KI-Systeme',
+        note: 'Modelle, Retrieval und Agenten, verankert in Ihren Daten.',
+      },
+      {
+        label: 'Cloud & Betrieb',
+        note: 'Wo es läuft, ausgeliefert wird und weiterläuft.',
+      },
     ],
   },
   industries: {
     kicker: 'Branchen',
     title: 'Für wen wir bauen',
-    items: [
-      'Fintech',
-      'Immobilien',
-      'E-Commerce',
-      'HR & Lohn',
-      'Gesundheit',
-      'Recruiting',
-    ],
+    description:
+      'Produkte, bei denen eine falsche Zahl Geld kostet. Hinter jeder Branche steht ein ausgeliefertes Projekt.',
+    shipped: 'Geliefert',
+    items: {
+      fintech: {
+        name: 'Fintech',
+        blurb:
+          'Wallets, Ledger und Auszahlungen, die bis auf die letzte Einheit stimmen.',
+      },
+      realEstate: {
+        name: 'Immobilien',
+        blurb: 'Marktplätze, Mietplattformen und Agentur-Abläufe.',
+      },
+      ecommerce: {
+        name: 'E-Commerce',
+        blurb:
+          'Multi-Seller-Shops, Checkout, Versand und automatisierter Support.',
+      },
+      hr: {
+        name: 'HR & Lohn',
+        blurb:
+          'Zeiterfassung, Urlaub und Lohnabrechnung, die jede Prüfung bestehen.',
+      },
+      healthcare: {
+        name: 'Gesundheit',
+        blurb: 'Reha- und Patientenassistenten mit klinischen Leitplanken.',
+      },
+      recruiting: {
+        name: 'Recruiting',
+        blurb:
+          'Strukturierte Sprachinterviews, Bewertung und Transkripte in großer Zahl.',
+      },
+      martech: {
+        name: 'Marketing-Technologie',
+        blurb:
+          'SEO- und Content-Plattformen, die erzeugen, veröffentlichen und messen.',
+      },
+      compliance: {
+        name: 'Compliance',
+        blurb: 'Dokumentenprüfung auf Klauselebene mit Prüfpfad.',
+      },
+    },
   },
   globalReach: {
     kicker: 'Weltweit',

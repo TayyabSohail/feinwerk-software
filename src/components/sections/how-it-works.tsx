@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { FileSignature, PhoneCall, Rocket } from 'lucide-react';
 import Link from 'next/link';
 
+import { SectionHeading } from '@/components/common/section-heading';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
-import { TextReveal } from '@/components/motion/text-reveal';
 
 import { cn } from '@/lib/utils';
 
@@ -19,47 +19,30 @@ interface HowItWorksProps {
 
 const ICONS = [PhoneCall, FileSignature, Rocket];
 
-/** Dark band: three connected steps with a line that draws itself across. */
+/**
+ * Three connected steps on the same light grid as the rest of the page, with
+ * a line that draws itself across the three panels.
+ */
 export function HowItWorks({ dict, className }: HowItWorksProps) {
   const t = dict.howItWorks;
 
   return (
     <section
       id='how-it-works'
-      className={cn(
-        'fw-section fw-band-ink relative overflow-hidden',
-        className,
-      )}
+      className={cn('fw-section fw-rule fw-band-stone', className)}
     >
-      <div
-        aria-hidden='true'
-        className='absolute -left-40 bottom-0 h-[30rem] w-[30rem] rounded-full bg-brand/15 blur-[140px]'
-      />
-
-      <div className='fw-container relative'>
-        <div className='grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-end'>
-          <div>
-            <Reveal>
-              <p className='fw-kicker text-white/60'>{t.kicker}</p>
-            </Reveal>
-            <TextReveal
-              as='h2'
-              text={t.title}
-              className='fw-display mt-5 text-display-md text-white'
-            />
-          </div>
-          <Reveal delay={0.15}>
-            <p className='max-w-md text-base leading-relaxed text-white/60 md:ml-auto md:text-right md:text-lg'>
-              {t.description}
-            </p>
-          </Reveal>
-        </div>
+      <div className='fw-container'>
+        <SectionHeading
+          kicker={t.kicker}
+          title={t.title}
+          description={t.description}
+        />
 
         <div className='relative mt-16'>
           {/* Connecting line */}
           <div
             aria-hidden='true'
-            className='absolute left-0 right-0 top-9 hidden h-px bg-white/10 lg:block'
+            className='absolute left-0 right-0 top-9 hidden h-px bg-ink/10 lg:block'
           >
             <motion.span
               initial={{ scaleX: 0 }}
@@ -79,34 +62,34 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
               const Icon = ICONS[index];
               return (
                 <StaggerItem key={step.title} className='relative'>
-                  <div className='fw-spot fw-spot-ink border-white/12 relative flex h-full flex-col border bg-white/[0.04] p-8 backdrop-blur-sm'>
-                    {/* Node on the line */}
-                    <span
-                      aria-hidden='true'
-                      className='absolute -top-[5px] left-8 hidden h-[11px] w-[11px] border border-brand bg-ink lg:block'
-                    />
+                  {/* Node on the line */}
+                  <span
+                    aria-hidden='true'
+                    className='absolute -top-[5px] left-8 z-[2] hidden h-[11px] w-[11px] border border-brand bg-surface lg:block'
+                  />
+                  <div className='fw-card fw-spot relative flex h-full flex-col p-8'>
                     <div className='flex items-start justify-between'>
-                      <span className='fw-display text-6xl text-brand-2'>
+                      <span className='fw-display text-6xl text-brand-text'>
                         0{index + 1}
                       </span>
-                      <span className='flex h-11 w-11 items-center justify-center border border-white/15 bg-white/5 text-white'>
+                      <span className='flex h-11 w-11 items-center justify-center border bg-surface-2 text-ink'>
                         <Icon className='h-5 w-5' strokeWidth={1.5} />
                       </span>
                     </div>
-                    <p className='mt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-white/45'>
+                    <p className='mt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground'>
                       {t.stepLabel} {index + 1}.0
                     </p>
-                    <h3 className='fw-display mt-2 text-2xl text-white'>
+                    <h3 className='fw-display mt-2 text-2xl text-ink'>
                       {step.title}
                     </h3>
-                    <p className='mt-3 text-sm leading-relaxed text-white/65 sm:text-base'>
+                    <p className='mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base'>
                       {step.summary}
                     </p>
-                    <ul className='mt-6 flex flex-wrap gap-1.5 border-t border-white/10 pt-5'>
+                    <ul className='mt-6 flex flex-wrap gap-1.5 border-t pt-5'>
                       {step.outputs.map((output) => (
                         <li
                           key={output}
-                          className='border border-brand/40 bg-brand/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-brand-2'
+                          className='border border-brand/40 bg-brand-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-brand-text'
                         >
                           {output}
                         </li>
@@ -122,10 +105,10 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
         <Reveal className='mt-14 flex justify-center'>
           <Link
             href={paths.contact}
-            className='fw-btn fw-btn-primary inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
+            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
           >
             {t.cta}
-            <span className='h-2.5 w-2.5 bg-white' />
+            <span className='h-2.5 w-2.5 bg-brand' />
           </Link>
         </Reveal>
       </div>

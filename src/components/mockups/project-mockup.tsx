@@ -17,7 +17,9 @@ interface ProjectMockupProps {
 
 /**
  * The one device treatment every project gets: a laptop with the product on
- * screen and a phone in front, on a dark plate tinted with the project colour.
+ * screen and a phone in front, on a dark plate tinted with the project
+ * colour. The phone overlaps only the laptop's right edge, so the desktop
+ * view stays readable.
  */
 export function ProjectMockup({
   project,
@@ -33,8 +35,8 @@ export function ProjectMockup({
     >
       <div
         className={cn(
-          'absolute inset-x-[7%]',
-          centered ? 'top-1/2 -translate-y-1/2' : 'top-[8%]',
+          'absolute left-[5%] right-[14%]',
+          centered ? 'top-1/2 -translate-y-1/2' : 'top-[9%]',
         )}
       >
         <LaptopFrame>
@@ -48,8 +50,8 @@ export function ProjectMockup({
       </div>
       <div
         className={cn(
-          'absolute right-[5%] w-[19%]',
-          centered ? 'top-1/2 translate-y-[-28%]' : 'bottom-[5%]',
+          'absolute right-[4%] w-[18%]',
+          centered ? 'top-1/2 translate-y-[-22%]' : 'bottom-[6%]',
         )}
       >
         <PhoneFrame className='shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]'>

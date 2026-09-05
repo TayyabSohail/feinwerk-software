@@ -24,7 +24,7 @@ export function Hero({ dict }: HeroProps) {
       <Silk />
       <div className='absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background' />
 
-      <div className='fw-container relative grid min-h-[92vh] items-center gap-12 pb-16 pt-28 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-20 lg:pt-24'>
+      <div className='fw-container relative grid min-h-[92vh] items-center gap-12 pb-16 pt-28 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:pb-16 lg:pt-24'>
         <div className='relative z-10 min-w-0'>
           <Reveal>
             <p className='inline-flex items-center gap-3 border border-ink/20 bg-white/70 px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-ink backdrop-blur'>
@@ -39,20 +39,20 @@ export function Hero({ dict }: HeroProps) {
             delay={0.15}
             stagger={0.07}
             className={cn(
-              'fw-display mt-8 max-w-[15ch] uppercase text-ink',
+              'fw-display mt-7 max-w-[15ch] uppercase text-ink',
               dict.locale === 'de' ? 'text-display-lg' : 'text-display-xl',
             )}
           />
 
           <Reveal delay={0.7}>
-            <p className='mt-8 max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl'>
+            <p className='mt-7 max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl'>
               {t.body}
             </p>
           </Reveal>
 
           <Reveal
             delay={0.85}
-            className='mt-10 flex flex-wrap items-center gap-3'
+            className='mt-9 flex flex-wrap items-center gap-3'
           >
             <Link
               href={paths.contact}
@@ -72,7 +72,7 @@ export function Hero({ dict }: HeroProps) {
 
           <Reveal
             delay={1}
-            className='mt-10 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55'
+            className='mt-9 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55'
           >
             {t.proof.map((item) => (
               <span key={item} className='inline-flex items-center gap-2'>

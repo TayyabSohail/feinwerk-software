@@ -63,23 +63,65 @@ export const en = {
     statement: 'Built on the tools that matter.',
     statementMuted:
       'We use the same models, frameworks and infrastructure behind the products you already rely on, so nothing we ship is an experiment on your budget.',
-    stats: [
-      { value: '1,000+', label: 'Concurrent users on one marketplace' },
-      { value: '70%', label: 'Fewer support tickets after automation' },
-      { value: '3x', label: 'Lower cost per AI-generated article' },
+    stackLabel: 'The stack, by layer',
+    layers: [
+      { label: 'Interface', note: 'What your users see and touch.' },
+      {
+        label: 'Backend & data',
+        note: 'Where the truth lives and reconciles.',
+      },
+      {
+        label: 'AI systems',
+        note: 'Models, retrieval and agents, grounded in your data.',
+      },
+      {
+        label: 'Cloud & delivery',
+        note: 'Where it runs, ships and keeps running.',
+      },
     ],
   },
   industries: {
     kicker: 'Industries',
     title: 'Who we build for',
-    items: [
-      'Fintech',
-      'Real estate',
-      'Ecommerce',
-      'HR & payroll',
-      'Healthcare',
-      'Recruiting',
-    ],
+    description:
+      'Products where a wrong number costs money. Every industry below has a shipped case study behind it.',
+    shipped: 'Shipped',
+    items: {
+      fintech: {
+        name: 'Fintech',
+        blurb: 'Wallets, ledgers and payouts that reconcile to the last unit.',
+      },
+      realEstate: {
+        name: 'Real estate',
+        blurb: 'Marketplaces, rental platforms and agency operations.',
+      },
+      ecommerce: {
+        name: 'Ecommerce',
+        blurb:
+          'Multi-seller storefronts, checkout, shipping and support automation.',
+      },
+      hr: {
+        name: 'HR & payroll',
+        blurb: 'Attendance, leave and payroll that pass an audit.',
+      },
+      healthcare: {
+        name: 'Healthcare',
+        blurb:
+          'Rehabilitation and patient-facing assistants with clinical guardrails.',
+      },
+      recruiting: {
+        name: 'Recruiting',
+        blurb: 'Structured voice interviews, scoring and transcripts at scale.',
+      },
+      martech: {
+        name: 'Marketing technology',
+        blurb: 'SEO and content platforms that generate, publish and measure.',
+      },
+      compliance: {
+        name: 'Compliance',
+        blurb: 'Clause-level document review with an audit trail.',
+      },
+    },
   },
   globalReach: {
     kicker: 'Global reach',
