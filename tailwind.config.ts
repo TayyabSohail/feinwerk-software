@@ -112,7 +112,7 @@ export default {
       },
       fontSize: {
         'display-xl': [
-          'clamp(2.6rem, 6.4vw, 6rem)',
+          'clamp(2.6rem, 5.8vw, 5.5rem)',
           { lineHeight: '1.02', letterSpacing: '0.02em' },
         ],
         'display-lg': [
