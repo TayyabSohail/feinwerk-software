@@ -44,13 +44,7 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
       className={cn('fw-section fw-rule fw-band-white', className)}
     >
       <div className='fw-container'>
-        {withHeading && (
-          <SectionHeading
-            kicker={t.kicker}
-            title={t.title}
-            description={t.description}
-          />
-        )}
+        {withHeading && <SectionHeading kicker={t.kicker} title={t.title} />}
 
         <Stagger
           stagger={0.12}

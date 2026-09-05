@@ -59,18 +59,10 @@ export const en = {
   services: {
     kicker: 'Services',
     title: 'The whole product, one senior team',
-    description:
-      'Four capabilities cover the interface, API, data, AI and the cloud underneath. Two engagement models decide how we work together.',
-    all: 'All services',
     explore: 'See the service',
     groups: {
       capability: {
         label: 'What we build',
-        note: 'Pick one or combine them. One team owns the whole stack.',
-      },
-      engagement: {
-        label: 'How we work together',
-        note: 'Priced for a result, not for hours. Custom scopes welcome, and every build is maintained after launch.',
       },
     },
     meta: {
@@ -83,8 +75,6 @@ export const en = {
   pricing: {
     kicker: 'Pricing plans',
     title: 'Choose the plan that works best for your business',
-    description:
-      'A custom solution scoped to your brief, plus three fixed-price packages. Each one starts with a written scope and a committed date, ends with a product you own outright, and is maintained by us after launch.',
     badge: 'Top pick',
     period: 'one time',
     customPeriod: 'fixed quote',
@@ -276,34 +266,42 @@ export const en = {
     ],
   },
   howItWorks: {
-    kicker: 'How it works',
-    title: 'From brief to launch, on a date',
+    kicker: 'Working with us',
+    title: 'Three commitments, one calendar',
     description:
-      'One call, a written plan, weekly demos, then a launch you can put in the calendar, and a team that keeps maintaining it afterwards. You stay in control the whole way.',
+      'A price and a date before we write a line of code. Something to click every week while we build. A team that still answers after launch.',
     stepLabel: 'Step',
-    cta: 'Book the first call',
-    note: 'One call. Five working days to a fixed or custom quote and a launch date. Maintained after launch.',
+    cta: 'Start with a call',
+    note: 'A 30-minute call. A written quote and a launch date within five working days. Support that continues after launch.',
     steps: [
       {
-        title: 'Tell us what has to exist',
+        title: 'The plan, in writing',
         when: 'Day 1',
         summary:
-          'A 30-minute call. Walk us through the product, the users and the deadline. Within five working days you will have a written scope, a fixed price for a standard plan or a custom quote, and a launch date.',
-        outputs: ['Written scope', 'Fixed or custom quote', 'Launch date'],
+          'Thirty minutes on a call about the product, who uses it and when it has to be live. Five working days later you hold a written scope, a price as a standard plan or a custom quote, and a launch date you can commit to.',
+        outputs: [
+          'Scope in writing',
+          'Fixed or quoted price',
+          'Committed launch date',
+        ],
       },
       {
-        title: 'Watch it get built',
+        title: 'Click the real thing',
         when: 'Every Friday',
         summary:
-          'A working version you can click on every Friday, with a short written update. Change your mind early and it costs nothing.',
-        outputs: ['Weekly demo', 'Staging access', 'Written update'],
+          'No slide decks. Each Friday you open staging, use what was built that week and read a short note on what shipped and what comes next. Course corrections made early are free.',
+        outputs: ['Friday demo', 'Live staging link', 'Weekly written note'],
       },
       {
-        title: 'Launch, and we stay',
+        title: 'We are still here',
         when: 'Launch day and after',
         summary:
-          'We ship, monitor it live, fix what breaks and keep maintaining it. We do not hand over and disappear: stay on a maintenance plan for updates and support, or take it in-house with full documentation. Yours either way.',
-        outputs: ['Monitoring', 'Maintenance & support', 'Full handover'],
+          'We put it live, watch it in production and fix what breaks. Then you choose: keep us on a maintenance plan, or take it in-house with the code, the accounts and the documentation. It is yours either way.',
+        outputs: [
+          'Production monitoring',
+          'Fixes and updates',
+          'Code, accounts and docs',
+        ],
       },
     ],
   },
@@ -464,8 +462,7 @@ export const en = {
     facts: [
       {
         label: 'What we build',
-        value:
-          'Web platforms, AI products, cloud automation, marketing sites',
+        value: 'Web platforms, AI products, cloud automation, marketing sites',
       },
       {
         label: 'Who for',

@@ -18,7 +18,6 @@ import { cn } from '@/lib/utils';
 import { paths } from '@/constants/paths';
 import {
   getCapabilities,
-  getEngagements,
   type Service,
   type ServiceIcon,
 } from '@/data/services';
@@ -36,8 +35,6 @@ export const SERVICE_ICONS: Record<
   wrench: Wrench,
 };
 
-type ServicesCopy = Dictionary['services'];
-
 interface ServicesGridProps {
   dict: Dictionary;
   withHeading?: boolean;
@@ -45,10 +42,8 @@ interface ServicesGridProps {
 }
 
 /**
- * Services in two groups. The four capabilities (what we build) sit in a
- * hairline grid with their key deliverables and tools; the two engagement
- * models (how we work together) are offer panels with timeline, team,
- * pricing and after-launch support up front and a direct call to action.
+ * The four capabilities (what we build) in a hairline grid with their key
+ * deliverables and tools.
  */
 export function ServicesGrid({
   dict,
@@ -57,27 +52,14 @@ export function ServicesGrid({
 }: ServicesGridProps) {
   const t = dict.services;
   const capabilities = getCapabilities(dict.locale);
-  const engagements = getEngagements(dict.locale);
 
   return (
     <section id='services' className={cn('fw-section fw-rule', className)}>
       <div className='fw-container'>
-        {withHeading && (
-          <SectionHeading
-            kicker={t.kicker}
-            title={t.title}
-            description={t.description}
-            aside={
-              <Link href={paths.services} className='fw-action'>
-                {t.all} <ArrowUpRight className='h-4 w-4' />
-              </Link>
-            }
-          />
-        )}
+        {withHeading && <SectionHeading kicker={t.kicker} title={t.title} />}
 
         <GroupLabel
           label={t.groups.capability.label}
-          note={t.groups.capability.note}
           className={cn(withHeading && 'mt-16')}
         />
         <Stagger
@@ -87,19 +69,6 @@ export function ServicesGrid({
           {capabilities.map((service) => (
             <StaggerItem key={service.slug} className='bg-surface'>
               <CapabilityCard service={service} explore={t.explore} />
-            </StaggerItem>
-          ))}
-        </Stagger>
-
-        <GroupLabel
-          label={t.groups.engagement.label}
-          note={t.groups.engagement.note}
-          className='mt-16'
-        />
-        <Stagger stagger={0.12} className='mt-6 grid gap-5 lg:grid-cols-2'>
-          {engagements.map((service) => (
-            <StaggerItem key={service.slug} className='h-full'>
-              <EngagementCard service={service} t={t} />
             </StaggerItem>
           ))}
         </Stagger>
@@ -126,7 +95,6 @@ function GroupLabel({
       )}
     >
       <h3 className='fw-display text-2xl text-ink sm:text-3xl'>{label}</h3>
-      <p className='text-sm text-muted-foreground'>{note}</p>
     </Reveal>
   );
 }
@@ -195,68 +163,5 @@ function CapabilityCard({
         </span>
       </div>
     </Link>
-  );
-}
-
-/** One engagement model: an offer panel with the terms and a direct CTA. */
-function EngagementCard({ service, t }: { service: Service; t: ServicesCopy }) {
-  const Icon = SERVICE_ICONS[service.icon];
-  const terms: [string, string][] = [
-    [t.meta.timeline, service.engagement.timeline],
-    [t.meta.team, service.engagement.team],
-    [t.meta.pricing, service.engagement.pricing],
-    [t.meta.support, service.engagement.support],
-  ];
-
-  return (
-    <div className='fw-card fw-spot flex h-full flex-col p-7 sm:p-9'>
-      <div className='relative z-[2] flex h-full flex-col'>
-        <div className='flex items-center justify-between'>
-          <span className='flex h-11 w-11 items-center justify-center bg-brand text-brand-foreground'>
-            <Icon className='h-5 w-5' strokeWidth={1.5} />
-          </span>
-        </div>
-
-        <h4 className='fw-display mt-8 text-3xl text-ink sm:text-4xl'>
-          {service.title}
-        </h4>
-        <p className='mt-2 text-base text-muted-foreground'>
-          {service.tagline}
-        </p>
-        <p className='mt-4 max-w-xl text-[15px] leading-relaxed text-ink/75'>
-          {service.summary}
-        </p>
-
-        <dl className='mt-7 grid gap-px border bg-line sm:grid-cols-2'>
-          {terms.map(([label, value]) => (
-            <div key={label} className='bg-surface p-4'>
-              <dt className='font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground'>
-                {label}
-              </dt>
-              <dd className='mt-1.5 text-sm font-medium leading-snug text-ink'>
-                {value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className='mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8'>
-          <Link
-            href={`${paths.contact}?service=${service.slug}`}
-            className='fw-btn fw-btn-primary inline-flex h-12 items-center gap-3 px-6 font-mono text-[11px] font-semibold uppercase tracking-[0.22em]'
-          >
-            {service.cta ?? t.explore}
-            <ArrowUpRight className='h-4 w-4' />
-          </Link>
-          <Link
-            href={paths.service(service.slug)}
-            className='fw-link inline-flex items-center gap-1.5 text-sm font-medium text-ink'
-          >
-            {t.explore}
-            <ArrowUpRight className='h-4 w-4' />
-          </Link>
-        </div>
-      </div>
-    </div>
   );
 }

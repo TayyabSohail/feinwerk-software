@@ -28,11 +28,7 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
       className={cn('fw-section fw-rule fw-band-stone', className)}
     >
       <div className='fw-container'>
-        <SectionHeading
-          kicker={t.kicker}
-          title={t.title}
-          description={t.description}
-        />
+        <SectionHeading kicker={t.kicker} title={t.title} />
 
         <Stagger
           stagger={0.15}
@@ -72,17 +68,14 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
           ))}
         </Stagger>
 
-        <Reveal className='flex flex-col gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between'>
+        <Reveal className='border-t pt-8'>
           <Link
             href={paths.contact}
-            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 self-start px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
+            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
           >
             {t.cta}
             <span className='h-2.5 w-2.5 bg-brand' />
           </Link>
-          <p className='max-w-sm font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-ink/50 sm:text-right'>
-            {t.note}
-          </p>
         </Reveal>
       </div>
     </section>

@@ -59,18 +59,10 @@ export const de: Dictionary = {
   services: {
     kicker: 'Leistungen',
     title: 'Das ganze Produkt, ein erfahrenes Team',
-    description:
-      'Vier Kompetenzen decken Oberfläche, API, Daten, KI und die Cloud darunter ab. Zwei Modelle der Zusammenarbeit legen fest, wie wir gemeinsam arbeiten.',
-    all: 'Alle Leistungen',
     explore: 'Leistung ansehen',
     groups: {
       capability: {
         label: 'Was wir bauen',
-        note: 'Einzeln oder kombiniert. Ein Team verantwortet den ganzen Stack.',
-      },
-      engagement: {
-        label: 'Wie wir zusammenarbeiten',
-        note: 'Bepreist nach Ergebnis, nicht nach Stunden. Individuelle Umfänge willkommen, und jedes Produkt wird nach dem Launch gewartet.',
       },
     },
     meta: {
@@ -83,8 +75,6 @@ export const de: Dictionary = {
   pricing: {
     kicker: 'Preise',
     title: 'Wählen Sie das Paket, das zu Ihrem Unternehmen passt',
-    description:
-      'Eine individuelle Lösung nach Ihrem Briefing, dazu drei Festpreispakete. Jedes beginnt mit schriftlichem Umfang und verbindlichem Termin, endet mit einem Produkt, das ganz Ihnen gehört, und wird von uns nach dem Launch gewartet.',
     badge: 'Top-Empfehlung',
     period: 'einmalig',
     customPeriod: 'Festangebot',
@@ -283,42 +273,42 @@ export const de: Dictionary = {
     ],
   },
   howItWorks: {
-    kicker: 'So läuft es',
-    title: 'Vom Briefing zum Launch, mit Datum',
+    kicker: 'Zusammenarbeit',
+    title: 'Drei Zusagen, ein Kalender',
     description:
-      'Ein Gespräch, ein schriftlicher Plan, wöchentliche Demos, dann ein Launch, den Sie in den Kalender eintragen können, und ein Team, das danach weiter wartet. Sie behalten die Kontrolle.',
+      'Preis und Termin, bevor wir eine Zeile Code schreiben. Jede Woche etwas zum Anklicken, während wir bauen. Ein Team, das nach dem Launch noch antwortet.',
     stepLabel: 'Schritt',
-    cta: 'Erstgespräch buchen',
-    note: 'Ein Gespräch. Fünf Werktage bis Fest- oder Individualangebot und Launch-Datum. Nach dem Launch gewartet.',
+    cta: 'Mit einem Gespräch starten',
+    note: 'Ein 30-minütiges Gespräch. Schriftliches Angebot und Launch-Datum innerhalb von fünf Werktagen. Support, der nach dem Launch weitergeht.',
     steps: [
       {
-        title: 'Sagen Sie uns, was entstehen muss',
+        title: 'Der Plan, schriftlich',
         when: 'Tag 1',
         summary:
-          'Ein 30-minütiges Gespräch über Produkt, Nutzer und Termin. Innerhalb von fünf Werktagen erhalten Sie einen schriftlichen Umfang, einen Festpreis für ein Standardpaket oder ein individuelles Angebot, und ein Launch-Datum.',
+          'Dreißig Minuten im Gespräch über das Produkt, seine Nutzer und den Termin, an dem es live sein muss. Fünf Werktage später halten Sie einen schriftlichen Umfang, einen Preis als Standardpaket oder individuelles Angebot und ein Launch-Datum in der Hand, auf das Sie sich verlassen können.',
         outputs: [
-          'Schriftlicher Umfang',
-          'Fest- oder Individualangebot',
-          'Launch-Datum',
+          'Umfang schriftlich',
+          'Fester oder individueller Preis',
+          'Verbindliches Launch-Datum',
         ],
       },
       {
-        title: 'Sehen Sie zu, wie es entsteht',
+        title: 'Das Echte anklicken',
         when: 'Jeden Freitag',
         summary:
-          'Jeden Freitag eine klickbare Version mit kurzem schriftlichen Update. Wer früh umdenkt, zahlt nichts extra.',
-        outputs: [
-          'Wöchentliche Demo',
-          'Staging-Zugang',
-          'Schriftliches Update',
-        ],
+          'Keine Folien. Jeden Freitag öffnen Sie Staging, nutzen, was in der Woche entstanden ist, und lesen eine kurze Notiz: was ausgeliefert wurde und was als Nächstes kommt. Frühe Kurskorrekturen kosten nichts.',
+        outputs: ['Freitagsdemo', 'Live-Staging-Link', 'Wöchentliche Notiz'],
       },
       {
-        title: 'Launch, und wir bleiben',
+        title: 'Wir sind noch da',
         when: 'Launch-Tag und danach',
         summary:
-          'Wir gehen live, überwachen den Betrieb, beheben, was bricht, und warten das Produkt weiter. Wir übergeben nicht und verschwinden: Bleiben Sie im Wartungsplan für Updates und Support, oder führen Sie es intern mit vollständiger Dokumentation weiter. So oder so gehört es Ihnen.',
-        outputs: ['Monitoring', 'Wartung & Support', 'Vollständige Übergabe'],
+          'Wir schalten live, beobachten den Produktivbetrieb und beheben, was bricht. Dann entscheiden Sie: Wartungsvertrag mit uns, oder Übernahme ins eigene Haus mit Code, Zugängen und Dokumentation. Ihres ist es in jedem Fall.',
+        outputs: [
+          'Produktiv-Monitoring',
+          'Fehlerbehebung und Updates',
+          'Code, Zugänge und Doku',
+        ],
       },
     ],
   },
@@ -408,8 +398,7 @@ export const de: Dictionary = {
       },
       message: {
         title: 'Erzählen Sie uns vom Projekt.',
-        subtitle:
-          'Was bauen Sie, für wen ist es, und bis wann muss es stehen?',
+        subtitle: 'Was bauen Sie, für wen ist es, und bis wann muss es stehen?',
         kicker: 'Das Briefing',
       },
       details: {
@@ -455,8 +444,7 @@ export const de: Dictionary = {
     galleryTitle: 'Mehr als ein Screen.',
     galleryAnonymised:
       'Produktname und Daten wurden auf Wunsch des Kunden geändert; diese Screens bilden {title} so nach, wie es gebaut wurde.',
-    galleryMore:
-      '{n} weitere Screens aus {title}, in Gerätegröße aufgenommen.',
+    galleryMore: '{n} weitere Screens aus {title}, in Gerätegröße aufgenommen.',
     homeScreen: 'Start',
     stack: 'Stack',
     servicesInvolved: 'Beteiligte Leistungen',
