@@ -668,8 +668,10 @@ export const de: Dictionary = {
     },
   },
   faq: {
-    kicker: 'Fragen',
-    title: 'Antworten, bevor Sie fragen',
+    kicker: 'Unsere FAQs',
+    title: 'Transparente Antworten von Gründern mit mehr als 10 gebauten und verkauften Start-ups',
+    description:
+      'Klare Antworten darauf, wie wir Produkte planen, bauen, launchen und weiter betreuen.',
     accent: [0],
   },
   cta: {

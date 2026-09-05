@@ -15,7 +15,7 @@ import { getDictionary } from '@/i18n/server';
 
 export default async function HomePage() {
   const dict = await getDictionary();
-  const faqs = getFaqs(dict.locale);
+  const faqs = getFaqs(dict.locale).slice(0, 4);
 
   return (
     <>
@@ -29,10 +29,11 @@ export default async function HomePage() {
       <Testimonials dict={dict} />
       <Pricing dict={dict} withLink />
       <FaqSection
-        items={faqs.slice(0, 4)}
+        items={faqs}
         kicker={dict.faq.kicker}
         title={dict.faq.title}
         accentWords={[...dict.faq.accent]}
+        description={dict.faq.description}
         className='fw-band-stone fw-rule'
       />
       <ContactSection dict={dict} />

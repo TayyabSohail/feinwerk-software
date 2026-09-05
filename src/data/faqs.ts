@@ -42,6 +42,46 @@ export const faqs: Faq[] = [
     answer:
       'Yes. We routinely sign NDAs before discovery and provide a GDPR-compliant data processing agreement for projects that involve personal data.',
   },
+  {
+    question: "What's included in the 30-day MVP development process?",
+    answer:
+      'We shape the scope, design the essential user journey, build the first production-ready release, connect the required services and deploy it with the foundations for measurement. You see working software throughout, with weekly demos and a clear handover at the end.',
+  },
+  {
+    question: 'Which technologies do you use to build MVPs?',
+    answer:
+      'We usually use Next.js, React, TypeScript, PostgreSQL, Supabase and cloud platforms such as Vercel or AWS. The exact stack follows the product, integrations, team and long-term operating cost rather than a fixed house preference.',
+  },
+  {
+    question: 'What if we need updates or changes after launch?',
+    answer:
+      'We can continue with maintenance, small improvements or a new product phase. Every plan includes launch support, and ongoing work can run as a monthly maintenance plan, a retainer or a separately scoped fixed-price phase.',
+  },
+  {
+    question: 'Will we fully own the code?',
+    answer:
+      'Yes. Your company owns the custom code, designs, documentation and accounts. We work in repositories and services registered to you from the start, so you are never locked into our infrastructure.',
+  },
+  {
+    question: 'How do you keep our data private and secure?',
+    answer:
+      'We minimise the data we handle, separate customer access, use least-privilege permissions and build auditability into the product. We can sign an NDA before discovery and provide a GDPR-compliant data processing agreement where personal data is involved.',
+  },
+  {
+    question: 'Can you connect our MVP to other tools or platforms?',
+    answer:
+      'Yes. We connect products to payments, CRMs, email, analytics, identity providers, marketplaces and internal systems through APIs, webhooks and background jobs. We scope the integration around reliability, permissions and how it will be monitored after launch.',
+  },
+  {
+    question: "What's not part of the standard build?",
+    answer:
+      'A standard build covers the agreed core journey and the integrations needed for the first release. Extensive data migration, complex enterprise procurement, unscoped feature growth, native apps and ongoing content or operations are scoped separately when they are needed.',
+  },
+  {
+    question: 'Can you help with projects that are already started, or just new ideas?',
+    answer:
+      'Both. We can turn a new idea into a first release, or audit, stabilise and continue an existing product. We start by understanding the current code, infrastructure and users before recommending what to keep, fix or rebuild.',
+  },
 ];
 
 /** German copy, in the same order as `faqs`. */
@@ -80,6 +120,46 @@ const faqsDe: Faq[] = [
     question: 'Unterzeichnen Sie NDAs und Auftragsverarbeitungsverträge?',
     answer:
       'Ja. Wir unterzeichnen regelmäßig NDAs vor der Analysephase und stellen für Projekte mit personenbezogenen Daten einen DSGVO-konformen Auftragsverarbeitungsvertrag bereit.',
+  },
+  {
+    question: 'Was ist im 30-Tage-Prozess für die MVP-Entwicklung enthalten?',
+    answer:
+      'Wir schärfen den Leistungsumfang, gestalten den wichtigsten Nutzerfluss, bauen die erste produktionsreife Version, binden die nötigen Dienste an und bringen sie live. Sie sehen währenddessen funktionierende Software, mit wöchentlichen Demos und einer klaren Übergabe am Ende.',
+  },
+  {
+    question: 'Welche Technologien nutzen Sie für MVPs?',
+    answer:
+      'Meist arbeiten wir mit Next.js, React, TypeScript, PostgreSQL, Supabase und Cloud-Plattformen wie Vercel oder AWS. Der konkrete Stack richtet sich nach Produkt, Schnittstellen, Team und langfristigen Betriebskosten, nicht nach einer festen Vorliebe.',
+  },
+  {
+    question: 'Was ist, wenn wir nach dem Launch Änderungen brauchen?',
+    answer:
+      'Wir können die Wartung, kleinere Verbesserungen oder eine weitere Produktphase übernehmen. Jeder Tarif umfasst Unterstützung nach dem Launch; laufende Arbeit kann als monatlicher Wartungsvertrag, Retainer oder separat kalkulierte Festpreisphase laufen.',
+  },
+  {
+    question: 'Gehört der Code vollständig uns?',
+    answer:
+      'Ja. Ihr Unternehmen besitzt den individuellen Code, die Designs, die Dokumentation und die Konten. Wir arbeiten von Anfang an in Repositories und Diensten, die auf Sie registriert sind, damit Sie nie an unsere Infrastruktur gebunden sind.',
+  },
+  {
+    question: 'Wie schützen Sie unsere Daten und halten sie vertraulich?',
+    answer:
+      'Wir minimieren die Daten, die wir verarbeiten, trennen Zugriffe, arbeiten mit dem Prinzip der geringsten Berechtigung und bauen Nachvollziehbarkeit in das Produkt ein. Vor der Analysephase unterzeichnen wir auf Wunsch ein NDA und stellen bei personenbezogenen Daten einen DSGVO-konformen Auftragsverarbeitungsvertrag bereit.',
+  },
+  {
+    question: 'Können Sie unser MVP mit anderen Tools oder Plattformen verbinden?',
+    answer:
+      'Ja. Wir verbinden Produkte über APIs, Webhooks und Hintergrundjobs mit Zahlungen, CRMs, E-Mail, Analytics, Identitätsdiensten, Marktplätzen und internen Systemen. Dabei planen wir Zuverlässigkeit, Berechtigungen und Monitoring von Anfang an mit ein.',
+  },
+  {
+    question: 'Was gehört nicht zum Standardumfang?',
+    answer:
+      'Ein Standardumfang deckt den vereinbarten Kernprozess und die nötigen Integrationen für den ersten Release ab. Aufwendige Datenmigration, komplexe Enterprise-Beschaffung, zusätzliche unklare Funktionen, native Apps und laufende Inhalte oder Abläufe werden bei Bedarf separat kalkuliert.',
+  },
+  {
+    question: 'Helfen Sie auch bei begonnenen Projekten oder nur bei neuen Ideen?',
+    answer:
+      'Bei beidem. Wir können eine neue Idee in einen ersten Release überführen oder ein bestehendes Produkt prüfen, stabilisieren und weiterentwickeln. Zuerst verstehen wir Code, Infrastruktur und Nutzer, bevor wir empfehlen, was bleiben, repariert oder neu gebaut werden sollte.',
   },
 ];
 

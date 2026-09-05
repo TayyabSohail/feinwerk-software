@@ -16,6 +16,7 @@ interface FaqSectionProps {
   kicker?: string;
   title?: string;
   accentWords?: number[];
+  description?: string;
   className?: string;
 }
 
@@ -24,6 +25,7 @@ export function FaqSection({
   kicker = 'Questions',
   title = 'Answers before you ask.',
   accentWords = [2],
+  description,
   className,
 }: FaqSectionProps) {
   const jsonLd = {
@@ -47,6 +49,7 @@ export function FaqSection({
           kicker={kicker}
           title={title}
           accentWords={accentWords}
+          description={description}
           className='md:grid-cols-1 lg:sticky lg:top-32 lg:self-start'
         />
         <Reveal className='fw-card px-6 sm:px-8'>

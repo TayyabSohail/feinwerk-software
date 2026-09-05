@@ -384,11 +384,11 @@ function ChoiceCard({
       onClick={onSelect}
       aria-pressed={selected}
       className={cn(
-        'group relative flex h-full flex-col gap-2 border p-3 pr-8 text-left transition-colors',
-        'hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60',
+        'group relative flex h-full cursor-pointer flex-col gap-2 border p-3 pr-9 text-left transition-all',
+        'hover:-translate-y-0.5 hover:border-brand hover:bg-brand/[0.03] hover:shadow-[0_8px_20px_-16px_hsl(var(--ink)/0.45)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60',
         selected
           ? 'border-brand bg-brand/[0.06]'
-          : 'border-line bg-surface hover:bg-surface',
+          : 'border-line bg-surface',
       )}
     >
       <span className='flex items-center gap-2.5'>
@@ -413,8 +413,10 @@ function ChoiceCard({
       ) : null}
       <span
         className={cn(
-          'absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-brand-foreground transition-opacity',
-          selected ? 'opacity-100' : 'opacity-0',
+          'absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full border transition-colors',
+          selected
+            ? 'border-brand bg-brand text-brand-foreground'
+            : 'border-line bg-surface text-transparent group-hover:border-brand/60',
         )}
       >
         <Check className='h-3 w-3' strokeWidth={3} />

@@ -656,8 +656,10 @@ export const en = {
     },
   },
   faq: {
-    kicker: 'Questions',
-    title: 'Answers before you ask',
+    kicker: 'Our FAQs',
+    title: 'Transparent answers from founders who have built and sold 10+ startups',
+    description:
+      'Straight answers about how we scope, build, launch and support products.',
     accent: [2],
   },
   cta: {
