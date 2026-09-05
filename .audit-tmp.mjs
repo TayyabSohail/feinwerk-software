@@ -6,7 +6,7 @@ const chromePath = process.env.CHROME_PATH ?? [join(homedir(),'AppData/Local/ms-
 
 const BASE = process.env.BASE || 'http://localhost:3000';
 const WIDTHS = [320, 360, 375, 414, 480, 540, 640, 768, 834, 1024, 1280, 1440, 1920];
-const PAGES = process.argv.slice(2).length ? process.argv.slice(2) : ['/'];
+const PAGES = (process.argv.slice(2).length ? process.argv.slice(2) : ['']).map((p) => '/' + p.replace(/^/+/, ''));
 
 const browser = await chromium.launch({ executablePath: chromePath, headless: true });
 const ctx = await browser.newContext({ reducedMotion: 'reduce' });
