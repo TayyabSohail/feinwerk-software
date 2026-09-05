@@ -12,7 +12,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Careers',
   description:
-    'Feinwerk Software has no open positions at the moment. Roles are listed here when we hire again.',
+    'Feinwerks Software has no open positions at the moment. Roles are listed here when we hire again.',
   alternates: { canonical: paths.careers },
 };
 

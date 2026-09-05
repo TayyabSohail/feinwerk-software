@@ -15,7 +15,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Projects from Feinwerk Software: marketplaces, SaaS platforms, AI agents and websites, each with the problem, the approach and the measured result.',
+    'Projects from Feinwerks Software: marketplaces, SaaS platforms, AI agents and websites, each with the problem, the approach and the measured result.',
   alternates: { canonical: paths.work },
 };
 

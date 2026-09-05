@@ -1,6 +1,6 @@
-# Feinwerk Software
+# Feinwerks Software
 
-Company website for **Feinwerk Software**, a software engineering studio with
+Company website for **Feinwerks Software**, a software engineering studio with
 an Asian office in Islamabad, Pakistan and a European office in Fellbach, Germany.
 
 Built on Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, shadcn/ui,

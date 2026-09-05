@@ -19,7 +19,7 @@ export const en = {
     badge: 'Product engineering studio',
     title: 'Precision software,\nshipped on time',
     accent: [2, 3, 4],
-    body: 'Feinwerk Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
+    body: 'Feinwerks Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
     primary: 'Request a proposal',
     secondary: 'View our work',
     /** The living system map beside the hero copy. */
@@ -364,7 +364,7 @@ export const en = {
     messagePlaceholder:
       'What are you building, who is it for, and when does it need to exist?',
     consentBefore:
-      'I agree that Feinwerk Software may store and process this enquiry to respond to me, as described in the',
+      'I agree that Feinwerks Software may store and process this enquiry to respond to me, as described in the',
     consentLink: 'privacy policy',
     consentAfter: '.',
     submit: 'Send enquiry',
@@ -423,13 +423,13 @@ export const en = {
       'We can usually tell within one call whether the approach above transfers to your problem, and what would need to change.',
   },
   aboutPage: {
-    kicker: 'About Feinwerk',
+    kicker: 'About Feinwerks',
     title: 'A software studio named after a standard.',
     accent: [6, 7],
     description:
-      'Feinwerk is German for fine work, the precision-engineering tradition of the Stuttgart region where our client office sits. We hold software to the same bar: it has to be exactly right, on the day it was promised.',
+      'Feinwerks takes its name from Feinwerk, German for fine work, the precision-engineering tradition of the Stuttgart region where our client office sits. We hold software to the same bar: it has to be exactly right, on the day it was promised.',
     story: [
-      'We started Feinwerk after years of building products for companies that had been burned before: agencies that missed the date, teams that shipped almost what was asked, estimates that doubled halfway through.',
+      'We started Feinwerks after years of building products for companies that had been burned before: agencies that missed the date, teams that shipped almost what was asked, estimates that doubled halfway through.',
       'So we structured the studio around the four things clients said they could not get elsewhere. A date and a price agreed before work starts, for a standard package or a custom scope. One senior team that owns the whole product, from the interface to the cloud bill. A result you can measure after launch, reported by you, not by us. And a team that stays: we maintain what we build and take accountability for it in production.',
       'Our Asian office is in Islamabad. Clients in Europe have a local contact in Fellbach. Between the two offices, someone is working during your working day.',
     ],
@@ -476,7 +476,7 @@ export const en = {
     title: 'No open positions right now.',
     accent: [1, 2],
     description:
-      'Feinwerk Software is a small studio that hires slowly. We are not recruiting at the moment, and there are no vacancies to apply for. When that changes, the roles will be listed on this page.',
+      'Feinwerks Software is a small studio that hires slowly. We are not recruiting at the moment, and there are no vacancies to apply for. When that changes, the roles will be listed on this page.',
     badge: '0 open positions',
     statusKicker: 'Current status',
     statusTitle: 'We are not accepting applications.',
@@ -513,7 +513,7 @@ export const en = {
       terms: {
         title: 'Terms of Service',
         summary:
-          'The general terms for using this site and for engaging Feinwerk Software, covering scope, payment, intellectual property and liability.',
+          'The general terms for using this site and for engaging Feinwerks Software, covering scope, payment, intellectual property and liability.',
         audience: 'Business clients',
       },
       cookies: {

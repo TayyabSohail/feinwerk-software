@@ -117,7 +117,7 @@ export function Footer({ dict }: FooterProps) {
           aria-hidden='true'
           className='absolute inset-x-0 bottom-[-0.18em] select-none text-center font-display text-[clamp(2.25rem,15vw,17rem)] font-bold uppercase leading-none tracking-[0.04em] text-ink/85 mix-blend-multiply sm:tracking-[0.06em]'
         >
-          Feinwerk
+          Feinwerks
         </p>
       </div>
     </footer>

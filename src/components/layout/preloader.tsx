@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-const LETTERS = 'FEINWERK'.split('');
+const LETTERS = 'FEINWERKS'.split('');
 const DURATION_MS = 1500;
 const REDUCED_DURATION_MS = 600;
 const HOLD_MS = 250;

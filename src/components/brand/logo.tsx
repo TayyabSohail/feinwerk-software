@@ -12,7 +12,7 @@ interface LogoMarkProps {
 }
 
 /**
- * The Feinwerk mark: an "F" built from three precision bars and a single
+ * The Feinwerks mark: an "F" built from three precision bars and a single
  * accent square, the "fine detail" the name refers to. Theme-aware by
  * default: the plate takes the foreground colour, the glyph the background.
  */

@@ -8,7 +8,7 @@ export interface Faq {
 /** General questions, shown on the homepage and the contact page. */
 export const faqs: Faq[] = [
   {
-    question: 'What does an engagement with Feinwerk look like?',
+    question: 'What does an engagement with Feinwerks look like?',
     answer:
       'Most projects start with a one-week discovery that ends in a written scope, a success metric and a fixed price for the first release, whether that is one of our packages or a custom solution. From there we ship weekly to a staging environment you can click through, with a demo every Friday. After launch we stay on to maintain what we built.',
   },
@@ -47,7 +47,7 @@ export const faqs: Faq[] = [
 /** German copy, in the same order as `faqs`. */
 const faqsDe: Faq[] = [
   {
-    question: 'Wie läuft ein Projekt mit Feinwerk ab?',
+    question: 'Wie läuft ein Projekt mit Feinwerks ab?',
     answer:
       'Die meisten Projekte beginnen mit einer einwöchigen Analyse, an deren Ende ein schriftlicher Leistungsumfang, eine Erfolgskennzahl und ein Festpreis für das erste Release stehen, ob als eines unserer Pakete oder als Individuallösung. Danach liefern wir wöchentlich auf eine Staging-Umgebung, die Sie selbst durchklicken können, mit einer Demo an jedem Freitag. Nach dem Launch bleiben wir an Bord und warten, was wir gebaut haben.',
   },

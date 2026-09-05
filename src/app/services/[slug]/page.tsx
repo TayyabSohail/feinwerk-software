@@ -65,7 +65,7 @@ export default async function ServicePage({ params }: PageProps) {
     '@type': 'Service',
     name: service.title,
     description: service.summary,
-    provider: { '@type': 'Organization', name: 'Feinwerk Software' },
+    provider: { '@type': 'Organization', name: 'Feinwerks Software' },
     areaServed: ['DE', 'PK', 'EU', 'US'],
     serviceType: service.title,
   };

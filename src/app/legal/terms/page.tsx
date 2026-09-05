@@ -11,7 +11,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
-    'The terms on which Feinwerk Software provides this website and its software engineering services, including scope, payment, intellectual property and liability.',
+    'The terms on which Feinwerks Software provides this website and its software engineering services, including scope, payment, intellectual property and liability.',
   alternates: { canonical: paths.legal.terms },
 };
 
@@ -26,7 +26,7 @@ const sectionsEn: LegalSection[] = [
         <p>
           These terms govern (a) your use of the {siteConfig.name} website and
           (b) the general basis on which {siteConfig.legalName}{' '}
-          (&ldquo;Feinwerk&rdquo;, &ldquo;we&rdquo;) provides software design,
+          (&ldquo;Feinwerks&rdquo;, &ldquo;we&rdquo;) provides software design,
           engineering and related services to business clients
           (&ldquo;you&rdquo;).
         </p>
@@ -298,7 +298,7 @@ const sectionsDe: LegalSection[] = [
         <p>
           Diese Bedingungen regeln (a) Ihre Nutzung der Website von{' '}
           {siteConfig.name} und (b) die allgemeine Grundlage, auf der{' '}
-          {siteConfig.legalName} (&bdquo;Feinwerk&ldquo;, &bdquo;wir&ldquo;)
+          {siteConfig.legalName} (&bdquo;Feinwerks&ldquo;, &bdquo;wir&ldquo;)
           Softwaredesign, Entwicklung und verwandte Leistungen für
           Geschäftskunden (&bdquo;Sie&ldquo;) erbringt.
         </p>

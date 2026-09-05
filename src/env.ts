@@ -25,7 +25,7 @@ export const env = createEnv({
     NEXT_PUBLIC_CAL_LINK: z.string().optional(),
 
     NEXT_PUBLIC_APP_URL: z.string().default('http://localhost:3000'),
-    NEXT_PUBLIC_APP_NAME: z.string().default('Feinwerk Software'),
+    NEXT_PUBLIC_APP_NAME: z.string().default('Feinwerks Software'),
   },
   runtimeEnv: {
     // Supabase variables

@@ -13,7 +13,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Full-stack product engineering, AI systems, cloud automation, web design, MVP sprints and dedicated teams from Feinwerk Software.',
+    'Full-stack product engineering, AI systems, cloud automation, web design, MVP sprints and dedicated teams from Feinwerks Software.',
   alternates: { canonical: paths.services },
 };
 

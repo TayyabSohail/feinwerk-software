@@ -11,7 +11,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Imprint',
   description:
-    'Legal notice (Impressum) for Feinwerk Software: company details, contact information and responsible persons under German law.',
+    'Legal notice (Impressum) for Feinwerks Software: company details, contact information and responsible persons under German law.',
   alternates: { canonical: paths.legal.imprint },
 };
 

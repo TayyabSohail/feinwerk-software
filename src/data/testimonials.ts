@@ -19,7 +19,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'Every shilling on the platform has to reconcile, and it does. Feinwerk built the wallet, the rent distribution and the resale market so that nothing rounds in our favour and nothing moves without an admin seeing it. That is exactly the level of care a members club handling real money needs.',
+      'Every shilling on the platform has to reconcile, and it does. Feinwerks built the wallet, the rent distribution and the resale market so that nothing rounds in our favour and nothing moves without an admin seeing it. That is exactly the level of care a members club handling real money needs.',
     author: 'Founder',
     company: 'Property members club (confidential)',
     project: 'brickfold',
@@ -27,7 +27,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'We were paying for five SEO tools and still working by hand. Feinwerk replaced them with one platform, moved the heavy generation into background jobs and halved our keyword tracking bill along the way. Thirty articles in ten minutes was not a slide. It was a demo.',
+      'We were paying for five SEO tools and still working by hand. Feinwerks replaced them with one platform, moved the heavy generation into background jobs and halved our keyword tracking bill along the way. Thirty articles in ten minutes was not a slide. It was a demo.',
     author: 'Product lead',
     company: 'SEO platform (confidential)',
     project: 'rankloom',
@@ -71,7 +71,7 @@ export const testimonials: Testimonial[] = [
 const testimonialsDe: Testimonial[] = [
   {
     quote:
-      'Jeder Schilling auf der Plattform muss stimmen, und er stimmt. Feinwerk hat die Wallet, die Mietausschüttung und den Zweitmarkt so gebaut, dass nichts zu unseren Gunsten gerundet wird und sich nichts bewegt, ohne dass die Administration es sieht. Genau diese Sorgfalt braucht ein Mitgliederclub, der mit echtem Geld arbeitet.',
+      'Jeder Schilling auf der Plattform muss stimmen, und er stimmt. Feinwerks hat die Wallet, die Mietausschüttung und den Zweitmarkt so gebaut, dass nichts zu unseren Gunsten gerundet wird und sich nichts bewegt, ohne dass die Administration es sieht. Genau diese Sorgfalt braucht ein Mitgliederclub, der mit echtem Geld arbeitet.',
     author: 'Gründer',
     company: 'Immobilien-Mitgliederclub (vertraulich)',
     project: 'brickfold',
@@ -79,7 +79,7 @@ const testimonialsDe: Testimonial[] = [
   },
   {
     quote:
-      'Wir haben für fünf SEO-Werkzeuge bezahlt und trotzdem von Hand gearbeitet. Feinwerk hat sie durch eine Plattform ersetzt, die aufwendige Generierung in Hintergrundjobs verlagert und nebenbei unsere Kosten für Keyword-Tracking halbiert. Dreißig Artikel in zehn Minuten war keine Folie. Das war eine Demo.',
+      'Wir haben für fünf SEO-Werkzeuge bezahlt und trotzdem von Hand gearbeitet. Feinwerks hat sie durch eine Plattform ersetzt, die aufwendige Generierung in Hintergrundjobs verlagert und nebenbei unsere Kosten für Keyword-Tracking halbiert. Dreißig Artikel in zehn Minuten war keine Folie. Das war eine Demo.',
     author: 'Produktleitung',
     company: 'SEO-Plattform (vertraulich)',
     project: 'rankloom',

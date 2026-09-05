@@ -10,7 +10,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Cookie Policy',
   description:
-    'Which cookies and browser storage the Feinwerk Software website uses, what they do, and how to change your choice.',
+    'Which cookies and browser storage the Feinwerks Software website uses, what they do, and how to change your choice.',
   alternates: { canonical: paths.legal.cookies },
 };
 

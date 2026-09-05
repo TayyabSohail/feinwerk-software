@@ -17,7 +17,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Feinwerk Software is a software studio with offices in Islamabad, Pakistan and Fellbach, Germany, building web, AI and cloud products on fixed dates.',
+    'Feinwerks Software is a software studio with offices in Islamabad, Pakistan and Fellbach, Germany, building web, AI and cloud products on fixed dates.',
   alternates: { canonical: paths.about },
 };
 

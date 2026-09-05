@@ -20,7 +20,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Legal',
   description:
-    'Legal information for Feinwerk Software: privacy policy, terms of service, cookie policy and imprint, plus how to reach us about data or contracts.',
+    'Legal information for Feinwerks Software: privacy policy, terms of service, cookie policy and imprint, plus how to reach us about data or contracts.',
   alternates: { canonical: paths.legal.index },
 };
 

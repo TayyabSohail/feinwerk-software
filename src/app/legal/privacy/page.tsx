@@ -11,7 +11,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'How Feinwerk Software collects, uses and protects personal data on this website and in client engagements, in line with the GDPR.',
+    'How Feinwerks Software collects, uses and protects personal data on this website and in client engagements, in line with the GDPR.',
   alternates: { canonical: paths.legal.privacy },
 };
 

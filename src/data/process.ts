@@ -60,7 +60,7 @@ export interface Value {
 export const values: Value[] = [
   {
     title: 'Precision over volume',
-    body: 'Feinwerk means fine work. We would rather ship one system that reconciles to the last unit than three that mostly work.',
+    body: 'Feinwerks takes its name from Feinwerk, fine work. We would rather ship one system that reconciles to the last unit than three that mostly work.',
   },
   {
     title: 'Own the whole problem',
@@ -79,7 +79,7 @@ export const values: Value[] = [
 const valuesDe: Value[] = [
   {
     title: 'Präzision statt Menge',
-    body: 'Feinwerk heißt feine Arbeit. Uns ist ein System lieber, das bis zur letzten Einheit stimmt, als drei, die größtenteils funktionieren.',
+    body: 'Feinwerks ist nach dem Feinwerk benannt, der feinen Arbeit. Uns ist ein System lieber, das bis zur letzten Einheit stimmt, als drei, die größtenteils funktionieren.',
   },
   {
     title: 'Das ganze Problem übernehmen',
