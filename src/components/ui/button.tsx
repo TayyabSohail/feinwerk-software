@@ -7,24 +7,26 @@ import { IconType } from 'react-icons/lib';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap font-mono text-[11px] font-semibold uppercase tracking-[0.18em] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        default: 'fw-btn fw-btn-ink',
+        brand: 'fw-btn fw-btn-primary',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        outline:
-          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+        outline: 'fw-btn fw-btn-secondary',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        glass: 'fw-glass hover:border-brand',
       },
       size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
+        default: 'h-10 px-5',
+        sm: 'h-9 px-4 text-[10px]',
+        lg: 'h-12 px-6',
+        xl: 'h-14 px-8 text-xs',
         icon: 'h-10 w-10',
       },
     },
@@ -74,25 +76,22 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     const Left =
       !isSizeIcon && IconLeft ? (
         isLoading ? (
-          <Loader2 className='mr-2 animate-spin' />
+          <Loader2 className='animate-spin' />
         ) : (
-          <IconLeft className='mr-2' />
+          <IconLeft />
         )
       ) : null;
 
     const Right =
       !isSizeIcon && !IconLeft && isLoading ? (
-        <Loader2 className='ml-2 animate-spin' />
+        <Loader2 className='animate-spin' />
       ) : Icon ? (
-        <Icon className='ml-2' />
+        <Icon />
       ) : null;
 
     return (
       <Comp
-        className={cn(
-          'flex items-center gap-2',
-          buttonVariants({ variant, size, className }),
-        )}
+        className={cn(buttonVariants({ variant, size, className }))}
         disabled={isLoading || disabled}
         ref={ref}
         {...props}

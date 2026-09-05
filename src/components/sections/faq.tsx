@@ -1,0 +1,78 @@
+import { SectionHeading } from '@/components/common/section-heading';
+import { Reveal } from '@/components/motion/reveal';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+
+import { cn } from '@/lib/utils';
+
+import type { Faq } from '@/data/faqs';
+
+interface FaqSectionProps {
+  items: Faq[];
+  kicker?: string;
+  title?: string;
+  accentWords?: number[];
+  className?: string;
+}
+
+export function FaqSection({
+  items,
+  kicker = 'Questions',
+  title = 'Answers before you ask.',
+  accentWords = [2],
+  className,
+}: FaqSectionProps) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  };
+
+  return (
+    <section className={cn('fw-section', className)}>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className='fw-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]'>
+        <SectionHeading
+          kicker={kicker}
+          title={title}
+          accentWords={accentWords}
+          className='md:grid-cols-1 lg:sticky lg:top-32 lg:self-start'
+        />
+        <Reveal className='fw-card px-6 sm:px-8'>
+          <Accordion type='single' collapsible className='divide-y divide-line'>
+            {items.map((item, index) => (
+              <AccordionItem
+                key={item.question}
+                value={`faq-${index}`}
+                className='border-b-0'
+              >
+                <AccordionTrigger className='py-6 text-left text-lg font-medium tracking-tight hover:no-underline [&[data-state=open]]:text-brand-text'>
+                  <span className='flex items-start gap-5'>
+                    <span className='mt-1.5 font-mono text-[10px] text-muted-foreground'>
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {item.question}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className='pb-7 pl-9 text-base leading-relaxed text-muted-foreground'>
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
