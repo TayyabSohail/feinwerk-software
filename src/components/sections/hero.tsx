@@ -46,7 +46,7 @@ export function Hero({ dict }: HeroProps) {
           className='fw-display mt-7 justify-start text-[clamp(2.75rem,6.4vw,6rem)] leading-[0.98] tracking-[-0.035em] text-ink'
         />
 
-        <div className='mt-10 grid gap-12 lg:grid-cols-2 lg:gap-x-16'>
+        <div className='mt-10 grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-x-12'>
           <div className='min-w-0'>
             <Reveal delay={0.7}>
               <p className='max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl'>
@@ -77,7 +77,7 @@ export function Hero({ dict }: HeroProps) {
           <Reveal
             delay={0.9}
             distance={16}
-            className='w-full min-w-0 max-w-[34rem] justify-self-center lg:-mt-2 lg:justify-self-end'
+            className='w-full min-w-0 justify-self-center lg:-mt-6 lg:justify-self-end'
           >
             <SystemMap copy={t.map} delay={0.5} />
           </Reveal>

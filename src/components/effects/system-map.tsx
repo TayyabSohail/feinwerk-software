@@ -27,11 +27,12 @@ interface SystemMapProps {
   className?: string;
 }
 
-type Tone = 'paper' | 'ink' | 'brand';
+type TileTone = 'paper' | 'mint' | 'warm' | 'ink';
+type CubeTone = 'paper' | 'brand' | 'warm' | 'ink';
 
 interface Route {
   path: MapNodeId[];
-  tone: 'brand' | 'ink';
+  tone: CubeTone;
 }
 
 interface Packet {
@@ -40,32 +41,40 @@ interface Packet {
 }
 
 /** One plate unit on screen: half a cell wide, half a cell tall. */
-const UX = 40;
-const UY = 20;
+const UX = 48;
+const UY = 24;
 /** Tile: top diamond plus a thin edge. */
-const TILE_W = 88;
-const TILE_H = 44;
-const TILE_T = 10;
+const TILE_W = 104;
+const TILE_H = 52;
+const TILE_T = 11;
 /** Plate: the cloud everything runs on. */
-const PLATE_MIN = -0.45;
-const PLATE_MAX = 5.45;
+const PLATE_MIN = -0.7;
+const PLATE_MAX = 5.7;
 const PLATE_T = 8;
 /** Packet: a small cube riding the wires. */
-const PKT = 10;
+const PKT = 11;
 /** Seconds per wire segment. */
-const SEG_S = 0.85;
+const SEG_S = 1.7;
+/** Fraction of a route that glows behind a packet. */
+const TRAIL = 0.08;
 /** Milliseconds between packet launches. */
-const LAUNCH_MS = 640;
-const MAX_PACKETS = 5;
+const LAUNCH_MS = 900;
+const MAX_PACKETS = 6;
+/** Width of the light band that sweeps the plate, in plate units. */
+const BAND_W = 0.32;
+/** Whole plate on wide screens; on narrow phones the view crops to the
+    tiles so the labels stay legible and the plate bleeds off both edges. */
+const VIEW_WIDE = '-316 -44 632 336';
+const VIEW_COMPACT = '-184 12 368 278';
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const NODES: Record<MapNodeId, { x: number; y: number; tone: Tone }> = {
-  web: { x: 0, y: 2.5, tone: 'paper' },
-  mobile: { x: 2.5, y: 0, tone: 'paper' },
+const NODES: Record<MapNodeId, { x: number; y: number; tone: TileTone }> = {
+  web: { x: 0, y: 2.5, tone: 'mint' },
+  mobile: { x: 2.5, y: 0, tone: 'mint' },
   api: { x: 2.5, y: 2.5, tone: 'ink' },
   db: { x: 2.5, y: 5, tone: 'paper' },
   cloud: { x: 5, y: 2.5, tone: 'paper' },
-  ai: { x: 5, y: 5, tone: 'paper' },
+  ai: { x: 5, y: 5, tone: 'warm' },
 };
 
 /** Back to front, so tiles paint in the right order. */
@@ -80,16 +89,36 @@ const EDGES: [MapNodeId, MapNodeId][] = [
   ['cloud', 'ai'],
 ];
 
-/** Requests leave the apps in emerald; answers come back in ink. */
+/** Requests leave the apps in emerald, answers come back in ink, and
+    whatever the model produces travels in orange. */
 const ROUTES: Route[] = [
   { path: ['web', 'api', 'db'], tone: 'brand' },
   { path: ['mobile', 'api', 'cloud', 'ai'], tone: 'brand' },
   { path: ['db', 'api', 'web'], tone: 'ink' },
-  { path: ['ai', 'db'], tone: 'ink' },
+  { path: ['ai', 'db'], tone: 'warm' },
   { path: ['web', 'api', 'cloud'], tone: 'brand' },
-  { path: ['ai', 'cloud', 'api', 'mobile'], tone: 'ink' },
+  { path: ['ai', 'cloud', 'api', 'mobile'], tone: 'warm' },
   { path: ['mobile', 'api', 'db'], tone: 'brand' },
   { path: ['cloud', 'api', 'web'], tone: 'ink' },
+  { path: ['db', 'ai'], tone: 'ink' },
+  { path: ['ai', 'cloud', 'api', 'web'], tone: 'warm' },
+];
+
+/** Spare blocks resting in the empty plate corners; they bob in place. */
+const BLOCKS: {
+  x: number;
+  y: number;
+  size: number;
+  tone: CubeTone;
+  duration: number;
+  delay: number;
+}[] = [
+  { x: 0.75, y: 0.75, size: 14, tone: 'paper', duration: 3.6, delay: 0 },
+  { x: 1.45, y: 0.3, size: 9, tone: 'brand', duration: 3.1, delay: 0.8 },
+  { x: 5.05, y: 0.35, size: 12, tone: 'warm', duration: 3.9, delay: 0.4 },
+  { x: 4.4, y: 0.95, size: 9, tone: 'paper', duration: 3.3, delay: 1.4 },
+  { x: 0.35, y: 4.4, size: 12, tone: 'paper', duration: 3.7, delay: 1.0 },
+  { x: 0.95, y: 5.05, size: 9, tone: 'brand', duration: 3.0, delay: 0.2 },
 ];
 
 const project = (x: number, y: number) => ({
@@ -141,6 +170,19 @@ const PLATE = (() => {
     right: `${b.px},${b.py} ${r.px},${r.py} ${r.px},${r.py + PLATE_T} ${b.px},${b.py + PLATE_T}`,
   };
 })();
+/** The sweep band at the plate's left edge, and how far it travels. */
+const BAND = (() => {
+  const a = project(PLATE_MIN, PLATE_MIN);
+  const b = project(PLATE_MIN, PLATE_MAX);
+  const c = project(PLATE_MIN + BAND_W, PLATE_MAX);
+  const d = project(PLATE_MIN + BAND_W, PLATE_MIN);
+  const travel = PLATE_MAX - PLATE_MIN - BAND_W;
+  return {
+    points: `${a.px},${a.py} ${b.px},${b.py} ${c.px},${c.py} ${d.px},${d.py}`,
+    dx: travel * UX,
+    dy: travel * UY,
+  };
+})();
 
 /**
  * Resolves once the first-load preloader has lifted its curtain (it keeps
@@ -160,6 +202,37 @@ function waitForCurtain(): Promise<void> {
   });
 }
 
+/** True on narrow phones, where the map shows the cropped view. */
+function useCompact(): boolean {
+  const [compact, setCompact] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 519px)');
+    const apply = () => setCompact(query.matches);
+    apply();
+    query.addEventListener('change', apply);
+    return () => query.removeEventListener('change', apply);
+  }, []);
+  return compact;
+}
+
+interface CubeProps {
+  tone: CubeTone;
+  size: number;
+  className?: string;
+}
+
+/** A small cube standing on the point (0, 0) of its parent group. */
+function Cube({ tone, size, className }: CubeProps) {
+  const f = box(0, -size, size, size / 2, size);
+  return (
+    <g className={cn('fw-map-cube', className)} data-tone={tone}>
+      <polygon className='fw-map-left' points={f.left} />
+      <polygon className='fw-map-right' points={f.right} />
+      <polygon className='fw-map-top' points={f.top} />
+    </g>
+  );
+}
+
 interface TileProps {
   id: MapNodeId;
   label: string;
@@ -169,40 +242,75 @@ interface TileProps {
   reduce: boolean;
 }
 
+const SPARKS = [
+  { dx: -16, dy: -4, delay: 0 },
+  { dx: 2, dy: -10, delay: 0.05 },
+  { dx: 18, dy: -2, delay: 0.1 },
+];
+
 function Tile({ id, label, index, ready, pulse, reduce }: TileProps) {
   const node = NODES[id];
   const { px, py } = project(node.x, node.y);
   const f = box(px, py - TILE_T, TILE_W / 2, TILE_H / 2, TILE_T);
+  const live = ready && !reduce;
   return (
     <motion.g
-      className='fw-map-tile'
-      data-tone={node.tone}
       initial={reduce ? false : { opacity: 0, y: 14 }}
       animate={ready ? { opacity: 1, y: 0 } : undefined}
       transition={{ duration: 0.6, ease, delay: index * 0.1 }}
     >
-      <polygon className='fw-map-left' points={f.left} />
-      <polygon className='fw-map-right' points={f.right} />
-      <polygon className='fw-map-top' points={f.top} />
-      {!reduce && pulse > 0 && (
-        <motion.polygon
-          key={pulse}
-          className='fw-map-flash'
-          points={f.top}
-          initial={{ opacity: 0.55 }}
-          animate={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        />
-      )}
-      <text
-        className='fw-map-label'
-        x={px}
-        y={py - TILE_T}
-        textAnchor='middle'
-        dominantBaseline='central'
+      <polygon
+        className='fw-map-shadow'
+        points={diamond(px, py + 5, TILE_W / 2 + 3, TILE_H / 2 + 1.5)}
+      />
+      <motion.g
+        className='fw-map-tile'
+        data-tone={node.tone}
+        animate={live ? { y: [0, -2.5, 0] } : undefined}
+        transition={{
+          duration: 3.8 + index * 0.35,
+          ease: 'easeInOut',
+          repeat: Infinity,
+          delay: 1 + index * 0.45,
+        }}
       >
-        {label}
-      </text>
+        <polygon className='fw-map-left' points={f.left} />
+        <polygon className='fw-map-right' points={f.right} />
+        <polygon className='fw-map-top' points={f.top} />
+        {!reduce && pulse > 0 && (
+          <g key={pulse}>
+            <motion.polygon
+              className='fw-map-flash'
+              points={f.top}
+              initial={{ opacity: 0.55 }}
+              animate={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            />
+            {SPARKS.map((s, i) => (
+              <motion.rect
+                key={i}
+                className='fw-map-spark'
+                x={px + s.dx - 2.5}
+                y={py - TILE_T + s.dy - 2.5}
+                width={5}
+                height={5}
+                initial={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 0, y: -22 - i * 4 }}
+                transition={{ duration: 0.75, ease: 'easeOut', delay: s.delay }}
+              />
+            ))}
+          </g>
+        )}
+        <text
+          className='fw-map-label'
+          x={px}
+          y={py - TILE_T}
+          textAnchor='middle'
+          dominantBaseline='central'
+        >
+          {label}
+        </text>
+      </motion.g>
     </motion.g>
   );
 }
@@ -220,7 +328,15 @@ function PacketView({ packet, onArrive, onDone }: PacketViewProps) {
   const reached = useRef(0);
   const x = useTransform(progress, (p) => along(path, p).x);
   const y = useTransform(progress, (p) => along(path, p).y);
-  const opacity = useTransform(progress, [0, 0.07, 0.93, 1], [0, 1, 1, 0]);
+  const tx = useTransform(
+    progress,
+    (p) => along(path, Math.max(0, p - TRAIL)).x,
+  );
+  const ty = useTransform(
+    progress,
+    (p) => along(path, Math.max(0, p - TRAIL)).y,
+  );
+  const opacity = useTransform(progress, [0, 0.06, 0.94, 1], [0, 1, 1, 0]);
 
   useMotionValueEvent(progress, 'change', (v) => {
     const idx = Math.min(segs, Math.floor(v * segs + 1e-4));
@@ -245,16 +361,19 @@ function PacketView({ packet, onArrive, onDone }: PacketViewProps) {
     };
   }, [progress, segs, packet.id, onDone]);
 
-  const f = box(0, -PKT, PKT, PKT / 2, PKT);
   return (
-    <motion.g
-      className='fw-map-packet'
-      data-tone={tone}
-      style={{ x, y, opacity }}
-    >
-      <polygon className='fw-map-left' points={f.left} />
-      <polygon className='fw-map-right' points={f.right} />
-      <polygon className='fw-map-top' points={f.top} />
+    <motion.g style={{ opacity }}>
+      <motion.line
+        className='fw-map-trail'
+        data-tone={tone}
+        x1={tx}
+        y1={ty}
+        x2={x}
+        y2={y}
+      />
+      <motion.g style={{ x, y }}>
+        <Cube tone={tone} size={PKT} />
+      </motion.g>
     </motion.g>
   );
 }
@@ -262,12 +381,15 @@ function PacketView({ packet, onArrive, onDone }: PacketViewProps) {
 /**
  * The systems we build, running: six labelled tiles on a plate, wired
  * together. Tiles rise in after the preloader, the wires draw, then small
- * boxes travel the wires as requests and answers and each tile flashes as
- * one arrives. Packets only launch while the map is on screen. Reduced
- * motion shows the finished map with nothing moving.
+ * boxes travel the wires as requests and answers, leaving a glow behind
+ * them; each tile flashes and throws sparks as one arrives. Spare blocks
+ * bob in the plate corners and a band of light sweeps the plate now and
+ * then. Packets only launch while the map is on screen. Reduced motion
+ * shows the finished map with nothing moving.
  */
 export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
   const reduce = useReducedMotion() === true;
+  const compact = useCompact();
   const rootRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rootRef, { amount: 0.4 });
   const inViewRef = useRef(false);
@@ -323,6 +445,7 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
     };
   }, [reduce, delay]);
 
+  const live = ready && !reduce;
   const labels = NODE_ORDER.map((id) => copy.nodes[id]).join(', ');
 
   return (
@@ -334,7 +457,7 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
     >
       <svg
         aria-hidden='true'
-        viewBox='-244 -26 488 262'
+        viewBox={compact ? VIEW_COMPACT : VIEW_WIDE}
         className='block h-auto w-full overflow-visible'
       >
         <g className='fw-map-plate'>
@@ -346,6 +469,23 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
               <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />
             ))}
           </g>
+          <motion.polygon
+            className='fw-map-sweep'
+            points={BAND.points}
+            initial={{ x: 0, y: 0, opacity: 0 }}
+            animate={
+              live
+                ? { x: [0, BAND.dx], y: [0, BAND.dy], opacity: [0.7, 0.7] }
+                : undefined
+            }
+            transition={{
+              duration: 5.5,
+              ease: 'linear',
+              repeat: Infinity,
+              repeatDelay: 4,
+              delay: 2.5,
+            }}
+          />
         </g>
 
         <g>
@@ -368,6 +508,44 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
           })}
         </g>
 
+        {BLOCKS.map((b, i) => {
+          const { px, py } = project(b.x, b.y);
+          return (
+            <motion.g
+              key={i}
+              initial={reduce ? false : { opacity: 0 }}
+              animate={ready ? { opacity: 1 } : undefined}
+              transition={{ duration: 0.6, ease, delay: 0.9 + i * 0.08 }}
+            >
+              <polygon
+                className='fw-map-shadow'
+                points={diamond(px, py + 2, b.size + 2, b.size / 2 + 1)}
+              />
+              <motion.g
+                style={{ x: px, y: py }}
+                animate={live ? { y: [py, py - 6, py] } : undefined}
+                transition={{
+                  duration: b.duration,
+                  ease: 'easeInOut',
+                  repeat: Infinity,
+                  delay: b.delay,
+                }}
+              >
+                <Cube tone={b.tone} size={b.size} className='fw-map-block' />
+              </motion.g>
+            </motion.g>
+          );
+        })}
+
+        {packets.map((packet) => (
+          <PacketView
+            key={packet.id}
+            packet={packet}
+            onArrive={onArrive}
+            onDone={onDone}
+          />
+        ))}
+
         {NODE_ORDER.map((id, i) => (
           <Tile
             key={id}
@@ -377,15 +555,6 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
             ready={ready}
             pulse={pulses[id]}
             reduce={reduce}
-          />
-        ))}
-
-        {packets.map((packet) => (
-          <PacketView
-            key={packet.id}
-            packet={packet}
-            onArrive={onArrive}
-            onDone={onDone}
           />
         ))}
       </svg>

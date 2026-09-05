@@ -626,10 +626,12 @@ html.fw-no-cursor * {
 }
 
 /* Hero system map (effects/system-map.tsx): labelled isometric tiles on a
-   plate, wired together, with small boxes riding the wires. Strokes stay
-   one device pixel at any size. */
+   plate, wired together, with small cubes riding the wires. Strokes stay
+   one device pixel at any size. Tones: paper, mint (the apps), warm (the
+   model) and ink (the API hub); cubes add brand and warm. */
 .fw-map polygon,
-.fw-map line {
+.fw-map line,
+.fw-map rect {
   vector-effect: non-scaling-stroke;
   stroke-linejoin: round;
 }
@@ -647,11 +649,22 @@ html.fw-no-cursor * {
   stroke: hsl(var(--ink) / 0.09);
   stroke-width: 1;
 }
+.fw-map-sweep {
+  fill: hsl(var(--brand) / 0.1);
+  stroke: none;
+  pointer-events: none;
+}
 .fw-map-edge {
   fill: none;
   stroke: hsl(var(--ink) / 0.4);
   stroke-width: 1.25;
 }
+.fw-map-shadow {
+  fill: hsl(var(--ink) / 0.08);
+  stroke: none;
+}
+
+/* Tiles */
 .fw-map-tile polygon {
   stroke: hsl(var(--ink) / 0.3);
   stroke-width: 1;
@@ -664,6 +677,30 @@ html.fw-no-cursor * {
 }
 .fw-map-tile[data-tone='paper'] .fw-map-right {
   fill: #d7d7d2;
+}
+.fw-map-tile[data-tone='mint'] polygon {
+  stroke: hsl(var(--brand-strong) / 0.45);
+}
+.fw-map-tile[data-tone='mint'] .fw-map-top {
+  fill: hsl(var(--brand-soft));
+}
+.fw-map-tile[data-tone='mint'] .fw-map-left {
+  fill: hsl(152 45% 86%);
+}
+.fw-map-tile[data-tone='mint'] .fw-map-right {
+  fill: hsl(152 35% 78%);
+}
+.fw-map-tile[data-tone='warm'] polygon {
+  stroke: hsl(18 70% 40% / 0.45);
+}
+.fw-map-tile[data-tone='warm'] .fw-map-top {
+  fill: hsl(24 100% 93%);
+}
+.fw-map-tile[data-tone='warm'] .fw-map-left {
+  fill: hsl(22 80% 85%);
+}
+.fw-map-tile[data-tone='warm'] .fw-map-right {
+  fill: hsl(20 70% 76%);
 }
 .fw-map-tile[data-tone='ink'] polygon {
   stroke: hsl(0 0% 0% / 0.6);
@@ -682,41 +719,92 @@ html.fw-no-cursor * {
   stroke: none !important;
   pointer-events: none;
 }
+.fw-map-spark {
+  fill: hsl(var(--brand));
+  stroke: none;
+  pointer-events: none;
+}
 .fw-map-label {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   fill: hsl(var(--ink));
 }
 .fw-map-tile[data-tone='ink'] .fw-map-label {
   fill: #ffffff;
 }
-.fw-map-packet polygon {
+
+/* Cubes: packets on the wires and spare blocks in the corners */
+.fw-map-cube polygon {
   stroke-width: 1;
 }
-.fw-map-packet[data-tone='brand'] polygon {
+.fw-map-cube[data-tone='paper'] polygon {
+  stroke: hsl(var(--ink) / 0.3);
+}
+.fw-map-cube[data-tone='paper'] .fw-map-top {
+  fill: #ffffff;
+}
+.fw-map-cube[data-tone='paper'] .fw-map-left {
+  fill: #ebebe7;
+}
+.fw-map-cube[data-tone='paper'] .fw-map-right {
+  fill: #d7d7d2;
+}
+.fw-map-cube[data-tone='brand'] polygon {
   stroke: hsl(var(--brand-strong) / 0.7);
 }
-.fw-map-packet[data-tone='brand'] .fw-map-top {
+.fw-map-cube[data-tone='brand'] .fw-map-top {
   fill: hsl(var(--brand-2));
 }
-.fw-map-packet[data-tone='brand'] .fw-map-left {
+.fw-map-cube[data-tone='brand'] .fw-map-left {
   fill: hsl(var(--brand));
 }
-.fw-map-packet[data-tone='brand'] .fw-map-right {
+.fw-map-cube[data-tone='brand'] .fw-map-right {
   fill: hsl(var(--brand-strong));
 }
-.fw-map-packet[data-tone='ink'] polygon {
+.fw-map-cube[data-tone='warm'] polygon {
+  stroke: hsl(18 80% 32% / 0.7);
+}
+.fw-map-cube[data-tone='warm'] .fw-map-top {
+  fill: hsl(24 100% 66%);
+}
+.fw-map-cube[data-tone='warm'] .fw-map-left {
+  fill: hsl(var(--warm));
+}
+.fw-map-cube[data-tone='warm'] .fw-map-right {
+  fill: hsl(16 90% 48%);
+}
+.fw-map-cube[data-tone='ink'] polygon {
   stroke: hsl(0 0% 0% / 0.55);
 }
-.fw-map-packet[data-tone='ink'] .fw-map-top {
+.fw-map-cube[data-tone='ink'] .fw-map-top {
   fill: hsl(0 0% 26%);
 }
-.fw-map-packet[data-tone='ink'] .fw-map-left {
+.fw-map-cube[data-tone='ink'] .fw-map-left {
   fill: hsl(0 0% 12%);
 }
-.fw-map-packet[data-tone='ink'] .fw-map-right {
+.fw-map-cube[data-tone='ink'] .fw-map-right {
   fill: hsl(0 0% 6%);
+}
+
+/* Glow left behind a packet on the wire */
+.fw-map-trail {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.fw-map-trail[data-tone='brand'] {
+  stroke: hsl(var(--brand));
+}
+.fw-map-trail[data-tone='warm'] {
+  stroke: hsl(var(--warm));
+}
+.fw-map-trail[data-tone='ink'] {
+  stroke: hsl(var(--ink) / 0.6);
+}
+.fw-map-trail[data-tone='paper'] {
+  stroke: hsl(var(--ink) / 0.3);
 }
