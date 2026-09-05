@@ -1,0 +1,72 @@
+export interface ProcessStep {
+  number: string;
+  title: string;
+  duration: string;
+  summary: string;
+  outcome: string;
+}
+
+/** How an engagement runs, in three steps a client actually experiences. */
+export const processSteps: ProcessStep[] = [
+  {
+    number: '01',
+    title: 'Brief',
+    duration: 'Week 1',
+    summary:
+      'One call to understand the problem, then a written scope, a fixed price and a launch date within five working days.',
+    outcome: 'You know exactly what you will get, when, and for how much.',
+  },
+  {
+    number: '02',
+    title: 'Build',
+    duration: 'Weeks 2-8',
+    summary:
+      'A working version you can click on every Friday, with a short written update. Change your mind early and it costs nothing.',
+    outcome: 'No surprises at the end, because there is no "the end".',
+  },
+  {
+    number: '03',
+    title: 'Launch',
+    duration: 'Launch week and after',
+    summary:
+      'We ship, monitor the first weeks live, and hand over everything with documentation. Stay on a retainer or take it in-house.',
+    outcome: 'A product that is yours, running, and ready to grow.',
+  },
+];
+
+export interface Guarantee {
+  title: string;
+  body: string;
+}
+
+/** Commitments repeated in every proposal. */
+export const guarantees: Guarantee[] = [
+  { title: 'Fixed price', body: 'Quoted in writing, per phase.' },
+  { title: 'Fixed date', body: 'Agreed before work starts.' },
+  { title: 'You own it all', body: 'Code, accounts and designs.' },
+  { title: '1 business day', body: 'Reply time on every message.' },
+];
+
+export interface Value {
+  title: string;
+  body: string;
+}
+
+export const values: Value[] = [
+  {
+    title: 'Precision over volume',
+    body: 'Feinwerk means fine work. We would rather ship one system that reconciles to the last unit than three that mostly work.',
+  },
+  {
+    title: 'Own the whole problem',
+    body: 'Interface, API, data, infrastructure and the emails in between. One team responsible for the outcome, not a layer.',
+  },
+  {
+    title: 'Boring infrastructure',
+    body: 'Durable jobs, tested policies and monitoring that alerts before customers notice. Excitement belongs in the product.',
+  },
+  {
+    title: 'Write it down',
+    body: 'Decisions and hand-over notes are documented as we go, so your team can run what we built without us.',
+  },
+];

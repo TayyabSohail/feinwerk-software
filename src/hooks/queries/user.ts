@@ -1,13 +1,14 @@
 import { User } from '@supabase/supabase-js';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
-import { supabase } from '@/lib/supabase/client';
+import { createSupabaseBrowserClient } from '@/lib/supabase/client';
 
 import { QueryKeys } from '@/constants/query-keys';
 
 export const useUser = () => {
   const queryClient = useQueryClient();
+  const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const queryData = useQuery<User | null>({
     queryKey: [QueryKeys.USER],
     queryFn: async () => {
