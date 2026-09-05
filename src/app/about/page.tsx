@@ -32,7 +32,8 @@ const FACTS = [
   },
   {
     label: 'How',
-    value: 'Fixed scope, fixed price, weekly demos, one senior team',
+    value:
+      'Fixed scope, fixed or custom price, weekly demos, maintained after launch',
   },
   {
     label: 'Where',
@@ -66,11 +67,13 @@ export default async function AboutPage() {
             through.
           </p>
           <p>
-            So we structured the studio around the three things clients said
-            they could not get elsewhere. A date and a price agreed before work
-            starts. One senior team that owns the whole product, from the
-            interface to the cloud bill. And a result you can measure after
-            launch, reported by you, not by us.
+            So we structured the studio around the four things clients said they
+            could not get elsewhere. A date and a price agreed before work
+            starts, for a standard package or a custom scope. One senior team
+            that owns the whole product, from the interface to the cloud bill. A
+            result you can measure after launch, reported by you, not by us. And
+            a team that stays: we maintain what we build and take accountability
+            for it in production.
           </p>
           <p>
             Our Asian office is in Islamabad. Clients in Europe have a local
@@ -160,7 +163,7 @@ export default async function AboutPage() {
         dict={dict}
         title='Want to see how we would run your project?'
         accentWords={[7, 8]}
-        body='Send a short brief. You get a written scope, price and launch date within a week, with no obligation.'
+        body='Send a short brief. You get a written scope, a fixed or custom price and a launch date within a week, with no obligation, and a team that keeps maintaining the product after launch.'
       />
     </>
   );

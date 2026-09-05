@@ -31,7 +31,7 @@ export default async function ServicesPage() {
         kicker='Services'
         title='Engineering, scoped to an outcome.'
         accentWords={[3, 4]}
-        description='Four capabilities and two ways to engage, covering the whole lifecycle of a software product from the first prototype to the team that runs it. Each one is priced for a result, not for hours.'
+        description='Four capabilities and two ways to engage, covering the whole lifecycle of a software product from the first prototype to the team that runs it. Each one is priced for a result, not for hours, fits a standard package or a custom scope, and is maintained by us after launch.'
       />
       <ServicesGrid dict={dict} withHeading={false} className='pt-0' />
       <Pricing dict={dict} />

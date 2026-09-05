@@ -43,7 +43,7 @@ export const contactSchema = z.object({
   message: z
     .string({ message: 'Tell us a little about the project' })
     .trim()
-    .min(20, 'A couple of sentences helps us reply usefully')
+    .min(20, 'A couple of sentences help us reply usefully')
     .max(4000, 'Please keep it under 4,000 characters'),
   consent: z.literal(true, {
     errorMap: () => ({ message: 'Please accept the privacy policy' }),

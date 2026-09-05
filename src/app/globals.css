@@ -610,8 +610,9 @@
   transition: background-position 120ms linear;
 }
 
-/* Pointer trail: effects/cursor.tsx draws a hairline emerald trail behind
-   the native pointer on this fixed canvas. The native cursor stays visible. */
+/* Pointer: effects/cursor.tsx draws a plain emerald dot and a hairline
+   emerald trail behind it on this fixed canvas. While the canvas is mounted
+   (fine-pointer devices only) the native cursor is hidden everywhere. */
 .fw-cursor {
   position: fixed;
   inset: 0;
@@ -619,92 +620,54 @@
   pointer-events: none;
 }
 
-/* Hero build grid: the modules every build ships with, placed into a
-   hairline grid one tile at a time (effects/build-grid.tsx). A slot marks
-   the empty cell until its tile fades in; the cursor is the emerald
-   selection square that steps between cells. */
-.fw-tile-slot,
-.fw-tile {
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 9px) 0,
-    100% 9px,
-    100% 100%,
-    9px 100%,
-    0 calc(100% - 9px)
-  );
+html.fw-no-cursor,
+html.fw-no-cursor * {
+  cursor: none !important;
 }
-.fw-tile-slot {
-  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.14);
+
+/* Hero block build (effects/iso-build.tsx): isometric cubes on a plate.
+   Three faces per cube; tones are paper (most), emerald and ink. Strokes
+   stay one device pixel at any size. */
+.fw-iso polygon {
+  stroke: hsl(var(--ink) / 0.3);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
-.fw-tile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0 0.9rem;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  user-select: none;
+.fw-iso-floor polygon {
+  fill: hsl(var(--surface) / 0.55);
+  stroke: hsl(var(--ink) / 0.14);
 }
-@media (min-width: 1280px) {
-  .fw-tile {
-    padding: 0 1rem;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-  }
+.fw-iso-cube[data-tone='paper'] .fw-iso-top {
+  fill: #ffffff;
 }
-.fw-tile-ink {
-  background: hsl(var(--ink));
-  color: #fff;
+.fw-iso-cube[data-tone='paper'] .fw-iso-left {
+  fill: #ebebe7;
 }
-.fw-tile-paper {
-  background: #fff;
-  color: hsl(var(--ink));
-  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.28);
+.fw-iso-cube[data-tone='paper'] .fw-iso-right {
+  fill: #d7d7d2;
 }
-.fw-tile-brand {
-  background: hsl(var(--brand));
-  color: hsl(var(--brand-foreground));
+.fw-iso-cube[data-tone='brand'] polygon {
+  stroke: hsl(var(--brand-strong) / 0.7);
 }
-/* The selection square: an outline with four corner handles. */
-.fw-tile-cursor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  pointer-events: none;
-  box-shadow: inset 0 0 0 2px hsl(var(--brand));
+.fw-iso-cube[data-tone='brand'] .fw-iso-top {
+  fill: hsl(var(--brand-2));
 }
-.fw-tile-cursor[data-tone='brand'] {
-  box-shadow: inset 0 0 0 2px hsl(var(--ink));
+.fw-iso-cube[data-tone='brand'] .fw-iso-left {
+  fill: hsl(var(--brand));
 }
-.fw-tile-cursor > span {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  background: hsl(var(--brand));
-  box-shadow: 0 0 0 1.5px #fff;
+.fw-iso-cube[data-tone='brand'] .fw-iso-right {
+  fill: hsl(var(--brand-strong));
 }
-.fw-tile-cursor > span:nth-child(1) {
-  top: -3px;
-  left: -3px;
+.fw-iso-cube[data-tone='ink'] polygon {
+  stroke: hsl(0 0% 0% / 0.55);
 }
-.fw-tile-cursor > span:nth-child(2) {
-  top: -3px;
-  right: -3px;
+.fw-iso-cube[data-tone='ink'] .fw-iso-top {
+  fill: hsl(0 0% 26%);
 }
-.fw-tile-cursor > span:nth-child(3) {
-  bottom: -3px;
-  left: -3px;
+.fw-iso-cube[data-tone='ink'] .fw-iso-left {
+  fill: hsl(0 0% 12%);
 }
-.fw-tile-cursor > span:nth-child(4) {
-  bottom: -3px;
-  right: -3px;
+.fw-iso-cube[data-tone='ink'] .fw-iso-right {
+  fill: hsl(0 0% 6%);
 }

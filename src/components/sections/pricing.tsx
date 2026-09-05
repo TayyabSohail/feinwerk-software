@@ -20,6 +20,7 @@ const PLAN_LINKS: Record<Plan['id'], string> = {
   consulting: paths.contact,
   mvp: `${paths.contact}?service=mvp-sprint`,
   product: `${paths.contact}?service=product-engineering`,
+  custom: `${paths.contact}?service=other`,
 };
 
 interface PricingProps {
@@ -29,8 +30,10 @@ interface PricingProps {
 }
 
 /**
- * Three fixed-price packages side by side. Same card, same structure for
- * each; the middle plan carries the tinted surface so the row has a centre.
+ * Three fixed-price packages and a custom solution side by side. Same card,
+ * same structure for each; the MVP plan carries the tinted surface so the
+ * row has a centre. Beneath the cards, what every plan includes: a written
+ * quote, maintenance after launch and accountability for the product.
  */
 export function Pricing({ dict, withHeading = true, className }: PricingProps) {
   const t = dict.pricing;
@@ -51,7 +54,10 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
 
         <Stagger
           stagger={0.12}
-          className={cn('grid gap-5 lg:grid-cols-3', withHeading && 'mt-14')}
+          className={cn(
+            'grid gap-5 md:grid-cols-2 xl:grid-cols-4',
+            withHeading && 'mt-14',
+          )}
         >
           {t.plans.map((plan, index) => (
             <StaggerItem key={plan.id} className='h-full'>
@@ -59,6 +65,27 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
             </StaggerItem>
           ))}
         </Stagger>
+
+        <Reveal delay={0.15} className='mt-12 border-t pt-8'>
+          <p className='fw-kicker text-[10px]'>{t.includes.title}</p>
+          <dl className='mt-6 grid gap-px border bg-line sm:grid-cols-2 xl:grid-cols-4'>
+            {t.includes.items.map((item) => (
+              <div key={item.title} className='bg-surface p-5 sm:p-6'>
+                <dt className='flex items-start gap-3 text-sm font-semibold leading-snug text-ink'>
+                  <Check
+                    aria-hidden='true'
+                    className='mt-0.5 h-4 w-4 shrink-0 text-brand-text'
+                    strokeWidth={2}
+                  />
+                  {item.title}
+                </dt>
+                <dd className='mt-2 text-sm leading-relaxed text-muted-foreground'>
+                  {item.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
 
         <Reveal delay={0.2}>
           <p className='mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground'>
@@ -70,7 +97,10 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
   );
 }
 
-/** One plan: name, price, what is included, and a direct call to action. */
+/**
+ * One plan: name, price, what is included, and a direct call to action. The
+ * custom plan has no number; it shows "Custom" with a quote label instead.
+ */
 function PlanCard({
   plan,
   t,
@@ -80,10 +110,11 @@ function PlanCard({
   t: PricingCopy;
   featured: boolean;
 }) {
+  const custom = plan.id === 'custom';
   return (
     <div
       className={cn(
-        'fw-card fw-spot flex h-full flex-col p-7 sm:p-9',
+        'fw-card fw-spot flex h-full flex-col p-7 sm:p-9 xl:p-7',
         featured && 'fw-card-tint',
       )}
     >
@@ -92,11 +123,11 @@ function PlanCard({
         <p className='mt-2 text-base text-muted-foreground'>{plan.tagline}</p>
 
         <p className='mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1'>
-          <span className='fw-display text-5xl text-ink sm:text-6xl'>
+          <span className='fw-display text-5xl text-ink sm:text-6xl xl:text-5xl'>
             {plan.price}
           </span>
           <span className='font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground'>
-            / {t.period}
+            / {custom ? t.customPeriod : t.period}
           </span>
         </p>
 
@@ -118,7 +149,7 @@ function PlanCard({
             href={PLAN_LINKS[plan.id]}
             className='fw-btn fw-btn-primary inline-flex h-12 w-full items-center justify-center gap-3 px-6 font-mono text-[11px] font-semibold uppercase tracking-[0.22em]'
           >
-            {t.cta}
+            {custom ? t.customCta : t.cta}
             <ArrowUpRight className='h-4 w-4' />
           </Link>
         </div>

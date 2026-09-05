@@ -100,7 +100,6 @@ export interface Project {
   services: string[];
   industry: string;
   year: string;
-  liveUrl?: string;
   /**
    * Product name changed and live link withheld at the client's request.
    * Screens are recreations of the product, not captures of it.
@@ -246,7 +245,7 @@ export const projects: Project[] = [
     tagline: 'AI-driven platform for smarter SEO growth',
     summary: 'AI-powered SEO and content platform.',
     description:
-      'One platform for keyword research, AI content generation and rank tracking, replacing the tool-hopping that ate SEO teams days.',
+      'One platform for keyword research, AI content generation and rank tracking, replacing the tool-hopping that ate up SEO teams’ days.',
     coverImage: '/work/screens/rankloom-desktop.webp',
     coverWidth: 2160,
     coverHeight: 1350,
@@ -354,7 +353,7 @@ export const projects: Project[] = [
     title: 'Bidnest',
     client: 'Confidential (student housing marketplace)',
     tagline: 'Off-campus home rentals, on your terms',
-    summary: 'Bidding-based off-campus rentals marketplace.',
+    summary: 'Bidding-based off-campus rental marketplace.',
     description:
       'Students bid on off-campus housing in real time, with role-scoped dashboards for students, parents and landlords.',
     coverImage: '/work/screens/bidnest-desktop.webp',
@@ -422,17 +421,17 @@ export const projects: Project[] = [
     problem:
       'Student housing is dominated by fixed-price listings with no room to negotiate, scattered across unreliable platforms. Parents fund most of these rentals but have no way into the process at all.',
     approach:
-      'We designed a live bidding system over WebSockets with sub-200ms updates, backed by data models tuned for listings, bids and notifications, and separate dashboards scoped to each role.',
+      'We designed a live bidding system over WebSockets with sub-200 ms updates, backed by data models tuned for listings, bids and notifications, and separate dashboards scoped to each role.',
     outcomes: [
       '1,000+ concurrent users with conflict-free bid synchronisation.',
-      '200ms bid updates, keeping every bidder on the same state.',
+      '200 ms bid updates, keeping every bidder in sync.',
       '3 role-scoped dashboards for students, parents and landlords.',
     ],
     architecture:
       'Next.js over Supabase and PostgreSQL. Bids flow through a WebSocket channel and are validated server-side before commit, so a client can never post a winning bid it did not earn. Role access is enforced by row-level security.',
     keyFeatures: [
       'Bidding marketplace for verified off-campus rentals',
-      'Parent access to bid and message on a student behalf',
+      'Parent access to bid and message on a student’s behalf',
       'Service booking for moving, cleaning and repairs',
       'Built-in messaging between students, landlords and providers',
       'In-app, email and SMS notifications',
@@ -538,7 +537,7 @@ export const projects: Project[] = [
     challenges: [
       {
         challenge:
-          'Multi-tenancy risked one seller queries reaching another seller data.',
+          'Multi-tenancy risked one seller’s queries reaching another seller’s data.',
         solution:
           'Enforced isolation with row-level security policies at the database rather than in application code, so a missed check in the app cannot leak data.',
       },
@@ -617,7 +616,6 @@ export const projects: Project[] = [
     services: ['product-engineering', 'cloud-devops'],
     industry: 'HR technology',
     year: '2026',
-    liveUrl: 'https://hrm.bitsmiths.studio/',
     featured: 5,
     headline: { value: '12', label: 'automated emails, zero chasing' },
     problem:
@@ -642,7 +640,7 @@ export const projects: Project[] = [
     challenges: [
       {
         challenge:
-          'Employees could not see their own locked payslips. The visibility policy subqueried an admin-only table, and that subquery runs with the caller privileges, so it silently returned nothing.',
+          'Employees could not see their own locked payslips. The visibility policy subqueried an admin-only table, and that subquery runs with the caller’s privileges, so it silently returned nothing.',
         solution:
           'Moved the check into a SECURITY DEFINER helper that answers only "is this run locked?", so the policy resolves without exposing the company-wide payroll totals on that table.',
       },
@@ -710,7 +708,6 @@ export const projects: Project[] = [
     services: ['web-design-development', 'mvp-sprint'],
     industry: 'Software agency',
     year: '2025',
-    liveUrl: 'https://bitsmiths.studio/',
     featured: 6,
     headline: { value: '4', label: 'content types, zero deploys' },
     problem:
@@ -821,7 +818,7 @@ export const projects: Project[] = [
       '70% reduction in manual document and agreement processing time.',
     ],
     architecture:
-      'A React frontend talks to a Python and FastAPI backend, while LangGraph orchestrates specialised multi-agent workflows powered by OpenAI models. The multi-tenant architecture serves more than 30 agencies from one platform while supporting each agency own CRM and workflows.',
+      'A React frontend talks to a Python and FastAPI backend, while LangGraph orchestrates specialised multi-agent workflows powered by OpenAI models. The multi-tenant architecture serves more than 30 agencies from one platform while supporting each agency’s own CRM and workflows.',
     keyFeatures: [
       'CRM agent syncing with agency-specific CRMs',
       'Compliance agent for regulatory workflows',
@@ -1024,7 +1021,7 @@ export const projects: Project[] = [
     tagline: 'Multi-tenant AI support agents for online shops',
     summary: 'Multi-tenant AI chatbot platform.',
     description:
-      'Resellers provision AI support agents for their shops in bulk, with each tenant isolated and each answer grounded in that shop own content.',
+      'Resellers provision AI support agents for their shops in bulk, with each tenant isolated and each answer grounded in that shop’s own content.',
     coverImage: '/work/screens/snobbots-desktop.webp',
     coverWidth: 2160,
     coverHeight: 1350,
@@ -1076,10 +1073,10 @@ export const projects: Project[] = [
       'We built a multi-tenant MERN architecture where each shop runs an independent, context-aware agent, and layered automated provisioning on top so resellers could stand up bots in bulk rather than one at a time.',
     outcomes: [
       '60% faster deployment through automated orchestration.',
-      '1 namespace per tenant, so no shop can read another content.',
+      '1 namespace per tenant, so no shop can read another’s content.',
     ],
     architecture:
-      'MERN: React, an Express and Node.js API, and MongoDB for tenant and conversation data. Pinecone holds per-tenant embeddings so retrieval is scoped to one shop knowledge base, and provisioning runs without manual setup.',
+      'MERN: React, an Express and Node.js API, and MongoDB for tenant and conversation data. Pinecone holds per-tenant embeddings so retrieval is scoped to one shop’s knowledge base, and provisioning runs without manual setup.',
     keyFeatures: [
       'Multi-tenant architecture with isolated agents',
       'RAG for context-aware, business-specific answers',
@@ -1090,9 +1087,9 @@ export const projects: Project[] = [
     challenges: [
       {
         challenge:
-          'Retrieval across a shared vector index surfaced one shop content in another shop answers.',
+          'Retrieval across a shared vector index surfaced one shop’s content in another shop’s answers.',
         solution:
-          'Partitioned embeddings per tenant in Pinecone so retrieval can only ever reach the requesting shop namespace.',
+          'Partitioned embeddings per tenant in Pinecone so retrieval can only ever reach the requesting shop’s namespace.',
       },
       {
         challenge:
@@ -1156,7 +1153,7 @@ export const projects: Project[] = [
     year: '2024',
     headline: { value: '90%+', label: 'assessment accuracy' },
     problem:
-      'The rehabilitation journey was fragmented across manual intake, movement assessment, generic exercise plans and infrequent follow-up. Patients had little guidance between supervised sessions and plans did not respond quickly to performance.',
+      'The rehabilitation journey was fragmented across manual intake, movement assessment, generic exercise plans and infrequent follow-up. Patients had little guidance between supervised sessions, and plans did not respond quickly to performance.',
     approach:
       'We built the journey around an intake agent, guided movement assessment and automatic exercise plan generation. Daily logs drive plan progression or regression, while uploaded exercise videos receive AI feedback and injury articles inform future plans.',
     outcomes: [
@@ -1176,7 +1173,7 @@ export const projects: Project[] = [
     challenges: [
       {
         challenge:
-          'Static exercise plans could not respond when a patient daily performance improved or declined.',
+          'Static exercise plans could not respond when a patient’s daily performance improved or declined.',
         solution:
           'Connected daily logs to progression and regression rules so the plan adapts automatically instead of waiting for manual review.',
       },
@@ -1236,7 +1233,6 @@ export const projects: Project[] = [
     services: ['web-design-development'],
     industry: 'Professional services',
     year: '2024',
-    liveUrl: 'https://www.newweborder.us/',
     headline: { value: '40%', label: 'faster page loads' },
     problem:
       'The existing site loaded slowly and ranked poorly, costing the company inbound leads before visitors ever saw the offering.',
@@ -1420,7 +1416,6 @@ export const projects: Project[] = [
     services: ['web-design-development', 'mvp-sprint'],
     industry: 'Software engineering',
     year: '2025',
-    liveUrl: 'https://tayyab-portfolio-chi.vercel.app',
     notable: true,
     headline: { value: '12', label: 'case studies from one data file' },
     problem:

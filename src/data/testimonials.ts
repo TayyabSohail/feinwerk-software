@@ -25,7 +25,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'We were paying for five SEO tools and still working by hand. Feinwerk replaced them with one platform, moved the heavy generation into background jobs and halved our keyword tracking bill along the way. Thirty articles in ten minutes was not a slide, it was a demo.',
+      'We were paying for five SEO tools and still working by hand. Feinwerk replaced them with one platform, moved the heavy generation into background jobs and halved our keyword tracking bill along the way. Thirty articles in ten minutes was not a slide. It was a demo.',
     author: 'Product lead',
     company: 'SEO platform (confidential)',
     project: 'rankloom',

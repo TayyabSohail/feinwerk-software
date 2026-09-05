@@ -4,7 +4,7 @@ This project uses Supabase on both the browser and server with session persisten
 
 ### Middleware and route protection
 
-`src/lib/supabase/middleware.ts` refreshes the session on each navigation. Document wiring it in `src/middleware.ts` with `updateSession(request)`.
+`src/lib/supabase/middleware.ts` refreshes the session on each navigation. It is wired up in `src/middleware.ts` with `updateSession(request)`.
 
 Guidelines:
 

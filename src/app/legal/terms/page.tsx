@@ -106,7 +106,7 @@ const sections: LegalSection[] = [
           Review deliverables and give feedback within the agreed windows.
         </li>
         <li>
-          Ensure that content and data you supply does not infringe third-party
+          Ensure that content and data you supply do not infringe third-party
           rights or applicable law.
         </li>
         <li>

@@ -36,6 +36,8 @@ export interface Service {
     timeline: string;
     team: string;
     pricing: string;
+    /** What we keep doing after launch: maintenance, support, accountability. */
+    support: string;
   };
   faqs: { question: string; answer: string }[];
   /** Call to action on engagement cards, e.g. "Start a sprint". */
@@ -49,7 +51,7 @@ export const services: Service[] = [
     title: 'Full-Stack Product Engineering',
     tagline: 'Web platforms, marketplaces and SaaS, built end to end.',
     summary:
-      'We design, build and ship complete products: the interface your users see, the API and data model underneath, and the operational tooling your team needs to run it. One team owns the whole thing, so nothing falls between the cracks.',
+      'We design, build and ship complete products: the interface your users see, the API and data model underneath, and the operational tooling your team needs to run it. One team owns the whole thing, so nothing falls through the cracks, and the same team maintains it after launch.',
     icon: 'layers',
     deliverables: [
       'Product architecture and data modelling',
@@ -79,7 +81,8 @@ export const services: Service[] = [
     engagement: {
       timeline: '6-16 weeks to first release',
       team: 'Lead engineer + 1-3 engineers, design as needed',
-      pricing: 'Fixed-scope phases or monthly retainer',
+      pricing: 'Fixed or custom quote per phase, or monthly retainer',
+      support: 'Maintenance plan: monitoring, fixes and updates',
     },
     faqs: [
       {
@@ -90,7 +93,12 @@ export const services: Service[] = [
       {
         question: 'Who owns the code?',
         answer:
-          'You do. Everything we write is delivered into your repositories and cloud accounts under your name, with documentation and hand-over sessions included.',
+          'You do. Everything we write is delivered into your repositories and cloud accounts under your name, with documentation and handover sessions included.',
+      },
+      {
+        question: 'Do you maintain the product after launch?',
+        answer:
+          'Yes. We do not hand over and disappear. A maintenance plan covers monitoring, bug fixes, dependency and security updates and small improvements, handled by an engineer who knows the codebase. We take accountability for what we build in production, for as long as you want us to.',
       },
     ],
   },
@@ -136,7 +144,8 @@ export const services: Service[] = [
     engagement: {
       timeline: '2-4 weeks for a grounded prototype, 8+ for production',
       team: 'AI engineer + full-stack engineer',
-      pricing: 'Discovery sprint, then fixed-scope phases',
+      pricing: 'Discovery sprint, then fixed or custom quote per phase',
+      support: 'Monitoring, evaluation runs and model updates',
     },
     faqs: [
       {
@@ -187,7 +196,8 @@ export const services: Service[] = [
     engagement: {
       timeline: '1-4 weeks per initiative',
       team: 'Platform engineer, part-time or embedded',
-      pricing: 'Fixed audit + implementation, or retainer',
+      pricing: 'Fixed audit + implementation, custom scope or retainer',
+      support: 'Patching, on-call runbooks and cost reviews',
     },
     faqs: [
       {
@@ -231,7 +241,8 @@ export const services: Service[] = [
     engagement: {
       timeline: '2-6 weeks',
       team: 'Designer + front-end engineer',
-      pricing: 'Fixed price per site',
+      pricing: 'Fixed price per site, custom scope on request',
+      support: 'Updates, hosting and content support',
     },
     faqs: [
       {
@@ -254,8 +265,9 @@ export const services: Service[] = [
       'One-week discovery and scope lock',
       'Clickable prototype before code',
       'Production MVP with auth, billing and analytics',
-      'Launch checklist, monitoring and hand-over',
+      'Launch checklist, monitoring and handover',
       'Two weeks of post-launch support',
+      'Ongoing maintenance plan after that',
     ],
     useCases: [
       'Validating a business idea with paying users',
@@ -267,13 +279,14 @@ export const services: Service[] = [
     engagement: {
       timeline: '4-8 weeks',
       team: 'Lead engineer + engineer + designer',
-      pricing: 'Fixed price, milestone-based',
+      pricing: 'Fixed or custom quote, milestone-based',
+      support: 'Two weeks included, then a maintenance plan',
     },
     faqs: [
       {
         question: 'What happens after launch?',
         answer:
-          'Most clients continue on a monthly retainer for iteration and growth work. If you prefer to take it in-house, we hand over with documentation and a walkthrough.',
+          'We stay. Every sprint includes post-launch support, and most clients keep us on a maintenance plan for fixes, updates and growth work. We take accountability for what we shipped. If you prefer to take it in-house, we hand over with documentation and a walkthrough.',
       },
     ],
   },
@@ -284,7 +297,7 @@ export const services: Service[] = [
     tagline: 'Senior engineers embedded in your team.',
     cta: 'Build your team',
     summary:
-      'A dedicated, senior team working inside your tools and processes. Ideal when you have a roadmap and need reliable capacity without the overhead of hiring, in European and Asian time zones.',
+      'A dedicated, senior team working inside your tools and processes. Ideal when you have a roadmap and need reliable capacity in European and Asian time zones without the overhead of hiring.',
     icon: 'wrench',
     deliverables: [
       'Senior full-stack, AI and platform engineers',
@@ -303,13 +316,14 @@ export const services: Service[] = [
     engagement: {
       timeline: 'Ongoing, 3-month minimum',
       team: '1-5 engineers',
-      pricing: 'Monthly per engineer',
+      pricing: 'Monthly per engineer, custom team on request',
+      support: 'The team stays for as long as you need it',
     },
     faqs: [
       {
         question: 'How do you communicate?',
         answer:
-          'Slack or Teams for day-to-day, a weekly demo call, and a written summary every Friday. You always know what shipped and what is next.',
+          'Slack or Teams for day-to-day communication, a weekly demo call, and a written summary every Friday. You always know what shipped and what is next.',
       },
     ],
   },

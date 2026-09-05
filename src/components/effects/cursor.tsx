@@ -13,12 +13,16 @@ const TRAIL_MS = 140;
 const TRAIL_LENGTH = 28;
 const MAX_POINTS = 16;
 
+/* The pointer itself: a plain emerald dot, six pixels across. */
+const DOT_RADIUS = 3;
+
 /**
- * Keeps the native pointer and draws a hairline emerald trail behind it on
- * fine-pointer devices: one pixel wide, a few dozen pixels long at most, and
- * gone within a fraction of a second of the pointer stopping. Elements marked
- * `data-cursor="view"` (or `view:LABEL`) get a small label pill beside the
- * pointer. Nothing is hidden, nothing lags, nothing lingers.
+ * Replaces the native pointer with a plain emerald dot on fine-pointer
+ * devices and draws a hairline emerald trail behind it: one pixel wide, a
+ * few dozen pixels long at most, and gone within a fraction of a second of
+ * the pointer stopping. The dot sits exactly where the pointer is, with no
+ * easing. Elements marked `data-cursor="view"` (or `view:LABEL`) get a small
+ * label pill beside the dot. Nothing lags, nothing lingers.
  */
 export function Cursor() {
   useEffect(() => {
@@ -34,6 +38,8 @@ export function Cursor() {
       canvas.remove();
       return;
     }
+    const root = document.documentElement;
+    root.classList.add('fw-no-cursor');
 
     const styles = getComputedStyle(document.documentElement);
     const brand = styles.getPropertyValue('--brand').trim() || '160 84% 39%';
@@ -57,6 +63,7 @@ export function Cursor() {
       chip: 0,
       chipTarget: 0,
       label: '',
+      visible: false,
     };
     const trail: TrailPoint[] = [];
     let frame = 0;
@@ -108,6 +115,14 @@ export function Cursor() {
       }
     };
 
+    const drawDot = () => {
+      if (!state.visible) return;
+      ctx.fillStyle = brandAt(1);
+      ctx.beginPath();
+      ctx.arc(state.x, state.y, DOT_RADIUS, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
     const drawChip = () => {
       const alpha = state.chip;
       if (alpha < 0.02 || !state.label) return;
@@ -148,6 +163,7 @@ export function Cursor() {
       state.chip += (state.chipTarget - state.chip) * (reduce ? 1 : 0.2);
 
       if (!reduce) drawTrail(now);
+      drawDot();
       drawChip();
 
       const chipSettled =
@@ -171,6 +187,7 @@ export function Cursor() {
     const onMove = (event: PointerEvent) => {
       state.x = event.clientX;
       state.y = event.clientY;
+      state.visible = true;
       if (!reduce) {
         trail.push({ x: state.x, y: state.y, t: performance.now() });
         if (trail.length > MAX_POINTS) trail.shift();
@@ -182,6 +199,7 @@ export function Cursor() {
     };
 
     const onLeave = () => {
+      state.visible = false;
       state.chipTarget = 0;
       start();
     };
@@ -200,6 +218,7 @@ export function Cursor() {
       document.documentElement.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('resize', resize);
+      root.classList.remove('fw-no-cursor');
       canvas.remove();
     };
   }, []);

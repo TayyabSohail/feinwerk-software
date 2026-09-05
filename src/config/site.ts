@@ -11,7 +11,7 @@ export const siteConfig = {
   legalName: 'Feinwerk Software',
   tagline: 'Precision-engineered software.',
   description:
-    'Feinwerk Software is a software engineering studio building full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. From Islamabad and Fellbach, shipped worldwide.',
+    'Feinwerk Software is a software engineering studio building and maintaining full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. Fixed or custom quotes, committed dates, support after launch. From Islamabad and Fellbach, shipped worldwide.',
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
   // Email lives here so it can be swapped once the company inbox exists.
@@ -41,7 +41,6 @@ export const siteConfig = {
   founder: {
     name: 'Tayyab Sohail',
     role: 'Founder & Lead Engineer',
-    portfolio: 'https://tayyab-portfolio-chi.vercel.app/',
   },
   calLink: env.NEXT_PUBLIC_CAL_LINK
     ? `https://cal.com/${env.NEXT_PUBLIC_CAL_LINK}`

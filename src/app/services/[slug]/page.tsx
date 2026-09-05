@@ -138,6 +138,12 @@ export default async function ServicePage({ params }: PageProps) {
                   {service.engagement.pricing}
                 </dd>
               </div>
+              <div className='flex justify-between gap-6 py-4'>
+                <dt className='text-muted-foreground'>After launch</dt>
+                <dd className='text-right font-medium text-foreground'>
+                  {service.engagement.support}
+                </dd>
+              </div>
             </dl>
             <p className='mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
               Core stack
@@ -182,10 +188,7 @@ export default async function ServicePage({ params }: PageProps) {
             <p className='fw-kicker'>Typical use cases</p>
             <ul className='mt-6 divide-y divide-line'>
               {service.useCases.map((item) => (
-                <li
-                  key={item}
-                  className='py-4 text-[15px] text-foreground/85'
-                >
+                <li key={item} className='py-4 text-[15px] text-foreground/85'>
                   {item}
                 </li>
               ))}

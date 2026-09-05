@@ -1,7 +1,7 @@
 # Feinwerk Software
 
 Company website for **Feinwerk Software**, a software engineering studio with
-engineering in Rawalpindi, Pakistan and a European office in Fellbach, Germany.
+an Asian office in Islamabad, Pakistan and a European office in Fellbach, Germany.
 
 Built on Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, shadcn/ui,
 Framer Motion, Lenis and cobe (globe). Single light theme with a WebGL silk

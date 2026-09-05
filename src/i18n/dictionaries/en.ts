@@ -16,29 +16,20 @@ export const en = {
     language: 'Language',
   },
   hero: {
-    badge: 'Product engineering studio · Germany & Pakistan',
-    title: 'Custom software engineering, delivered on schedule',
-    accent: [3, 4, 5],
-    body: 'Feinwerk Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed price and a committed delivery date.',
+    badge: 'Product engineering studio',
+    title: 'Precision software,\nshipped on time',
+    accent: [2, 3, 4],
+    body: 'Feinwerk Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
     primary: 'Request a proposal',
     secondary: 'View our work',
-    stack: {
-      kicker: 'Every build ships with',
-      blocks: [
-        'Next.js',
-        'Postgres',
-        'Auth',
-        'Payments',
-        'CI/CD',
-        'LLM agents',
-        'Kubernetes',
-        'React Native',
-        'Test suite',
-        'Monitoring',
-        'Fixed price',
-        'Weekly demo',
-        'Handover docs',
-        'Shipped',
+    /** Block structures beside the hero copy, one name per product shape. */
+    build: {
+      kicker: 'Built to spec',
+      products: [
+        'Marketplace',
+        'AI assistant',
+        'Booking platform',
+        'ERP system',
       ],
     },
   },
@@ -83,23 +74,47 @@ export const en = {
       },
       engagement: {
         label: 'How we work together',
-        note: 'Priced for a result, not for hours.',
+        note: 'Priced for a result, not for hours. Custom scopes welcome, and every build is maintained after launch.',
       },
     },
     meta: {
       timeline: 'Timeline',
       team: 'Team',
       pricing: 'Pricing',
+      support: 'After launch',
     },
   },
   pricing: {
     kicker: 'Pricing plans',
     title: 'Choose the plan that works best for your business',
     description:
-      'Three fixed-price packages. Each one starts with a written scope and a committed date, and ends with a product you own outright.',
+      'Three fixed-price packages and a custom solution scoped to your brief. Each one starts with a written scope and a committed date, ends with a product you own outright, and is maintained by us after launch.',
     period: 'one time',
-    cta: 'Get Started Now',
-    note: 'Prices in USD, excluding VAT. Need something in between? Send a brief and you have a fixed quote within five working days.',
+    customPeriod: 'fixed quote',
+    customCta: 'Request a custom quote',
+    cta: 'Get started now',
+    note: 'Prices in USD, excluding VAT. Nothing here fits exactly? Every brief gets a custom scope and a fixed quote within five working days, and every plan comes with maintenance and support after launch.',
+    includes: {
+      title: 'Included in every plan, custom solutions too',
+      items: [
+        {
+          title: 'Written scope and fixed quote',
+          body: 'Standard package or custom solution: the price and the date are agreed in writing before work starts.',
+        },
+        {
+          title: 'Maintenance after launch',
+          body: 'Monitoring, fixes, updates and security patches. We do not hand over and disappear.',
+        },
+        {
+          title: 'Accountability for what we build',
+          body: 'One senior team answers for the product in production, for as long as you want us to.',
+        },
+        {
+          title: 'Full ownership',
+          body: 'Code, accounts and designs are yours from day one, with documentation to run it without us.',
+        },
+      ],
+    },
     plans: [
       {
         id: 'consulting' as const,
@@ -115,6 +130,7 @@ export const en = {
           'Hiring & team planning',
           'Risk mitigation strategy',
           '90-day growth blueprint',
+          'Follow-up sessions after delivery',
         ],
       },
       {
@@ -130,6 +146,7 @@ export const en = {
           'Perfect experience on any device',
           'Built-in growth tracking',
           '14 days of launch support',
+          'Ongoing maintenance and updates',
           'Full ownership of your product',
         ],
       },
@@ -146,7 +163,25 @@ export const en = {
           'Bank-level security protocols',
           'Lightning-fast performance',
           '30 days of dedicated support',
+          'Ongoing maintenance and updates',
           'Complete technical handover',
+        ],
+      },
+      {
+        id: 'custom' as const,
+        name: 'Custom Solution',
+        tagline:
+          'Scoped to your brief, priced in writing, maintained after launch.',
+        price: 'Custom',
+        features: [
+          'Written scope from your brief',
+          'Fixed quote within five working days',
+          'Any stack, integration or scale',
+          'AI, cloud, mobile and web combined',
+          'Committed launch date',
+          'Weekly demos and staging access',
+          'Maintenance and support after launch',
+          'Full ownership of your product',
         ],
       },
     ],
@@ -221,7 +256,8 @@ export const en = {
     description:
       'Clients in Europe, Asia, Africa and North America. An Asian office in Islamabad, a European office in Fellbach, and a working day that covers both.',
     bullets: [
-      'Fixed price and fixed date on every proposal',
+      'Fixed or custom price and a fixed date on every proposal',
+      'Maintenance and support after launch, on every project',
       'GDPR-compliant processing, DPA and NDA on request',
       'Senior engineers only, working across CET and PKT',
     ],
@@ -242,17 +278,17 @@ export const en = {
     kicker: 'How it works',
     title: 'From brief to launch, on a date',
     description:
-      'One call, a written plan, weekly demos, then a launch you can put in the calendar. You stay in control the whole way.',
+      'One call, a written plan, weekly demos, then a launch you can put in the calendar, and a team that keeps maintaining it afterwards. You stay in control the whole way.',
     stepLabel: 'Step',
     cta: 'Book the first call',
-    note: 'One call. Five working days to a fixed price and a launch date.',
+    note: 'One call. Five working days to a fixed or custom quote and a launch date. Maintained after launch.',
     steps: [
       {
         title: 'Tell us what has to exist',
         when: 'Day 1',
         summary:
-          'A 30-minute call. Walk us through the product, the users and the deadline. Within five working days you have a written scope, a fixed price and a launch date.',
-        outputs: ['Written scope', 'Fixed price', 'Launch date'],
+          'A 30-minute call. Walk us through the product, the users and the deadline. Within five working days you will have a written scope, a fixed price for a standard plan or a custom quote, and a launch date.',
+        outputs: ['Written scope', 'Fixed or custom quote', 'Launch date'],
       },
       {
         title: 'Watch it get built',
@@ -262,11 +298,11 @@ export const en = {
         outputs: ['Weekly demo', 'Staging access', 'Written update'],
       },
       {
-        title: 'Launch and keep it',
-        when: 'Launch day',
+        title: 'Launch, and we stay',
+        when: 'Launch day and after',
         summary:
-          'We ship, monitor the first weeks live, and hand over everything with documentation. Stay on a retainer or take it in-house. Yours either way.',
-        outputs: ['Monitoring', 'Documentation', 'Full hand-over'],
+          'We ship, monitor it live, fix what breaks and keep maintaining it. We do not hand over and disappear: stay on a maintenance plan for updates and support, or take it in-house with full documentation. Yours either way.',
+        outputs: ['Monitoring', 'Maintenance & support', 'Full handover'],
       },
     ],
   },
@@ -290,7 +326,7 @@ export const en = {
     kicker: "Let's talk",
     title: 'Ready to put a date on it?',
     accent: [5, 6],
-    body: 'Send a short brief today. Within a week you have a written scope, a fixed price and a launch date, with no obligation.',
+    body: 'Send a short brief today. Within a week you will have a written scope, a fixed or custom quote and a launch date, with no obligation. After launch we stay on to maintain what we built.',
     button: 'Start a project',
   },
   footer: {

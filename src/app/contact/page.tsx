@@ -38,7 +38,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         kicker='Contact'
         title='Tell us what has to be right.'
         accentWords={[5, 6]}
-        description='A few sentences is enough. We reply within one business day with a first take on scope, timeline and who would work on it.'
+        description='A few sentences are enough. We reply within one business day with a first take on scope, timeline and price, standard package or custom, and on who would build and maintain it.'
         size='lg'
       />
 

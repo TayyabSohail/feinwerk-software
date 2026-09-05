@@ -17,29 +17,19 @@ export const de: Dictionary = {
     language: 'Sprache',
   },
   hero: {
-    badge: 'Studio für Produktentwicklung · Deutschland & Pakistan',
-    title: 'Individuelle Software, termingerecht geliefert',
+    badge: 'Studio für Produktentwicklung',
+    title: 'Präzise Software,\npünktlich geliefert',
     accent: [2, 3],
-    body: 'Feinwerk Software konzipiert und entwickelt Webplattformen, KI-Systeme und Cloud-Infrastruktur für Unternehmen in Europa und Asien. Jedes Projekt beginnt mit definiertem Umfang, Festpreis und verbindlichem Liefertermin.',
+    body: 'Feinwerk Software konzipiert und entwickelt Webplattformen, KI-Systeme und Cloud-Infrastruktur für Unternehmen in Europa und Asien. Jedes Projekt beginnt mit definiertem Umfang, Fest- oder Individualpreis und verbindlichem Liefertermin, und wir warten, was wir bauen, auch nach dem Launch.',
     primary: 'Angebot anfordern',
     secondary: 'Unsere Arbeit ansehen',
-    stack: {
-      kicker: 'In jedem Projekt enthalten',
-      blocks: [
-        'Next.js',
-        'Postgres',
-        'Auth',
-        'Zahlungen',
-        'CI/CD',
-        'KI-Agenten',
-        'Kubernetes',
-        'React Native',
-        'Testsuite',
-        'Monitoring',
-        'Festpreis',
-        'Demo pro Woche',
-        'Übergabe-Doku',
-        'Geliefert',
+    build: {
+      kicker: 'Nach Maß gebaut',
+      products: [
+        'Marktplatz',
+        'KI-Assistent',
+        'Buchungsplattform',
+        'ERP-System',
       ],
     },
   },
@@ -84,23 +74,47 @@ export const de: Dictionary = {
       },
       engagement: {
         label: 'Wie wir zusammenarbeiten',
-        note: 'Bepreist nach Ergebnis, nicht nach Stunden.',
+        note: 'Bepreist nach Ergebnis, nicht nach Stunden. Individuelle Umfänge willkommen, und jedes Produkt wird nach dem Launch gewartet.',
       },
     },
     meta: {
       timeline: 'Zeitrahmen',
       team: 'Team',
       pricing: 'Preismodell',
+      support: 'Nach dem Launch',
     },
   },
   pricing: {
     kicker: 'Preise',
     title: 'Wählen Sie das Paket, das zu Ihrem Unternehmen passt',
     description:
-      'Drei Festpreispakete. Jedes beginnt mit schriftlichem Umfang und verbindlichem Termin und endet mit einem Produkt, das ganz Ihnen gehört.',
+      'Drei Festpreispakete und eine individuelle Lösung nach Ihrem Briefing. Jedes beginnt mit schriftlichem Umfang und verbindlichem Termin, endet mit einem Produkt, das ganz Ihnen gehört, und wird von uns nach dem Launch gewartet.',
     period: 'einmalig',
+    customPeriod: 'Festangebot',
+    customCta: 'Individuelles Angebot anfordern',
     cta: 'Jetzt starten',
-    note: 'Preise in USD, zzgl. MwSt. Sie brauchen etwas dazwischen? Schicken Sie ein Briefing und Sie erhalten innerhalb von fünf Werktagen ein Festpreisangebot.',
+    note: 'Preise in USD, zzgl. MwSt. Nichts passt genau? Jedes Briefing erhält einen individuellen Umfang und ein Festpreisangebot innerhalb von fünf Werktagen, und jedes Paket enthält Wartung und Support nach dem Launch.',
+    includes: {
+      title: 'In jedem Paket enthalten, auch bei individuellen Lösungen',
+      items: [
+        {
+          title: 'Schriftlicher Umfang und Festangebot',
+          body: 'Standardpaket oder individuelle Lösung: Preis und Termin werden schriftlich vereinbart, bevor die Arbeit beginnt.',
+        },
+        {
+          title: 'Wartung nach dem Launch',
+          body: 'Monitoring, Fehlerbehebung, Updates und Sicherheits-Patches. Wir übergeben nicht und verschwinden.',
+        },
+        {
+          title: 'Verantwortung für das, was wir bauen',
+          body: 'Ein erfahrenes Team steht für das Produkt im Betrieb ein, so lange Sie es wünschen.',
+        },
+        {
+          title: 'Volles Eigentum',
+          body: 'Code, Konten und Designs gehören Ihnen ab dem ersten Tag, mit Dokumentation, um es ohne uns zu betreiben.',
+        },
+      ],
+    },
     plans: [
       {
         id: 'consulting',
@@ -116,6 +130,7 @@ export const de: Dictionary = {
           'Hiring- und Teamplanung',
           'Strategie zur Risikominimierung',
           '90-Tage-Wachstumsplan',
+          'Folgetermine nach der Übergabe',
         ],
       },
       {
@@ -131,6 +146,7 @@ export const de: Dictionary = {
           'Perfekte Erfahrung auf jedem Gerät',
           'Integriertes Wachstums-Tracking',
           '14 Tage Launch-Support',
+          'Laufende Wartung und Updates',
           'Volles Eigentum an Ihrem Produkt',
         ],
       },
@@ -148,7 +164,25 @@ export const de: Dictionary = {
           'Sicherheit auf Bankniveau',
           'Blitzschnelle Performance',
           '30 Tage dedizierter Support',
+          'Laufende Wartung und Updates',
           'Vollständige technische Übergabe',
+        ],
+      },
+      {
+        id: 'custom',
+        name: 'Individuelle Lösung',
+        tagline:
+          'Nach Ihrem Briefing zugeschnitten, schriftlich bepreist, nach dem Launch gewartet.',
+        price: 'Individuell',
+        features: [
+          'Schriftlicher Umfang aus Ihrem Briefing',
+          'Festangebot innerhalb von fünf Werktagen',
+          'Jeder Stack, jede Integration, jede Größe',
+          'KI, Cloud, Mobile und Web kombiniert',
+          'Verbindliches Launch-Datum',
+          'Wöchentliche Demos und Staging-Zugang',
+          'Wartung und Support nach dem Launch',
+          'Volles Eigentum an Ihrem Produkt',
         ],
       },
     ],
@@ -229,7 +263,8 @@ export const de: Dictionary = {
     description:
       'Kunden in Europa, Asien, Afrika und Nordamerika. Ein asiatisches Büro in Islamabad, ein europäisches Büro in Fellbach, und ein Arbeitstag, der beides abdeckt.',
     bullets: [
-      'Festpreis und fester Termin in jedem Angebot',
+      'Fest- oder Individualpreis und fester Termin in jedem Angebot',
+      'Wartung und Support nach dem Launch, bei jedem Projekt',
       'DSGVO-konforme Verarbeitung, AVV und NDA auf Anfrage',
       'Ausschließlich Senior-Entwickler, in CET und PKT',
     ],
@@ -250,17 +285,21 @@ export const de: Dictionary = {
     kicker: 'So läuft es',
     title: 'Vom Briefing zum Launch, mit Datum',
     description:
-      'Ein Gespräch, ein schriftlicher Plan, wöchentliche Demos, dann ein Launch, den Sie in den Kalender eintragen können. Sie behalten die Kontrolle.',
+      'Ein Gespräch, ein schriftlicher Plan, wöchentliche Demos, dann ein Launch, den Sie in den Kalender eintragen können, und ein Team, das danach weiter wartet. Sie behalten die Kontrolle.',
     stepLabel: 'Schritt',
     cta: 'Erstgespräch buchen',
-    note: 'Ein Gespräch. Fünf Werktage bis Festpreis und Launch-Datum.',
+    note: 'Ein Gespräch. Fünf Werktage bis Fest- oder Individualangebot und Launch-Datum. Nach dem Launch gewartet.',
     steps: [
       {
         title: 'Sagen Sie uns, was entstehen muss',
         when: 'Tag 1',
         summary:
-          'Ein 30-minütiges Gespräch über Produkt, Nutzer und Termin. Innerhalb von fünf Werktagen erhalten Sie einen schriftlichen Umfang, einen Festpreis und ein Launch-Datum.',
-        outputs: ['Schriftlicher Umfang', 'Festpreis', 'Launch-Datum'],
+          'Ein 30-minütiges Gespräch über Produkt, Nutzer und Termin. Innerhalb von fünf Werktagen erhalten Sie einen schriftlichen Umfang, einen Festpreis für ein Standardpaket oder ein individuelles Angebot, und ein Launch-Datum.',
+        outputs: [
+          'Schriftlicher Umfang',
+          'Fest- oder Individualangebot',
+          'Launch-Datum',
+        ],
       },
       {
         title: 'Sehen Sie zu, wie es entsteht',
@@ -274,11 +313,11 @@ export const de: Dictionary = {
         ],
       },
       {
-        title: 'Launch, und es gehört Ihnen',
-        when: 'Launch-Tag',
+        title: 'Launch, und wir bleiben',
+        when: 'Launch-Tag und danach',
         summary:
-          'Wir gehen live, überwachen die ersten Wochen und übergeben alles mit Dokumentation. Retainer oder intern weiterführen, so oder so gehört es Ihnen.',
-        outputs: ['Monitoring', 'Dokumentation', 'Vollständige Übergabe'],
+          'Wir gehen live, überwachen den Betrieb, beheben, was bricht, und warten das Produkt weiter. Wir übergeben nicht und verschwinden: Bleiben Sie im Wartungsplan für Updates und Support, oder führen Sie es intern mit vollständiger Dokumentation weiter. So oder so gehört es Ihnen.',
+        outputs: ['Monitoring', 'Wartung & Support', 'Vollständige Übergabe'],
       },
     ],
   },
@@ -302,7 +341,7 @@ export const de: Dictionary = {
     kicker: 'Sprechen wir',
     title: 'Bereit, ein Datum festzulegen?',
     accent: [3, 4],
-    body: 'Schicken Sie uns heute ein kurzes Briefing. Innerhalb einer Woche erhalten Sie Umfang, Festpreis und Launch-Datum schriftlich, unverbindlich.',
+    body: 'Schicken Sie uns heute ein kurzes Briefing. Innerhalb einer Woche erhalten Sie Umfang, Fest- oder Individualangebot und Launch-Datum schriftlich, unverbindlich. Nach dem Launch bleiben wir dran und warten, was wir gebaut haben.',
     button: 'Projekt starten',
   },
   footer: {

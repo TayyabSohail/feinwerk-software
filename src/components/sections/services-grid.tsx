@@ -47,8 +47,8 @@ interface ServicesGridProps {
 /**
  * Services in two groups. The four capabilities (what we build) sit in a
  * hairline grid with their key deliverables and tools; the two engagement
- * models (how we work together) are offer panels with timeline, team and
- * pricing up front and a direct call to action.
+ * models (how we work together) are offer panels with timeline, team,
+ * pricing and after-launch support up front and a direct call to action.
  */
 export function ServicesGrid({
   dict,
@@ -203,6 +203,7 @@ function EngagementCard({ service, t }: { service: Service; t: ServicesCopy }) {
     [t.meta.timeline, service.engagement.timeline],
     [t.meta.team, service.engagement.team],
     [t.meta.pricing, service.engagement.pricing],
+    [t.meta.support, service.engagement.support],
   ];
 
   return (
@@ -224,7 +225,7 @@ function EngagementCard({ service, t }: { service: Service; t: ServicesCopy }) {
           {service.summary}
         </p>
 
-        <dl className='mt-7 grid gap-px border bg-line sm:grid-cols-3'>
+        <dl className='mt-7 grid gap-px border bg-line sm:grid-cols-2'>
           {terms.map(([label, value]) => (
             <div key={label} className='bg-surface p-4'>
               <dt className='font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground'>

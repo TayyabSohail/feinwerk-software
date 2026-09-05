@@ -11,7 +11,7 @@ export const processSteps: ProcessStep[] = [
     title: 'Brief',
     duration: 'Week 1',
     summary:
-      'One call to understand the problem, then a written scope, a fixed price and a launch date within five working days.',
+      'One call to understand the problem, then a written scope, a fixed price for a standard package or a custom quote, and a launch date within five working days.',
     outcome: 'You know exactly what you will get, when, and for how much.',
   },
   {
@@ -25,8 +25,8 @@ export const processSteps: ProcessStep[] = [
     title: 'Launch',
     duration: 'Launch week and after',
     summary:
-      'We ship, monitor the first weeks live, and hand over everything with documentation. Stay on a retainer or take it in-house.',
-    outcome: 'A product that is yours, running, and ready to grow.',
+      'We ship, monitor it live, fix what breaks and keep maintaining it. Stay on a maintenance plan or take it in-house with full documentation. We do not hand over and disappear.',
+    outcome: 'A product that is yours, running, maintained, and ready to grow.',
   },
 ];
 
@@ -37,8 +37,15 @@ export interface Guarantee {
 
 /** Commitments repeated in every proposal. */
 export const guarantees: Guarantee[] = [
-  { title: 'Fixed price', body: 'Quoted in writing, per phase.' },
+  {
+    title: 'Fixed price',
+    body: 'Quoted in writing, per phase. Custom scopes too.',
+  },
   { title: 'Fixed date', body: 'Agreed before work starts.' },
+  {
+    title: 'Maintained after launch',
+    body: 'Support, fixes and updates. We stay accountable.',
+  },
   { title: 'You own it all', body: 'Code, accounts and designs.' },
   { title: '1 business day', body: 'Reply time on every message.' },
 ];
@@ -63,6 +70,6 @@ export const values: Value[] = [
   },
   {
     title: 'Write it down',
-    body: 'Decisions and hand-over notes are documented as we go, so your team can run what we built without us.',
+    body: 'Decisions and handover notes are documented as we go, so your team can run what we built without us.',
   },
 ];

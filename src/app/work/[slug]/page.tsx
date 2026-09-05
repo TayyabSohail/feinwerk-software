@@ -10,7 +10,6 @@ import { ScrollHighlight } from '@/components/motion/scroll-highlight';
 import { TextReveal } from '@/components/motion/text-reveal';
 import { CtaBanner } from '@/components/sections/cta-banner';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
-import { Button } from '@/components/ui/button';
 import { ProjectGallery } from '@/components/work/project-gallery';
 
 import { getTechMeta } from '@/lib/tech-icons';
@@ -117,23 +116,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </p>
             </Reveal>
             <Reveal delay={0.45} className='mt-8 flex flex-wrap gap-3'>
-              {project.liveUrl ? (
-                <a
-                  href={project.liveUrl}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Button variant='brand' size='lg' icon={ArrowUpRight}>
-                    Visit live product
-                  </Button>
-                </a>
-              ) : (
-                <span className='inline-flex h-12 items-center rounded-full border border-line px-5 text-sm text-muted-foreground'>
-                  {project.anonymised
-                    ? 'Client project, name changed on request'
-                    : 'Private deployment, client project'}
-                </span>
-              )}
+              <span className='inline-flex h-12 items-center rounded-full border border-line px-5 text-sm text-muted-foreground'>
+                {project.anonymised
+                  ? 'Client project, name changed on request'
+                  : 'Private deployment, client project'}
+              </span>
             </Reveal>
           </div>
 

@@ -1,10 +1,12 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import { Fragment } from 'react';
 
 import { cn } from '@/lib/utils';
 
 interface LetterRevealProps {
+  /** A newline forces a line break; words are indexed across the whole text. */
   text: string;
   className?: string;
   as?: 'h1' | 'h2' | 'p' | 'span';
@@ -33,51 +35,62 @@ export function LetterReveal({
 }: LetterRevealProps) {
   const reduce = useReducedMotion();
   const Component = motion[as];
-  const words = text.split(' ');
+  const lines = text.split('\n');
   let index = 0;
+  let wordIndex = 0;
 
   return (
     <Component
       key={text}
-      aria-label={text}
+      aria-label={text.replace(/\n/g, ' ')}
       initial='hidden'
       whileInView='visible'
       viewport={{ once, margin: '0px 0px -10% 0px' }}
       className={cn('flex flex-wrap justify-center', className)}
     >
-      {words.map((word, wordIndex) => (
-        <span
-          key={`${word}-${wordIndex}`}
-          aria-hidden='true'
-          className={cn(
-            'mr-[0.28em] inline-flex overflow-hidden pb-[0.06em] last:mr-0',
-            accentWords.includes(wordIndex) && 'text-brand-text',
+      {lines.map((line, lineIndex) => (
+        <Fragment key={`${line}-${lineIndex}`}>
+          {lineIndex > 0 && (
+            <span aria-hidden='true' className='h-0 basis-full' />
           )}
-        >
-          {word.split('').map((letter, letterIndex) => {
-            const i = index++;
+          {line.split(' ').map((word, wordInLine) => {
+            const w = wordIndex++;
             return (
-              <motion.span
-                key={`${letter}-${letterIndex}`}
-                variants={{
-                  hidden: reduce ? {} : { y: '110%', opacity: 0 },
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                      duration: 0.8,
-                      ease,
-                      delay: delay + i * stagger,
-                    },
-                  },
-                }}
-                className='inline-block'
+              <span
+                key={`${word}-${wordInLine}`}
+                aria-hidden='true'
+                className={cn(
+                  'mr-[0.28em] inline-flex overflow-hidden pb-[0.06em] last:mr-0',
+                  accentWords.includes(w) && 'text-brand-text',
+                )}
               >
-                {letter}
-              </motion.span>
+                {word.split('').map((letter, letterIndex) => {
+                  const i = index++;
+                  return (
+                    <motion.span
+                      key={`${letter}-${letterIndex}`}
+                      variants={{
+                        hidden: reduce ? {} : { y: '110%', opacity: 0 },
+                        visible: {
+                          y: 0,
+                          opacity: 1,
+                          transition: {
+                            duration: 0.8,
+                            ease,
+                            delay: delay + i * stagger,
+                          },
+                        },
+                      }}
+                      className='inline-block'
+                    >
+                      {letter}
+                    </motion.span>
+                  );
+                })}
+              </span>
             );
           })}
-        </span>
+        </Fragment>
       ))}
     </Component>
   );
