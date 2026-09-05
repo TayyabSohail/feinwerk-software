@@ -23,15 +23,15 @@ export default async function ServicesPage() {
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: 'Home', href: paths.home },
-          { name: 'Services', href: paths.services },
+          { name: dict.nav.home, href: paths.home },
+          { name: dict.nav.services, href: paths.services },
         ]}
       />
       <PageHero
-        kicker='Services'
-        title='Engineering, scoped to an outcome.'
-        accentWords={[3, 4]}
-        description='Four capabilities and two ways to engage, covering the whole lifecycle of a software product from the first prototype to the team that runs it. Each one is priced for a result, not for hours, fits a standard package or a custom scope, and is maintained by us after launch.'
+        kicker={dict.servicesPage.kicker}
+        title={dict.servicesPage.title}
+        accentWords={[...dict.servicesPage.accent]}
+        description={dict.servicesPage.description}
       />
       <ServicesGrid dict={dict} withHeading={false} className='pt-0' />
       <Pricing dict={dict} />

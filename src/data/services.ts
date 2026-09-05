@@ -1,3 +1,7 @@
+import type { Locale } from '@/i18n/config';
+
+import { servicesDe } from './services.de';
+
 /**
  * Services offered. Drives /services, /services/[slug], the homepage grid,
  * the footer column and the contact form's "What do you need?" select.
@@ -342,3 +346,33 @@ export const capabilities = services.filter(
 export const engagements = services.filter(
   (service) => service.kind === 'engagement',
 );
+
+function localise(service: Service, locale: Locale): Service {
+  if (locale !== 'de') return service;
+  const t = servicesDe[service.slug];
+  if (!t) return service;
+  return { ...service, ...t, cta: t.cta ?? service.cta };
+}
+
+/** Every service in `locale`, in display order. */
+export function getServices(locale: Locale): Service[] {
+  return services.map((service) => localise(service, locale));
+}
+
+export function getServiceBySlugLocalised(
+  slug: string,
+  locale: Locale,
+): Service | undefined {
+  const service = getServiceBySlug(slug);
+  return service ? localise(service, locale) : undefined;
+}
+
+/** The four things we build, in `locale`. */
+export function getCapabilities(locale: Locale): Service[] {
+  return getServices(locale).filter((service) => service.kind === 'capability');
+}
+
+/** The two ways to work with us, in `locale`. */
+export function getEngagements(locale: Locale): Service[] {
+  return getServices(locale).filter((service) => service.kind === 'engagement');
+}

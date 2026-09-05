@@ -17,8 +17,8 @@ import { cn } from '@/lib/utils';
 
 import { paths } from '@/constants/paths';
 import {
-  capabilities,
-  engagements,
+  getCapabilities,
+  getEngagements,
   type Service,
   type ServiceIcon,
 } from '@/data/services';
@@ -56,6 +56,8 @@ export function ServicesGrid({
   className,
 }: ServicesGridProps) {
   const t = dict.services;
+  const capabilities = getCapabilities(dict.locale);
+  const engagements = getEngagements(dict.locale);
 
   return (
     <section id='services' className={cn('fw-section fw-rule', className)}>

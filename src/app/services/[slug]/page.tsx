@@ -16,7 +16,12 @@ import { getTechMeta } from '@/lib/tech-icons';
 
 import { paths } from '@/constants/paths';
 import { getProjectsBySlugs } from '@/data/projects';
-import { getServiceBySlug, services } from '@/data/services';
+import {
+  getServiceBySlug,
+  getServiceBySlugLocalised,
+  getServices,
+  services,
+} from '@/data/services';
 import { getDictionary } from '@/i18n/server';
 
 interface PageProps {
@@ -43,12 +48,14 @@ export async function generateMetadata({
 export default async function ServicePage({ params }: PageProps) {
   const dict = await getDictionary();
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = getServiceBySlugLocalised(slug, dict.locale);
   if (!service) notFound();
 
   const Icon = SERVICE_ICONS[service.icon];
   const proof = getProjectsBySlugs(service.proof).slice(0, 3);
-  const others = services.filter((item) => item.slug !== service.slug);
+  const others = getServices(dict.locale).filter(
+    (item) => item.slug !== service.slug,
+  );
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -68,8 +75,8 @@ export default async function ServicePage({ params }: PageProps) {
       />
       <BreadcrumbJsonLd
         items={[
-          { name: 'Home', href: paths.home },
-          { name: 'Services', href: paths.services },
+          { name: dict.nav.home, href: paths.home },
+          { name: dict.nav.services, href: paths.services },
           { name: service.title, href: paths.service(service.slug) },
         ]}
       />
@@ -81,7 +88,7 @@ export default async function ServicePage({ params }: PageProps) {
             className='group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground'
           >
             <ArrowLeft className='h-3.5 w-3.5 transition-transform group-hover:-translate-x-1' />
-            All services
+            {dict.servicePage.back}
           </Link>
         </Reveal>
 
@@ -93,8 +100,8 @@ export default async function ServicePage({ params }: PageProps) {
               </span>
               <p className='fw-kicker'>
                 {service.kind === 'engagement'
-                  ? 'Engagement model'
-                  : 'Capability'}
+                  ? dict.servicePage.kindEngagement
+                  : dict.servicePage.kindCapability}
               </p>
             </Reveal>
             <TextReveal
@@ -111,42 +118,50 @@ export default async function ServicePage({ params }: PageProps) {
             <Reveal delay={0.45} className='mt-8'>
               <Link href={`${paths.contact}?service=${service.slug}`}>
                 <Button variant='brand' size='xl' icon={ArrowUpRight}>
-                  Discuss this service
+                  {dict.servicePage.discuss}
                 </Button>
               </Link>
             </Reveal>
           </div>
 
           <Reveal delay={0.2} className='fw-card self-start p-7 sm:p-8'>
-            <p className='fw-kicker'>Engagement</p>
+            <p className='fw-kicker'>{dict.servicePage.engagement}</p>
             <dl className='mt-6 divide-y divide-line text-sm'>
               <div className='flex justify-between gap-6 py-4'>
-                <dt className='text-muted-foreground'>Timeline</dt>
+                <dt className='text-muted-foreground'>
+                  {dict.services.meta.timeline}
+                </dt>
                 <dd className='text-right font-medium text-foreground'>
                   {service.engagement.timeline}
                 </dd>
               </div>
               <div className='flex justify-between gap-6 py-4'>
-                <dt className='text-muted-foreground'>Team</dt>
+                <dt className='text-muted-foreground'>
+                  {dict.services.meta.team}
+                </dt>
                 <dd className='text-right font-medium text-foreground'>
                   {service.engagement.team}
                 </dd>
               </div>
               <div className='flex justify-between gap-6 py-4'>
-                <dt className='text-muted-foreground'>Pricing</dt>
+                <dt className='text-muted-foreground'>
+                  {dict.services.meta.pricing}
+                </dt>
                 <dd className='text-right font-medium text-foreground'>
                   {service.engagement.pricing}
                 </dd>
               </div>
               <div className='flex justify-between gap-6 py-4'>
-                <dt className='text-muted-foreground'>After launch</dt>
+                <dt className='text-muted-foreground'>
+                  {dict.services.meta.support}
+                </dt>
                 <dd className='text-right font-medium text-foreground'>
                   {service.engagement.support}
                 </dd>
               </div>
             </dl>
             <p className='mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-              Core stack
+              {dict.servicePage.coreStack}
             </p>
             <ul className='mt-3 flex flex-wrap gap-1.5'>
               {service.stack.map((tool) => {
@@ -169,7 +184,7 @@ export default async function ServicePage({ params }: PageProps) {
       <section className='fw-container py-16 lg:py-24'>
         <div className='grid gap-4 lg:grid-cols-2'>
           <Reveal className='fw-card p-7 sm:p-9'>
-            <p className='fw-kicker'>What is included</p>
+            <p className='fw-kicker'>{dict.servicePage.included}</p>
             <ul className='mt-6 space-y-3'>
               {service.deliverables.map((item) => (
                 <li
@@ -185,7 +200,7 @@ export default async function ServicePage({ params }: PageProps) {
             </ul>
           </Reveal>
           <Reveal delay={0.1} className='fw-card p-7 sm:p-9'>
-            <p className='fw-kicker'>Typical use cases</p>
+            <p className='fw-kicker'>{dict.servicePage.useCases}</p>
             <ul className='mt-6 divide-y divide-line'>
               {service.useCases.map((item) => (
                 <li key={item} className='py-4 text-[15px] text-foreground/85'>
@@ -201,16 +216,16 @@ export default async function ServicePage({ params }: PageProps) {
         <section className='fw-container'>
           <Reveal className='flex flex-wrap items-end justify-between gap-4'>
             <div>
-              <p className='fw-kicker'>Proof</p>
+              <p className='fw-kicker'>{dict.servicePage.proof}</p>
               <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-                Where we have done this before.
+                {dict.servicePage.proofTitle}
               </h2>
             </div>
             <Link
               href={paths.work}
               className='fw-link inline-flex items-center gap-1.5 text-sm font-medium text-foreground'
             >
-              All case studies <ArrowUpRight className='h-4 w-4' />
+              {dict.servicePage.allCaseStudies} <ArrowUpRight className='h-4 w-4' />
             </Link>
           </Reveal>
           <Stagger className='mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
@@ -225,14 +240,14 @@ export default async function ServicePage({ params }: PageProps) {
 
       <FaqSection
         items={service.faqs}
-        kicker='Questions'
-        title='About this service.'
-        accentWords={[1, 2]}
+        kicker={dict.servicePage.faqKicker}
+        title={dict.servicePage.faqTitle}
+        accentWords={[...dict.servicePage.faqAccent]}
       />
 
       <section className='fw-container pb-6'>
         <Reveal>
-          <p className='fw-kicker'>Other services</p>
+          <p className='fw-kicker'>{dict.servicePage.others}</p>
         </Reveal>
         <Stagger className='mt-6 grid gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-2 lg:grid-cols-5'>
           {others.map((item) => (

@@ -31,6 +31,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 
 import { siteConfig } from '@/config/site';
+import { getServiceBySlugLocalised } from '@/data/services';
 import { paths } from '@/constants/paths';
 import {
   BUDGET_OPTIONS,
@@ -39,16 +40,24 @@ import {
   SERVICE_OPTIONS,
 } from '@/schema/contact';
 
+import type { Dictionary } from '@/i18n/dictionaries/en';
+
 const FIELD =
   'h-12 rounded-none border-line bg-surface px-4 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0';
 
 interface ContactFormProps {
+  dict: Dictionary;
   /** Pre-select a service, e.g. when arriving from a service page. */
   defaultService?: string;
 }
 
-export function ContactForm({ defaultService }: ContactFormProps) {
+export function ContactForm({ dict, defaultService }: ContactFormProps) {
   const [sent, setSent] = useState(false);
+  const t = dict.contactForm;
+  const serviceLabel = (slug: string) =>
+    slug === 'other'
+      ? t.serviceOther
+      : (getServiceBySlugLocalised(slug, dict.locale)?.title ?? slug);
 
   const form = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
@@ -71,8 +80,7 @@ export function ContactForm({ defaultService }: ContactFormProps) {
     },
     onError: ({ error }) => {
       toast.error(
-        error.serverError ??
-          'Something went wrong. Please try again or email us directly.',
+        error.serverError ?? t.errorGeneric,
       );
     },
   });
@@ -84,20 +92,19 @@ export function ContactForm({ defaultService }: ContactFormProps) {
           <CheckCircle2 className='h-6 w-6' />
         </span>
         <h3 className='fw-display mt-6 text-display-sm text-foreground'>
-          Message received.
+          {t.sentTitle}
         </h3>
         <p className='mt-3 max-w-md text-base leading-relaxed text-muted-foreground'>
-          Thank you. We read every enquiry personally and reply{' '}
-          {siteConfig.responseTime}. If it is urgent, email us directly.
+          {t.sentBody.replace('{time}', siteConfig.responseTime)}
         </p>
         <div className='mt-6 flex flex-wrap gap-3'>
           <a href={`mailto:${siteConfig.email}`}>
             <Button variant='outline' icon={ArrowUpRight}>
-              Email us
+              {t.sentEmail}
             </Button>
           </a>
           <Button variant='ghost' onClick={() => setSent(false)}>
-            Send another
+            {t.sentAgain}
           </Button>
         </div>
       </div>
@@ -128,10 +135,10 @@ export function ContactForm({ defaultService }: ContactFormProps) {
             name='name'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full name</FormLabel>
+                <FormLabel>{t.name}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Jane Doe'
+                    placeholder={t.namePlaceholder}
                     autoComplete='name'
                     className={FIELD}
                     {...field}
@@ -146,11 +153,11 @@ export function ContactForm({ defaultService }: ContactFormProps) {
             name='email'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Work email</FormLabel>
+                <FormLabel>{t.email}</FormLabel>
                 <FormControl>
                   <Input
                     type='email'
-                    placeholder='jane@company.com'
+                    placeholder={t.emailPlaceholder}
                     autoComplete='email'
                     className={FIELD}
                     {...field}
@@ -175,7 +182,7 @@ export function ContactForm({ defaultService }: ContactFormProps) {
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder='Company or product name'
+                  placeholder={t.companyPlaceholder}
                   autoComplete='organization'
                   className={FIELD}
                   {...field}
@@ -192,17 +199,17 @@ export function ContactForm({ defaultService }: ContactFormProps) {
             name='service'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What do you need?</FormLabel>
+                <FormLabel>{t.service}</FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger className={FIELD}>
-                      <SelectValue placeholder='Choose a service' />
+                      <SelectValue placeholder={t.servicePlaceholder} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     {SERVICE_OPTIONS.map((option) => (
                       <SelectItem key={option.value} value={option.value}>
-                        {option.label}
+                        {serviceLabel(option.value)}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -216,17 +223,17 @@ export function ContactForm({ defaultService }: ContactFormProps) {
             name='budget'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Budget range</FormLabel>
+                <FormLabel>{t.budget}</FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger className={FIELD}>
-                      <SelectValue placeholder='Choose a range' />
+                      <SelectValue placeholder={t.budgetPlaceholder} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     {BUDGET_OPTIONS.map((option) => (
                       <SelectItem key={option.value} value={option.value}>
-                        {option.label}
+                        {t.budgets[option.value]}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -242,11 +249,11 @@ export function ContactForm({ defaultService }: ContactFormProps) {
           name='message'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>About the project</FormLabel>
+              <FormLabel>{t.message}</FormLabel>
               <FormControl>
                 <Textarea
                   rows={6}
-                  placeholder='What are you building, who is it for, and when does it need to exist?'
+                  placeholder={t.messagePlaceholder}
                   className='min-h-[9rem] rounded-none border-line bg-surface px-4 py-3 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0'
                   {...field}
                 />
@@ -272,15 +279,14 @@ export function ContactForm({ defaultService }: ContactFormProps) {
                   />
                 </FormControl>
                 <FormLabel className='text-sm font-normal leading-relaxed text-muted-foreground'>
-                  I agree that Feinwerk Software may store and process this
-                  enquiry to respond to me, as described in the{' '}
+                  {t.consentBefore}{' '}
                   <Link
                     href={paths.legal.privacy}
                     className='text-foreground underline underline-offset-4'
                   >
-                    privacy policy
+                    {t.consentLink}
                   </Link>
-                  .
+                  {t.consentAfter}
                 </FormLabel>
               </div>
               <FormMessage />
@@ -290,8 +296,7 @@ export function ContactForm({ defaultService }: ContactFormProps) {
 
         <div className='flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between'>
           <p className='text-xs text-muted-foreground'>
-            We reply {siteConfig.responseTime}. No newsletters, no drip
-            campaigns.
+            {t.replyNote.replace('{time}', siteConfig.responseTime)}
           </p>
           <Button
             type='submit'
@@ -300,7 +305,7 @@ export function ContactForm({ defaultService }: ContactFormProps) {
             icon={ArrowUpRight}
             isLoading={isExecuting}
           >
-            Send enquiry
+            {t.submit}
           </Button>
         </div>
       </form>

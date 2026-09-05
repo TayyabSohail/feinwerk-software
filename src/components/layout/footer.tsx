@@ -8,7 +8,7 @@ import { BackToTop } from '@/components/layout/back-to-top';
 import { siteConfig } from '@/config/site';
 import { primaryNav } from '@/constants/navigation';
 import { isSectionLink, paths } from '@/constants/paths';
-import { services } from '@/data/services';
+import { getServices } from '@/data/services';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface FooterProps {
@@ -18,6 +18,7 @@ interface FooterProps {
 export function Footer({ dict }: FooterProps) {
   const year = new Date().getFullYear();
   const t = dict.footer;
+  const services = getServices(dict.locale);
 
   // Same links, same order as the header, so the two never disagree.
   const companyLinks = [

@@ -9,11 +9,12 @@ import { ServicesGrid } from '@/components/sections/services-grid';
 import { Technologies } from '@/components/sections/technologies';
 import { Testimonials } from '@/components/sections/testimonials';
 
-import { faqs } from '@/data/faqs';
+import { getFaqs } from '@/data/faqs';
 import { getDictionary } from '@/i18n/server';
 
 export default async function HomePage() {
   const dict = await getDictionary();
+  const faqs = getFaqs(dict.locale);
 
   return (
     <>
