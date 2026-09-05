@@ -14,7 +14,7 @@ interface FeaturedWorkProps {
 
 /**
  * Every main product on a device mockup, with tab filters. Projects flagged
- * `notable` are left to the "Notable projects" band on /work.
+ * `notable` are left out of the showcase and only have their own pages.
  */
 export function FeaturedWork({ dict }: FeaturedWorkProps) {
   const t = dict.work;

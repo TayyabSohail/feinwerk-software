@@ -117,12 +117,18 @@ export function MobileMenu({ dict }: MobileMenuProps) {
                         // them; Next's own jump would fight it.
                         onClick={() => setOpen(false)}
                         scroll={!isSectionLink(item.href)}
+                        aria-current={active ? 'page' : undefined}
                         className={cn(
                           'flex items-baseline gap-4 py-3',
                           active ? 'text-brand-text' : 'text-foreground',
                         )}
                       >
-                        <span className='fw-display text-display-md uppercase'>
+                        <span
+                          className={cn(
+                            'fw-display text-display-md uppercase',
+                            active && 'underline underline-offset-[6px]',
+                          )}
+                        >
                           {item.label}
                         </span>
                       </Link>

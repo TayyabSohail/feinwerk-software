@@ -13,8 +13,8 @@ const TRAIL_MS = 140;
 const TRAIL_LENGTH = 28;
 const MAX_POINTS = 16;
 
-/* The pointer itself: a plain emerald dot, six pixels across. */
-const DOT_RADIUS = 3;
+/* The pointer itself: a plain emerald dot, eight pixels across. */
+const DOT_RADIUS = 4;
 
 /**
  * Replaces the native pointer with a plain emerald dot on fine-pointer

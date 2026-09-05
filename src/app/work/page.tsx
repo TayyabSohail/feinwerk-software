@@ -3,15 +3,10 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/common/page-hero';
 import { CtaBanner } from '@/components/sections/cta-banner';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
-import { NotableProjects } from '@/components/work/notable-projects';
 import { ProjectGrid } from '@/components/work/project-grid';
 
 import { paths } from '@/constants/paths';
-import {
-  getCategories,
-  getNotableProjects,
-  getShowcaseProjects,
-} from '@/data/projects';
+import { getCategories, getShowcaseProjects } from '@/data/projects';
 import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
@@ -50,14 +45,6 @@ export default async function WorkPage() {
           countTemplate={t.count}
         />
       </section>
-      <NotableProjects
-        projects={getNotableProjects()}
-        kicker={t.notable.kicker}
-        title={t.notable.title}
-        description={t.notable.description}
-        actionLabel={t.view}
-        className='mt-10'
-      />
       <CtaBanner dict={dict} />
     </>
   );

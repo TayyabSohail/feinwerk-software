@@ -58,13 +58,21 @@ export function Header({ dict }: HeaderProps) {
                 scroll={!isSectionLink(item.href)}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'fw-link font-mono text-[11px] font-medium uppercase tracking-[0.2em] transition-colors',
+                  'relative font-mono text-[11px] uppercase tracking-[0.2em] transition-colors',
                   active
-                    ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground',
+                    ? 'font-bold text-foreground'
+                    : 'fw-link font-medium text-muted-foreground hover:text-foreground',
                 )}
               >
                 {item.label}
+                {/* The current page keeps a solid underline; other links get
+                    the sliding fw-link one on hover. */}
+                {active && (
+                  <span
+                    aria-hidden
+                    className='absolute -bottom-1.5 left-0 h-[2px] w-full bg-foreground'
+                  />
+                )}
               </Link>
             );
           })}

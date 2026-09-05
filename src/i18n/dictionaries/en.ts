@@ -55,12 +55,6 @@ export const en = {
       Web: 'Web',
     },
     count: '{n} projects',
-    notable: {
-      kicker: 'Also shipped',
-      title: 'Notable projects',
-      description:
-        'Apps, sites and side builds alongside the main products. Each one has its own page, and the list grows as new work ships.',
-    },
   },
   services: {
     kicker: 'Services',

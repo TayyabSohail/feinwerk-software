@@ -108,8 +108,8 @@ export interface Project {
   /** Featured projects appear in the homepage showcase, in this order. */
   featured?: number;
   /**
-   * Smaller builds, apps and side projects. Listed under "Notable projects"
-   * on /work instead of the main showcase; still get a full case-study page.
+   * Smaller builds, apps and side projects. Kept out of the main showcase on
+   * the homepage and /work; each still gets a full case-study page.
    */
   notable?: boolean;
   /** Headline metric for cards and the homepage outcomes strip. */
@@ -1474,11 +1474,6 @@ export function getProjectsBySlugs(slugs: readonly string[]): Project[] {
 /** Main products: every project not flagged `notable`. */
 export function getShowcaseProjects(): Project[] {
   return projects.filter((project) => !project.notable);
-}
-
-/** Smaller builds and side projects, for the "Notable projects" band. */
-export function getNotableProjects(): Project[] {
-  return projects.filter((project) => project.notable === true);
 }
 
 /** Categories present in `list`, in display order. */

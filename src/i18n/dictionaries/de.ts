@@ -55,12 +55,6 @@ export const de: Dictionary = {
       Web: 'Web',
     },
     count: '{n} Projekte',
-    notable: {
-      kicker: 'Ebenfalls geliefert',
-      title: 'Nennenswerte Projekte',
-      description:
-        'Apps, Websites und Nebenprojekte neben den Hauptprodukten. Jedes hat eine eigene Seite, und die Liste wächst mit jedem Release.',
-    },
   },
   services: {
     kicker: 'Leistungen',

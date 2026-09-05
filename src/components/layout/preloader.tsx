@@ -88,7 +88,7 @@ export function Preloader() {
             ))}
           </div>
           <div className='mt-8 flex w-[min(28rem,80vw)] items-center gap-4 font-mono text-[11px] uppercase tracking-[0.3em] text-white/60'>
-            <span>Software</span>
+            <span>Precision</span>
             <span className='relative h-px flex-1 bg-white/15'>
               <span
                 className='absolute inset-y-0 left-0 bg-brand'
