@@ -1,0 +1,54 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#2563eb}
+.tk .who{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.tk .who b{font-size:12.5px}
+.tk .amt{font-weight:600;font-variant-numeric:tabular-nums}
+.tk .src{display:inline-block;font-size:10px;padding:2px 6px;border-radius:5px;background:var(--soft);color:var(--muted);margin-top:6px}
+.tk.ai{border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:color-mix(in srgb,var(--accent) 5%,var(--panel))}
+.tk.ai .src{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.col h4 .cnt{background:var(--soft);padding:1px 7px;border-radius:99px;font-size:10px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Meridian Estates</div>
+  <div class="lab">Portfolio</div>
+  <div class="nav"><b></b>Overview</div><div class="nav"><b></b>Properties</div><div class="nav"><b></b>Units</div><div class="nav"><b></b>Tenants</div><div class="nav"><b></b>Leases</div>
+  <div class="lab">Operations</div>
+  <div class="nav on"><b></b>CRM</div><div class="nav"><b></b>Documents</div><div class="nav"><b></b>AI agents</div><div class="nav"><b></b>Marketing</div><div class="nav"><b></b>Reports</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Layla Haddad<small>Agency admin · 3 agencies</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">CRM / <b>Leasing pipeline</b></div><div class="right"><span class="pill on"><span class="dot"></span>CRM agent scoring leads</span><span class="pill d-only">This week</span><span class="btn d-only">Add lead</span></div></div>
+  <div class="content">
+   <div class="kpis">
+    <div class="card kpi"><div class="l">New leads · 7d</div><div class="v">38</div><div class="d">+22% · portal campaign</div></div>
+    <div class="card kpi"><div class="l">Viewings booked</div><div class="v">14</div><div class="d m">6 today</div></div>
+    <div class="card kpi"><div class="l">Offers</div><div class="v">5</div><div class="d m">AED 618k annual</div></div>
+    <div class="card kpi"><div class="l">Lead → contract</div><div class="v">9 d</div><div class="d">was 16 d before automation</div></div>
+   </div>
+   <div class="kanban">
+    <div class="col"><h4>New leads <span class="cnt">12</span></h4>
+     <div class="tk ai"><div class="who"><span class="avatar" style="width:22px;height:22px"></span><b>Omar Farouk</b></div>2BR · Marina Heights · budget <span class="amt">AED 110k</span><span class="src">Scored 92 · call today</span></div>
+     <div class="tk"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#f59e0b"></span><b>Priya Menon</b></div>Studio · Downtown · budget <span class="amt">AED 62k</span><span class="src">Property Finder</span></div>
+     <div class="tk m-hide"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#a855f7"></span><b>Nasser Al Ali</b></div>Office · Business Bay · <span class="amt">AED 240k</span><span class="src">Referral</span></div>
+    </div>
+    <div class="col"><h4>Viewing booked <span class="cnt">6</span></h4>
+     <div class="tk"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#22c55e"></span><b>Sofia Reyes</b></div>1BR · Palm Court 807 · Thu 16:00<span class="src">Agent: Karim</span></div>
+     <div class="tk"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#0ea5e9"></span><b>Daniel Chen</b></div>3BR · Al Barsha Villa 4 · Sat 11:00<span class="src">Agent: Layla</span></div>
+     <div class="tk m-hide"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#ef4444"></span><b>Aisha Rahman</b></div>2BR · Marina Heights 2104 · Fri 18:30<span class="src">Agent: Karim</span></div>
+    </div>
+    <div class="col m-hide"><h4>Offer made <span class="cnt">3</span></h4>
+     <div class="tk ai"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#f97316"></span><b>Hassan Qureshi</b></div>2BR · Downtown Loft 12 · <span class="amt">AED 98k</span> · 2 cheques<span class="src">Counter-offer drafted by agent</span></div>
+     <div class="tk"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#14b8a6"></span><b>Elena Petrova</b></div>Studio · Marina Heights 704 · <span class="amt">AED 58k</span><span class="src">Awaiting landlord</span></div>
+    </div>
+    <div class="col m-hide"><h4>Contract <span class="cnt">2</span></h4>
+     <div class="tk"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#6366f1"></span><b>Mark Whitfield</b></div>Office · Business Bay 1502 · <span class="amt">AED 236k</span><span class="src">E-sign · 1 of 2 signed</span></div>
+     <div class="tk"><div class="who"><span class="avatar" style="width:22px;height:22px;background:#84cc16"></span><b>Fatima Zahra</b></div>1BR · Palm Court 1204 · <span class="amt">AED 74k</span><span class="src">Ejari registration queued</span></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Overview</span><span><b></b>Properties</span><span class="on"><b></b>CRM</span><span><b></b>Documents</span><span><b></b>Agents</span></div>
+ </div>
+</div></body></html>

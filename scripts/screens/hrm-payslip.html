@@ -1,0 +1,51 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#10b981}
+.slip{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.slip h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:6px}
+.stat.sum{font-weight:600;border-top:1px solid var(--line);border-bottom:0;margin-top:4px}
+.net{background:#0f172a;color:#fff;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
+.net .v{font-size:26px;font-weight:600;letter-spacing:-.02em}
+.net small{color:rgba(255,255,255,.6);display:block;font-size:11px}
+@media (max-width:600px){.slip{grid-template-columns:1fr}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Bitsmiths HRM</div>
+  <div class="lab">Employee</div>
+  <div class="nav"><b></b>Dashboard</div><div class="nav"><b></b>Leave</div><div class="nav"><b></b>Medical</div><div class="nav"><b></b>Overtime</div><div class="nav on"><b></b>Payslips</div><div class="nav"><b></b>Policies &amp; Contract</div><div class="nav"><b></b>Profile</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Hamza<small>Software engineer</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Payslips / <b>2026-07</b></div><div class="right"><span class="pill d-only">‹ 2026-06</span><span class="btn ghost">Download PDF</span></div></div>
+  <div class="content">
+   <div class="row between"><div><h1>Payslip · July 2026</h1><div class="sub">Hamza A. · Software engineer · Employee #0142 · Paid 31 Jul to Meezan ···2210</div></div><span class="tag g d-only">Paid</span></div>
+   <div class="grid2" style="grid-template-columns:1.5fr 1fr">
+    <div class="card">
+     <div class="slip">
+      <div><h4>Earnings</h4><div class="stat"><span>Basic salary</span><b>Rs 160,000</b></div><div class="stat"><span>Medical allowance</span><b>Rs 5,000</b></div><div class="stat"><span>Overtime · 6 h @ 1,500</span><b>Rs 9,000</b></div><div class="stat sum"><span>Gross</span><b>Rs 174,000</b></div></div>
+      <div><h4>Deductions</h4><div class="stat"><span>Income tax</span><b>Rs 14,562</b></div><div class="stat"><span>EOBI</span><b>Rs 1,850</b></div><div class="stat"><span>Provident fund</span><b>Rs 600</b></div><div class="stat sum"><span>Total deductions</span><b>Rs 17,012</b></div></div>
+     </div>
+     <div class="net" style="margin-top:16px"><div><small>Net pay</small><div class="v">Rs 156,988</div></div><div style="text-align:right"><small>Working days</small><b>22 / 22</b></div></div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Audit trail <span>Who did what</span></h3>
+      <div class="steps">
+       <div class="step"><i></i><div>Generated<small>28 Jul · from attendance, leave and overtime</small></div></div>
+       <div class="step"><i></i><div>Reviewed by HR<small>29 Jul · Sana R.</small></div></div>
+       <div class="step"><i></i><div>Approved by admin<small>30 Jul · Omar B.</small></div></div>
+       <div class="step"><i></i><div>Paid<small>31 Jul · bank transfer batch #0731</small></div></div>
+      </div>
+     </div>
+     <div class="card flat m-hide">
+      <h3>Year to date</h3>
+      <div class="stat"><span>Gross</span><b>Rs 1,204,000</b></div><div class="stat"><span>Tax paid</span><b>Rs 101,934</b></div><div class="stat"><span>Overtime</span><b>31 h</b></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Home</span><span><b></b>Leave</span><span><b></b>Medical</span><span class="on"><b></b>Payslips</span><span><b></b>Profile</span></div>
+ </div>
+</div></body></html>

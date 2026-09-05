@@ -1,0 +1,56 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#10b981}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.total td{font-weight:600;background:var(--panel-2)}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Bitsmiths HRM</div>
+  <div class="lab">Admin</div>
+  <div class="nav"><b></b>Overview</div><div class="nav"><b></b>Employees<span class="cnt">48</span></div><div class="nav"><b></b>Requests<span class="cnt">5</span></div><div class="nav on"><b></b>Payroll</div><div class="nav"><b></b>Overtime</div><div class="nav"><b></b>Policies</div><div class="nav"><b></b>Audit log</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Sana R.<small>HR admin</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Payroll / <b>Cycle 2026-08</b></div><div class="right"><span class="pill"><span class="dot" style="background:var(--warn)"></span>Awaiting approval</span><span class="btn ghost d-only">Export bank file</span><span class="btn">Approve cycle</span></div></div>
+  <div class="content">
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Employees</div><div class="v">48</div><div class="d m">2 joined this cycle</div></div>
+    <div class="card kpi"><div class="l">Gross</div><div class="v">Rs 9.24M</div><div class="d m">incl. Rs 182k overtime</div></div>
+    <div class="card kpi"><div class="l">Deductions</div><div class="v">Rs 1.12M</div><div class="d m">Tax · EOBI · unpaid leave</div></div>
+    <div class="card kpi"><div class="l">Net payable</div><div class="v">Rs 8.12M</div><div class="d">Pay date 31 Aug</div></div>
+   </div>
+   <div class="grid2" style="grid-template-columns:1.6fr 1fr">
+    <div class="card">
+     <h3>Payroll register <span>Generated 28 Aug · 48 payslips</span></h3>
+     <table>
+      <tr><th>Employee</th><th class="num">Basic</th><th class="num d-only">Overtime</th><th class="num d-only">Deductions</th><th class="num">Net</th><th>Status</th></tr>
+      <tr><td><b>Hamza A.</b><div class="faint small">Software engineer</div></td><td class="num">160,000</td><td class="num d-only">9,000</td><td class="num d-only">12,012</td><td class="num"><b>156,988</b></td><td><span class="tag g">Reviewed</span></td></tr>
+      <tr><td><b>Ayesha K.</b><div class="faint small">Product designer</div></td><td class="num">150,000</td><td class="num d-only">0</td><td class="num d-only">11,250</td><td class="num"><b>138,750</b></td><td><span class="tag g">Reviewed</span></td></tr>
+      <tr><td><b>Bilal S.</b><div class="faint small">QA engineer</div></td><td class="num">120,000</td><td class="num d-only">4,500</td><td class="num d-only">13,900</td><td class="num"><b>110,600</b></td><td><span class="tag w">Unpaid leave · 1 d</span></td></tr>
+      <tr><td><b>Maryam T.</b><div class="faint small">Frontend engineer</div></td><td class="num">140,000</td><td class="num d-only">12,000</td><td class="num d-only">11,400</td><td class="num"><b>140,600</b></td><td><span class="tag g">Reviewed</span></td></tr>
+      <tr class="m-hide"><td><b>Usman F.</b><div class="faint small">DevOps engineer</div></td><td class="num">170,000</td><td class="num d-only">0</td><td class="num d-only">12,750</td><td class="num"><b>157,250</b></td><td><span class="tag n">Joined 12 Aug · pro-rated</span></td></tr>
+      <tr class="total m-hide"><td>48 employees</td><td class="num">8,860,000</td><td class="num d-only">182,000</td><td class="num d-only">1,121,400</td><td class="num">8,120,600</td><td></td></tr>
+     </table>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Approval <span>Two-step</span></h3>
+      <div class="steps">
+       <div class="step"><i></i><div>Generated from attendance and requests<small>28 Aug · system</small></div></div>
+       <div class="step"><i></i><div>Reviewed by HR<small>29 Aug · Sana R. · 48 / 48 checked</small></div></div>
+       <div class="step todo"><i></i><div>Admin approval<small>Locks the cycle and issues payslips</small></div></div>
+       <div class="step todo m-hide"><i></i><div>Bank transfer file<small>Meezan bulk format</small></div></div>
+      </div>
+     </div>
+     <div class="card flat m-hide">
+      <h3>Changes since last cycle</h3>
+      <div class="stat"><span>Overtime hours</span><b>+38 h</b></div><div class="stat"><span>New joiners</span><b>2</b></div><div class="stat"><span>Unpaid leave days</span><b>1</b></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Overview</span><span><b></b>People</span><span><b></b>Requests</span><span class="on"><b></b>Payroll</span><span><b></b>Audit</span></div>
+ </div>
+</div></body></html>

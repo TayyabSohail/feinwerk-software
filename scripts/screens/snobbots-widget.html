@@ -1,0 +1,51 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#06b6d4;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#fbf8f4;--panel:#ffffff;--panel-2:#f3ede6;--line:rgba(80,50,30,.1);--soft:rgba(80,50,30,.06)}
+.logo{font-family:var(--display);font-size:22px;font-weight:500;color:#7a3b3b}
+.navbar .links{font-size:12.5px}
+.shop-hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:26px 40px 18px;align-items:center}
+.shop-hero h1{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.08;letter-spacing:-.01em}
+.shop-hero p{color:var(--muted);margin-top:12px;font-size:14px;max-width:380px}
+.shop-hero .ph{height:200px;border-radius:16px;--img:linear-gradient(140deg,#f3d1c8,#c96a6a 60%,#7a3b3b)}
+.products{grid-template-columns:repeat(4,1fr);padding:0 40px}
+.prod .ph{aspect-ratio:1/.9;border-radius:12px}
+.prod .price{float:right;font-weight:600}
+.btn{background:#7a3b3b;color:#fff;border-radius:999px}
+.widget{position:fixed;right:22px;bottom:22px;width:340px;height:440px;background:#fff;border-radius:16px;box-shadow:0 30px 80px -20px rgba(30,20,10,.45),0 0 0 1px var(--line);display:flex;flex-direction:column;overflow:hidden;z-index:9}
+.widget .wh{background:#0b0d10;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.widget .wh b{display:block;font-size:13px}
+.widget .wh small{color:rgba(255,255,255,.6);font-size:11px}
+.widget .wh .avatar{background:var(--accent)}
+.widget .chat{padding:14px;flex:1;overflow:hidden}
+.widget .msg{font-size:12px;background:#f1f3f5}
+.widget .msg.me{background:#0b0d10;color:#fff}
+.widget .msg.me small{color:rgba(255,255,255,.55)}
+.widget .compose{margin:0 12px 12px;border-radius:12px}
+.widget .compose b{background:var(--accent)}
+.widget .src{display:inline-flex;gap:6px;margin-top:6px}
+.widget .src span{font-size:10px;padding:2px 7px;border-radius:5px;background:rgba(0,0,0,.06);color:var(--muted)}
+.bubble{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:var(--accent);display:none}
+@media (max-width:600px){.shop-hero{grid-template-columns:1fr;padding:22px 22px 12px;gap:16px}.shop-hero h1{font-size:30px}.shop-hero .ph{height:130px}.products{padding:0 22px}.widget{left:12px;right:12px;bottom:12px;width:auto;height:62vh}}
+</style></head><body>
+<div class="site">
+ <div class="navbar line"><div class="logo">Bloom &amp; Co.</div><div class="links"><span>Bouquets</span><span>Plants</span><span>Weddings</span><span>Subscriptions</span></div><div class="row"><span class="pill d-only">Bag · 1</span><span class="btn">Order now</span><span class="burger"></span></div></div>
+ <div class="page">
+  <div class="shop-hero"><div><div class="eyebrow" style="color:#7a3b3b">Cut this morning</div><h1>Fresh flowers, delivered tomorrow.</h1><p>Seasonal bouquets from growers within 50 km of Warsaw, arranged by hand and delivered before noon.</p><div class="cta" style="justify-content:flex-start"><span class="btn lg">Shop bouquets</span></div></div><div class="ph"></div></div>
+  <div class="products">
+   <div class="prod"><div class="ph" style="--img:linear-gradient(150deg,#f6dede,#d98a8a)"></div><b>Garden roses<span class="price">zł 149</span></b><small>Seasonal · 12 stems</small></div>
+   <div class="prod"><div class="ph" style="--img:linear-gradient(150deg,#f3ead7,#d9b86a)"></div><b>Sunflower bunch<span class="price">zł 89</span></b><small>Bright · 7 stems</small></div>
+   <div class="prod d-only"><div class="ph" style="--img:linear-gradient(150deg,#e8e3f3,#9c8ad1)"></div><b>Lavender &amp; eucalyptus<span class="price">zł 119</span></b><small>Dried · lasts months</small></div>
+   <div class="prod d-only"><div class="ph" style="--img:linear-gradient(150deg,#e4efe4,#7fae86)"></div><b>Monstera, potted<span class="price">zł 199</span></b><small>Plant · 60 cm</small></div>
+  </div>
+ </div>
+ <div class="widget">
+  <div class="wh"><span class="avatar"></span><div><b>Bloom &amp; Co. assistant</b><small>Online · answers in about a second</small></div></div>
+  <div class="chat">
+   <div class="msg me">Hi, where is my order #48213?<small>You · 14:02</small></div>
+   <div class="msg bot">Your order shipped yesterday with DHL and is due <b>Thursday before 6 pm</b>. Tracking 0034 8127 9915.<span class="src"><span>Your orders</span><span>DHL</span></span><small>14:02</small></div>
+   <div class="msg me">Can I change the delivery address?<small>You · 14:03</small></div>
+   <div class="msg bot">Yes. I've emailed you a secure link to update it before the courier's first attempt.<span class="src"><span>Shipping policy</span></span><small>14:03</small></div>
+  </div>
+  <div class="compose">Ask about orders, delivery or care…<b></b></div>
+ </div>
+</div></body></html>

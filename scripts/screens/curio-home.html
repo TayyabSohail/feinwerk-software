@@ -1,0 +1,28 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#111111;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#f4f4f2;--panel:#ffffff;--panel-2:#ebebe8;--line:rgba(0,0,0,.1);--soft:rgba(0,0,0,.05);--on-accent:#ffffff}
+.logo{font-weight:300;font-size:20px;letter-spacing:.42em;text-transform:uppercase}
+.navbar .links{font-weight:400;letter-spacing:.02em;font-size:12.5px}
+.btn{border-radius:999px;font-weight:500;padding:9px 16px}
+.btn.ghost{border-color:var(--text)}
+.hero{padding:96px 40px 40px;position:relative}
+.hero .pre{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-family:var(--display);font-weight:300;font-size:58px;line-height:1.08;letter-spacing:-.015em;max-width:820px;margin-top:14px}
+.hero p{font-size:15px;max-width:460px;color:var(--muted);font-weight:300}
+.blob{position:absolute;left:-120px;bottom:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#e8e6df,transparent 70%);z-index:-1}
+.marq{display:flex;gap:44px;justify-content:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);padding-top:26px;border-top:1px solid var(--line);margin:34px 40px 0}
+@media (max-width:600px){.hero{padding:72px 22px 30px}.hero h1{font-size:40px}.marq{flex-direction:column;gap:12px;align-items:center;margin:26px 22px 0}}
+</style></head><body>
+<div class="site">
+ <div class="navbar"><div class="logo">Curio</div><div class="links"><span>Marketplace</span><span>Moods</span><span>Sellers</span><span>Press</span></div><div class="row"><span class="btn ghost d-only">Take the quiz</span><span class="btn">Become a seller</span><span class="burger"></span></div></div>
+ <div class="page">
+  <div class="hero">
+   <span class="blob"></span>
+   <div class="pre">Curio presents</div>
+   <h1>A marketplace that already knows your taste.</h1>
+   <p>Take a two-minute quiz. We turn the answers into a feed of independent brands you will actually keep, not a wall of everything.</p>
+   <div class="cta"><span class="btn lg">Explore the marketplace</span><span class="btn ghost lg">Take the quiz</span></div>
+  </div>
+  <div class="marq"><span>140 independent sellers</span><span>Ships with DHL</span><span>One checkout, many brands</span><span class="m-hide">Returns in 14 days</span></div>
+ </div>
+</div></body></html>

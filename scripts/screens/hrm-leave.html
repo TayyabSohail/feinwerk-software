@@ -1,0 +1,49 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#10b981}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:11px}
+.week div{padding:8px 0;border-radius:8px;background:var(--panel-2);color:var(--muted)}
+.week div b{display:block;font-size:14px;color:var(--text);margin-top:2px}
+.week div.off{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.week div.off b{color:var(--accent)}
+.week div.we{opacity:.5}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Bitsmiths HRM</div>
+  <div class="lab">Employee</div>
+  <div class="nav"><b></b>Dashboard</div><div class="nav on"><b></b>Leave</div><div class="nav"><b></b>Medical</div><div class="nav"><b></b>Overtime</div><div class="nav"><b></b>Payslips</div><div class="nav"><b></b>Policies &amp; Contract</div><div class="nav"><b></b>Profile</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Hamza<small>Software engineer</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Leave / <b>New request</b></div><div class="right"><span class="pill on"><span class="dot"></span>21 of 22 days left</span></div></div>
+  <div class="content">
+   <div><h1>Request leave</h1><div class="sub">Requests go to your lead, then to admin. Balances update the moment a request is approved.</div></div>
+   <div class="grid2" style="grid-template-columns:1.2fr 1fr">
+    <div class="card">
+     <h3>New request</h3>
+     <div class="stack" style="gap:12px">
+      <div class="form2"><div class="field"><label>Leave type</label><div class="in">Annual leave <span class="faint">▾</span></div></div><div class="field"><label>Duration</label><div class="in">Full days <span class="faint">▾</span></div></div></div>
+      <div class="form2"><div class="field"><label>From</label><div class="in focus">Mon 14 Sep 2026</div></div><div class="field"><label>To</label><div class="in">Wed 16 Sep 2026</div></div></div>
+      <div class="field"><label>Reason (optional)</label><div class="in area">Family wedding in Lahore. Handover notes are in the sprint board; Ayesha covers the release on Tuesday.</div></div>
+      <div class="check on"><i></i>I have informed my team lead</div>
+      <div class="row between"><span class="muted small">3 working days · balance after approval: 18 days</span><span class="row"><span class="btn ghost">Cancel</span><span class="btn">Submit request</span></span></div>
+     </div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Balances <span>2026</span></h3>
+      <div class="stat"><span>Annual</span><b>21 / 22</b></div><div class="stat"><span>Sick</span><b>8 / 10</b></div><div class="stat"><span>Casual</span><b>4 / 6</b></div><div class="stat"><span>Unpaid taken</span><b>0</b></div>
+     </div>
+     <div class="card m-hide">
+      <h3>Team this week <span>Who is off</span></h3>
+      <div class="week"><div>Mon<b>7</b></div><div>Tue<b>8</b></div><div class="off">Wed<b>9</b></div><div class="off">Thu<b>10</b></div><div>Fri<b>11</b></div><div class="we">Sat<b>12</b></div><div class="we">Sun<b>13</b></div></div>
+      <div class="list" style="margin-top:6px"><div><span class="avatar" style="background:#f59e0b"></span><div class="t"><b>Ayesha K.</b><small>Annual · Wed – Thu</small></div><span class="tag g">Approved</span></div></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Home</span><span class="on"><b></b>Leave</span><span><b></b>Medical</span><span><b></b>Payslips</span><span><b></b>Profile</span></div>
+ </div>
+</div></body></html>

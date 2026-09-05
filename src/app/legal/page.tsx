@@ -75,7 +75,7 @@ const COMMITMENTS = [
   },
   {
     title: 'Two contracting entities',
-    body: 'Clients can contract with our German office under German law or with our Pakistani office under Pakistani law. The statement of work names which.',
+    body: 'Clients can contract with our German office under German law or with our Asian office under Pakistani law. The statement of work names which.',
   },
 ];
 
@@ -143,15 +143,12 @@ export default function LegalIndexPage() {
           </h2>
         </Reveal>
         <Stagger className='mt-10 grid gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-2 lg:grid-cols-4'>
-          {COMMITMENTS.map((item, index) => (
+          {COMMITMENTS.map((item) => (
             <StaggerItem
               key={item.title}
               className='flex flex-col bg-background p-7'
             >
-              <span className='font-mono text-xs text-muted-foreground'>
-                0{index + 1}
-              </span>
-              <h3 className='mt-8 text-lg font-semibold tracking-tight text-foreground'>
+              <h3 className='text-lg font-semibold tracking-tight text-foreground'>
                 {item.title}
               </h3>
               <p className='mt-3 text-sm leading-relaxed text-muted-foreground'>

@@ -1,0 +1,39 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#7c3aed}
+html.light{--bg:#ffffff;--panel:#ffffff;--panel-2:#f7f5fb;--line:rgba(30,20,60,.1);--soft:rgba(30,20,60,.05)}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.logo i{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#7c3aed,#c084fc);display:inline-block}
+.split{padding:44px 40px 24px;grid-template-columns:1.05fr .95fr}
+.split h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.split h1 em{font-style:normal;color:var(--accent)}
+.bul{display:grid;gap:9px;margin-top:20px;font-size:13px;color:var(--muted)}
+.bul span::before{content:"";display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:-2px;box-shadow:inset 0 0 0 4px #fff,0 0 0 1px var(--accent)}
+.formc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 24px 60px -30px rgba(30,20,60,.25);display:grid;gap:12px}
+.formc .btn{width:100%;height:42px;border-radius:9px;font-size:13px}
+.formc .fine{text-align:center;font-size:11px;color:var(--faint)}
+.formc .fine b{color:var(--accent);font-weight:500}
+@media (max-width:600px){.split h1{font-size:34px}.formc{padding:18px}.form2{grid-template-columns:1fr}}
+</style></head><body>
+<div class="site">
+ <div class="navbar"><div class="logo"><i></i>Rankloom</div><div class="links"><span>Product</span><span>Pricing</span><span>Data</span><span>Blog</span></div><div class="row"><span class="d-only" style="font-size:13px;font-weight:500">Log in</span><span class="btn">Get early access</span><span class="burger"></span></div></div>
+ <div class="page">
+  <div class="split">
+   <div>
+    <div class="eyebrow">Keyword research · AI content · rank tracking</div>
+    <h1 style="margin-top:12px">Rank in days, <em>not quarters.</em> One platform from keyword to page one.</h1>
+    <p class="lede">Live search data, an AI writer that ships 30 articles in ten minutes, and rank tracking that costs cents, not dollars.</p>
+    <div class="bul"><span>Live keyword and ranking data, never stale exports</span><span>Bulk content jobs that resume instead of restart</span><span>Local insights for every city you target</span><span class="m-hide">$0.09 per tracked keyword, half the going rate</span></div>
+   </div>
+   <div class="formc">
+    <div><b style="font-size:16px">Join the waiting list</b><div class="muted small" style="margin-top:3px">Early teams get founder pricing locked for a year.</div></div>
+    <div class="form2"><div class="field"><label>First name *</label><div class="in ph-text">First name</div></div><div class="field"><label>Last name *</label><div class="in ph-text">Last name</div></div></div>
+    <div class="field"><label>Work email *</label><div class="in focus">sarah@northwindagency.com<span class="caret"></span></div></div>
+    <div class="field"><label>Phone</label><div class="in ph-text">+1</div></div>
+    <div class="field m-hide"><label>How did you hear about us?</label><div class="in ph-text">Select one <span>▾</span></div></div>
+    <span class="btn">Join the waiting list</span>
+    <div class="fine">Already have an account? <b>Log in</b></div>
+   </div>
+  </div>
+  <div class="strip d-only"><span>1,240 agencies waiting</span><span>Search data from 3 providers</span><span>SOC 2 in progress</span></div>
+ </div>
+</div></body></html>

@@ -1,0 +1,65 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#111111;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#f4f4f2;--panel:#ffffff;--panel-2:#ebebe8;--line:rgba(0,0,0,.1);--soft:rgba(0,0,0,.05);--on-accent:#ffffff}
+.brand{font-weight:300;letter-spacing:.42em;text-transform:uppercase;font-size:14px}
+.brand i{display:none}
+.brand small{display:block;letter-spacing:.06em;text-transform:none;font-size:11px;color:var(--faint);margin-top:2px}
+h1{font-family:var(--display);font-weight:300;font-size:28px}
+.nav.on{background:var(--text);color:#fff}
+.avatar{background:#111}
+.trk{display:flex;align-items:center;gap:6px;font-size:11px}
+.trk i{width:8px;height:8px;border-radius:50%;background:var(--good)}
+.trk i.w{background:var(--warn)}.trk i.n{background:var(--faint)}
+.payout{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:12.5px;align-items:center}
+.payout .big{font-family:var(--display);font-size:30px;font-weight:300}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand">Curio<small>Seller platform</small></div>
+  <div class="lab" style="margin-top:12px">Shop</div>
+  <div class="nav on"><b></b>Overview</div><div class="nav"><b></b>Products<span class="cnt">42</span></div><div class="nav"><b></b>Orders<span class="cnt">18</span></div><div class="nav"><b></b>Payouts</div><div class="nav"><b></b>Analytics</div>
+  <div class="lab">Account</div>
+  <div class="nav"><b></b>Brand story</div><div class="nav"><b></b>Shipping · DHL</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Atelier Nord<small>Copenhagen · verified seller</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Atelier Nord / <b>Overview</b></div><div class="right"><span class="pill on"><span class="dot"></span>Stripe Connect active</span><span class="btn d-only">Add product</span></div></div>
+  <div class="content">
+   <div><h1>Good morning, Atelier Nord</h1><div class="sub">Tuesday · 18 orders to ship · payout on Friday</div></div>
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Orders today</div><div class="v">18</div><div class="d">+5 vs last Tuesday</div></div>
+    <div class="card kpi"><div class="l">Revenue · 7 days</div><div class="v">€6,420</div><div class="d">+12%</div></div>
+    <div class="card kpi"><div class="l">Next payout</div><div class="v">€5,880</div><div class="d m">Fri 12 Sep · automatic</div></div>
+    <div class="card kpi"><div class="l">Open support</div><div class="v">1</div><div class="d">70% fewer than before tracking</div></div>
+   </div>
+   <div class="grid2">
+    <div class="card">
+     <h3>Orders <span>Tracking from DHL webhooks</span></h3>
+     <table>
+      <tr><th>Order</th><th class="d-only">Items</th><th class="r">Total</th><th>Delivery</th><th class="d-only">Status</th></tr>
+      <tr><td><b>#C-10482</b><div class="faint small">L. Bauer · Munich</div></td><td class="d-only">Linen throw, oat ×1</td><td class="r">€84</td><td><span class="trk"><i></i>Delivered · 11:20</span></td><td class="d-only"><span class="tag g">Complete</span></td></tr>
+      <tr><td><b>#C-10479</b><div class="faint small">S. Ferreira · Porto</div></td><td class="d-only">Cotton bath sheet ×2</td><td class="r">€78</td><td><span class="trk"><i></i>Out for delivery</span></td><td class="d-only"><span class="tag b">In transit</span></td></tr>
+      <tr><td><b>#C-10471</b><div class="faint small">M. Rossi · Milan</div></td><td class="d-only">Linen throw, oat ×1 · Apron ×1</td><td class="r">€133</td><td><span class="trk"><i class="w"></i>Held at customs</span></td><td class="d-only"><span class="tag w">Attention</span></td></tr>
+      <tr><td><b>#C-10468</b><div class="faint small">A. Dubois · Lyon</div></td><td class="d-only">Linen throw, oat ×1</td><td class="r">€84</td><td><span class="trk"><i class="n"></i>Label created</span></td><td class="d-only"><span class="tag n">To ship</span></td></tr>
+      <tr class="m-hide"><td><b>#C-10466</b><div class="faint small">K. Novak · Prague</div></td><td class="d-only">Cotton bath sheet ×1</td><td class="r">€39</td><td><span class="trk"><i class="n"></i>Label created</span></td><td class="d-only"><span class="tag n">To ship</span></td></tr>
+     </table>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Payouts <span>Stripe Connect</span></h3>
+      <div class="payout"><span class="muted">Available Friday</span><span class="tag g">Scheduled</span><span class="big" style="grid-column:1/-1">€5,880.40</span><span class="muted small">Curio fee 8% · already deducted</span><span class="small">€511.30</span></div>
+      <div class="hr" style="margin:12px 0"></div>
+      <div class="stat"><span>29 Aug</span><b>€4,912.10</b></div><div class="stat"><span>22 Aug</span><b>€5,204.00</b></div><div class="stat m-hide"><span>15 Aug</span><b>€4,388.75</b></div>
+     </div>
+     <div class="card flat m-hide">
+      <h3>Best match this week</h3>
+      <div class="row"><span class="ph" style="width:52px;height:52px;min-height:0;--img:linear-gradient(160deg,#efe9df,#cbbfae)"></span><div><b>Linen throw, oat</b><div class="muted small">Shown to 1,240 “warm minimal” shoppers · 9.4% kept</div></div></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Overview</span><span><b></b>Products</span><span><b></b>Orders</span><span><b></b>Payouts</span><span><b></b>Settings</span></div>
+ </div>
+</div></body></html>

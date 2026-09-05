@@ -91,7 +91,11 @@ export default async function ServicePage({ params }: PageProps) {
               <span className='flex h-12 w-12 items-center justify-center rounded-none bg-brand text-brand-foreground'>
                 <Icon className='h-5 w-5' />
               </span>
-              <p className='fw-kicker'>Service {service.index}</p>
+              <p className='fw-kicker'>
+                {service.kind === 'engagement'
+                  ? 'Engagement model'
+                  : 'Capability'}
+              </p>
             </Reveal>
             <TextReveal
               as='h1'
@@ -177,14 +181,11 @@ export default async function ServicePage({ params }: PageProps) {
           <Reveal delay={0.1} className='fw-card p-7 sm:p-9'>
             <p className='fw-kicker'>Typical use cases</p>
             <ul className='mt-6 divide-y divide-line'>
-              {service.useCases.map((item, index) => (
+              {service.useCases.map((item) => (
                 <li
                   key={item}
-                  className='flex gap-4 py-4 text-[15px] text-foreground/85'
+                  className='py-4 text-[15px] text-foreground/85'
                 >
-                  <span className='font-mono text-xs text-muted-foreground'>
-                    0{index + 1}
-                  </span>
                   {item}
                 </li>
               ))}
@@ -210,9 +211,9 @@ export default async function ServicePage({ params }: PageProps) {
             </Link>
           </Reveal>
           <Stagger className='mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {proof.map((project, index) => (
+            {proof.map((project) => (
               <StaggerItem key={project.slug}>
-                <ProjectCard project={project} index={index} />
+                <ProjectCard project={project} />
               </StaggerItem>
             ))}
           </Stagger>
@@ -237,10 +238,7 @@ export default async function ServicePage({ params }: PageProps) {
                 href={paths.service(item.slug)}
                 className='group flex h-full flex-col p-5 transition-colors hover:bg-surface'
               >
-                <span className='font-mono text-[10px] text-muted-foreground'>
-                  {item.index}
-                </span>
-                <span className='mt-4 text-sm font-medium text-foreground group-hover:text-brand-text'>
+                <span className='text-sm font-medium text-foreground group-hover:text-brand-text'>
                   {item.title}
                 </span>
               </Link>

@@ -17,7 +17,7 @@ import { getDictionary } from '@/i18n/server';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Feinwerk Software is a software studio with engineering in Rawalpindi, Pakistan and a client office in Fellbach, Germany, building web, AI and cloud products on fixed dates.',
+    'Feinwerk Software is a software studio with offices in Islamabad, Pakistan and Fellbach, Germany, building web, AI and cloud products on fixed dates.',
   alternates: { canonical: paths.about },
 };
 
@@ -36,7 +36,7 @@ const FACTS = [
   },
   {
     label: 'Where',
-    value: 'Rawalpindi and Fellbach, with overlapping working hours',
+    value: 'Islamabad and Fellbach, with overlapping working hours',
   },
 ];
 
@@ -73,7 +73,7 @@ export default async function AboutPage() {
             launch, reported by you, not by us.
           </p>
           <p>
-            Engineering runs from Rawalpindi. Clients in Europe have a local
+            Our Asian office is in Islamabad. Clients in Europe have a local
             contact in Fellbach. Between the two offices, someone is working
             during your working day.
           </p>
@@ -104,15 +104,12 @@ export default async function AboutPage() {
             accentWords={[0, 1]}
           />
           <Stagger className='mt-14 grid gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-2 lg:grid-cols-4'>
-            {values.map((value, index) => (
+            {values.map((value) => (
               <StaggerItem
                 key={value.title}
                 className='flex flex-col bg-background p-7'
               >
-                <span className='font-mono text-xs text-muted-foreground'>
-                  0{index + 1}
-                </span>
-                <h3 className='fw-display mt-8 text-2xl text-foreground'>
+                <h3 className='fw-display text-2xl text-foreground'>
                   {value.title}
                 </h3>
                 <p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
@@ -132,7 +129,7 @@ export default async function AboutPage() {
             kicker='Where we are'
             title='Two offices, one working day.'
             accentWords={[3, 4]}
-            description='Engineering in Pakistan, client office in Germany. Call whichever is closer; the same team answers.'
+            description='An Asian office in Islamabad and a European office in Fellbach. Call whichever is closer; the same team answers.'
           />
           <Locations className='mt-14' />
         </div>
@@ -143,14 +140,18 @@ export default async function AboutPage() {
           <div>
             <p className='fw-kicker'>Careers</p>
             <p className='fw-display mt-3 text-2xl text-foreground'>
-              We hire senior engineers who care about the last detail.
+              No open positions right now.
+            </p>
+            <p className='mt-3 max-w-md text-sm leading-relaxed text-muted-foreground'>
+              We are not hiring at the moment. When that changes, roles will be
+              listed on the careers page.
             </p>
           </div>
           <Link
             href={paths.careers}
             className='inline-flex h-12 items-center gap-2 rounded-full border border-line bg-surface px-6 text-sm font-medium transition-colors hover:border-brand/60'
           >
-            Open roles <ArrowUpRight className='h-4 w-4' />
+            Careers <ArrowUpRight className='h-4 w-4' />
           </Link>
         </Reveal>
       </section>

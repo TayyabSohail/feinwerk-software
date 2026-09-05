@@ -1,0 +1,62 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#d97706}
+html.light{--bg:#f6f4ef;--panel:#ffffff;--panel-2:#f1ede4;--line:rgba(60,45,20,.11);--soft:rgba(60,45,20,.06)}
+.fx{display:grid;grid-template-columns:44px 1fr auto;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);align-items:start}
+.fx:last-child{border-bottom:0}
+.fx .n{font-size:10.5px;font-weight:700;color:var(--faint);padding-top:3px}
+.fx b{display:block;font-size:12.5px}
+.fx small{display:block;color:var(--muted);font-size:11.5px;margin-top:3px;line-height:1.45}
+.fx .ref{color:var(--accent);font-size:10.5px;font-weight:600;margin-top:4px;display:block}
+.sevbar{display:flex;height:10px;border-radius:99px;overflow:hidden}
+.sevbar i{display:block;height:100%}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.opt:last-child{border-bottom:0}
+.sw{width:32px;height:18px;border-radius:99px;background:var(--accent);position:relative}
+.sw::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.sw.off{background:var(--soft)}.sw.off::after{right:auto;left:2px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Clause</div>
+  <div class="lab">Review</div>
+  <div class="nav"><b></b>Review queue</div><div class="nav on"><b></b>Findings</div><div class="nav"><b></b>Audit packs</div><div class="nav"><b></b>Standards library</div>
+  <div class="lab">Workspace</div>
+  <div class="nav"><b></b>Team</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Jonas Weber<small>Senior auditor</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Findings / Helios Manufacturing / <b>Revenue recognition policy v4</b></div><div class="right"><span class="pill d-only">8 findings · 2 accepted by client</span><span class="btn">Export .docx</span></div></div>
+  <div class="content">
+   <div class="grid2" style="grid-template-columns:1.6fr 1fr">
+    <div class="card">
+     <h3>Findings report <span>Grouped by section · reviewed by J. Weber</span></h3>
+     <div class="sevbar"><i style="width:25%;background:var(--bad)"></i><i style="width:50%;background:var(--warn)"></i><i style="width:25%;background:var(--faint)"></i></div>
+     <div class="legend" style="margin:8px 0 6px"><span><i style="background:var(--bad)"></i>2 high</span><span><i style="background:var(--warn)"></i>4 medium</span><span><i style="background:var(--faint)"></i>2 low</span></div>
+     <div class="fx"><div class="n">F-12</div><div><b>Service element recognised on delivery instead of over time</b><small>§4.3 · The twelve-month service is a distinct performance obligation. Suggested wording replaces “in full on delivery” with straight-line recognition over the service period.</small><span class="ref">IFRS 15 §22–30, §35(a)</span></div><span class="tag r">High</span></div>
+     <div class="fx"><div class="n">F-14</div><div><b>Bill-and-hold criteria not addressed</b><small>§4.3 · Goods invoiced before period end but held at the warehouse need the four bill-and-hold conditions documented.</small><span class="ref">IFRS 15 §B79–B82</span></div><span class="tag r">High</span></div>
+     <div class="fx"><div class="n">F-11</div><div><b>Estimation method for stand-alone prices not evidenced</b><small>§4.2 · Reference the market data used for the adjusted market assessment approach.</small><span class="ref">IFRS 15 §79(a)</span></div><span class="tag w">Medium</span></div>
+     <div class="fx m-hide"><div class="n">F-13</div><div><b>Rebate release timing lacks legal basis</b><small>§4.4 · Tie the release of unclaimed rebate accruals to expiry of the customer's contractual right.</small><span class="ref">IFRS 15 §56–58</span></div><span class="tag w">Medium</span></div>
+     <div class="fx m-hide"><div class="n">F-15</div><div><b>Cross-reference to superseded policy</b><small>§4.5 · Footnote 9 points to policy v2, which was withdrawn in FY2024.</small><span class="ref">Firm methodology 3.1</span></div><span class="tag n">Low</span></div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Export options <span>Word · tracked changes</span></h3>
+      <div class="opt"><span>Suggested wording as tracked changes</span><span class="sw"></span></div>
+      <div class="opt"><span>Findings as margin comments</span><span class="sw"></span></div>
+      <div class="opt"><span>Standards appendix</span><span class="sw"></span></div>
+      <div class="opt"><span>Include low-severity items</span><span class="sw off"></span></div>
+      <div class="opt m-hide"><span>Watermark “Draft for client”</span><span class="sw"></span></div>
+      <div class="row" style="margin-top:12px"><span class="btn">Generate document</span><span class="btn ghost d-only">Preview</span></div>
+     </div>
+     <div class="card flat m-hide">
+      <h3>Client responses <span>Since 2 Sep</span></h3>
+      <div class="stat"><span>Accepted</span><b>2</b></div><div class="stat"><span>Disputed</span><b>1</b></div><div class="stat"><span>Awaiting</span><b>5</b></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Queue</span><span class="on"><b></b>Findings</span><span><b></b>Packs</span><span><b></b>Standards</span><span><b></b>Team</span></div>
+ </div>
+</div></body></html>

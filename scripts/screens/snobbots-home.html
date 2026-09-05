@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#06b6d4}
+.src{display:inline-flex;gap:6px;margin-top:8px}
+.src span{font-size:10px;padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.06);color:var(--muted)}
+@media (max-width:600px){.shops{display:none}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>SnobBots</div>
+  <div class="lab">Workspace</div>
+  <div class="nav on"><b></b>Overview</div><div class="nav"><b></b>Shops</div><div class="nav"><b></b>Inbox<span class="cnt">3</span></div><div class="nav"><b></b>Knowledge base</div><div class="nav"><b></b>Bots</div>
+  <div class="lab">Account</div>
+  <div class="nav"><b></b>Billing</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Marta Kowalski<small>Owner · 5 shops</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Workspace / <b>All shops</b></div><div class="right"><span class="pill on"><span class="dot"></span>All bots live</span><span class="btn d-only">Add shop</span></div></div>
+  <div class="content">
+   <div><h1>Today across 5 shops</h1><div class="sub">Support agents answering from each shop's orders, policies and catalogue</div></div>
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Conversations</div><div class="v">1,284</div><div class="d">+12% vs yesterday</div></div>
+    <div class="card kpi"><div class="l">Resolved by bot</div><div class="v">87%</div><div class="d">+3.1 pts this week</div></div>
+    <div class="card kpi"><div class="l">First response</div><div class="v">1.4 s</div><div class="d m">p95 2.9 s</div></div>
+    <div class="card kpi"><div class="l">Handed to human</div><div class="v">41</div><div class="d m">3 waiting now</div></div>
+   </div>
+   <div class="grid2">
+    <div class="card shops">
+     <h3>Shops <span>Resolution rate, last 7 days</span></h3>
+     <table>
+      <tr><th>Shop</th><th>Plan</th><th>Conversations</th><th style="width:28%">Resolved</th><th>Status</th></tr>
+      <tr><td><b>Bloom &amp; Co.</b><div class="faint small">Shopify · Flowers</div></td><td>Pro</td><td>412</td><td><div class="row"><div class="bar" style="flex:1"><i style="width:91%"></i></div><span class="small muted">91%</span></div></td><td><span class="tag g">Live</span></td></tr>
+      <tr><td><b>Urban Threads</b><div class="faint small">WooCommerce · Apparel</div></td><td>Growth</td><td>288</td><td><div class="row"><div class="bar" style="flex:1"><i style="width:84%"></i></div><span class="small muted">84%</span></div></td><td><span class="tag g">Live</span></td></tr>
+      <tr><td><b>Northline Bikes</b><div class="faint small">Shopify · Cycling</div></td><td>Pro</td><td>331</td><td><div class="row"><div class="bar" style="flex:1"><i style="width:89%"></i></div><span class="small muted">89%</span></div></td><td><span class="tag g">Live</span></td></tr>
+      <tr><td><b>Petit Atelier</b><div class="faint small">Custom · Ceramics</div></td><td>Growth</td><td>157</td><td><div class="row"><div class="bar" style="flex:1"><i style="width:86%"></i></div><span class="small muted">86%</span></div></td><td><span class="tag g">Live</span></td></tr>
+      <tr><td><b>Kettle &amp; Crumb</b><div class="faint small">Shopify · Bakery</div></td><td>Starter</td><td>96</td><td><div class="row"><div class="bar" style="flex:1"><i style="width:79%"></i></div><span class="small muted">79%</span></div></td><td><span class="tag b">Training</span></td></tr>
+     </table>
+    </div>
+    <div class="card">
+     <h3>Bloom &amp; Co. <span>Live conversation · #48213</span></h3>
+     <div class="chat">
+      <div class="msg me">Hi, where is my order #48213?<small>Customer · 14:02</small></div>
+      <div class="msg bot">Your order shipped yesterday with DHL and is due <b>Thursday before 6 pm</b>. Tracking number 0034 8127 9915.<span class="src"><span>Orders API</span><span>DHL</span></span><small>Bot · 14:02 · 1.1 s</small></div>
+      <div class="msg me">Can I change the delivery address?<small>Customer · 14:03</small></div>
+      <div class="msg bot">Yes. I've sent a secure link to your email to update the address before the courier's first attempt. Anything else I can help with?<span class="src"><span>Shipping policy</span></span><small>Bot · 14:03 · 0.9 s</small></div>
+     </div>
+     <div class="compose">Write a reply or hand over…<b></b></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Overview</span><span><b></b>Shops</span><span><b></b>Inbox</span><span><b></b>Knowledge</span><span><b></b>Bots</span></div>
+ </div>
+</div></body></html>

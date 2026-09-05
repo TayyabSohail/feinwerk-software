@@ -272,15 +272,46 @@
     background-size: 100% 0%;
   }
 
-  /* Browser mockup chrome. */
-  .fw-browser {
-    @apply overflow-hidden border bg-surface shadow-mockup;
+  /* Phone mockup: every measure is a percentage of the frame so the same
+     device reads correctly at 60px in a list and 400px in a hero. */
+  .fw-phone {
+    border-radius: 14% / 6.5%;
+    padding: 2.6%;
+    background: #101015;
+    border: 1px solid hsl(0 0% 0% / 0.3);
+    box-shadow:
+      inset 0 0 0 1px hsl(0 0% 100% / 0.08),
+      0 40px 70px -30px rgba(20, 19, 26, 0.6);
   }
-  .fw-browser-bar {
-    @apply flex items-center gap-2 border-b bg-surface-2 px-3 py-2;
+  .fw-phone-screen {
+    border-radius: 11.5% / 5.3%;
   }
-  .fw-browser-dot {
-    @apply h-2.5 w-2.5 rounded-full;
+  .fw-phone-island {
+    position: absolute;
+    left: 50%;
+    top: 4%;
+    width: 26%;
+    height: 2.9%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #101015;
+  }
+  .fw-phone-button {
+    position: absolute;
+    width: 1.2%;
+    border-radius: 2px;
+    background: #1c1c22;
+  }
+  .fw-phone-button-left {
+    left: -1.2%;
+    top: 22%;
+    height: 8%;
+    box-shadow: 0 12% 0 0 #1c1c22;
+  }
+  .fw-phone-button-right {
+    right: -1.2%;
+    top: 26%;
+    height: 12%;
   }
 
   .fw-marquee {
@@ -577,4 +608,103 @@
     transparent 60%
   );
   transition: background-position 120ms linear;
+}
+
+/* Pointer trail: effects/cursor.tsx draws a hairline emerald trail behind
+   the native pointer on this fixed canvas. The native cursor stays visible. */
+.fw-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  pointer-events: none;
+}
+
+/* Hero build grid: the modules every build ships with, placed into a
+   hairline grid one tile at a time (effects/build-grid.tsx). A slot marks
+   the empty cell until its tile fades in; the cursor is the emerald
+   selection square that steps between cells. */
+.fw-tile-slot,
+.fw-tile {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 9px) 0,
+    100% 9px,
+    100% 100%,
+    9px 100%,
+    0 calc(100% - 9px)
+  );
+}
+.fw-tile-slot {
+  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.14);
+}
+.fw-tile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+}
+@media (min-width: 1280px) {
+  .fw-tile {
+    padding: 0 1rem;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+}
+.fw-tile-ink {
+  background: hsl(var(--ink));
+  color: #fff;
+}
+.fw-tile-paper {
+  background: #fff;
+  color: hsl(var(--ink));
+  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.28);
+}
+.fw-tile-brand {
+  background: hsl(var(--brand));
+  color: hsl(var(--brand-foreground));
+}
+/* The selection square: an outline with four corner handles. */
+.fw-tile-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 2px hsl(var(--brand));
+}
+.fw-tile-cursor[data-tone='brand'] {
+  box-shadow: inset 0 0 0 2px hsl(var(--ink));
+}
+.fw-tile-cursor > span {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: hsl(var(--brand));
+  box-shadow: 0 0 0 1.5px #fff;
+}
+.fw-tile-cursor > span:nth-child(1) {
+  top: -3px;
+  left: -3px;
+}
+.fw-tile-cursor > span:nth-child(2) {
+  top: -3px;
+  right: -3px;
+}
+.fw-tile-cursor > span:nth-child(3) {
+  bottom: -3px;
+  left: -3px;
+}
+.fw-tile-cursor > span:nth-child(4) {
+  bottom: -3px;
+  right: -3px;
 }

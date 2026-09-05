@@ -1,0 +1,37 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#111111;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#f4f4f2;--panel:#ffffff;--panel-2:#ebebe8;--line:rgba(0,0,0,.1);--soft:rgba(0,0,0,.05);--on-accent:#ffffff}
+.logo{font-weight:300;font-size:18px;letter-spacing:.42em;text-transform:uppercase}
+.appbar{border-bottom:0;height:64px;padding:0 40px}
+.appbar .links .on::after{bottom:-23px;background:var(--text)}
+.body{padding:8px 40px 20px}
+h1{font-family:var(--display);font-weight:300;font-size:30px}
+.moods{display:flex;gap:8px}
+.moods .pill{border-radius:999px;padding:7px 14px;font-size:12px;color:var(--text);background:var(--panel)}
+.moods .pill.on{background:var(--text);color:#fff}
+.products{grid-template-columns:repeat(5,1fr)}
+.prod .ph{border-radius:12px}
+.prod .match{background:var(--text);color:#fff;border-radius:999px}
+.prod .price{float:right;font-weight:500}
+@media (max-width:600px){.appbar{padding:0 20px}.body{padding:6px 20px 90px}.products{grid-template-columns:1fr 1fr;gap:12px}.moods{overflow:hidden}.moods .pill{flex:none}}
+</style></head><body>
+<div class="site">
+ <div class="appbar"><div class="logo">Curio</div><div class="links"><span class="on">For you</span><span>Moods</span><span>Sellers</span><span>Orders</span></div><div class="right"><span class="pill d-only">Search</span><span class="pill">Bag · 2</span><span class="avatar" style="background:#111"></span></div></div>
+ <div class="body">
+  <div class="row between"><div><h1>Picked for a warm minimal home</h1><div class="sub">Based on your taste quiz · 92% of what you have kept matched this mood</div></div><span class="muted small d-only">Retake quiz</span></div>
+  <div class="moods"><span class="pill on">Warm minimal</span><span class="pill">Botanical</span><span class="pill">Moody</span><span class="pill">Playful</span><span class="pill">Under €100</span><span class="pill d-only">New this week</span></div>
+  <div class="products">
+   <div class="prod"><div class="ph" style="--img:linear-gradient(160deg,#efe9df,#cbbfae)"><span class="match">96% match</span></div><b>Linen throw, oat<span class="price">€84</span></b><small>Atelier Nord · Copenhagen</small></div>
+   <div class="prod"><div class="ph" style="--img:linear-gradient(160deg,#e6dfd3,#a8927a)"><span class="match">94% match</span></div><b>Oak side table<span class="price">€210</span></b><small>Kesselhaus · Leipzig</small></div>
+   <div class="prod"><div class="ph" style="--img:linear-gradient(160deg,#f2eee6,#d5cbbc)"><span class="match">91% match</span></div><b>Stoneware mug set<span class="price">€46</span></b><small>Terra Studio · Lisbon</small></div>
+   <div class="prod"><div class="ph" style="--img:linear-gradient(160deg,#e4e1da,#b7b2a6)"><span class="match">89% match</span></div><b>Paper pendant lamp<span class="price">€120</span></b><small>Hikari Objects · Berlin</small></div>
+   <div class="prod d-only"><div class="ph" style="--img:linear-gradient(160deg,#ebe4d8,#c9b8a1)"><span class="match">88% match</span></div><b>Wool rug, sand<span class="price">€340</span></b><small>Fold &amp; Weave · Porto</small></div>
+   <div class="prod"><div class="ph" style="--img:linear-gradient(160deg,#ede8df,#bcb1a0)"><span class="match">87% match</span></div><b>Beeswax candles<span class="price">€28</span></b><small>Mara Home · Vienna</small></div>
+   <div class="prod"><div class="ph" style="--img:linear-gradient(160deg,#e9e5dd,#a79c8b)"><span class="match">86% match</span></div><b>Ash serving board<span class="price">€58</span></b><small>Kesselhaus · Leipzig</small></div>
+   <div class="prod d-only"><div class="ph" style="--img:linear-gradient(160deg,#f0ebe2,#d8ccb8)"><span class="match">84% match</span></div><b>Cotton bath sheet<span class="price">€39</span></b><small>Atelier Nord · Copenhagen</small></div>
+   <div class="prod d-only"><div class="ph" style="--img:linear-gradient(160deg,#e3ded4,#b6ad9c)"><span class="match">83% match</span></div><b>Clay planter, large<span class="price">€72</span></b><small>Terra Studio · Lisbon</small></div>
+   <div class="prod d-only"><div class="ph" style="--img:linear-gradient(160deg,#ece7de,#c4b8a4)"><span class="match">81% match</span></div><b>Linen apron<span class="price">€49</span></b><small>Mara Home · Vienna</small></div>
+  </div>
+ </div>
+ <div class="tabs"><span class="on"><b></b>For you</span><span><b></b>Moods</span><span><b></b>Search</span><span><b></b>Bag</span><span><b></b>Orders</span></div>
+</div></body></html>

@@ -75,9 +75,9 @@ const sections: LegalSection[] = [
     title: 'Third-party content',
     body: (
       <p>
-        Links to Cal.com, LinkedIn, GitHub and WhatsApp take you to those
-        services, which set their own cookies under their own policies. We do
-        not embed third-party widgets that set cookies on this site.
+        Links to Cal.com take you to that service, which sets its own cookies
+        under its own policy. We do not embed third-party widgets that set
+        cookies on this site.
       </p>
     ),
   },

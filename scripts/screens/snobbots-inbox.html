@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#06b6d4}
+.three{display:grid;grid-template-columns:270px 1fr 240px;gap:14px;min-height:0;height:100%}
+.conv{padding:10px 8px;border-radius:8px;display:grid;gap:4px}
+.conv.on{background:var(--soft)}
+.conv .r1{display:flex;justify-content:space-between;font-size:12.5px}
+.conv .r1 small{color:var(--faint);font-size:10.5px}
+.conv p{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .shop{font-size:10px;color:var(--accent);font-weight:600}
+.thread{display:flex;flex-direction:column;min-height:0}
+.thread .chat{flex:1}
+.src{display:inline-flex;gap:6px;margin-top:8px}
+.src span{font-size:10px;padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.06);color:var(--muted)}
+.ord{font-size:12px;display:grid;gap:6px}
+.ord div{display:flex;justify-content:space-between}
+.ord small{color:var(--faint)}
+@media (max-width:600px){.three{grid-template-columns:1fr}.convs,.ctx{display:none}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>SnobBots</div>
+  <div class="lab">Workspace</div>
+  <div class="nav"><b></b>Overview</div><div class="nav"><b></b>Shops</div><div class="nav on"><b></b>Inbox<span class="cnt">3</span></div><div class="nav"><b></b>Knowledge base</div><div class="nav"><b></b>Bots</div>
+  <div class="lab">Account</div>
+  <div class="nav"><b></b>Billing</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Marta Kowalski<small>Owner · 5 shops</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Inbox / <b>Needs a human · 3</b></div><div class="right"><span class="pill"><span class="dot" style="background:var(--warn)"></span>3 waiting · longest 4 min</span><span class="pill d-only">All shops</span></div></div>
+  <div class="content">
+   <div class="three">
+    <div class="card convs">
+     <div class="row" style="margin-bottom:8px"><span class="pill on">Needs human</span><span class="pill">Bot handled</span></div>
+     <div class="conv on"><div class="r1"><b>Lena Fischer</b><small>4 min</small></div><span class="shop">Urban Threads</span><p>The jacket arrived with a broken zip, I want a…</p></div>
+     <div class="conv"><div class="r1"><b>Oliver Grant</b><small>2 min</small></div><span class="shop">Northline Bikes</span><p>Can you price-match the frame I saw on…</p></div>
+     <div class="conv"><div class="r1"><b>Amira Said</b><small>1 min</small></div><span class="shop">Petit Atelier</span><p>Custom glaze for 40 mugs for a wedding…</p></div>
+     <div class="conv" style="opacity:.6"><div class="r1"><b>Jonas Berg</b><small>14:02</small></div><span class="shop">Bloom &amp; Co.</span><p>Resolved by bot · delivery address changed</p></div>
+     <div class="conv" style="opacity:.6"><div class="r1"><b>Chiara Conti</b><small>13:48</small></div><span class="shop">Kettle &amp; Crumb</span><p>Resolved by bot · allergen list sent</p></div>
+    </div>
+    <div class="card thread">
+     <div class="row between" style="padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px"><div class="row"><span class="avatar" style="background:#f59e0b"></span><div><b>Lena Fischer</b><div class="faint small">Urban Threads · order #UT-7731 · handed over 4 min ago</div></div></div><span class="tag w">Waiting for you</span></div>
+     <div class="chat">
+      <div class="msg me">The jacket arrived with a broken zip. I want a replacement, not a refund.<small>Customer · 14:31</small></div>
+      <div class="msg bot">I'm sorry about that. Replacements for faulty items are free within 30 days. I can start one now: the same jacket in size M is in stock and would ship tomorrow.<span class="src"><span>Returns policy</span><span>Catalogue</span></span><small>Bot · 14:31 · 1.2 s</small></div>
+      <div class="msg me">Yes please, but I also need it before Saturday for a trip. Can you do express?<small>Customer · 14:32</small></div>
+      <div class="msg bot" style="border:1px dashed var(--accent)"><b>Handed to a human.</b> Express upgrade on a replacement needs a person to approve the shipping cost.<small>Bot · 14:32</small></div>
+     </div>
+     <div class="compose">Reply as Marta… <span class="tag a" style="margin-left:8px">Suggested: approve express, no charge</span><b></b></div>
+    </div>
+    <div class="stack ctx">
+     <div class="card"><h3>Order #UT-7731</h3><div class="ord"><div><span>Field jacket · olive · M</span><b>€149</b></div><div><small>Placed 28 Aug · delivered 2 Sep · DHL</small></div><div><small>Paid by card · Stripe</small><span class="tag g">Paid</span></div></div><div class="row" style="margin-top:10px"><span class="btn" style="flex:1">Create replacement</span></div></div>
+     <div class="card flat"><h3>Customer</h3><div class="stat"><span>Orders</span><b>4</b></div><div class="stat"><span>Lifetime value</span><b>€612</b></div><div class="stat"><span>Returns</span><b>0</b></div></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Overview</span><span><b></b>Shops</span><span class="on"><b></b>Inbox</span><span><b></b>Knowledge</span><span><b></b>Bots</span></div>
+ </div>
+</div></body></html>

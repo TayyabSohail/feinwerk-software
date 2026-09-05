@@ -1,0 +1,63 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#2563eb}
+.paper{background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 28px;box-shadow:0 10px 30px -20px rgba(15,23,42,.3);font-size:11.5px;line-height:1.65;color:var(--muted)}
+.paper h2{font-size:15px;color:var(--text);margin-bottom:10px;letter-spacing:.02em}
+.paper p{margin-bottom:8px}
+.paper b{color:var(--text)}
+.paper .fill{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--text);padding:0 3px;border-radius:3px}
+.paper .sig{display:flex;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.paper .sig span{width:44%;font-size:10.5px}
+.paper .sig b{display:block;border-bottom:1px solid var(--text);height:22px;margin-bottom:4px;font-family:"Segoe Script","Brush Script MT",cursive;font-weight:400;color:var(--accent)}
+@media (max-width:600px){.paper{display:none}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Meridian Estates</div>
+  <div class="lab">Portfolio</div>
+  <div class="nav"><b></b>Overview</div><div class="nav"><b></b>Properties</div><div class="nav"><b></b>Units</div><div class="nav"><b></b>Tenants</div><div class="nav"><b></b>Leases</div>
+  <div class="lab">Operations</div>
+  <div class="nav"><b></b>CRM</div><div class="nav on"><b></b>Documents</div><div class="nav"><b></b>AI agents</div><div class="nav"><b></b>Marketing</div><div class="nav"><b></b>Reports</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Layla Haddad<small>Agency admin · 3 agencies</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Documents / <b>Tenancy agreement · Palm Court 1204</b></div><div class="right"><span class="pill"><span class="dot" style="background:var(--warn)"></span>Awaiting tenant signature</span><span class="btn d-only">Send reminder</span></div></div>
+  <div class="content">
+   <div class="grid2" style="grid-template-columns:.9fr 1.1fr">
+    <div class="stack">
+     <div class="card">
+      <h3>Generate from template <span>Tenancy agreement v7</span></h3>
+      <div class="stack" style="gap:10px">
+       <div class="form2"><div class="field"><label>Tenant</label><div class="in">Fatima Zahra</div></div><div class="field"><label>Unit</label><div class="in">Palm Court 1204</div></div></div>
+       <div class="form2"><div class="field"><label>Term</label><div class="in">12 months · 1 Sep 2026</div></div><div class="field"><label>Annual rent</label><div class="in">AED 74,000 · 2 cheques</div></div></div>
+       <div class="form2"><div class="field"><label>Deposit</label><div class="in">AED 3,700 (5%)</div></div><div class="field"><label>Language</label><div class="in">English + Arabic</div></div></div>
+       <div class="check on"><i></i>Register with Ejari after countersignature</div>
+       <div class="row"><span class="btn">Regenerate</span><span class="btn ghost">Download PDF</span></div>
+      </div>
+     </div>
+     <div class="card">
+      <h3>Signature status <span>E-sign</span></h3>
+      <div class="steps">
+       <div class="step"><i></i><div>Generated<small>10 Aug · 14:02 · by CRM agent from the offer</small></div></div>
+       <div class="step"><i></i><div>Sent to tenant<small>10 Aug · 14:05 · email + WhatsApp link</small></div></div>
+       <div class="step todo"><i></i><div>Tenant signature<small>Opened twice · reminder scheduled for tomorrow</small></div></div>
+       <div class="step todo m-hide"><i></i><div>Landlord countersignature</div></div>
+       <div class="step todo m-hide"><i></i><div>Ejari registration<small>Automated · 1 business day</small></div></div>
+      </div>
+     </div>
+    </div>
+    <div class="paper">
+     <h2>TENANCY AGREEMENT</h2>
+     <p>This agreement is made on <span class="fill">10 August 2026</span> between <b>Palm Court Holdings LLC</b> (the Landlord), represented by Meridian Estates, and <b><span class="fill">Fatima Zahra</span></b> (the Tenant).</p>
+     <p><b>1. Premises.</b> The Landlord lets to the Tenant the residential unit <span class="fill">1204, Palm Court Residences, Palm Jumeirah, Dubai</span>, together with one allocated parking space.</p>
+     <p><b>2. Term.</b> The tenancy runs for <span class="fill">twelve (12) months</span> commencing <span class="fill">1 September 2026</span> and ending 31 August 2027, renewable by written notice not less than 90 days before expiry in accordance with Law No. 26 of 2007.</p>
+     <p><b>3. Rent.</b> The annual rent is <span class="fill">AED 74,000</span> payable in <span class="fill">two (2) cheques</span>. A security deposit of <span class="fill">AED 3,700</span> is held by the Landlord and returned within 30 days of vacating, less agreed deductions.</p>
+     <p><b>4. Maintenance.</b> Minor maintenance up to AED 500 per incident is borne by the Tenant; the Landlord is responsible for major repairs and building services.</p>
+     <div class="sig"><span><b>Meridian Estates</b>For the Landlord · signed 10 Aug 2026</span><span><b>&nbsp;</b>Tenant · awaiting signature</span></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Overview</span><span><b></b>Properties</span><span><b></b>CRM</span><span class="on"><b></b>Documents</span><span><b></b>Agents</span></div>
+ </div>
+</div></body></html>

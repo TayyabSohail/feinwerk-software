@@ -1,0 +1,57 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0d9488}
+html.light{--bg:#f3f7f6;--panel:#ffffff;--panel-2:#e9f2f0;--line:rgba(15,60,55,.1);--soft:rgba(15,60,55,.06)}
+.ex{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.ex:last-child{border-bottom:0}
+.ex .ic i{border-radius:50%}
+.ex.done .ic{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.ex .m{color:var(--faint);font-size:11px;margin-top:2px}
+.timer{display:none}
+@media (max-width:600px){.timer{display:flex;gap:16px;align-items:center}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>PhysioVision</div>
+  <div class="lab">Programme</div>
+  <div class="nav on"><b></b>Today</div><div class="nav"><b></b>Plan</div><div class="nav"><b></b>Assessments</div><div class="nav"><b></b>Progress</div><div class="nav"><b></b>Messages</div>
+  <div class="lab">Care team</div>
+  <div class="nav"><b></b>Clinician</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Daniel Reyes<small>Knee rehabilitation · Week 4</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Knee rehabilitation / <b>Week 4 of 8</b></div><div class="right"><span class="pill on"><span class="dot"></span>Adaptive plan on</span><span class="pill d-only">Dr. Hana Sato</span></div></div>
+  <div class="content">
+   <div><h1>Good morning, Daniel</h1><div class="sub">Session 3 of 4 this week · about 24 minutes</div></div>
+   <div class="card timer"><div class="ring" style="--pct:62%"><div><b>0:42</b><span>Step-ups</span></div></div><div><b style="font-size:15px">Set 2 of 3 · 10 reps</b><div class="muted small" style="margin-top:4px">Lower step height this week. Stop if pain rises above 4.</div><div class="row" style="margin-top:10px"><span class="btn">Pause</span><span class="btn ghost">Report pain</span></div></div></div>
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Adherence</div><div class="v">86%</div><div class="d">+6 pts this week</div></div>
+    <div class="card kpi"><div class="l">Pain (avg)</div><div class="v">3 / 10</div><div class="d">−1 vs last week</div></div>
+    <div class="card kpi"><div class="l">Range of motion</div><div class="v">118°</div><div class="d">+9° in 14 days</div></div>
+    <div class="card kpi"><div class="l">Streak</div><div class="v">11 days</div><div class="d m">Best: 14</div></div>
+   </div>
+   <div class="grid2">
+    <div class="card">
+     <h3>Today's exercises <span>Adjusted 2 h ago</span></h3>
+     <div class="ex done"><span class="ic"><i></i></span><div><b>Terminal knee extension</b><div class="m">3 × 12 · light band</div></div><span class="tag g">Done</span></div>
+     <div class="ex done"><span class="ic"><i></i></span><div><b>Wall sits</b><div class="m">3 × 45 s</div></div><span class="tag g">Done</span></div>
+     <div class="ex"><span class="ic"><i></i></span><div><b>Step-ups</b><div class="m">3 × 10 · 15 cm step</div><div class="bar" style="margin-top:6px;width:160px"><i style="width:55%"></i></div></div><span class="tag b">In progress</span></div>
+     <div class="ex"><span class="ic" style="opacity:.5"><i></i></span><div><b>Single-leg balance</b><div class="m">2 × 30 s</div></div><span class="tag n">Up next</span></div>
+     <div class="ex m-hide"><span class="ic" style="opacity:.5"><i></i></span><div><b>Hamstring curls</b><div class="m">3 × 12 · 6 kg</div></div><span class="tag n">Up next</span></div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Plan adaptation <span>Reviewed by clinician</span></h3>
+      <p style="font-size:12.5px;line-height:1.55;color:var(--muted)">Lunges were removed this week after you reported pain 5/10 on Monday. They were replaced with step-ups at a lower height. Dr. Sato approved the change on Tuesday.</p>
+     </div>
+     <div class="card m-hide">
+      <h3>Range of motion <span>Degrees, 6 weeks</span></h3>
+      <svg viewBox="0 0 320 90" width="100%" height="90"><polyline fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round" points="6,78 58,70 110,64 162,52 214,40 266,26 314,14"/><g fill="#0d9488"><circle cx="6" cy="78" r="3"/><circle cx="58" cy="70" r="3"/><circle cx="110" cy="64" r="3"/><circle cx="162" cy="52" r="3"/><circle cx="214" cy="40" r="3"/><circle cx="266" cy="26" r="3"/><circle cx="314" cy="14" r="4"/></g></svg>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Today</span><span><b></b>Plan</span><span><b></b>Assess</span><span><b></b>Progress</span><span><b></b>Clinician</span></div>
+ </div>
+</div></body></html>

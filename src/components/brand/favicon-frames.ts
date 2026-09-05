@@ -1,6 +1,6 @@
 /**
- * Two favicon frames, dark and light. The tab icon flips between them every
- * five seconds.
+ * Two favicon frames, dark and light. `DynamicFavicon` flips the tab icon
+ * between them.
  */
 const BRAND = '#10b981';
 const INK = '#0d0d0d';

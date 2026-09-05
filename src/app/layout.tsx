@@ -4,6 +4,7 @@ import { Toaster } from 'sonner';
 
 import './globals.css';
 
+import { Cursor } from '@/components/effects/cursor';
 import { SpotlightEffect } from '@/components/effects/spotlight';
 import { Backdrop } from '@/components/layout/backdrop';
 import { CookieConsent } from '@/components/layout/cookie-consent';
@@ -68,6 +69,7 @@ export default async function RootLayout({
             <ScrollProgress />
             <Backdrop />
             <SpotlightEffect />
+            <Cursor />
             <Header dict={dict} />
             <main id='main' className='relative'>
               {children}

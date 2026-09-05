@@ -1,0 +1,47 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#2563eb}
+.agent{display:flex;gap:12px;align-items:flex-start}
+.agent .ic{width:38px;height:38px;border-radius:10px;background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.agent b{display:block;font-size:13px}
+.agent small{color:var(--muted);display:block;margin-top:2px;line-height:1.4}
+.agent .tag{margin-left:auto}
+.src{display:inline-flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.src span{font-size:10px;padding:2px 7px;border-radius:5px;background:var(--soft);color:var(--muted)}
+.msg.bot ul{margin:6px 0 0 16px;font-size:12px}
+.msg.bot li{margin-bottom:3px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Meridian Estates</div>
+  <div class="lab">Portfolio</div>
+  <div class="nav"><b></b>Overview</div><div class="nav"><b></b>Properties</div><div class="nav"><b></b>Units</div><div class="nav"><b></b>Tenants</div><div class="nav"><b></b>Leases</div>
+  <div class="lab">Operations</div>
+  <div class="nav"><b></b>CRM</div><div class="nav"><b></b>Documents</div><div class="nav on"><b></b>AI agents</div><div class="nav"><b></b>Marketing</div><div class="nav"><b></b>Reports</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Layla Haddad<small>Agency admin · 3 agencies</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">AI agents / <b>Compliance agent</b></div><div class="right"><span class="pill on"><span class="dot"></span>Scoped to Meridian · Dubai</span><span class="btn ghost d-only">Agent settings</span></div></div>
+  <div class="content">
+   <div class="grid2" style="grid-template-columns:.95fr 1.25fr">
+    <div class="stack">
+     <div class="card"><div class="agent"><span class="ic"></span><div><b>CRM agent</b><small>Scores leads, drafts follow-ups and counter-offers from the pipeline.</small></div><span class="tag g">Active</span></div></div>
+     <div class="card" style="border-color:var(--accent)"><div class="agent"><span class="ic"></span><div><b>Compliance agent</b><small>Checks leases, notices and renewals against RERA rules and agency policy.</small></div><span class="tag g">Active</span></div></div>
+     <div class="card"><div class="agent"><span class="ic"></span><div><b>Knowledge agent</b><small>Answers from the agency's own documents, contracts and building rules.</small></div><span class="tag g">Active</span></div></div>
+     <div class="card flat m-hide"><h3>Isolation</h3><p class="small muted" style="line-height:1.55">Each agency's agents only see that agency's data. Row-level policies enforce the boundary at the database, not in prompts.</p></div>
+    </div>
+    <div class="card">
+     <h3>Compliance agent <span>Renewal · Business Bay 1502</span></h3>
+     <div class="chat">
+      <div class="msg me">Can we raise the rent on Business Bay 1502 at renewal? Current AED 236,000, landlord wants 260,000.</div>
+      <div class="msg bot">Not by that much. Under the Dubai rental index the unit's band allows an increase of <b>up to 10%</b>, so the maximum is <b>AED 259,600</b>. Two more conditions apply:<ul><li>Notice must reach the tenant at least <b>90 days</b> before expiry (deadline 2 Jun 2027 for a 31 Aug expiry).</li><li>The increase must be stated in the renewal notice, not applied after signature.</li></ul>I have drafted a compliant notice at AED 259,600 for your review.<div class="src"><span>RERA rental index · Business Bay</span><span>Decree No. 43 of 2013</span><span>Lease BB-1502</span></div><small>Compliance agent · 2 sources verified · 1.8 s</small></div>
+     </div>
+     <div class="row" style="margin-top:12px"><span class="btn">Open draft notice</span><span class="btn ghost">Ask a follow-up</span></div>
+     <div class="compose m-hide">Ask about a lease, notice or policy…<b></b></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Overview</span><span><b></b>Properties</span><span><b></b>CRM</span><span><b></b>Documents</span><span class="on"><b></b>Agents</span></div>
+ </div>
+</div></body></html>

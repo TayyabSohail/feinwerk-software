@@ -1,0 +1,58 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0d9488}
+html.light{--bg:#f3f7f6;--panel:#ffffff;--panel-2:#e9f2f0;--line:rgba(15,60,55,.1);--soft:rgba(15,60,55,.06)}
+.nm{display:flex;align-items:center;gap:10px}
+.nm small{display:block;color:var(--faint);font-size:11px}
+.pain{display:inline-flex;gap:2px;align-items:flex-end;height:16px}
+.pain i{width:4px;background:var(--accent);border-radius:1px;opacity:.7}
+.pain i.hi{background:var(--bad);opacity:1}
+.appr{display:grid;gap:8px;font-size:12.5px;padding:10px 0;border-bottom:1px solid var(--line)}
+.appr:last-child{border-bottom:0}
+.appr small{color:var(--muted);font-size:11.5px;line-height:1.45}
+.appr .row .btn{height:28px;font-size:11px;padding:0 10px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>PhysioVision</div>
+  <div class="lab">Clinic</div>
+  <div class="nav on"><b></b>Patients<span class="cnt">24</span></div><div class="nav"><b></b>Approvals<span class="cnt">2</span></div><div class="nav"><b></b>Schedule</div><div class="nav"><b></b>Assessments</div><div class="nav"><b></b>Exercise library</div>
+  <div class="lab">Practice</div>
+  <div class="nav"><b></b>Reports</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Dr. Hana Sato<small>Physiotherapist · Kyoto Clinic</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Clinic / <b>Patients</b></div><div class="right"><span class="pill"><span class="dot" style="background:var(--warn)"></span>3 flags to review</span><span class="btn d-only">Add patient</span></div></div>
+  <div class="content">
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Active patients</div><div class="v">24</div><div class="d m">6 programmes</div></div>
+    <div class="card kpi"><div class="l">Adherence · 7d</div><div class="v">81%</div><div class="d">+4 pts</div></div>
+    <div class="card kpi"><div class="l">Pain flags</div><div class="v">3</div><div class="d n">1 above 6/10</div></div>
+    <div class="card kpi"><div class="l">Pending approvals</div><div class="v">2</div><div class="d m">AI plan changes</div></div>
+   </div>
+   <div class="grid2" style="grid-template-columns:1.6fr 1fr">
+    <div class="card">
+     <h3>Patients <span>Sorted by attention needed</span></h3>
+     <table>
+      <tr><th>Patient</th><th class="d-only">Programme</th><th>Adherence</th><th class="d-only">Pain · 7d</th><th>Flag</th></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#ef4444"></span><div><b>Mei Tanaka</b><small>Shoulder · week 2</small></div></div></td><td class="d-only">Rotator cuff</td><td><div class="row"><div class="bar" style="width:70px"><i style="width:54%"></i></div><span class="small muted">54%</span></div></td><td class="d-only"><span class="pain"><i style="height:6px"></i><i style="height:8px"></i><i style="height:7px"></i><i style="height:10px"></i><i style="height:12px"></i><i class="hi" style="height:15px"></i><i class="hi" style="height:16px"></i></span></td><td><span class="tag r">Pain 7/10</span></td></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#f59e0b"></span><div><b>Daniel Reyes</b><small>Knee · week 4</small></div></div></td><td class="d-only">ACL rehabilitation</td><td><div class="row"><div class="bar" style="width:70px"><i style="width:86%"></i></div><span class="small muted">86%</span></div></td><td class="d-only"><span class="pain"><i style="height:12px"></i><i style="height:10px"></i><i style="height:8px"></i><i style="height:9px"></i><i style="height:7px"></i><i style="height:6px"></i><i style="height:6px"></i></span></td><td><span class="tag w">Form check</span></td></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#8b5cf6"></span><div><b>Kenji Mori</b><small>Lower back · week 6</small></div></div></td><td class="d-only">Disc recovery</td><td><div class="row"><div class="bar" style="width:70px"><i style="width:62%"></i></div><span class="small muted">62%</span></div></td><td class="d-only"><span class="pain"><i style="height:8px"></i><i style="height:8px"></i><i style="height:7px"></i><i style="height:7px"></i><i style="height:6px"></i><i style="height:6px"></i><i style="height:5px"></i></span></td><td><span class="tag w">Missed 2</span></td></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#22c55e"></span><div><b>Sofia Alvarez</b><small>Ankle · week 7</small></div></div></td><td class="d-only">Sprain return-to-sport</td><td><div class="row"><div class="bar" style="width:70px"><i style="width:94%"></i></div><span class="small muted">94%</span></div></td><td class="d-only"><span class="pain"><i style="height:5px"></i><i style="height:4px"></i><i style="height:4px"></i><i style="height:3px"></i><i style="height:3px"></i><i style="height:3px"></i><i style="height:2px"></i></span></td><td><span class="tag g">On track</span></td></tr>
+      <tr class="m-hide"><td><div class="nm"><span class="avatar" style="background:#06b6d4"></span><div><b>Liam O'Neill</b><small>Hip · week 3</small></div></div></td><td class="d-only">Post-arthroscopy</td><td><div class="row"><div class="bar" style="width:70px"><i style="width:78%"></i></div><span class="small muted">78%</span></div></td><td class="d-only"><span class="pain"><i style="height:9px"></i><i style="height:8px"></i><i style="height:8px"></i><i style="height:7px"></i><i style="height:7px"></i><i style="height:6px"></i><i style="height:6px"></i></span></td><td><span class="tag g">On track</span></td></tr>
+     </table>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Plan changes to approve <span>Proposed by AI</span></h3>
+      <div class="appr"><b>Mei Tanaka · reduce external rotation load</b><small>Pain rose to 7/10 over two sessions. Proposal: drop band resistance one level and add 2 rest days.</small><div class="row"><span class="btn">Approve</span><span class="btn ghost">Edit</span></div></div>
+      <div class="appr m-hide"><b>Daniel Reyes · add band walks</b><small>Form check shows 6° knee valgus at depth. Proposal: 2 × 15 band walks before step-ups.</small><div class="row"><span class="btn">Approve</span><span class="btn ghost">Edit</span></div></div>
+     </div>
+     <div class="card flat m-hide"><h3>Today <span>Video check-ins</span></h3><div class="stat"><span>09:30 · Daniel Reyes</span><b>Week 4 review</b></div><div class="stat"><span>11:00 · Mei Tanaka</span><b>Pain review</b></div></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Patients</span><span><b></b>Approvals</span><span><b></b>Schedule</span><span><b></b>Assess</span><span><b></b>Library</span></div>
+ </div>
+</div></body></html>

@@ -1,0 +1,67 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0d9488}
+html.light{--bg:#f3f7f6;--panel:#ffffff;--panel-2:#e9f2f0;--line:rgba(15,60,55,.1);--soft:rgba(15,60,55,.06)}
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.phase{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--panel)}
+.phase.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
+.phase .w{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.phase b{display:block;font-size:13px;margin:4px 0 6px}
+.phase p{font-size:11.5px;color:var(--muted);line-height:1.45}
+.phase .bar{margin-top:10px}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.wk div{background:var(--panel-2);border-radius:8px;padding:8px 6px;font-size:11px;text-align:center;color:var(--muted)}
+.wk div b{display:block;font-size:12.5px;color:var(--text)}
+.wk div.done{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.wk div.done b{color:var(--accent)}
+.wk div.today{outline:2px solid var(--accent)}
+.chg{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.chg:last-child{border-bottom:0}
+.chg small{grid-column:1/-1;color:var(--faint);font-size:11px}
+@media (max-width:600px){.phases{grid-template-columns:1fr 1fr}.phase:nth-child(n+3){display:none}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>PhysioVision</div>
+  <div class="lab">Programme</div>
+  <div class="nav"><b></b>Today</div><div class="nav on"><b></b>Plan</div><div class="nav"><b></b>Assessments</div><div class="nav"><b></b>Progress</div><div class="nav"><b></b>Messages</div>
+  <div class="lab">Care team</div>
+  <div class="nav"><b></b>Clinician</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Daniel Reyes<small>Knee rehabilitation · Week 4</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Plan / <b>Knee rehabilitation · 8 weeks</b></div><div class="right"><span class="pill on"><span class="dot"></span>Adapts to your reports</span><span class="pill d-only">Started 11 Aug</span></div></div>
+  <div class="content">
+   <div><h1>Your 8-week plan</h1><div class="sub">Built from your intake and first assessment · adjusted weekly by the AI, approved by Dr. Sato</div></div>
+   <div class="phases">
+    <div class="phase"><div class="w">Weeks 1–2</div><b>Protect</b><p>Reduce swelling, restore quad activation, gentle range.</p><div class="bar"><i style="width:100%"></i></div></div>
+    <div class="phase"><div class="w">Weeks 3–4</div><b>Mobilise</b><p>Reach 120° flexion, closed-chain loading, balance.</p><div class="bar"><i style="width:75%"></i></div></div>
+    <div class="phase on"><div class="w">Weeks 5–6</div><b>Strengthen</b><p>Progressive load: step-ups, split squats, hamstring curls.</p><div class="bar"><i style="width:0"></i></div></div>
+    <div class="phase"><div class="w">Weeks 7–8</div><b>Return</b><p>Jogging intervals, change of direction, sport-specific drills.</p><div class="bar"><i style="width:0"></i></div></div>
+   </div>
+   <div class="grid2">
+    <div class="card">
+     <h3>Week 4 <span>Session 3 of 4 · today</span></h3>
+     <div class="wk"><div class="done">Mon<b>1</b></div><div class="done">Tue<b>2</b></div><div>Wed<b>–</b></div><div class="today">Thu<b>3</b></div><div>Fri<b>–</b></div><div>Sat<b>4</b></div><div>Sun<b>–</b></div></div>
+     <div class="list" style="margin-top:8px">
+      <div><span class="ic round"><i></i></span><div class="t"><b>Terminal knee extension</b><small>3 × 12 · light band · every session</small></div><span class="tag n">Base</span></div>
+      <div><span class="ic round"><i></i></span><div class="t"><b>Step-ups</b><small>3 × 10 · 15 cm · replaced lunges this week</small></div><span class="tag a">Adapted</span></div>
+      <div><span class="ic round"><i></i></span><div class="t"><b>Single-leg balance</b><small>2 × 30 s · eyes open</small></div><span class="tag n">Base</span></div>
+      <div class="m-hide"><span class="ic round"><i></i></span><div class="t"><b>Band walks</b><small>2 × 15 · added after the form check</small></div><span class="tag a">New</span></div>
+     </div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Adaptations <span>What changed and why</span></h3>
+      <div class="chg"><b>Lunges → step-ups (15 cm)</b><span class="tag g">Approved</span><small>2 Sep · pain 5/10 reported Monday · Dr. Sato approved Tuesday</small></div>
+      <div class="chg"><b>Band walks added</b><span class="tag g">Approved</span><small>4 Sep · knee drifting inward on the squat assessment</small></div>
+      <div class="chg m-hide"><b>Wall sits 30 s → 45 s</b><span class="tag g">Approved</span><small>28 Aug · three pain-free sessions in a row</small></div>
+     </div>
+     <div class="card flat m-hide"><h3>Next check-in</h3><p class="small muted" style="line-height:1.55">Video call with Dr. Sato on <b>Mon 8 Sep, 09:30</b>. She will review week 4 and unlock the strengthening phase.</p></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Today</span><span class="on"><b></b>Plan</span><span><b></b>Assess</span><span><b></b>Progress</span><span><b></b>Clinician</span></div>
+ </div>
+</div></body></html>

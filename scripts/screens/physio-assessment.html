@@ -1,0 +1,58 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0d9488}
+html.light{--bg:#f3f7f6;--panel:#ffffff;--panel-2:#e9f2f0;--line:rgba(15,60,55,.1);--soft:rgba(15,60,55,.06)}
+.video{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#2a3a3a,#111c1c)}
+.video svg{position:absolute;inset:0;width:100%;height:100%}
+.video .lbl{position:absolute;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;font-weight:600}
+.video .rec{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:6px;color:#fff;font-size:11px;font-weight:600}
+.frames{display:flex;gap:3px;margin-top:10px;height:34px}
+.frames i{flex:1;background:var(--panel-2);border-radius:3px}
+.frames i.on{background:var(--accent)}
+.fb{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.45}
+.fb:last-child{border-bottom:0}
+.fb i{width:10px;height:10px;border-radius:50%;margin-top:4px}
+.fb small{display:block;color:var(--faint);font-size:11px;margin-top:2px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>PhysioVision</div>
+  <div class="lab">Programme</div>
+  <div class="nav"><b></b>Today</div><div class="nav"><b></b>Plan</div><div class="nav on"><b></b>Assessments</div><div class="nav"><b></b>Progress</div><div class="nav"><b></b>Messages</div>
+  <div class="lab">Care team</div>
+  <div class="nav"><b></b>Clinician</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Daniel Reyes<small>Knee rehabilitation · Week 4</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Assessments / <b>Squat form check · 4 Sep</b></div><div class="right"><span class="pill on"><span class="dot"></span>Analysed · 12 s</span><span class="btn d-only">Send to clinician</span></div></div>
+  <div class="content">
+   <div class="grid2" style="grid-template-columns:1.35fr 1fr">
+    <div class="card">
+     <h3>Movement assessment <span>Uploaded from phone · 14 s clip</span></h3>
+     <div class="video">
+      <svg viewBox="0 0 320 180"><g stroke="#2dd4bf" stroke-width="2" fill="none" stroke-linecap="round"><line x1="160" y1="42" x2="160" y2="88"/><line x1="160" y1="52" x2="132" y2="78"/><line x1="160" y1="52" x2="188" y2="78"/><line x1="132" y1="78" x2="124" y2="104"/><line x1="188" y1="78" x2="196" y2="104"/><line x1="160" y1="88" x2="142" y2="120"/><line x1="160" y1="88" x2="178" y2="120"/><line x1="142" y1="120" x2="136" y2="156"/><line x1="178" y1="120" x2="186" y2="156"/></g><g fill="#2dd4bf"><circle cx="160" cy="34" r="6"/><circle cx="160" cy="52" r="3"/><circle cx="132" cy="78" r="3"/><circle cx="188" cy="78" r="3"/><circle cx="124" cy="104" r="3"/><circle cx="196" cy="104" r="3"/><circle cx="160" cy="88" r="3"/><circle cx="142" cy="120" r="3"/><circle cx="178" cy="120" r="3"/><circle cx="136" cy="156" r="3"/><circle cx="186" cy="156" r="3"/></g><path d="M178,120 L186,156" stroke="#fbbf24" stroke-width="3" fill="none"/></svg>
+      <span class="rec"><span class="dot red"></span>Frame 212 / 420</span>
+      <span class="lbl" style="left:58%;top:60%">Knee flexion 118°</span>
+      <span class="lbl" style="left:14%;top:26%">Trunk lean 12°</span>
+     </div>
+     <div class="frames"><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    </div>
+    <div class="stack">
+     <div class="kpis three">
+      <div class="card kpi"><div class="l">Depth</div><div class="v">118°</div><div class="d">+4° vs last</div></div>
+      <div class="card kpi"><div class="l">Symmetry</div><div class="v">92%</div><div class="d m">L / R load</div></div>
+      <div class="card kpi"><div class="l">Tempo</div><div class="v">2.1 s</div><div class="d m">Target 2–3 s</div></div>
+     </div>
+     <div class="card">
+      <h3>Form feedback <span>AI · confirmed by Dr. Sato</span></h3>
+      <div class="fb"><i style="background:var(--good)"></i><div>Depth is on target and controlled through the whole rep.<small>Good</small></div></div>
+      <div class="fb"><i style="background:var(--warn)"></i><div>Right knee drifts inward about 6° at the bottom of the squat.<small>Watch · add the band walk before step-ups</small></div></div>
+      <div class="fb m-hide"><i style="background:var(--good)"></i><div>Trunk lean stays under 15°, which protects the lower back.<small>Good</small></div></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Today</span><span><b></b>Plan</span><span class="on"><b></b>Assess</span><span><b></b>Progress</span><span><b></b>Clinician</span></div>
+ </div>
+</div></body></html>

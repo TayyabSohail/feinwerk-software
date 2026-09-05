@@ -1,0 +1,59 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#d97706}
+html.light{--bg:#f6f4ef;--panel:#ffffff;--panel-2:#f1ede4;--line:rgba(60,45,20,.11);--soft:rgba(60,45,20,.06)}
+.doc p{font-size:12.5px;line-height:1.75;color:rgba(30,25,15,.78);margin-bottom:12px}
+.doc mark{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--text);border-bottom:1.5px solid var(--accent);padding:1px 2px;border-radius:2px}
+.doc mark.r{background:color-mix(in srgb,var(--bad) 16%,transparent);border-color:var(--bad)}
+.doc mark sup{font-size:9px;font-weight:700;margin-left:3px;color:var(--accent)}
+.doc mark.r sup{color:var(--bad)}
+.find{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.find:last-child{border-bottom:0}
+.find .n{font-size:10px;color:var(--faint);width:30px;flex:none;padding-top:3px;font-weight:600}
+.find b{display:block;font-size:12.5px;margin:4px 0}
+.find p{font-size:11.5px;color:var(--muted);line-height:1.5}
+.ref{font-size:10.5px;color:var(--accent);font-weight:600;letter-spacing:.02em}
+.prog{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted)}
+.prog .bar{width:120px}
+.sev{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sev div{padding:10px 12px;border-radius:8px;background:var(--panel);border:1px solid var(--line)}
+.sev .v{font-size:20px;font-weight:600}
+.sev .l{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:600px){.doc{display:none}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Clause</div>
+  <div class="lab">Review</div>
+  <div class="nav on"><b></b>Review queue</div><div class="nav"><b></b>Findings</div><div class="nav"><b></b>Audit packs</div><div class="nav"><b></b>Standards library</div>
+  <div class="lab">Workspace</div>
+  <div class="nav"><b></b>Team</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Jonas Weber<small>Senior auditor</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Helios Manufacturing / <b>FY2025 audit pack</b></div><div class="right"><span class="prog d-only">142 / 168 clauses <span class="bar"><i style="width:84%"></i></span></span><span class="pill on"><span class="dot"></span>Agent reviewing</span><span class="btn d-only">Export findings</span></div></div>
+  <div class="content">
+   <div><h1>Revenue recognition policy v4</h1><div class="sub">Page 7 of 31 · 8 findings · last pass 2 min ago</div></div>
+   <div class="grid2" style="grid-template-columns:1.25fr 1fr">
+    <div class="card doc">
+     <h3>Document <span>Findings tracked inline</span></h3>
+     <p><b>4.2 Multiple-element arrangements.</b> Where a contract contains more than one performance obligation, the transaction price is allocated to each obligation on a relative stand-alone selling price basis. <mark>Where stand-alone selling prices are not directly observable, management estimates them using the adjusted market assessment approach<sup>F-11</sup></mark>. Estimates are reviewed annually.</p>
+     <p><b>4.3 Cut-off.</b> Revenue is recognised when control of the goods transfers to the customer. <mark class="r">For contracts combining hardware and a twelve-month service element, revenue is recognised in full on delivery of the hardware<sup>F-12</sup></mark>, provided that the invoice has been raised before the period end.</p>
+     <p><b>4.4 Variable consideration.</b> Volume rebates and early-settlement discounts are estimated using the expected value method and constrained such that a significant reversal is not probable. <mark>Rebate accruals are released twelve months after the contract year end if unclaimed<sup>F-13</sup></mark>.</p>
+     <p><b>4.5 Contract modifications.</b> A modification that adds distinct goods at their stand-alone selling price is accounted for as a separate contract. Other modifications are accounted for prospectively where the remaining goods are distinct from those transferred before the modification.</p>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Findings <span>8 open · 0 dismissed</span></h3>
+      <div class="find"><div class="n">F-12</div><div><span class="tag r">High</span><b>Service element recognised on delivery instead of over time</b><div class="ref">IFRS 15 §22–30, §35(a)</div><p>The bundled service is a separate performance obligation satisfied over twelve months. Recognising it on hardware delivery overstates period revenue.</p></div></div>
+      <div class="find"><div class="n">F-11</div><div><span class="tag w">Medium</span><b>Estimation method for stand-alone prices not evidenced</b><div class="ref">IFRS 15 §79(a)</div><p>Policy names the method but no supporting market data is referenced in the working papers.</p></div></div>
+      <div class="find m-hide"><div class="n">F-13</div><div><span class="tag w">Medium</span><b>Rebate release timing lacks legal basis</b><div class="ref">IFRS 15 §56–58</div><p>Release after twelve months should follow the expiry of the customer's contractual right, not a fixed period.</p></div></div>
+     </div>
+     <div class="sev"><div><div class="v" style="color:var(--bad)">2</div><div class="l">High</div></div><div><div class="v" style="color:var(--warn)">4</div><div class="l">Medium</div></div><div><div class="v">2</div><div class="l">Low</div></div></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Queue</span><span><b></b>Findings</span><span><b></b>Packs</span><span><b></b>Standards</span><span><b></b>Team</span></div>
+ </div>
+</div></body></html>

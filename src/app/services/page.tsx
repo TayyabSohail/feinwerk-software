@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/common/page-hero';
 import { CtaBanner } from '@/components/sections/cta-banner';
 import { HowItWorks } from '@/components/sections/how-it-works';
+import { Pricing } from '@/components/sections/pricing';
 import { ServicesGrid } from '@/components/sections/services-grid';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 
@@ -30,9 +31,10 @@ export default async function ServicesPage() {
         kicker='Services'
         title='Engineering, scoped to an outcome.'
         accentWords={[3, 4]}
-        description='Six engagement shapes covering the whole lifecycle of a software product, from the first prototype to the team that runs it. Each one is priced for a result, not for hours.'
+        description='Four capabilities and two ways to engage, covering the whole lifecycle of a software product from the first prototype to the team that runs it. Each one is priced for a result, not for hours.'
       />
       <ServicesGrid dict={dict} withHeading={false} className='pt-0' />
+      <Pricing dict={dict} />
       <HowItWorks dict={dict} />
       <CtaBanner dict={dict} />
     </>

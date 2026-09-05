@@ -247,8 +247,8 @@ const sections: LegalSection[] = [
           governed by the laws of the Federal Republic of Germany, excluding the
           UN Convention on Contracts for the International Sale of Goods, and
           the courts of Stuttgart have exclusive jurisdiction where permitted.
-          For clients contracting with our Pakistani office, the laws of
-          Pakistan apply and the courts of Rawalpindi have jurisdiction. The SOW
+          For clients contracting with our Asian office, the laws of
+          Pakistan apply and the courts of Islamabad have jurisdiction. The SOW
           states which office is contracting.
         </p>
         <p>

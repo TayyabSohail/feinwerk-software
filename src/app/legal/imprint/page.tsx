@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const UPDATED = '5 September 2026';
 
-const [rawalpindi, fellbach] = siteConfig.locations;
+const [islamabad, fellbach] = siteConfig.locations;
 
 const sections: LegalSection[] = [
   {
@@ -44,27 +44,18 @@ const sections: LegalSection[] = [
     title: 'Contact',
     body: (
       <p>
-        Telephone (Germany): <a href={fellbach.phoneHref}>{fellbach.phone}</a>
-        <br />
-        Telephone (Pakistan):{' '}
-        <a href={rawalpindi.phoneHref}>{rawalpindi.phone}</a>
-        <br />
         Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-        <br />
-        Hours: {fellbach.hours} / {rawalpindi.hours}
       </p>
     ),
   },
   {
-    id: 'engineering-office',
-    title: 'Engineering office',
+    id: 'pakistani-office',
+    title: 'Asian office',
     body: (
       <p>
         {siteConfig.legalName}
         <br />
-        {rawalpindi.city}, Punjab, {rawalpindi.country}
-        <br />
-        Telephone: <a href={rawalpindi.phoneHref}>{rawalpindi.phone}</a>
+        {islamabad.city}, Islamabad Capital Territory, {islamabad.country}
       </p>
     ),
   },

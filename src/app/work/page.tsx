@@ -3,10 +3,15 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/common/page-hero';
 import { CtaBanner } from '@/components/sections/cta-banner';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
+import { NotableProjects } from '@/components/work/notable-projects';
 import { ProjectGrid } from '@/components/work/project-grid';
 
 import { paths } from '@/constants/paths';
-import { getCategories, projects } from '@/data/projects';
+import {
+  getCategories,
+  getNotableProjects,
+  getShowcaseProjects,
+} from '@/data/projects';
 import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
@@ -19,6 +24,7 @@ export const metadata: Metadata = {
 export default async function WorkPage() {
   const dict = await getDictionary();
   const t = dict.work;
+  const showcase = getShowcaseProjects();
 
   return (
     <>
@@ -36,14 +42,22 @@ export default async function WorkPage() {
       />
       <section className='fw-container pb-10'>
         <ProjectGrid
-          projects={projects}
-          categories={getCategories()}
+          projects={showcase}
+          categories={getCategories(showcase)}
           labels={t.filters}
           filterLabel={t.filterLabel}
           actionLabel={t.view}
           countTemplate={t.count}
         />
       </section>
+      <NotableProjects
+        projects={getNotableProjects()}
+        kicker={t.notable.kicker}
+        title={t.notable.title}
+        description={t.notable.description}
+        actionLabel={t.view}
+        className='mt-10'
+      />
       <CtaBanner dict={dict} />
     </>
   );

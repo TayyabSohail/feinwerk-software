@@ -77,7 +77,7 @@ export default function OpenGraphImage() {
             Software built with precision.
           </div>
           <div style={{ fontSize: 30, color: '#b3b3b3', maxWidth: 900 }}>
-            Full-stack products, AI systems and cloud automation. Rawalpindi and
+            Full-stack products, AI systems and cloud automation. Islamabad and
             Fellbach, shipped worldwide.
           </div>
         </div>

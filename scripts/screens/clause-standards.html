@@ -1,0 +1,51 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#d97706}
+html.light{--bg:#f6f4ef;--panel:#ffffff;--panel-2:#f1ede4;--line:rgba(60,45,20,.11);--soft:rgba(60,45,20,.06)}
+.lib{display:grid;grid-template-columns:270px 1fr;gap:14px;min-height:0}
+.std{padding:10px 10px;border-radius:8px;font-size:12.5px;display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+.std.on{background:var(--panel-2);color:var(--text)}
+.std b{display:block;font-size:12.5px;color:var(--text)}
+.std small{font-size:11px;color:var(--faint)}
+.para{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.6}
+.para:last-child{border-bottom:0}
+.para .no{font-weight:600;color:var(--accent);font-size:11.5px;padding-top:2px}
+.para p{color:rgba(30,25,15,.78)}
+.para .use{font-size:10.5px;color:var(--faint);margin-top:4px}
+@media (max-width:600px){.lib{grid-template-columns:1fr}.stds{display:none}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Clause</div>
+  <div class="lab">Review</div>
+  <div class="nav"><b></b>Review queue</div><div class="nav"><b></b>Findings</div><div class="nav"><b></b>Audit packs</div><div class="nav on"><b></b>Standards library</div>
+  <div class="lab">Workspace</div>
+  <div class="nav"><b></b>Team</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Jonas Weber<small>Senior auditor</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Standards library / <b>IFRS 15 · Revenue from contracts with customers</b></div><div class="right"><span class="pill">Edition 2026</span><span class="btn ghost d-only">Add firm guidance</span></div></div>
+  <div class="content">
+   <div class="lib">
+    <div class="card stds">
+     <div class="in ph-text" style="height:34px;margin-bottom:10px">Search standards…</div>
+     <div class="std on"><div><b>IFRS 15</b><small>Revenue · 129 paragraphs</small></div><span class="tag a">42 uses</span></div>
+     <div class="std"><div><b>IFRS 16</b><small>Leases · 103 paragraphs</small></div><span class="tag n">18</span></div>
+     <div class="std"><div><b>IAS 36</b><small>Impairment of assets</small></div><span class="tag n">9</span></div>
+     <div class="std"><div><b>IAS 37</b><small>Provisions and contingencies</small></div><span class="tag n">11</span></div>
+     <div class="std"><div><b>ISA 315</b><small>Risk identification</small></div><span class="tag n">4</span></div>
+     <div class="std"><div><b>Firm methodology</b><small>v2026.1 · internal</small></div><span class="tag n">27</span></div>
+    </div>
+    <div class="card">
+     <h3>IFRS 15 · Step 2, identifying performance obligations <span>Cited in 42 findings across 11 clients</span></h3>
+     <div class="para"><div class="no">§22</div><div><p>At contract inception, an entity shall assess the goods or services promised in a contract with a customer and shall identify as a performance obligation each promise to transfer to the customer either a good or service that is distinct, or a series of distinct goods or services that are substantially the same.</p><div class="use">Used in F-12 · Helios · Revenue policy v4</div></div></div>
+     <div class="para"><div class="no">§27</div><div><p>A good or service that is promised to a customer is distinct if both of the following criteria are met: the customer can benefit from the good or service on its own or together with other readily available resources; and the promise is separately identifiable from other promises in the contract.</p><div class="use">Used in F-12, F-07 · 2 clients</div></div></div>
+     <div class="para m-hide"><div class="no">§35(a)</div><div><p>An entity transfers control of a good or service over time and, therefore, satisfies a performance obligation and recognises revenue over time if the customer simultaneously receives and consumes the benefits provided by the entity's performance as the entity performs.</p><div class="use">Used in F-12 · Helios</div></div></div>
+     <div class="para m-hide"><div class="no">Firm note</div><div><p><b>Bundled hardware and service.</b> Treat the service element as a separate obligation unless the client can show the hardware is not functional without it. Flag any policy that recognises the bundle on delivery.</p><div class="use">Firm methodology 4.2 · added by J. Weber, Mar 2026</div></div></div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Queue</span><span><b></b>Findings</span><span><b></b>Packs</span><span class="on"><b></b>Standards</span><span><b></b>Team</span></div>
+ </div>
+</div></body></html>
