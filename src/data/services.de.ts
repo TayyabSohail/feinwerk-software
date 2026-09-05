@@ -227,7 +227,7 @@ export const servicesDe: Record<string, ServiceTranslation> = {
       {
         question: 'Wie läuft die Kommunikation?',
         answer:
-          'Slack oder Teams für den Alltag, ein wöchentlicher Demo-Termin und jeden Freitag eine schriftliche Zusammenfassung. Sie wissen jederzeit, was geliefert wurde und was als Nächstes kommt.',
+          'Slack oder Teams für den Alltag, ein Demo-Termin am Ende jedes Sprints und eine schriftliche Zusammenfassung dazu. Sie wissen jederzeit, was geliefert wurde und was als Nächstes kommt.',
       },
     ],
   },

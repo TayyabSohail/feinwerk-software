@@ -32,6 +32,8 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function Testimonials({ dict, className }: TestimonialsProps) {
   const t = dict.testimonials;
   const testimonials = getTestimonials(dict.locale);
+  // Sizer uses both locales so the nav row stays put when the language changes.
+  const sizerQuotes = [...getTestimonials('en'), ...getTestimonials('de')];
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -62,7 +64,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
   return (
     <section className={cn('fw-section fw-rule fw-band-white', className)}>
       <div className='fw-container'>
-        <div className='grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-end'>
+        <div>
           <div>
             <Reveal>
               <p className='fw-kicker'>{t.kicker}</p>
@@ -73,14 +75,6 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
               className='fw-display mt-5 text-display-md text-ink'
             />
           </div>
-          <Reveal delay={0.15} className='flex flex-col gap-5 md:items-end'>
-            <p className='max-w-md text-base leading-relaxed text-muted-foreground md:text-right md:text-lg'>
-              {t.description}
-            </p>
-            <Link href={paths.work} className='fw-action'>
-              {t.read} <ArrowUpRight className='h-4 w-4' />
-            </Link>
-          </Reveal>
         </div>
 
         <Reveal className='fw-card fw-spot mt-14 grid overflow-hidden lg:grid-cols-[1fr_0.75fr]'>
@@ -92,7 +86,30 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
             {/* Quote */}
             <div className='relative z-[2] flex flex-col p-8 sm:p-10 lg:p-12'>
               <Quote className='h-7 w-7 text-brand' />
-              <div className='relative mt-6 min-h-[14rem]'>
+              {/* Sized to the tallest quote so the nav row below never moves */}
+              <div className='relative mt-6 grid'>
+                {sizerQuotes.map((q, i) => (
+                  <div
+                    key={i}
+                    aria-hidden
+                    className='invisible col-start-1 row-start-1'
+                  >
+                    <p className='fw-display text-2xl leading-[1.25] sm:text-3xl'>
+                      &ldquo;{q.quote}&rdquo;
+                    </p>
+                    <footer className='mt-8 flex flex-wrap items-center justify-between gap-4'>
+                      <div>
+                        <p className='font-semibold'>{q.author}</p>
+                        <p className='text-sm'>{q.company}</p>
+                      </div>
+                      {q.result && (
+                        <p className='font-mono text-[10px] uppercase tracking-[0.18em]'>
+                          {q.result}
+                        </p>
+                      )}
+                    </footer>
+                  </div>
+                ))}
                 <AnimatePresence mode='wait' custom={direction} initial={false}>
                   <motion.blockquote
                     key={index}
@@ -108,7 +125,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                       if (info.offset.x < -60) go(1);
                       if (info.offset.x > 60) go(-1);
                     }}
-                    className='cursor-grab active:cursor-grabbing'
+                    className='absolute inset-0 cursor-grab active:cursor-grabbing'
                   >
                     <p className='fw-display text-2xl leading-[1.25] text-ink sm:text-3xl'>
                       &ldquo;{item.quote}&rdquo;

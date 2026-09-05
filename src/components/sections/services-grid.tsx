@@ -77,22 +77,17 @@ export function ServicesGrid({
   );
 }
 
-/** Sub-heading for a group: name and a one-line note. */
+/** Sub-heading for a group. */
 function GroupLabel({
   label,
-  note,
   className,
 }: {
   label: string;
-  note: string;
   className?: string;
 }) {
   return (
     <Reveal
-      className={cn(
-        'flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2',
-        className,
-      )}
+      className={cn('flex flex-wrap items-baseline gap-x-8 gap-y-2', className)}
     >
       <h3 className='fw-display text-2xl text-ink sm:text-3xl'>{label}</h3>
     </Reveal>

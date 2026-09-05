@@ -267,40 +267,44 @@ export const en = {
   },
   howItWorks: {
     kicker: 'Working with us',
-    title: 'Three commitments, one calendar',
+    title: 'Before, during and after the build',
     description:
-      'A price and a date before we write a line of code. Something to click every week while we build. A team that still answers after launch.',
+      'You know the cost and the date before any code exists. You see working software throughout, not at the end. You keep a team that still picks up the phone once it is live.',
     stepLabel: 'Step',
     cta: 'Start with a call',
-    note: 'A 30-minute call. A written quote and a launch date within five working days. Support that continues after launch.',
+    note: 'One short call to start. A written quote and a launch date within a week. A team that stays reachable once the product is live.',
     steps: [
       {
-        title: 'The plan, in writing',
-        when: 'Day 1',
+        title: 'Know the cost before the code',
+        when: 'Before we build',
         summary:
-          'Thirty minutes on a call about the product, who uses it and when it has to be live. Five working days later you hold a written scope, a price as a standard plan or a custom quote, and a launch date you can commit to.',
+          'We start with a short conversation about what the product does, who depends on it and the date it has to be live. Within a week you receive a written scope, a price as a standard package or a custom quote, and a launch date we will hold ourselves to.',
         outputs: [
-          'Scope in writing',
-          'Fixed or quoted price',
-          'Committed launch date',
+          'Written scope',
+          'Package price or custom quote',
+          'Launch date we stand behind',
         ],
       },
       {
-        title: 'Click the real thing',
-        when: 'Every Friday',
+        title: 'Use it while it is being built',
+        when: 'During the build',
         summary:
-          'No slide decks. Each Friday you open staging, use what was built that week and read a short note on what shipped and what comes next. Course corrections made early are free.',
-        outputs: ['Friday demo', 'Live staging link', 'Weekly written note'],
+          'Progress is shown in software, not slides. At the end of each sprint you get a staging link with the newest work and a short summary of what was finished and what is planned next. Changing direction early costs nothing.',
+        outputs: [
+          'Sprint walkthrough',
+          'Always-on staging link',
+          'Written progress summary',
+        ],
       },
       {
-        title: 'We are still here',
-        when: 'Launch day and after',
+        title: 'Ownership stays with you',
+        when: 'After it goes live',
         summary:
-          'We put it live, watch it in production and fix what breaks. Then you choose: keep us on a maintenance plan, or take it in-house with the code, the accounts and the documentation. It is yours either way.',
+          'We release it, keep an eye on it in production and repair anything that breaks. From there it is your call: keep us on retainer for maintenance, or run it yourself with the source code, the accounts and the documentation handed over in full.',
         outputs: [
-          'Production monitoring',
-          'Fixes and updates',
-          'Code, accounts and docs',
+          'Live monitoring',
+          'Ongoing fixes',
+          'Full handover of code and access',
         ],
       },
     ],
@@ -309,9 +313,6 @@ export const en = {
     kicker: 'Client voices',
     title: 'What it is like to work with us',
     accent: [6],
-    description:
-      'Every quote sits next to the project it describes, so you can check the claim against the work.',
-    read: 'Read the projects',
     caseStudy: 'View project',
     prev: 'Previous testimonial',
     next: 'Next testimonial',

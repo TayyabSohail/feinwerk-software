@@ -20,7 +20,7 @@ export const processSteps: ProcessStep[] = [
     title: 'Build',
     duration: 'Weeks 2-8',
     summary:
-      'A working version you can click on every Friday, with a short written update. Change your mind early and it costs nothing.',
+      'A working version on staging at the end of every sprint, with a short written update. Change your mind early and it costs nothing.',
     outcome: 'No surprises at the end, because there is no "the end".',
   },
   {
@@ -107,7 +107,7 @@ const processStepsDe: ProcessStep[] = [
     title: 'Umsetzung',
     duration: 'Wochen 2-8',
     summary:
-      'Jeden Freitag eine lauffähige Version zum Durchklicken, mit einem kurzen schriftlichen Update. Wenn Sie früh umdenken, kostet es nichts.',
+      'Am Ende jedes Sprints eine lauffähige Version auf Staging, mit einem kurzen schriftlichen Update. Wenn Sie früh umdenken, kostet es nichts.',
     outcome: 'Keine Überraschungen am Ende, weil es kein „Ende“ gibt.',
   },
   {

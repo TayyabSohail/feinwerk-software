@@ -274,40 +274,44 @@ export const de: Dictionary = {
   },
   howItWorks: {
     kicker: 'Zusammenarbeit',
-    title: 'Drei Zusagen, ein Kalender',
+    title: 'Vor, während und nach der Umsetzung',
     description:
-      'Preis und Termin, bevor wir eine Zeile Code schreiben. Jede Woche etwas zum Anklicken, während wir bauen. Ein Team, das nach dem Launch noch antwortet.',
+      'Sie kennen Kosten und Termin, bevor es Code gibt. Sie sehen lauffähige Software während des Projekts, nicht erst am Ende. Und Sie behalten ein Team, das auch nach dem Livegang noch ans Telefon geht.',
     stepLabel: 'Schritt',
     cta: 'Mit einem Gespräch starten',
-    note: 'Ein 30-minütiges Gespräch. Schriftliches Angebot und Launch-Datum innerhalb von fünf Werktagen. Support, der nach dem Launch weitergeht.',
+    note: 'Ein kurzes Gespräch zum Start. Schriftliches Angebot und Launch-Termin innerhalb einer Woche. Ein Team, das nach dem Livegang erreichbar bleibt.',
     steps: [
       {
-        title: 'Der Plan, schriftlich',
-        when: 'Tag 1',
+        title: 'Kosten kennen, bevor Code entsteht',
+        when: 'Vor der Umsetzung',
         summary:
-          'Dreißig Minuten im Gespräch über das Produkt, seine Nutzer und den Termin, an dem es live sein muss. Fünf Werktage später halten Sie einen schriftlichen Umfang, einen Preis als Standardpaket oder individuelles Angebot und ein Launch-Datum in der Hand, auf das Sie sich verlassen können.',
+          'Wir beginnen mit einem kurzen Gespräch darüber, was das Produkt leistet, wer darauf angewiesen ist und wann es live sein muss. Innerhalb einer Woche erhalten Sie einen schriftlichen Leistungsumfang, einen Preis als Standardpaket oder individuelles Angebot und einen Launch-Termin, an dem wir uns messen lassen.',
         outputs: [
-          'Umfang schriftlich',
-          'Fester oder individueller Preis',
-          'Verbindliches Launch-Datum',
+          'Schriftlicher Leistungsumfang',
+          'Paketpreis oder individuelles Angebot',
+          'Launch-Termin, zu dem wir stehen',
         ],
       },
       {
-        title: 'Das Echte anklicken',
-        when: 'Jeden Freitag',
+        title: 'Nutzen, während es entsteht',
+        when: 'Während der Umsetzung',
         summary:
-          'Keine Folien. Jeden Freitag öffnen Sie Staging, nutzen, was in der Woche entstanden ist, und lesen eine kurze Notiz: was ausgeliefert wurde und was als Nächstes kommt. Frühe Kurskorrekturen kosten nichts.',
-        outputs: ['Freitagsdemo', 'Live-Staging-Link', 'Wöchentliche Notiz'],
+          'Fortschritt zeigen wir in Software, nicht in Folien. Am Ende jedes Sprints erhalten Sie einen Staging-Link mit dem neuesten Stand und eine kurze Zusammenfassung: was fertig ist und was als Nächstes ansteht. Ein früher Richtungswechsel kostet nichts.',
+        outputs: [
+          'Sprint-Durchgang',
+          'Dauerhafter Staging-Link',
+          'Schriftlicher Fortschrittsbericht',
+        ],
       },
       {
-        title: 'Wir sind noch da',
-        when: 'Launch-Tag und danach',
+        title: 'Das Eigentum bleibt bei Ihnen',
+        when: 'Nach dem Livegang',
         summary:
-          'Wir schalten live, beobachten den Produktivbetrieb und beheben, was bricht. Dann entscheiden Sie: Wartungsvertrag mit uns, oder Übernahme ins eigene Haus mit Code, Zugängen und Dokumentation. Ihres ist es in jedem Fall.',
+          'Wir veröffentlichen, behalten den Produktivbetrieb im Blick und reparieren, was bricht. Danach entscheiden Sie: Wartung über uns im Retainer, oder eigener Betrieb mit vollständig übergebenem Quellcode, allen Zugängen und der Dokumentation.',
         outputs: [
-          'Produktiv-Monitoring',
-          'Fehlerbehebung und Updates',
-          'Code, Zugänge und Doku',
+          'Live-Monitoring',
+          'Laufende Fehlerbehebung',
+          'Vollständige Übergabe von Code und Zugängen',
         ],
       },
     ],
@@ -316,9 +320,6 @@ export const de: Dictionary = {
     kicker: 'Kundenstimmen',
     title: 'So ist die Zusammenarbeit mit uns',
     accent: [3],
-    description:
-      'Jedes Zitat steht neben dem Projekt, das es beschreibt, damit Sie die Aussage an der Arbeit prüfen können.',
-    read: 'Projekte lesen',
     caseStudy: 'Projekt ansehen',
     prev: 'Vorherige Stimme',
     next: 'Nächste Stimme',

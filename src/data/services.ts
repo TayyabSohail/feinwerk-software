@@ -327,7 +327,7 @@ export const services: Service[] = [
       {
         question: 'How do you communicate?',
         answer:
-          'Slack or Teams for day-to-day communication, a weekly demo call, and a written summary every Friday. You always know what shipped and what is next.',
+          'Slack or Teams for day-to-day communication, a demo call at the end of every sprint, and a written summary to go with it. You always know what shipped and what is next.',
       },
     ],
   },
