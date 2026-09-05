@@ -247,7 +247,11 @@ function PacketView({ packet, onArrive, onDone }: PacketViewProps) {
 
   const f = box(0, -PKT, PKT, PKT / 2, PKT);
   return (
-    <motion.g className='fw-map-packet' data-tone={tone} style={{ x, y, opacity }}>
+    <motion.g
+      className='fw-map-packet'
+      data-tone={tone}
+      style={{ x, y, opacity }}
+    >
       <polygon className='fw-map-left' points={f.left} />
       <polygon className='fw-map-right' points={f.right} />
       <polygon className='fw-map-top' points={f.top} />

@@ -625,49 +625,98 @@ html.fw-no-cursor * {
   cursor: none !important;
 }
 
-/* Hero block build (effects/iso-build.tsx): isometric cubes on a plate.
-   Three faces per cube; tones are paper (most), emerald and ink. Strokes
-   stay one device pixel at any size. */
-.fw-iso polygon {
+/* Hero system map (effects/system-map.tsx): labelled isometric tiles on a
+   plate, wired together, with small boxes riding the wires. Strokes stay
+   one device pixel at any size. */
+.fw-map polygon,
+.fw-map line {
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+.fw-map-plate-top {
+  fill: hsl(var(--surface) / 0.55);
+  stroke: hsl(var(--ink) / 0.18);
+  stroke-width: 1;
+}
+.fw-map-plate-side {
+  fill: hsl(var(--ink) / 0.07);
+  stroke: hsl(var(--ink) / 0.18);
+  stroke-width: 1;
+}
+.fw-map-grid line {
+  stroke: hsl(var(--ink) / 0.09);
+  stroke-width: 1;
+}
+.fw-map-edge {
+  fill: none;
+  stroke: hsl(var(--ink) / 0.4);
+  stroke-width: 1.25;
+}
+.fw-map-tile polygon {
   stroke: hsl(var(--ink) / 0.3);
   stroke-width: 1;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
 }
-.fw-iso-floor polygon {
-  fill: hsl(var(--surface) / 0.55);
-  stroke: hsl(var(--ink) / 0.14);
-}
-.fw-iso-cube[data-tone='paper'] .fw-iso-top {
+.fw-map-tile[data-tone='paper'] .fw-map-top {
   fill: #ffffff;
 }
-.fw-iso-cube[data-tone='paper'] .fw-iso-left {
+.fw-map-tile[data-tone='paper'] .fw-map-left {
   fill: #ebebe7;
 }
-.fw-iso-cube[data-tone='paper'] .fw-iso-right {
+.fw-map-tile[data-tone='paper'] .fw-map-right {
   fill: #d7d7d2;
 }
-.fw-iso-cube[data-tone='brand'] polygon {
+.fw-map-tile[data-tone='ink'] polygon {
+  stroke: hsl(0 0% 0% / 0.6);
+}
+.fw-map-tile[data-tone='ink'] .fw-map-top {
+  fill: hsl(0 0% 14%);
+}
+.fw-map-tile[data-tone='ink'] .fw-map-left {
+  fill: hsl(0 0% 8%);
+}
+.fw-map-tile[data-tone='ink'] .fw-map-right {
+  fill: hsl(0 0% 4%);
+}
+.fw-map-flash {
+  fill: hsl(var(--brand));
+  stroke: none !important;
+  pointer-events: none;
+}
+.fw-map-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: hsl(var(--ink));
+}
+.fw-map-tile[data-tone='ink'] .fw-map-label {
+  fill: #ffffff;
+}
+.fw-map-packet polygon {
+  stroke-width: 1;
+}
+.fw-map-packet[data-tone='brand'] polygon {
   stroke: hsl(var(--brand-strong) / 0.7);
 }
-.fw-iso-cube[data-tone='brand'] .fw-iso-top {
+.fw-map-packet[data-tone='brand'] .fw-map-top {
   fill: hsl(var(--brand-2));
 }
-.fw-iso-cube[data-tone='brand'] .fw-iso-left {
+.fw-map-packet[data-tone='brand'] .fw-map-left {
   fill: hsl(var(--brand));
 }
-.fw-iso-cube[data-tone='brand'] .fw-iso-right {
+.fw-map-packet[data-tone='brand'] .fw-map-right {
   fill: hsl(var(--brand-strong));
 }
-.fw-iso-cube[data-tone='ink'] polygon {
+.fw-map-packet[data-tone='ink'] polygon {
   stroke: hsl(0 0% 0% / 0.55);
 }
-.fw-iso-cube[data-tone='ink'] .fw-iso-top {
+.fw-map-packet[data-tone='ink'] .fw-map-top {
   fill: hsl(0 0% 26%);
 }
-.fw-iso-cube[data-tone='ink'] .fw-iso-left {
+.fw-map-packet[data-tone='ink'] .fw-map-left {
   fill: hsl(0 0% 12%);
 }
-.fw-iso-cube[data-tone='ink'] .fw-iso-right {
+.fw-map-packet[data-tone='ink'] .fw-map-right {
   fill: hsl(0 0% 6%);
 }

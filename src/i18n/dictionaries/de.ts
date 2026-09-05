@@ -23,14 +23,16 @@ export const de: Dictionary = {
     body: 'Feinwerk Software konzipiert und entwickelt Webplattformen, KI-Systeme und Cloud-Infrastruktur für Unternehmen in Europa und Asien. Jedes Projekt beginnt mit definiertem Umfang, Fest- oder Individualpreis und verbindlichem Liefertermin, und wir warten, was wir bauen, auch nach dem Launch.',
     primary: 'Angebot anfordern',
     secondary: 'Unsere Arbeit ansehen',
-    build: {
-      kicker: 'Nach Maß gebaut',
-      products: [
-        'Marktplatz',
-        'KI-Assistent',
-        'Buchungsplattform',
-        'ERP-System',
-      ],
+    map: {
+      kicker: 'Ein Team, das ganze System',
+      nodes: {
+        web: 'Web-App',
+        mobile: 'Mobile App',
+        api: 'API',
+        db: 'Datenbank',
+        ai: 'KI-Modell',
+        cloud: 'Cloud',
+      },
     },
   },
   work: {

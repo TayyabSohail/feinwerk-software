@@ -22,15 +22,17 @@ export const en = {
     body: 'Feinwerk Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
     primary: 'Request a proposal',
     secondary: 'View our work',
-    /** Block structures beside the hero copy, one name per product shape. */
-    build: {
-      kicker: 'Built to spec',
-      products: [
-        'Marketplace',
-        'AI assistant',
-        'Booking platform',
-        'ERP system',
-      ],
+    /** The living system map beside the hero copy. */
+    map: {
+      kicker: 'One team, the whole system',
+      nodes: {
+        web: 'Web app',
+        mobile: 'Mobile app',
+        api: 'API',
+        db: 'Database',
+        ai: 'AI model',
+        cloud: 'Cloud',
+      },
     },
   },
   work: {
