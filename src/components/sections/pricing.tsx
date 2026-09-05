@@ -26,6 +26,8 @@ const PLAN_LINKS: Record<Plan['id'], string> = {
 interface PricingProps {
   dict: Dictionary;
   withHeading?: boolean;
+  /** Show a link to the full pricing page beside the heading. */
+  withLink?: boolean;
   className?: string;
 }
 
@@ -35,7 +37,12 @@ interface PricingProps {
  * the top pick badge. Beneath the cards, what every plan includes: a written
  * quote, maintenance after launch and accountability for the product.
  */
-export function Pricing({ dict, withHeading = true, className }: PricingProps) {
+export function Pricing({
+  dict,
+  withHeading = true,
+  withLink = false,
+  className,
+}: PricingProps) {
   const t = dict.pricing;
 
   return (
@@ -44,7 +51,22 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
       className={cn('fw-section fw-rule fw-band-white', className)}
     >
       <div className='fw-container'>
-        {withHeading && <SectionHeading kicker={t.kicker} title={t.title} />}
+        {withHeading && (
+          <SectionHeading
+            kicker={t.kicker}
+            title={t.title}
+            aside={
+              withLink ? (
+                <Link
+                  href={paths.pricing}
+                  className='fw-btn fw-btn-secondary inline-flex h-12 items-center gap-3 px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.22em]'
+                >
+                  {t.all} <ArrowUpRight className='h-4 w-4' />
+                </Link>
+              ) : undefined
+            }
+          />
+        )}
 
         <Stagger
           stagger={0.12}

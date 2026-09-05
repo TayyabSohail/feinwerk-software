@@ -25,7 +25,10 @@ export function Header({ dict }: HeaderProps) {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
-  const items = primaryNav(dict);
+  const items = [
+    { label: dict.nav.home, href: paths.home },
+    ...primaryNav(dict),
+  ];
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 12);
@@ -34,10 +37,12 @@ export function Header({ dict }: HeaderProps) {
   // The contact route renders its own minimal chrome.
   const bare = isBareRoute(pathname);
 
-  // Section links such as /#pricing never read as the current page.
-
+  // Home only matches exactly, so it doesn't light up on every route.
+  // Section links such as /about#how-it-works never read as the current page.
   const isActive = (href: string) =>
-    !isSectionLink(href) && pathname.startsWith(href);
+    href === paths.home
+      ? pathname === href
+      : !isSectionLink(href) && pathname.startsWith(href);
 
   if (bare) return null;
 

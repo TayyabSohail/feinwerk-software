@@ -1,10 +1,11 @@
+import { ContactSection } from '@/components/sections/contact-section';
 import { FaqSection } from '@/components/sections/faq';
-import { FeaturedWork } from '@/components/sections/featured-work';
 import { GlobalReach } from '@/components/sections/global-reach';
 import { Hero } from '@/components/sections/hero';
 import { HowItWorks } from '@/components/sections/how-it-works';
 import { Numbers } from '@/components/sections/numbers';
 import { Pricing } from '@/components/sections/pricing';
+import { ProjectsTeaser } from '@/components/sections/projects-teaser';
 import { ServicesGrid } from '@/components/sections/services-grid';
 import { Technologies } from '@/components/sections/technologies';
 import { Testimonials } from '@/components/sections/testimonials';
@@ -20,13 +21,13 @@ export default async function HomePage() {
     <>
       <Hero dict={dict} />
       <Numbers dict={dict} />
-      <FeaturedWork dict={dict} />
+      <ProjectsTeaser dict={dict} />
       <ServicesGrid dict={dict} className='fw-band-stone' />
       <Technologies dict={dict} />
       <GlobalReach dict={dict} />
       <HowItWorks dict={dict} />
       <Testimonials dict={dict} />
-      <Pricing dict={dict} />
+      <Pricing dict={dict} withLink />
       <FaqSection
         items={faqs.slice(0, 4)}
         kicker={dict.faq.kicker}
@@ -34,6 +35,7 @@ export default async function HomePage() {
         accentWords={[...dict.faq.accent]}
         className='fw-band-stone fw-rule'
       />
+      <ContactSection dict={dict} />
     </>
   );
 }

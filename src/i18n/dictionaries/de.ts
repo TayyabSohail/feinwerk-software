@@ -55,6 +55,15 @@ export const de: Dictionary = {
       Web: 'Web',
     },
     count: '{n} Projekte',
+    teaser: {
+      kicker: 'Projekte',
+      title: 'Jedes Projekt, mit seinem Ergebnis',
+      accent: [3, 4],
+      body: 'Marktplätze, SaaS-Plattformen, KI-Agenten und Websites, jeweils mit dem Problem, dem Ansatz und dem gemessenen Ergebnis. Sie haben eine eigene Seite, damit die Zahlen den Platz bekommen, den sie brauchen.',
+      cta: 'Alle Projekte ansehen',
+      listLabel: 'Einige davon',
+      more: '{n} weitere auf der Projektseite',
+    },
   },
   services: {
     kicker: 'Leistungen',
@@ -80,6 +89,7 @@ export const de: Dictionary = {
     customPeriod: 'Festangebot',
     customCta: 'Individuelles Angebot anfordern',
     cta: 'Jetzt starten',
+    all: 'Pakete im Detail vergleichen',
     note: 'Preise in EUR, zzgl. MwSt. Nichts passt genau? Jedes Briefing erhält einen individuellen Umfang und ein Festpreisangebot innerhalb von fünf Werktagen, und jedes Paket enthält Wartung und Support nach dem Launch.',
     includes: {
       title: 'In jedem Paket enthalten, auch bei individuellen Lösungen',
@@ -335,6 +345,16 @@ export const de: Dictionary = {
     stack: 'Werkzeuge, die wir nutzen',
     proof: 'Referenzen',
     faqTitle: 'Fragen zu dieser Leistung',
+  },
+  pricingPage: {
+    kicker: 'Preise',
+    title: 'Ein Preis, schriftlich, bevor die Arbeit beginnt.',
+    accent: [3],
+    description:
+      'Drei Festpreispakete für die häufigen Fälle und ein individuelles Angebot für alles andere. Jedes Paket enthält einen schriftlichen Leistungsumfang, ein verbindliches Launch-Datum und Wartung nach dem Launch, damit es nichts mehr zu verhandeln gibt, sobald die Arbeit läuft.',
+    faqKicker: 'Fragen zu den Preisen',
+    faqTitle: 'Was vor der Unterschrift gefragt wird',
+    faqAccent: [4],
   },
   servicePage: {
     back: 'Alle Leistungen',
@@ -640,6 +660,13 @@ export const de: Dictionary = {
     faqKicker: 'Bevor Sie schreiben',
     faqTitle: 'Die Fragen, die wir am häufigsten hören.',
     faqAccent: [4],
+    home: {
+      kicker: 'Kontakt',
+      title: 'Sagen Sie uns, was stimmen muss.',
+      accent: [5, 6],
+      description:
+        'Ein paar Sätze genügen. Wir antworten innerhalb eines Werktags mit einer ersten Einschätzung zu Umfang, Zeitplan und Preis und dazu, wer das Produkt bauen und warten würde.',
+    },
   },
   faq: {
     kicker: 'Fragen',
