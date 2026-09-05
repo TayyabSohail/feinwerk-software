@@ -84,12 +84,13 @@ export const de: Dictionary = {
     kicker: 'Preise',
     title: 'Wählen Sie das Paket, das zu Ihrem Unternehmen passt',
     description:
-      'Drei Festpreispakete und eine individuelle Lösung nach Ihrem Briefing. Jedes beginnt mit schriftlichem Umfang und verbindlichem Termin, endet mit einem Produkt, das ganz Ihnen gehört, und wird von uns nach dem Launch gewartet.',
+      'Eine individuelle Lösung nach Ihrem Briefing, dazu drei Festpreispakete. Jedes beginnt mit schriftlichem Umfang und verbindlichem Termin, endet mit einem Produkt, das ganz Ihnen gehört, und wird von uns nach dem Launch gewartet.',
+    badge: 'Top-Empfehlung',
     period: 'einmalig',
     customPeriod: 'Festangebot',
     customCta: 'Individuelles Angebot anfordern',
     cta: 'Jetzt starten',
-    note: 'Preise in USD, zzgl. MwSt. Nichts passt genau? Jedes Briefing erhält einen individuellen Umfang und ein Festpreisangebot innerhalb von fünf Werktagen, und jedes Paket enthält Wartung und Support nach dem Launch.',
+    note: 'Preise in EUR, zzgl. MwSt. Nichts passt genau? Jedes Briefing erhält einen individuellen Umfang und ein Festpreisangebot innerhalb von fünf Werktagen, und jedes Paket enthält Wartung und Support nach dem Launch.',
     includes: {
       title: 'In jedem Paket enthalten, auch bei individuellen Lösungen',
       items: [
@@ -113,10 +114,29 @@ export const de: Dictionary = {
     },
     plans: [
       {
+        id: 'custom',
+        featured: false,
+        name: 'Individuelle Lösung',
+        tagline:
+          'Nach Ihrem Briefing zugeschnitten, schriftlich bepreist, nach dem Launch gewartet.',
+        price: 'Individuell',
+        features: [
+          'Schriftlicher Umfang aus Ihrem Briefing',
+          'Festangebot innerhalb von fünf Werktagen',
+          'Jeder Stack, jede Integration, jede Größe',
+          'KI, Cloud, Mobile und Web kombiniert',
+          'Verbindliches Launch-Datum',
+          'Wöchentliche Demos und Staging-Zugang',
+          'Wartung und Support nach dem Launch',
+          'Volles Eigentum an Ihrem Produkt',
+        ],
+      },
+      {
         id: 'consulting',
+        featured: false,
         name: 'Beratung & Strategie',
         tagline: 'Fundierte Beratung, die Ihr Wachstum beschleunigt.',
-        price: '$2,999',
+        price: '2.999 €',
         features: [
           'Zukunftssicherer Technologie-Blueprint',
           '6-Monats-Wachstumsplan',
@@ -131,9 +151,10 @@ export const de: Dictionary = {
       },
       {
         id: 'mvp',
+        featured: true,
         name: 'MVP-Entwicklung',
         tagline: 'Marktreifes MVP in 30 Tagen oder weniger.',
-        price: '$4,999',
+        price: '4.999 €',
         features: [
           'Marktreifes MVP in 30 Tagen',
           'Professionelles Design, das konvertiert',
@@ -148,10 +169,11 @@ export const de: Dictionary = {
       },
       {
         id: 'product',
+        featured: false,
         name: 'Komplettes Produkt',
         tagline:
           'Ein vollständiges Produkt, gelauncht und übergeben in 45 Tagen.',
-        price: '$9,999',
+        price: '9.999 €',
         features: [
           'Launch-fertiges Produkt in 45 Tagen',
           'Premium-UI/UX, das die Konkurrenz übertrifft',
@@ -162,23 +184,6 @@ export const de: Dictionary = {
           '30 Tage dedizierter Support',
           'Laufende Wartung und Updates',
           'Vollständige technische Übergabe',
-        ],
-      },
-      {
-        id: 'custom',
-        name: 'Individuelle Lösung',
-        tagline:
-          'Nach Ihrem Briefing zugeschnitten, schriftlich bepreist, nach dem Launch gewartet.',
-        price: 'Individuell',
-        features: [
-          'Schriftlicher Umfang aus Ihrem Briefing',
-          'Festangebot innerhalb von fünf Werktagen',
-          'Jeder Stack, jede Integration, jede Größe',
-          'KI, Cloud, Mobile und Web kombiniert',
-          'Verbindliches Launch-Datum',
-          'Wöchentliche Demos und Staging-Zugang',
-          'Wartung und Support nach dem Launch',
-          'Volles Eigentum an Ihrem Produkt',
         ],
       },
     ],

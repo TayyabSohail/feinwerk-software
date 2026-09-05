@@ -84,12 +84,13 @@ export const en = {
     kicker: 'Pricing plans',
     title: 'Choose the plan that works best for your business',
     description:
-      'Three fixed-price packages and a custom solution scoped to your brief. Each one starts with a written scope and a committed date, ends with a product you own outright, and is maintained by us after launch.',
+      'A custom solution scoped to your brief, plus three fixed-price packages. Each one starts with a written scope and a committed date, ends with a product you own outright, and is maintained by us after launch.',
+    badge: 'Top pick',
     period: 'one time',
     customPeriod: 'fixed quote',
     customCta: 'Request a custom quote',
     cta: 'Get started now',
-    note: 'Prices in USD, excluding VAT. Nothing here fits exactly? Every brief gets a custom scope and a fixed quote within five working days, and every plan comes with maintenance and support after launch.',
+    note: 'Prices in EUR, excluding VAT. Nothing here fits exactly? Every brief gets a custom scope and a fixed quote within five working days, and every plan comes with maintenance and support after launch.',
     includes: {
       title: 'Included in every plan, custom solutions too',
       items: [
@@ -113,10 +114,29 @@ export const en = {
     },
     plans: [
       {
+        id: 'custom' as const,
+        featured: false,
+        name: 'Custom Solution',
+        tagline:
+          'Scoped to your brief, priced in writing, maintained after launch.',
+        price: 'Custom',
+        features: [
+          'Written scope from your brief',
+          'Fixed quote within five working days',
+          'Any stack, integration or scale',
+          'AI, cloud, mobile and web combined',
+          'Committed launch date',
+          'Weekly demos and staging access',
+          'Maintenance and support after launch',
+          'Full ownership of your product',
+        ],
+      },
+      {
         id: 'consulting' as const,
+        featured: false,
         name: 'Consulting & Strategy',
         tagline: 'Expert guidance to accelerate your growth.',
-        price: '$2,999',
+        price: '€2,999',
         features: [
           'Future-proof tech blueprint',
           '6-month growth roadmap',
@@ -131,9 +151,10 @@ export const en = {
       },
       {
         id: 'mvp' as const,
+        featured: true,
         name: 'MVP Development',
         tagline: 'Market-ready MVP in 30 days or less.',
-        price: '$4,999',
+        price: '€4,999',
         features: [
           'Market-ready MVP in 30 days',
           'Professional design that converts',
@@ -148,9 +169,10 @@ export const en = {
       },
       {
         id: 'product' as const,
+        featured: false,
         name: 'Full-Scale Product',
         tagline: 'A complete product, launched and handed over in 45 days.',
-        price: '$9,999',
+        price: '€9,999',
         features: [
           'Launch-ready product within 45 days',
           'Premium UI/UX that outshines competitors',
@@ -161,23 +183,6 @@ export const en = {
           '30 days of dedicated support',
           'Ongoing maintenance and updates',
           'Complete technical handover',
-        ],
-      },
-      {
-        id: 'custom' as const,
-        name: 'Custom Solution',
-        tagline:
-          'Scoped to your brief, priced in writing, maintained after launch.',
-        price: 'Custom',
-        features: [
-          'Written scope from your brief',
-          'Fixed quote within five working days',
-          'Any stack, integration or scale',
-          'AI, cloud, mobile and web combined',
-          'Committed launch date',
-          'Weekly demos and staging access',
-          'Maintenance and support after launch',
-          'Full ownership of your product',
         ],
       },
     ],

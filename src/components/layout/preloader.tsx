@@ -8,9 +8,13 @@ const DURATION_MS = 1500;
 const REDUCED_DURATION_MS = 600;
 const HOLD_MS = 250;
 
+/* The blocky progress bar: filled cells, then empty ones. */
+const BAR_CELLS = 24;
+
 /**
  * First-load intro: a black curtain with the wordmark assembling letter by
- * letter while a counter runs to 100, then the curtain lifts.
+ * letter above a blocky retro loader that fills cell by cell as a counter
+ * runs to 100, then the curtain lifts.
  *
  * The curtain is part of the server-rendered HTML, so the screen is dark from
  * the very first paint instead of flashing the page before the intro appears.
@@ -56,6 +60,8 @@ export function Preloader() {
     };
   }, []);
 
+  const filled = Math.round((progress / 100) * BAR_CELLS);
+
   return (
     <AnimatePresence>
       {visible && (
@@ -87,16 +93,19 @@ export function Preloader() {
               </motion.span>
             ))}
           </div>
-          <div className='mt-8 flex w-[min(28rem,80vw)] items-center gap-4 font-mono text-[11px] uppercase tracking-[0.3em] text-white/60'>
-            <span>Precision</span>
-            <span className='relative h-px flex-1 bg-white/15'>
-              <span
-                className='absolute inset-y-0 left-0 bg-brand'
-                style={{ width: `${progress}%` }}
-              />
+
+          {/* Blocky cell bar: filled blocks in brand, empty cells dimmed. */}
+          <div className='mt-8 flex w-[min(28rem,84vw)] items-center gap-3 font-mono text-[11px] tracking-[0.12em] sm:gap-4'>
+            <span className='text-white/35'>[</span>
+            <span className='flex-1 overflow-hidden whitespace-nowrap text-center text-brand'>
+              {'█'.repeat(filled)}
+              <span className='text-white/15'>
+                {'░'.repeat(BAR_CELLS - filled)}
+              </span>
             </span>
-            <span className='w-10 text-right tabular-nums text-white'>
-              {progress}
+            <span className='text-white/35'>]</span>
+            <span className='w-12 text-right tabular-nums text-white'>
+              {String(progress).padStart(3, '0')}%
             </span>
           </div>
         </motion.div>

@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight, Check, Star } from 'lucide-react';
 import Link from 'next/link';
 
 import { SectionHeading } from '@/components/common/section-heading';
@@ -30,9 +30,9 @@ interface PricingProps {
 }
 
 /**
- * Three fixed-price packages and a custom solution side by side. Same card,
- * same structure for each; the MVP plan carries the tinted surface so the
- * row has a centre. Beneath the cards, what every plan includes: a written
+ * The custom solution leads, followed by three fixed-price packages. Same
+ * card, same structure for each; the MVP plan carries the tinted surface and
+ * the top pick badge. Beneath the cards, what every plan includes: a written
  * quote, maintenance after launch and accountability for the product.
  */
 export function Pricing({ dict, withHeading = true, className }: PricingProps) {
@@ -59,9 +59,9 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
             withHeading && 'mt-14',
           )}
         >
-          {t.plans.map((plan, index) => (
+          {t.plans.map((plan) => (
             <StaggerItem key={plan.id} className='h-full'>
-              <PlanCard plan={plan} t={t} featured={index === 1} />
+              <PlanCard plan={plan} t={t} />
             </StaggerItem>
           ))}
         </Stagger>
@@ -101,16 +101,9 @@ export function Pricing({ dict, withHeading = true, className }: PricingProps) {
  * One plan: name, price, what is included, and a direct call to action. The
  * custom plan has no number; it shows "Custom" with a quote label instead.
  */
-function PlanCard({
-  plan,
-  t,
-  featured,
-}: {
-  plan: Plan;
-  t: PricingCopy;
-  featured: boolean;
-}) {
+function PlanCard({ plan, t }: { plan: Plan; t: PricingCopy }) {
   const custom = plan.id === 'custom';
+  const featured = plan.featured;
   return (
     <div
       className={cn(
@@ -119,6 +112,12 @@ function PlanCard({
       )}
     >
       <div className='relative z-[2] flex h-full flex-col'>
+        {featured && (
+          <p className='mb-4 inline-flex w-fit items-center gap-2 border border-brand-text/30 bg-brand-text/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-text'>
+            <Star aria-hidden='true' className='h-3 w-3' strokeWidth={2} />
+            {t.badge}
+          </p>
+        )}
         <h3 className='fw-display text-3xl text-ink'>{plan.name}</h3>
         <p className='mt-2 text-base text-muted-foreground'>{plan.tagline}</p>
 
