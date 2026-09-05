@@ -1,57 +1,75 @@
-import {
-  BriefcaseBusiness,
-  Building2,
-  HeartPulse,
-  Landmark,
-  ShoppingBag,
-  Users,
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
-import { TextReveal } from '@/components/motion/text-reveal';
+import { SectionHeading } from '@/components/common/section-heading';
+import { Stagger, StaggerItem } from '@/components/motion/reveal';
 
+import { cn } from '@/lib/utils';
+
+import { paths } from '@/constants/paths';
+import { INDUSTRY_IDS, industryProjects } from '@/data/industries';
+import { getProjectBySlug, type Project } from '@/data/projects';
 import type { Dictionary } from '@/i18n/dictionaries/en';
-
-const ICONS = [
-  Landmark,
-  Building2,
-  ShoppingBag,
-  Users,
-  HeartPulse,
-  BriefcaseBusiness,
-];
 
 interface IndustriesProps {
   dict: Dictionary;
 }
 
-/** Six hairline cells with a line icon each. Static, so no hover. */
+/**
+ * An index of industries: number, name, what we ship there, and the case
+ * studies that prove it. Two hairline columns on desktop, one on mobile.
+ */
 export function Industries({ dict }: IndustriesProps) {
   const t = dict.industries;
 
   return (
-    <section className='fw-section fw-rule fw-band-stone text-center'>
+    <section className='fw-section fw-rule fw-band-stone'>
       <div className='fw-container'>
-        <Reveal>
-          <p className='fw-kicker'>{t.kicker}</p>
-        </Reveal>
-        <TextReveal
-          as='h2'
-          text={t.title}
-          className='fw-display mt-5 justify-center text-display-md text-ink'
+        <SectionHeading
+          kicker={t.kicker}
+          title={t.title}
+          description={t.description}
         />
-        <Stagger className='mt-14 grid grid-cols-2 border-y sm:grid-cols-3 lg:grid-cols-6'>
-          {t.items.map((item, index) => {
-            const Icon = ICONS[index];
+
+        <Stagger stagger={0.06} className='mt-14 grid border-b lg:grid-cols-2'>
+          {INDUSTRY_IDS.map((id, index) => {
+            const item = t.items[id];
+            const proofs = industryProjects[id]
+              .map(getProjectBySlug)
+              .filter((project): project is Project => Boolean(project));
+
             return (
               <StaggerItem
-                key={item}
-                className='fw-spot flex flex-col items-center gap-4 border-b bg-white/60 px-4 py-10 sm:border-b-0 sm:[&:not(:first-child)]:border-l'
+                key={id}
+                className={cn(
+                  'grid grid-cols-[2.5rem_1fr] gap-x-4 border-t py-7 sm:grid-cols-[3.5rem_1fr] sm:py-8',
+                  index % 2 === 0 ? 'lg:border-r lg:pr-12' : 'lg:pl-12',
+                )}
               >
-                <span className='flex h-12 w-12 items-center justify-center border border-brand/30 bg-brand-soft text-brand-text'>
-                  <Icon className='h-5 w-5' strokeWidth={1.5} />
+                <span className='pt-2 font-mono text-[11px] text-brand-text'>
+                  {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className='text-sm font-medium text-ink/80'>{item}</span>
+                <div className='min-w-0'>
+                  <h3 className='fw-display text-3xl text-ink sm:text-4xl'>
+                    {item.name}
+                  </h3>
+                  <p className='mt-2 max-w-md text-base leading-relaxed text-muted-foreground'>
+                    {item.blurb}
+                  </p>
+                  <p className='mt-5 flex flex-wrap items-center gap-x-5 gap-y-1.5 font-mono text-[10px] uppercase tracking-[0.18em]'>
+                    <span className='text-ink/40'>{t.shipped}</span>
+                    {proofs.map((project) => (
+                      <Link
+                        key={project.slug}
+                        href={paths.caseStudy(project.slug)}
+                        className='fw-link inline-flex items-center gap-1 text-ink transition-colors hover:text-brand-text'
+                      >
+                        {project.title}
+                        <ArrowUpRight className='h-3 w-3' />
+                      </Link>
+                    ))}
+                  </p>
+                </div>
               </StaggerItem>
             );
           })}
