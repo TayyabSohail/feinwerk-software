@@ -18,7 +18,7 @@ export const de: Dictionary = {
   },
   hero: {
     badge: 'Studio für Produktentwicklung',
-    title: 'Präzise Software,\npünktlich geliefert',
+    title: 'Produkte, die mit Ihrem\nWachstum skalieren.',
     accent: [2, 3],
     body: 'Feinwerks Software konzipiert und entwickelt Webplattformen, KI-Systeme und Cloud-Infrastruktur für Unternehmen in Europa und Asien. Jedes Projekt beginnt mit definiertem Umfang, Fest- oder Individualpreis und verbindlichem Liefertermin, und wir warten, was wir bauen, auch nach dem Launch.',
     primary: 'Angebot anfordern',

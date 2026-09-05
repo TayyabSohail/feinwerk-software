@@ -17,7 +17,7 @@ export const en = {
   },
   hero: {
     badge: 'Product engineering studio',
-    title: 'Precision software,\nshipped on time',
+    title: 'Products built to scale\nwith your growth.',
     accent: [2, 3, 4],
     body: 'Feinwerks Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
     primary: 'Request a proposal',
