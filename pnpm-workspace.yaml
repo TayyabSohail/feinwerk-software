@@ -1,0 +1,12 @@
+# Both were already skipped before this file existed; keeping them off preserves
+# the previous install behaviour. core-js' script only prints a funding notice.
+allowBuilds:
+  core-js: false
+  unrs-resolver: false
+overrides:
+  '@types/react': 19.1.4
+  '@types/react-dom': 19.1.5
+  # next only declares `sharp: ^0.34.x` (true as of next@16.2.12), which is
+  # vulnerable to the inherited libvips CVEs in GHSA-f88m-g3jw-g9cj.
+  # Force the patched line until next widens its own range.
+  sharp: ^0.35.3
