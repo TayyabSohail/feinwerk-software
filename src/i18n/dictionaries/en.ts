@@ -267,7 +267,7 @@ export const en = {
   },
   howItWorks: {
     kicker: 'Working with us',
-    title: 'Before, during and after the build',
+    title: 'How a project runs',
     description:
       'You know the cost and the date before any code exists. You see working software throughout, not at the end. You keep a team that still picks up the phone once it is live.',
     stepLabel: 'Step',

@@ -274,7 +274,7 @@ export const de: Dictionary = {
   },
   howItWorks: {
     kicker: 'Zusammenarbeit',
-    title: 'Vor, während und nach der Umsetzung',
+    title: 'So läuft ein Projekt ab',
     description:
       'Sie kennen Kosten und Termin, bevor es Code gibt. Sie sehen lauffähige Software während des Projekts, nicht erst am Ende. Und Sie behalten ein Team, das auch nach dem Livegang noch ans Telefon geht.',
     stepLabel: 'Schritt',

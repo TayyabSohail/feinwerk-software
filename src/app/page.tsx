@@ -22,11 +22,11 @@ export default async function HomePage() {
       <Numbers dict={dict} />
       <FeaturedWork dict={dict} />
       <ServicesGrid dict={dict} className='fw-band-stone' />
-      <Pricing dict={dict} />
       <Technologies dict={dict} />
       <GlobalReach dict={dict} />
       <HowItWorks dict={dict} />
       <Testimonials dict={dict} />
+      <Pricing dict={dict} />
       <FaqSection
         items={faqs.slice(0, 4)}
         kicker={dict.faq.kicker}
