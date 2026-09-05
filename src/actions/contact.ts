@@ -55,7 +55,7 @@ export const submitContact = safeActionClient
         ?.label ?? parsedInput.service;
     const budget =
       BUDGET_OPTIONS.find((option) => option.value === parsedInput.budget)
-        ?.label ?? parsedInput.budget;
+        ?.label ?? parsedInput.budget ?? 'Not provided';
 
     const summary = [
       `Name: ${parsedInput.name}`,

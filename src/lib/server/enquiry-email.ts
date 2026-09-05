@@ -15,7 +15,7 @@ interface EnquiryEmailInput {
   /** Human-readable label, not the raw slug. */
   service: string;
   /** Human-readable label, not the raw slug. */
-  budget: string;
+  budget?: string;
   message: string;
 }
 
@@ -36,7 +36,7 @@ export function renderEnquiryHtml({
     ['Email', email],
     ['Company', company || '—'],
     ['Service', service],
-    ['Budget', budget],
+    ['Budget', budget || 'Not provided'],
   ];
 
   const rowsHtml = rows

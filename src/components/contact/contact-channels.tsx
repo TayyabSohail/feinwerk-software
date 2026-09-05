@@ -1,6 +1,10 @@
-import { ArrowUpRight, CalendarDays, PenLine } from 'lucide-react';
-import type { ReactNode } from 'react';
+'use client';
 
+import { CalendarDays, PenLine } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { useState } from 'react';
+
+import { CalEmbed } from '@/components/contact/cal-embed';
 import { ContactForm } from '@/components/contact/contact-form';
 
 import type { Dictionary } from '@/i18n/dictionaries/en';
@@ -23,14 +27,8 @@ interface ContactChannelsProps {
  * channels there fills the row and keeps the choice at eye level with the
  * title, where it belongs.
  *
- * "Book a call" is a plain link to Cal.com in a new tab. An inline embed was
- * tried and dropped: Cal's embed script sat on a blank card for many visitors
- * (blocked scripts, Cloudflare challenges), which is worse than a link that
- * always works. It also keeps Cal.com off this page entirely, which is what
- * the privacy policy promises.
- *
- * The form is always shown: it is the only channel that survives Cal.com being
- * unconfigured, and a written brief is what we need to quote.
+ * Only the selected channel is mounted. This keeps the booking widget from
+ * competing with the project form and avoids loading Cal.com unnecessarily.
  */
 export function ContactChannels({
   dict,
@@ -39,6 +37,7 @@ export function ContactChannels({
   header,
 }: ContactChannelsProps) {
   const t = dict.contact.choose;
+  const [channel, setChannel] = useState<'form' | 'calendar'>('form');
 
   // Without a booking link there is nothing to choose between.
   if (!calLink) {
@@ -56,9 +55,16 @@ export function ContactChannels({
         {header}
 
         <div className='fw-card divide-y divide-line overflow-hidden'>
-          {/* Current channel: the form below. Static, so it reads as "you are
-              here" rather than a second button that does nothing. */}
-          <div className='relative flex w-full items-center gap-4 bg-brand/[0.06] px-5 py-4 text-left'>
+          <button
+            type='button'
+            onClick={() => setChannel('form')}
+            aria-pressed={channel === 'form'}
+            className={`relative flex w-full items-center gap-4 px-5 py-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 ${
+              channel === 'form'
+                ? 'bg-brand/[0.06] hover:bg-brand/[0.1]'
+                : 'bg-surface hover:bg-brand/[0.03]'
+            }`}
+          >
             <span
               aria-hidden='true'
               className='absolute inset-y-0 left-0 w-[3px] bg-brand'
@@ -74,20 +80,25 @@ export function ContactChannels({
                 {t.formHint}
               </span>
             </span>
-          </div>
+          </button>
 
-          <a
-            href={calLink}
-            target='_blank'
-            rel='noreferrer'
-            className='group relative flex w-full items-center gap-4 bg-surface px-5 py-4 text-left transition-colors hover:bg-brand/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60'
+          <button
+            type='button'
+            onClick={() => setChannel('calendar')}
+            aria-pressed={channel === 'calendar'}
+            className={`relative flex w-full items-center gap-4 px-5 py-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 ${
+              channel === 'calendar'
+                ? 'bg-brand/[0.06] hover:bg-brand/[0.1]'
+                : 'bg-surface hover:bg-brand/[0.03]'
+            }`}
           >
-            {/* Brand bar appears on hover, matching the active row above. */}
             <span
-              aria-hidden='true'
-              className='absolute inset-y-0 left-0 w-[3px] bg-transparent transition-colors group-hover:bg-brand/30'
-            />
-            <span className='flex h-10 w-10 shrink-0 items-center justify-center border border-line text-muted-foreground transition-colors group-hover:border-brand/40'>
+              className={`flex h-10 w-10 shrink-0 items-center justify-center border ${
+                channel === 'calendar'
+                  ? 'border-brand bg-brand text-brand-foreground'
+                  : 'border-line text-muted-foreground'
+              }`}
+            >
               <CalendarDays className='h-[18px] w-[18px]' />
             </span>
             <span className='min-w-0 flex-1'>
@@ -98,14 +109,22 @@ export function ContactChannels({
                 {t.callHint}
               </span>
             </span>
-            <ArrowUpRight className='h-4 w-4 shrink-0 -translate-x-1 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-60' />
-          </a>
+          </button>
         </div>
       </div>
 
-      <div className='mt-8'>
-        <ContactForm dict={dict} defaultService={defaultService} />
-      </div>
+      {channel === 'calendar' ? (
+        <div
+          id='contact-calendar'
+          className='mt-8 overflow-hidden border border-line bg-surface'
+        >
+          <CalEmbed calLink={calLink} />
+        </div>
+      ) : (
+        <div id='contact-form' className='mt-8'>
+          <ContactForm dict={dict} defaultService={defaultService} />
+        </div>
+      )}
     </div>
   );
 }

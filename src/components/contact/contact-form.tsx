@@ -430,7 +430,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                         },
                         {
                           label: t.budget,
-                          value: budgetLabel(form.getValues('budget')),
+                          value: budgetLabel(form.getValues('budget')) || t.notProvided,
                         },
                       ]}
                     />

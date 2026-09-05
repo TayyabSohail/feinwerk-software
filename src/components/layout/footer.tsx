@@ -29,8 +29,9 @@ export function Footer({ dict }: FooterProps) {
   ];
 
   return (
-    <footer className='relative mt-24 border-t'>
-      <div className='fw-container'>
+    <footer className='relative mt-24 overflow-hidden border-t'>
+      <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/70 to-transparent' />
+      <div className='relative z-10 fw-container'>
         <div className='grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5'>
           <div className='lg:col-span-1'>
             <Logo />
@@ -112,9 +113,9 @@ export function Footer({ dict }: FooterProps) {
           spans edge to edge on every screen, phones included, regardless of
           font metrics. The band's height tracks the viewport so the type
           never outgrows it. */}
-      <div className='relative h-[30vw] max-h-[20rem] min-h-[5.5rem] w-full overflow-hidden border-t sm:min-h-[9rem]'>
+      <div className='relative h-[30vw] max-h-[20rem] min-h-[5.5rem] w-full overflow-hidden sm:min-h-[9rem]'>
         <Silk brightness={0.98} speed={0.8} />
-        <div className='absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent' />
+        <div className='absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-transparent' />
         <svg
           aria-hidden='true'
           viewBox='0 0 1000 112'

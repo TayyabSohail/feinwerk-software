@@ -39,7 +39,7 @@ export const contactSchema = z.object({
     .max(200),
   company: z.string().trim().max(120).optional().or(z.literal('')),
   service: z.enum(serviceValues, { message: 'Pick the closest match' }),
-  budget: z.enum(budgetValues, { message: 'Pick a range, even a rough one' }),
+  budget: z.enum(budgetValues).optional(),
   message: z
     .string({ message: 'Tell us a little about the project' })
     .trim()
@@ -60,7 +60,7 @@ export type ContactInput = z.infer<typeof contactSchema>;
  */
 export const CONTACT_STEP_FIELDS = [
   ['service'],
-  ['message', 'budget'],
+  ['message'],
   ['name', 'email', 'company', 'consent'],
 ] as const satisfies ReadonlyArray<ReadonlyArray<keyof ContactInput>>;
 

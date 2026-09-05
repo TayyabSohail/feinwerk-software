@@ -60,9 +60,15 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
   const project = item.project
     ? getProjectBySlugLocalised(item.project, dict.locale)
     : null;
+  const sectionId = `testimonial-${index + 1}`;
 
   return (
-    <section className={cn('fw-section fw-rule fw-band-white', className)}>
+    <section
+      id={sectionId}
+      role='tabpanel'
+      aria-labelledby={`${sectionId}-title`}
+      className={cn('fw-section fw-rule fw-band-white', className)}
+    >
       <div className='fw-container'>
         <div>
           <div>
@@ -72,6 +78,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
             <TextReveal
               as='h2'
               text={t.title}
+              id={`${sectionId}-title`}
               className='fw-display mt-5 text-display-md text-ink'
             />
           </div>
@@ -102,11 +109,6 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                         <p className='font-semibold'>{q.author}</p>
                         <p className='text-sm'>{q.company}</p>
                       </div>
-                      {q.result && (
-                        <p className='font-mono text-[10px] uppercase tracking-[0.18em]'>
-                          {q.result}
-                        </p>
-                      )}
                     </footer>
                   </div>
                 ))}
@@ -137,22 +139,20 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                           {item.company}
                         </p>
                       </div>
-                      {item.result && (
-                        <p className='font-mono text-[10px] uppercase tracking-[0.18em] text-brand-text'>
-                          {item.result}
-                        </p>
-                      )}
                     </footer>
                   </motion.blockquote>
                 </AnimatePresence>
               </div>
 
               <div className='mt-10 flex items-center justify-between border-t pt-6'>
-                <div className='flex gap-1.5'>
+                <div className='flex gap-1.5' role='tablist' aria-label={t.title}>
                   {testimonials.map((_, dot) => (
                     <button
                       key={dot}
                       type='button'
+                      role='tab'
+                      aria-selected={dot === index}
+                      aria-controls={`testimonial-${dot + 1}`}
                       aria-label={`${dot + 1} / ${total}`}
                       onClick={() => {
                         setDirection(dot > index ? 1 : -1);

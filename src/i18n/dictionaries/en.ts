@@ -62,7 +62,7 @@ export const en = {
       accent: [3, 4],
       body: 'Marketplaces, SaaS platforms, AI agents and websites, each shown with the problem, the approach and the measured outcome. They have a page of their own so the numbers get the room they need.',
       cta: 'Browse all projects',
-      listLabel: 'A few of them',
+      listLabel: 'Featured projects',
       more: '{n} more on the projects page',
     },
   },
@@ -268,8 +268,6 @@ export const en = {
   numbers: {
     kicker: 'By the numbers',
     title: 'Proof, not promises',
-    description:
-      'Company figures and results reported by clients after launch.',
     items: [
       { value: '150+', label: 'Projects delivered' },
       { value: '40+', label: 'Clients on four continents' },
@@ -422,6 +420,7 @@ export const en = {
       },
     },
     reviewTitle: 'Your enquiry',
+    notProvided: 'Not provided',
     charactersLeft: '{count} characters left',
     minChars: 'At least 20 characters',
     budgets: {
@@ -447,7 +446,6 @@ export const en = {
     architecture: 'How it is built',
     keyFeatures: 'Key features',
     challengesKicker: 'Challenges & solutions',
-    challengesTitle: 'Where it got hard.',
     challenge: 'Challenge',
     solution: 'Solution',
     resultsKicker: 'Results',
@@ -644,7 +642,7 @@ export const en = {
       formTab: 'Write to us',
       formHint: 'Reply within one business day',
       callTab: 'Book a call',
-      callHint: '30 minutes, opens Cal.com',
+      callHint: '30-minute intro call',
     },
     faqKicker: 'Before you write',
     faqTitle: 'The questions we get most.',

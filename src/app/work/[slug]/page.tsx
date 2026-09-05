@@ -239,9 +239,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <section className='fw-container'>
         <Reveal>
           <p className='fw-kicker'>{t.challengesKicker}</p>
-          <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-            {t.challengesTitle}
-          </h2>
         </Reveal>
         <Stagger className='mt-10 grid gap-4'>
           {project.challenges.map((item) => (
