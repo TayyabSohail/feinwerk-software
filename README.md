@@ -105,8 +105,8 @@ Edit these; the pages update themselves.
   requires them for a business site.
 - Replace the testimonial `author` roles in `src/data/testimonials.ts` with
   the real names once each client has approved their quote.
-- Replace `hello@feinwerk.software` in `src/config/site.ts` with the real
+- Replace `hello@feinwerks.software` in `src/config/site.ts` with the real
   inbox once it exists, and set `CONTACT_TO_EMAIL`.
 - Have the Terms of Service and Privacy Policy reviewed by counsel; they are
   written as a solid starting point, not legal advice.
-- Set `NEXT_PUBLIC_APP_URL` to the production domain.
+- Set `NEXT_PUBLIC_APP_URL` to the production domain, `https://feinwerks.software`.

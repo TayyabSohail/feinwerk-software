@@ -15,7 +15,7 @@ export const siteConfig = {
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
   // Email lives here so it can be swapped once the company inbox exists.
-  email: 'hello@feinwerk.software',
+  email: 'hello@feinwerks.software',
   responseTime: 'within one business day',
   availability: 'Accepting new projects',
   locations: [
