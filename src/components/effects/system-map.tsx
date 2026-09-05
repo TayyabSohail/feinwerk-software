@@ -47,9 +47,10 @@ const UY = 24;
 const TILE_W = 104;
 const TILE_H = 52;
 const TILE_T = 11;
-/** Plate: the cloud everything runs on. */
-const PLATE_MIN = -0.7;
-const PLATE_MAX = 5.7;
+/** Plate: the cloud everything runs on. Its margin around the tiles shrinks
+    as the box narrows (see `useFit`), so the whole plate always fits. */
+const PLATE_MARGIN_WIDE = 0.7;
+const PLATE_MARGIN_TIGHT = 0.2;
 const PLATE_T = 8;
 /** Packet: a small cube riding the wires. */
 const PKT = 11;
@@ -62,17 +63,19 @@ const LAUNCH_MS = 900;
 const MAX_PACKETS = 6;
 /** Width of the light band that sweeps the plate, in plate units. */
 const BAND_W = 0.32;
-/** Whole plate on wide screens; as the box narrows the view crops towards
-    the tiles so the labels stay legible and the plate bleeds off both edges.
-    Below lg the stage runs edge to edge and fades at the sides (see
-    `.fw-map-stage`), so the bleed dissolves rather than being cut off.
-    The crop follows the measured stage width rather than a viewport media
-    query, so the map reads the same in the hero column at any breakpoint. */
-const VIEW_WIDE = { x: -316, y: -44, w: 632, h: 336 };
-const VIEW_TIGHT = { x: -178, y: 6, w: 356, h: 290 };
-/** Box widths the two crops are tuned for; between them we interpolate. */
+/** The whole plate is always in view. As the box narrows the plate margin
+    tightens and the labels grow a little, so nothing is cut off and the
+    tiles stay legible. Both follow the measured stage width rather than a
+    viewport media query, so the map reads the same in the hero column at
+    any breakpoint. Box widths the two tunings are made for; between them
+    we interpolate. */
 const CROP_WIDE = 620;
 const CROP_TIGHT = 340;
+/** Label size in SVG units at the wide and tight tunings. */
+const LABEL_WIDE = 11;
+const LABEL_TIGHT = 13.5;
+/** Breathing room around the plate inside the viewBox. */
+const VIEW_PAD = 10;
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const NODES: Record<MapNodeId, { x: number; y: number; tone: TileTone }> = {
@@ -157,39 +160,58 @@ function along(path: MapNodeId[], p: number) {
 }
 
 /** Plate grid lines at whole units. */
-const GRID: { x1: number; y1: number; x2: number; y2: number }[] = [];
-for (let i = 0; i <= 5; i++) {
-  const a = project(i, PLATE_MIN);
-  const b = project(i, PLATE_MAX);
-  GRID.push({ x1: a.px, y1: a.py, x2: b.px, y2: b.py });
-  const c = project(PLATE_MIN, i);
-  const d = project(PLATE_MAX, i);
-  GRID.push({ x1: c.px, y1: c.py, x2: d.px, y2: d.py });
+function gridAt(margin: number) {
+  const min = -margin;
+  const max = 5 + margin;
+  const lines: { x1: number; y1: number; x2: number; y2: number }[] = [];
+  for (let i = 0; i <= 5; i++) {
+    const a = project(i, min);
+    const b = project(i, max);
+    lines.push({ x1: a.px, y1: a.py, x2: b.px, y2: b.py });
+    const c = project(min, i);
+    const d = project(max, i);
+    lines.push({ x1: c.px, y1: c.py, x2: d.px, y2: d.py });
+  }
+  return lines;
 }
-const PLATE = (() => {
-  const t = project(PLATE_MIN, PLATE_MIN);
-  const r = project(PLATE_MAX, PLATE_MIN);
-  const b = project(PLATE_MAX, PLATE_MAX);
-  const l = project(PLATE_MIN, PLATE_MAX);
+function plateAt(margin: number) {
+  const min = -margin;
+  const max = 5 + margin;
+  const t = project(min, min);
+  const r = project(max, min);
+  const b = project(max, max);
+  const l = project(min, max);
   return {
     top: `${t.px},${t.py} ${r.px},${r.py} ${b.px},${b.py} ${l.px},${l.py}`,
     left: `${l.px},${l.py} ${b.px},${b.py} ${b.px},${b.py + PLATE_T} ${l.px},${l.py + PLATE_T}`,
     right: `${b.px},${b.py} ${r.px},${r.py} ${r.px},${r.py + PLATE_T} ${b.px},${b.py + PLATE_T}`,
   };
-})();
+}
 /** The sweep band at the plate's left edge, and how far it travels. */
-const BAND = (() => {
-  const a = project(PLATE_MIN, PLATE_MIN);
-  const b = project(PLATE_MIN, PLATE_MAX);
-  const c = project(PLATE_MIN + BAND_W, PLATE_MAX);
-  const d = project(PLATE_MIN + BAND_W, PLATE_MIN);
-  const travel = PLATE_MAX - PLATE_MIN - BAND_W;
+function bandAt(margin: number) {
+  const min = -margin;
+  const max = 5 + margin;
+  const a = project(min, min);
+  const b = project(min, max);
+  const c = project(min + BAND_W, max);
+  const d = project(min + BAND_W, min);
+  const travel = max - min - BAND_W;
   return {
     points: `${a.px},${a.py} ${b.px},${b.py} ${c.px},${c.py} ${d.px},${d.py}`,
     dx: travel * UX,
     dy: travel * UY,
   };
-})();
+}
+/** A viewBox that encloses the whole plate, with a little padding. */
+function viewBoxAt(margin: number) {
+  const min = -margin;
+  const max = 5 + margin;
+  const left = project(min, max).px - VIEW_PAD;
+  const right = project(max, min).px + VIEW_PAD;
+  const top = project(min, min).py - VIEW_PAD;
+  const bottom = project(max, max).py + PLATE_T + VIEW_PAD;
+  return [left, top, right - left, bottom - top].map(Math.round).join(' ');
+}
 
 /**
  * Resolves once the first-load preloader has lifted its curtain (it keeps
@@ -209,28 +231,26 @@ function waitForCurtain(): Promise<void> {
   });
 }
 
-/** The crop for a given rendered width, interpolated between the two tunings. */
-function viewBoxAt(width: number): string {
-  const t = Math.min(
+/** 0 at the wide tuning, 1 at the tight one, for a rendered width. */
+function tightnessAt(width: number) {
+  return Math.min(
     1,
     Math.max(0, (CROP_WIDE - width) / (CROP_WIDE - CROP_TIGHT)),
   );
-  const lerp = (a: number, b: number) => Math.round(a + (b - a) * t);
-  return [
-    lerp(VIEW_WIDE.x, VIEW_TIGHT.x),
-    lerp(VIEW_WIDE.y, VIEW_TIGHT.y),
-    lerp(VIEW_WIDE.w, VIEW_TIGHT.w),
-    lerp(VIEW_WIDE.h, VIEW_TIGHT.h),
-  ].join(' ');
+}
+
+interface Fit {
+  margin: number;
+  label: number;
 }
 
 /**
- * The viewBox for the map's current rendered width: the whole plate once the
- * box is wide, tightening towards the tiles as it narrows. Holds the wide
- * view until the box has been measured, so server and first client paint
- * agree.
+ * The plate margin and label size for the map's current rendered width:
+ * roomy once the box is wide, tightening as it narrows so the whole plate
+ * still fits. Holds the wide tuning until the box has been measured, so
+ * server and first client paint agree.
  */
-function useViewBox(ref: React.RefObject<HTMLElement | null>): string {
+function useFit(ref: React.RefObject<HTMLElement | null>): Fit {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -243,7 +263,11 @@ function useViewBox(ref: React.RefObject<HTMLElement | null>): string {
     return () => observer.disconnect();
   }, [ref]);
 
-  return viewBoxAt(width > 0 ? width : CROP_WIDE);
+  const t = tightnessAt(width > 0 ? width : CROP_WIDE);
+  return {
+    margin: PLATE_MARGIN_WIDE + (PLATE_MARGIN_TIGHT - PLATE_MARGIN_WIDE) * t,
+    label: LABEL_WIDE + (LABEL_TIGHT - LABEL_WIDE) * t,
+  };
 }
 
 interface CubeProps {
@@ -423,7 +447,11 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
   const reduce = useReducedMotion() === true;
   const rootRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const viewBox = useViewBox(stageRef);
+  const fit = useFit(stageRef);
+  const viewBox = viewBoxAt(fit.margin);
+  const PLATE = plateAt(fit.margin);
+  const GRID = gridAt(fit.margin);
+  const BAND = bandAt(fit.margin);
   const inView = useInView(rootRef, { amount: 0.4 });
   const inViewRef = useRef(false);
   inViewRef.current = inView;
@@ -487,9 +515,10 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
       role='img'
       aria-label={`${copy.kicker}: ${labels}`}
       className={cn('fw-map', className)}
+      style={{ '--fw-map-label': `${fit.label}px` } as React.CSSProperties}
     >
-      {/* Full-bleed below lg, with the sides faded (`.fw-map-stage`) so the
-          plate dissolves at the screen edges rather than being cut off. */}
+      {/* Full-bleed below lg (`.fw-map-stage`) so the plate gets the whole
+          screen width; the viewBox always encloses it, so nothing is cut. */}
       <div ref={stageRef} className='fw-map-stage'>
         <svg
           aria-hidden='true'

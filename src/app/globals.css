@@ -639,26 +639,11 @@ html.fw-no-cursor * {
   stroke-linejoin: round;
 }
 /* Below lg the map sits under the copy, so the stage breaks out of the
-   container padding (mirroring .fw-container) and fades at both sides;
-   the cropped plate then dissolves at the screen edges instead of being
-   cut off. At lg it lives in its own column and needs neither. */
+   container padding (mirroring .fw-container) to use the full screen width.
+   The SVG viewBox always encloses the whole plate, so nothing is cut off. */
 @media (max-width: 1023.98px) {
   .fw-map-stage {
     margin-inline: -1.25rem;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      #000 12%,
-      #000 88%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      #000 12%,
-      #000 88%,
-      transparent
-    );
   }
 }
 @media (min-width: 640px) and (max-width: 1023.98px) {
@@ -757,7 +742,7 @@ html.fw-no-cursor * {
 }
 .fw-map-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fw-map-label, 11px);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
