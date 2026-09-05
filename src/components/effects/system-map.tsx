@@ -242,10 +242,11 @@ interface TileProps {
   reduce: boolean;
 }
 
+/** Offsets from the tile centre; the sparks start at the top edge and rise. */
 const SPARKS = [
-  { dx: -16, dy: -4, delay: 0 },
-  { dx: 2, dy: -10, delay: 0.05 },
-  { dx: 18, dy: -2, delay: 0.1 },
+  { dx: -24, dy: -14, delay: 0 },
+  { dx: 0, dy: -24, delay: 0.05 },
+  { dx: 24, dy: -14, delay: 0.1 },
 ];
 
 function Tile({ id, label, index, ready, pulse, reduce }: TileProps) {
