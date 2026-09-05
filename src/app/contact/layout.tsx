@@ -1,3 +1,4 @@
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 import { Logo } from '@/components/brand/logo';
@@ -29,31 +30,14 @@ export default async function ContactLayout({
         <Logo />
         <Link
           href={paths.home}
-          className='font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-text transition-colors hover:text-foreground'
+          className='inline-flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-text transition-colors hover:text-foreground'
         >
+          <ArrowLeft className='h-4 w-4' aria-hidden='true' />
           {dict.notFound.home}
         </Link>
       </div>
 
       {children}
-
-      <footer className='fw-container flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line py-6'>
-        <p className='font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground'>
-          &copy; {new Date().getFullYear()} Feinwerks Software
-        </p>
-        <Link
-          href={paths.legal.privacy}
-          className='font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground'
-        >
-          {dict.footer.legal}
-        </Link>
-        <Link
-          href={paths.legal.imprint}
-          className='font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground'
-        >
-          Imprint
-        </Link>
-      </footer>
     </div>
   );
 }

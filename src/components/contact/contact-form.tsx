@@ -105,6 +105,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
   }
 
   const messageLength = form.watch('message')?.length ?? 0;
+  const consentGiven = form.watch('consent') === true;
   const stepContent = [t.steps.service, t.steps.message, t.steps.details][step];
 
   return (
@@ -305,6 +306,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 size='xl'
                 icon={ArrowUpRight}
                 isLoading={isExecuting}
+                disabled={!consentGiven}
               >
                 {t.submit}
               </Button>
