@@ -40,21 +40,22 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         ]}
       />
 
-      <section className='fw-container max-w-5xl pb-16 pt-10 sm:pt-16'>
-        <header className='mb-10 max-w-2xl'>
-          <p className='fw-kicker'>{t.kicker}</p>
-          <h1 className='fw-display mt-4 text-display-md text-foreground sm:text-display-lg'>
-            {t.title}
-          </h1>
-          <p className='mt-5 max-w-xl text-base leading-relaxed text-muted-foreground'>
-            {t.description}
-          </p>
-        </header>
-
+      <section className='fw-container max-w-7xl pb-16 pt-10 sm:pt-16'>
         <ContactChannels
           dict={dict}
           defaultService={service}
           calHandle={siteConfig.calHandle}
+          header={
+            <header className='max-w-2xl'>
+              <p className='fw-kicker'>{t.kicker}</p>
+              <h1 className='fw-display mt-4 text-display-md text-foreground sm:text-display-lg'>
+                {t.title}
+              </h1>
+              <p className='mt-5 max-w-xl text-base leading-relaxed text-muted-foreground'>
+                {t.description}
+              </p>
+            </header>
+          }
         />
       </section>
     </>

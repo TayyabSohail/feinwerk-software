@@ -375,6 +375,7 @@ export const en = {
     replyNote: 'We reply {time}. No newsletters, no drip campaigns.',
     errorGeneric: 'Something went wrong. Please try again in a moment.',
     sentTitle: 'Message received.',
+    sentToast: 'Your enquiry has been sent. We reply {time}.',
     sentBody:
       'Thank you. We read every enquiry personally and reply {time}, straight to the address you gave us.',
     sentAgain: 'Send another',
@@ -626,6 +627,7 @@ export const en = {
       callTab: 'Book a call',
       callHint: '30 minutes, pick a slot',
       calendarLoading: 'Loading the calendar',
+      calendarFallback: 'Open the booking page',
     },
     faqKicker: 'Before you write',
     faqTitle: 'The questions we get most.',

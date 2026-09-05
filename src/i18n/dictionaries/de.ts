@@ -391,6 +391,7 @@ export const de: Dictionary = {
     errorGeneric:
       'Etwas ist schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.',
     sentTitle: 'Nachricht erhalten.',
+    sentToast: 'Ihre Anfrage wurde gesendet. Wir antworten {time}.',
     sentBody:
       'Vielen Dank. Wir lesen jede Anfrage persönlich und antworten {time}, direkt an die von Ihnen angegebene Adresse.',
     sentAgain: 'Weitere senden',
@@ -647,6 +648,7 @@ export const de: Dictionary = {
       callTab: 'Gespräch buchen',
       callHint: '30 Minuten, Termin wählen',
       calendarLoading: 'Kalender wird geladen',
+      calendarFallback: 'Buchungsseite öffnen',
     },
     faqKicker: 'Bevor Sie schreiben',
     faqTitle: 'Die Fragen, die wir am häufigsten hören.',

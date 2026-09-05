@@ -94,7 +94,11 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
 
   const form = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    mode: 'onChange',
+    // onChange runs the whole-form resolver on the first keystroke and lights
+    // up errors on steps the visitor has not reached yet. onTouched waits for
+    // a blur, and reValidate keeps corrections instant after that.
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
     defaultValues: {
       name: '',
       email: '',
@@ -109,6 +113,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
 
   const { execute, isExecuting } = useAction(submitContact, {
     onSuccess: () => {
+      toast.success(t.sentToast.replace('{time}', siteConfig.responseTime));
       setSent(true);
       setStep(0);
       form.reset();
@@ -146,6 +151,17 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
     scrollToTop();
   }, [scrollToTop]);
 
+  /** Jump back to a completed step from the rail. Never forwards. */
+  const goTo = useCallback(
+    (index: number) => {
+      if (index >= step) return;
+      setDirection(-1);
+      setStep(index);
+      scrollToTop();
+    },
+    [step, scrollToTop],
+  );
+
   if (sent) {
     return (
       <div className='fw-card flex flex-col items-start p-8 sm:p-10'>
@@ -177,7 +193,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
       <form
         ref={cardRef}
         onSubmit={form.handleSubmit((values) => execute(values))}
-        className='fw-card overflow-hidden'
+        className='fw-card overflow-hidden lg:flex lg:items-stretch'
         noValidate
       >
         {/* Honeypot, hidden from people and screen readers. */}
@@ -197,9 +213,11 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
           label={t.stepLabel
             .replace('{current}', String(step + 1))
             .replace('{total}', String(CONTACT_STEP_COUNT))}
+          onJump={goTo}
+          note={t.replyNote.replace('{time}', siteConfig.responseTime)}
         />
 
-        <div className='px-6 pb-6 pt-8 sm:px-8 sm:pb-8 lg:px-10 lg:pb-10'>
+        <div className='min-w-0 flex-1 px-6 pb-6 pt-8 sm:px-8 sm:pb-8 lg:px-10 lg:py-10'>
           <div>
             <h3 className='fw-display text-display-sm text-foreground'>
               {active.title}
@@ -229,7 +247,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                           {/* Three across on a wide card: seven services in
                               two columns ran four rows deep and pushed the
                               buttons below the fold. */}
-                          <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+                          <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-4'>
                             {SERVICE_OPTIONS.map((option) => {
                               const service =
                                 option.value === 'other'
@@ -261,7 +279,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 )}
 
                 {step === 1 && (
-                  <div className='space-y-8'>
+                  <div className='grid gap-8 lg:grid-cols-2 lg:gap-10'>
                     <FormField
                       control={form.control}
                       name='message'
@@ -273,7 +291,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                               autoFocus
                               maxLength={MESSAGE_MAX}
                               placeholder={t.messagePlaceholder}
-                              className='min-h-[13rem] rounded-none border-line bg-surface px-4 py-3 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0'
+                              className='min-h-[11rem] rounded-none border-line bg-surface px-4 py-3 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0'
                               {...field}
                             />
                           </FormControl>
@@ -300,7 +318,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                       name='budget'
                       render={({ field }) => (
                         <FormItem>
-                          <div className='border-t border-line pt-6'>
+                          <div className='border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0'>
                             <FormLabel className='fw-kicker'>
                               {t.budgetHeading}
                             </FormLabel>
@@ -332,7 +350,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 )}
                 {step === 2 && (
                   <div className='space-y-5'>
-                    <div className='grid gap-5 sm:grid-cols-2'>
+                    <div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
                       <FormField
                         control={form.control}
                         name='name'
@@ -370,31 +388,32 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                           </FormItem>
                         )}
                       />
+                      {/* Third in the same row on a wide card, rather than
+                          alone on a line of its own. */}
+                      <FormField
+                        control={form.control}
+                        name='company'
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {t.company}{' '}
+                              <span className='font-normal text-muted-foreground'>
+                                ({t.optional})
+                              </span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder={t.companyPlaceholder}
+                                autoComplete='organization'
+                                className={FIELD}
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
-
-                    <FormField
-                      control={form.control}
-                      name='company'
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>
-                            {t.company}{' '}
-                            <span className='font-normal text-muted-foreground'>
-                              ({t.optional})
-                            </span>
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder={t.companyPlaceholder}
-                              autoComplete='organization'
-                              className={FIELD}
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
 
                     <Summary
                       title={t.reviewTitle}
@@ -450,7 +469,9 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
 
           <div className='mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between'>
             {step === 0 ? (
-              <p className='text-xs text-muted-foreground'>
+              // The rail carries this note on wide screens; repeat it here
+              // only where the rail's foot is hidden.
+              <p className='text-xs text-muted-foreground lg:hidden'>
                 {t.replyNote.replace('{time}', siteConfig.responseTime)}
               </p>
             ) : (
@@ -496,51 +517,89 @@ interface StepHeaderProps {
   steps: { kicker: string }[];
   step: number;
   label: string;
+  /** Revisit a completed step. Steps ahead of the current one stay locked. */
+  onJump?: (index: number) => void;
+  /** Reassurance shown at the foot of the rail on wide screens. */
+  note?: string;
 }
 
-/** Numbered rail plus a progress bar that fills as the visitor advances. */
-function StepHeader({ steps, step, label }: StepHeaderProps) {
+/**
+ * Numbered rail plus a progress bar that fills as the visitor advances.
+ * Sits beside the fields on wide screens, above them on narrow ones.
+ */
+function StepHeader({ steps, step, label, onJump, note }: StepHeaderProps) {
   const progress = ((step + 1) / steps.length) * 100;
 
   return (
-    <div className='border-b border-line bg-surface/60 px-6 pt-6 sm:px-8 lg:px-10'>
-      <div className='flex items-center justify-between gap-4'>
-        <p className='fw-kicker'>{label}</p>
-        <p className='font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground'>
-          {steps[step].kicker}
-        </p>
-      </div>
+    <div className='border-b border-line bg-surface/60 p-6 sm:p-8 lg:flex lg:h-full lg:w-[17rem] lg:shrink-0 lg:flex-col lg:border-b-0 lg:border-r'>
+      <p className='fw-kicker'>{label}</p>
 
-      <ol className='mt-5 flex items-center gap-2'>
+      {/* A vertical rail on wide screens, a horizontal one on narrow: three
+          steps read as a list beside the fields, but as a strip above them. */}
+      <ol className='mt-5 flex items-center gap-2 lg:mt-8 lg:flex-col lg:items-stretch lg:gap-0'>
         {steps.map((item, index) => {
           const done = index < step;
           const current = index === step;
+          // Only a step already completed can be revisited; jumping ahead
+          // would skip the validation that gates each Next.
+          const canJump = done && Boolean(onJump);
+
           return (
-            <li key={item.kicker} className='flex flex-1 items-center gap-2'>
-              <span
+            <li
+              key={item.kicker}
+              className='flex flex-1 items-center gap-2 lg:flex-none lg:flex-col lg:items-stretch lg:gap-0'
+            >
+              <button
+                type='button'
+                disabled={!canJump}
+                onClick={canJump ? () => onJump?.(index) : undefined}
+                aria-current={current ? 'step' : undefined}
                 className={cn(
-                  'flex h-8 w-8 shrink-0 items-center justify-center border font-mono text-[11px] transition-colors duration-300',
-                  done && 'border-brand bg-brand text-brand-foreground',
-                  current && 'border-brand text-brand-text',
-                  !done && !current && 'border-line text-muted-foreground',
+                  'flex items-center gap-3 text-left transition-colors lg:w-full lg:py-1',
+                  canJump ? 'cursor-pointer' : 'cursor-default',
                 )}
               >
-                {done ? <Check className='h-4 w-4' /> : index + 1}
-              </span>
-              <span
-                className={cn(
-                  'hidden truncate text-xs sm:block',
-                  current ? 'text-foreground' : 'text-muted-foreground',
-                )}
-              >
-                {item.kicker}
-              </span>
+                <span
+                  className={cn(
+                    'flex h-8 w-8 shrink-0 items-center justify-center border font-mono text-[11px] transition-colors duration-300',
+                    done && 'border-brand bg-brand text-brand-foreground',
+                    current && 'border-brand text-brand-text',
+                    !done && !current && 'border-line text-muted-foreground',
+                  )}
+                >
+                  {done ? <Check className='h-4 w-4' /> : index + 1}
+                </span>
+                <span
+                  className={cn(
+                    'hidden truncate text-xs sm:block lg:text-sm',
+                    current
+                      ? 'font-medium text-foreground'
+                      : 'text-muted-foreground',
+                    canJump && 'hover:text-foreground',
+                  )}
+                >
+                  {item.kicker}
+                </span>
+              </button>
+
+              {/* Connector between the numbers, vertical layout only. */}
+              {index < steps.length - 1 ? (
+                <span
+                  aria-hidden='true'
+                  className={cn(
+                    'hidden lg:ml-4 lg:block lg:h-6 lg:w-px lg:transition-colors',
+                    index < step ? 'lg:bg-brand' : 'lg:bg-line',
+                  )}
+                />
+              ) : null}
             </li>
           );
         })}
       </ol>
 
-      <div className='mt-5 h-[3px] w-full bg-line'>
+      {/* The bar is the only progress cue left on narrow screens, where the
+          step labels are hidden. */}
+      <div className='mt-5 h-[3px] w-full bg-line lg:mt-8'>
         <motion.div
           className='h-full bg-brand'
           initial={false}
@@ -548,6 +607,12 @@ function StepHeader({ steps, step, label }: StepHeaderProps) {
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         />
       </div>
+
+      {note ? (
+        <p className='mt-auto hidden pt-8 text-xs leading-relaxed text-muted-foreground lg:block'>
+          {note}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -577,30 +642,33 @@ function ChoiceCard({
       onClick={onSelect}
       aria-pressed={selected}
       className={cn(
-        'group relative flex h-full flex-col items-start gap-3 border p-4 text-left transition-all duration-200',
+        'group relative flex h-full flex-col gap-2 border p-3 pr-8 text-left transition-all duration-200',
         'hover:-translate-y-0.5 hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60',
         selected
           ? 'border-brand bg-brand/[0.06]'
           : 'border-line bg-surface hover:bg-surface',
       )}
     >
-      <span
-        className={cn(
-          'flex h-10 w-10 items-center justify-center border transition-colors duration-200',
-          selected
-            ? 'border-brand bg-brand text-brand-foreground'
-            : 'border-line text-brand-text group-hover:border-brand',
-        )}
-      >
-        <Icon className='h-5 w-5' strokeWidth={1.6} />
-      </span>
-
-      <span className='block text-sm font-medium leading-snug text-foreground'>
-        {title}
+      {/* Icon beside the title, not stacked above it: the same choice in
+          roughly half the height, so a step fits without scrolling. */}
+      <span className='flex items-center gap-2.5'>
+        <span
+          className={cn(
+            'flex h-8 w-8 shrink-0 items-center justify-center border transition-colors duration-200',
+            selected
+              ? 'border-brand bg-brand text-brand-foreground'
+              : 'border-line text-brand-text group-hover:border-brand',
+          )}
+        >
+          <Icon className='h-4 w-4' strokeWidth={1.6} />
+        </span>
+        <span className='block text-sm font-medium leading-snug text-foreground'>
+          {title}
+        </span>
       </span>
 
       {description ? (
-        <span className='block text-xs leading-relaxed text-muted-foreground'>
+        <span className='block text-xs leading-snug text-muted-foreground'>
           {description}
         </span>
       ) : null}
@@ -619,7 +687,7 @@ function ChoiceCard({
 
       <span
         className={cn(
-          'absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-brand-foreground transition-all duration-200',
+          'absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-brand-foreground transition-all duration-200',
           selected ? 'scale-100 opacity-100' : 'scale-75 opacity-0',
         )}
       >
