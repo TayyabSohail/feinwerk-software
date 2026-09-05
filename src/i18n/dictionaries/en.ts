@@ -343,12 +343,12 @@ export const en = {
   pricingPage: {
     kicker: 'Pricing',
     title: 'A price in writing, before work starts.',
-    accent: [3, 4],
+    accent: [5, 6],
     description:
       'Three fixed-price packages for the common cases and a custom quote for everything else. Every plan comes with a written scope, a committed launch date and maintenance after launch, so there is nothing to negotiate once the work is under way.',
     faqKicker: 'Pricing questions',
     faqTitle: 'What people ask before they sign',
-    faqAccent: [4],
+    faqAccent: [5],
   },
   servicePage: {
     back: 'All services',

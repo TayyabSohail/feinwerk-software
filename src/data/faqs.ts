@@ -13,7 +13,7 @@ export const faqs: Faq[] = [
       'Most projects start with a one-week discovery that ends in a written scope, a success metric and a fixed price for the first release, whether that is one of our packages or a custom solution. From there we ship weekly to a staging environment you can click through, with a demo at the end of each sprint. After launch we stay on to maintain what we built.',
   },
   {
-    question: 'How do you price work?',
+    question: 'How does you pricing work?',
     answer:
       'Three fixed-price packages cover consulting, an MVP and a full product. Everything else is a custom solution: send a brief and you have a written scope and a fixed quote within five working days. Ongoing product work, maintenance and dedicated teams run on a monthly retainer. We quote in EUR or USD and invoice from Germany or Pakistan, whichever suits your accounting.',
   },

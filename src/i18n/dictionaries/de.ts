@@ -349,12 +349,12 @@ export const de: Dictionary = {
   pricingPage: {
     kicker: 'Preise',
     title: 'Ein Preis, schriftlich, bevor die Arbeit beginnt.',
-    accent: [3],
+    accent: [5, 6],
     description:
       'Drei Festpreispakete für die häufigen Fälle und ein individuelles Angebot für alles andere. Jedes Paket enthält einen schriftlichen Leistungsumfang, ein verbindliches Launch-Datum und Wartung nach dem Launch, damit es nichts mehr zu verhandeln gibt, sobald die Arbeit läuft.',
     faqKicker: 'Fragen zu den Preisen',
     faqTitle: 'Was vor der Unterschrift gefragt wird',
-    faqAccent: [4],
+    faqAccent: [3],
   },
   servicePage: {
     back: 'Alle Leistungen',
