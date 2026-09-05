@@ -268,6 +268,8 @@ export const en = {
   numbers: {
     kicker: 'By the numbers',
     title: 'Proof, not promises',
+    description:
+      'Company figures and outcomes clients have reported after launch.',
     items: [
       { value: '150+', label: 'Projects delivered' },
       { value: '40+', label: 'Clients on four continents' },

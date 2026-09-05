@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 interface TextRevealProps {
   text: string;
   className?: string;
+  id?: string;
   /** Element rendered around the words. */
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
   delay?: number;
@@ -25,6 +26,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function TextReveal({
   text,
   className,
+  id,
   as = 'h2',
   delay = 0,
   stagger = 0.045,
@@ -38,6 +40,7 @@ export function TextReveal({
   return (
     <Component
       key={text}
+      id={id}
       aria-label={text}
       initial='hidden'
       whileInView='visible'

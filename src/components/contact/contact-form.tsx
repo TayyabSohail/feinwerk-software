@@ -85,7 +85,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
 
   if (sent) {
     return (
-      <div className='fw-card flex flex-col items-start p-8 sm:p-10'>
+      <div className='fw-card flex flex-col items-start bg-surface p-8 text-foreground sm:p-10'>
         <span className='flex h-12 w-12 items-center justify-center rounded-full bg-brand text-brand-foreground'>
           <CheckCircle2 className='h-6 w-6' />
         </span>
