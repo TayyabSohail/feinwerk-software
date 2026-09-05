@@ -29,7 +29,7 @@ export default async function ContactLayout({
         <Logo />
         <Link
           href={paths.home}
-          className='font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground'
+          className='font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-text transition-colors hover:text-foreground'
         >
           {dict.notFound.home}
         </Link>

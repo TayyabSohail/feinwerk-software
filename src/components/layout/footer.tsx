@@ -29,8 +29,15 @@ export function Footer({ dict }: FooterProps) {
   ];
 
   return (
-    <footer className='relative mt-24 overflow-hidden border-t'>
-      <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/70 to-transparent' />
+    <footer className='relative isolate mt-24 overflow-hidden bg-background'>
+      <div className='pointer-events-none absolute inset-0'>
+        <div className='absolute inset-0 bg-background' />
+        <Silk
+          className='absolute inset-0 h-full w-full opacity-25 mix-blend-multiply'
+          brightness={1}
+          speed={0.8}
+        />
+      </div>
       <div className='relative z-10 fw-container'>
         <div className='grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5'>
           <div className='lg:col-span-1'>
@@ -89,7 +96,7 @@ export function Footer({ dict }: FooterProps) {
           </FooterColumn>
         </div>
 
-        <div className='flex flex-col gap-4 border-t py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between'>
+        <div className='flex flex-col gap-4 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between'>
           <p>
             &copy; {year} {siteConfig.legalName}. {t.rights}
           </p>
@@ -108,19 +115,14 @@ export function Footer({ dict }: FooterProps) {
         </div>
       </div>
 
-      {/* Wordmark on silk, clipped at the bottom edge of the page. The word
-          is an SVG whose text is stretched to the full viewBox width, so it
-          spans edge to edge on every screen, phones included, regardless of
-          font metrics. The band's height tracks the viewport so the type
-          never outgrows it. */}
-      <div className='relative h-[30vw] max-h-[20rem] min-h-[5.5rem] w-full overflow-hidden sm:min-h-[9rem]'>
-        <Silk brightness={0.98} speed={0.8} />
-        <div className='absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-transparent' />
+        {/* The wordmark shares the footer canvas so the company name fades out
+          of the information above instead of starting a separate section. */}
+      <div className='relative z-10 mt-0 h-[34vw] max-h-[22rem] min-h-[7rem] w-full overflow-hidden sm:min-h-[10rem]'>
         <svg
           aria-hidden='true'
           viewBox='0 0 1000 112'
           preserveAspectRatio='xMidYMax meet'
-          className='pointer-events-none absolute inset-x-0 bottom-[-2px] block w-full select-none mix-blend-multiply'
+          className='pointer-events-none absolute inset-x-0 bottom-[-2px] block w-full select-none opacity-75 mix-blend-multiply [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%,black_100%)]'
         >
           <text
             x='0'

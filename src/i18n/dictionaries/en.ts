@@ -390,7 +390,7 @@ export const en = {
     consentLink: 'privacy policy',
     consentAfter: '.',
     submit: 'Send enquiry',
-    replyNote: 'We reply {time}. No newsletters, no drip campaigns.',
+    replyNote: 'We reply {time}.',
     errorGeneric: 'Something went wrong. Please try again in a moment.',
     sentTitle: 'Message received.',
     sentToast: 'Your enquiry has been sent. We reply {time}.',
@@ -640,7 +640,6 @@ export const en = {
     /** Two ways to start: write to us, or book a slot straight away. */
     choose: {
       formTab: 'Write to us',
-      formHint: 'Reply within one business day',
       callTab: 'Book a call',
       callHint: '30-minute intro call',
     },

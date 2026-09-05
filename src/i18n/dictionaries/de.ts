@@ -653,7 +653,6 @@ export const de: Dictionary = {
       'Lieber telefonieren? Erwähnen Sie es und wir senden Ihnen einen Buchungslink.',
     choose: {
       formTab: 'Schreiben Sie uns',
-      formHint: 'Antwort innerhalb eines Werktags',
       callTab: 'Gespräch buchen',
       callHint: '30-minütiges Erstgespräch',
     },

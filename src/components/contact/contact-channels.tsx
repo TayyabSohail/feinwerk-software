@@ -76,9 +76,6 @@ export function ContactChannels({
               <span className='block text-[15px] font-medium text-foreground'>
                 {t.formTab}
               </span>
-              <span className='mt-0.5 block text-sm text-muted-foreground'>
-                {t.formHint}
-              </span>
             </span>
           </button>
 
