@@ -38,7 +38,7 @@ import type { Dictionary } from '@/i18n/dictionaries/en';
 import { type ContactInput, SERVICE_OPTIONS } from '@/schema/contact';
 
 const FIELD =
-  'h-12 rounded-none border-line bg-surface px-4 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0';
+  'h-12 rounded-none border-white/20 bg-white/[0.06] px-4 text-[15px] text-white placeholder:text-white/40 focus-visible:ring-brand/60 focus-visible:ring-offset-0';
 const MESSAGE_MAX = 4000;
 
 interface ContactFormProps {
@@ -112,7 +112,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((values) => execute(values))}
-        className='fw-card overflow-hidden'
+        className='fw-card overflow-hidden bg-ink text-white'
         noValidate
       >
         <div aria-hidden='true' className='absolute -left-[9999px] top-0'>
@@ -126,21 +126,21 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
         </div>
 
         <div className='px-6 py-8 sm:px-8 lg:px-10 lg:py-10'>
-          <div className='flex items-start justify-between gap-6 border-b border-line pb-6'>
+          <div className='flex items-start justify-between gap-6 border-b border-white/15 pb-6'>
             <div>
               <p className='fw-kicker'>
                 {t.stepLabel
                   .replace('{current}', String(step + 1))
                   .replace('{total}', '3')}
               </p>
-              <h3 className='fw-display mt-3 text-display-sm text-foreground'>
+              <h3 className='fw-display mt-3 text-display-sm text-white'>
                 {stepContent.title}
               </h3>
-              <p className='mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground'>
+              <p className='mt-2 max-w-lg text-sm leading-relaxed text-white/60'>
                 {stepContent.subtitle}
               </p>
             </div>
-            <p className='hidden max-w-[12rem] text-right text-xs leading-relaxed text-muted-foreground sm:block'>
+            <p className='hidden max-w-[12rem] text-right text-xs leading-relaxed text-white/60 sm:block'>
               {t.replyNote.replace('{time}', siteConfig.responseTime)}
             </p>
           </div>
@@ -152,9 +152,9 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 name='service'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t.service}</FormLabel>
+                    <FormLabel className='text-white'>{t.service}</FormLabel>
                     <FormControl>
-                      <div className='mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4'>
+                      <div className='mt-3 grid sm:grid-cols-2 sm:gap-x-8'>
                         {SERVICE_OPTIONS.map((option) => {
                           const service =
                             option.value === 'other'
@@ -174,6 +174,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                               icon={Icon}
                               title={serviceLabel(option.value)}
                               description={serviceTagline(option.value)}
+                              dark
                             />
                           );
                         })}
@@ -190,17 +191,17 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 name='message'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t.message}</FormLabel>
+                    <FormLabel className='text-white'>{t.message}</FormLabel>
                     <FormControl>
                       <Textarea
                         rows={9}
                         maxLength={MESSAGE_MAX}
                         placeholder={t.messagePlaceholder}
-                        className='mt-3 min-h-[11rem] rounded-none border-line bg-surface px-4 py-3 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0'
+                        className='mt-3 min-h-[11rem] rounded-none border-white/20 bg-white/[0.06] px-4 py-3 text-[15px] text-white placeholder:text-white/40 focus-visible:ring-brand/60 focus-visible:ring-offset-0'
                         {...field}
                       />
                     </FormControl>
-                    <p className='mt-2 text-right font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground'>
+                    <p className='mt-2 text-right font-mono text-[11px] uppercase tracking-[0.14em] text-white/60'>
                       {messageLength < 20
                         ? t.minChars
                         : t.charactersLeft.replace(
@@ -250,9 +251,11 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                           <Checkbox
                             checked={field.value === true}
                             onCheckedChange={(checked) =>
-                              field.onChange(checked === true ? true : undefined)
+                              field.onChange(
+                                checked === true ? true : undefined,
+                              )
                             }
-                            className='mt-0.5 h-5 w-5 rounded-none border-line data-[state=checked]:border-brand data-[state=checked]:bg-brand data-[state=checked]:text-brand-foreground'
+                            className='mt-0.5 h-5 w-5 rounded-none border-white/30 data-[state=checked]:border-brand data-[state=checked]:bg-brand data-[state=checked]:text-brand-foreground'
                           />
                         </FormControl>
                         <FormLabel className='text-sm font-normal leading-relaxed text-muted-foreground'>
@@ -344,10 +347,7 @@ function ContactInputField({
           <FormLabel>
             {label}
             {optional ? (
-              <span className='font-normal text-muted-foreground'>
-                {' '}
-                (optional)
-              </span>
+              <span className='font-normal text-white/60'> (optional)</span>
             ) : null}
           </FormLabel>
           <FormControl>
@@ -371,12 +371,14 @@ function ChoiceCard({
   icon: Icon,
   title,
   description,
+  dark = false,
 }: {
   selected: boolean;
   onSelect: () => void;
   icon: LucideIcon;
   title: string;
   description?: string;
+  dark?: boolean;
 }) {
   return (
     <button
@@ -384,39 +386,48 @@ function ChoiceCard({
       onClick={onSelect}
       aria-pressed={selected}
       className={cn(
-        'group relative flex h-full cursor-pointer flex-col gap-2 border p-3 pr-9 text-left transition-all',
-        'hover:-translate-y-0.5 hover:border-brand hover:bg-brand/[0.03] hover:shadow-[0_8px_20px_-16px_hsl(var(--ink)/0.45)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60',
+        'group relative flex min-h-[4.5rem] cursor-pointer items-center gap-3 border-b py-4 pr-9 text-left transition-colors',
+        'hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60',
         selected
-          ? 'border-brand bg-brand/[0.06]'
-          : 'border-line bg-surface',
+          ? 'border-brand text-brand'
+          : dark
+            ? 'border-white/15 text-white'
+            : 'border-line text-foreground',
       )}
     >
-      <span className='flex items-center gap-2.5'>
-        <span
-          className={cn(
-            'flex h-8 w-8 shrink-0 items-center justify-center border',
-            selected
-              ? 'border-brand bg-brand text-brand-foreground'
-              : 'border-line text-brand-text group-hover:border-brand',
-          )}
-        >
-          <Icon className='h-4 w-4' strokeWidth={1.6} />
-        </span>
-        <span className='block text-sm font-medium leading-snug text-foreground'>
-          {title}
-        </span>
-      </span>
-      {description ? (
-        <span className='block text-xs leading-snug text-muted-foreground'>
-          {description}
-        </span>
-      ) : null}
       <span
         className={cn(
-          'absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full border transition-colors',
+          'flex h-9 w-9 shrink-0 items-center justify-center border transition-colors',
           selected
             ? 'border-brand bg-brand text-brand-foreground'
-            : 'border-line bg-surface text-transparent group-hover:border-brand/60',
+            : dark
+              ? 'border-white/25 text-white/60 group-hover:border-brand group-hover:text-brand'
+              : 'border-line text-muted-foreground group-hover:border-brand group-hover:text-brand-text',
+        )}
+      >
+        <Icon className='h-4 w-4' strokeWidth={1.6} />
+      </span>
+      <span className='min-w-0 flex-1'>
+        <span className='block text-sm font-medium leading-snug'>{title}</span>
+        {description ? (
+          <span
+            className={cn(
+              'mt-1 block text-xs leading-snug',
+              dark ? 'text-white/60' : 'text-muted-foreground',
+            )}
+          >
+            {description}
+          </span>
+        ) : null}
+      </span>
+      <span
+        className={cn(
+          'absolute right-0 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center border transition-colors',
+          selected
+            ? 'border-brand bg-brand text-brand-foreground'
+            : dark
+              ? 'border-white/25 bg-transparent text-transparent group-hover:border-brand/60'
+              : 'border-line bg-transparent text-transparent group-hover:border-brand/60',
         )}
       >
         <Check className='h-3 w-3' strokeWidth={3} />

@@ -11,7 +11,11 @@ export function CalEmbed({ calLink }: CalEmbedProps) {
     <Cal
       calLink={calLink}
       namespace='feinwerks-intro'
-      config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
+      config={{
+        layout: 'month_view',
+        theme: 'dark',
+        useSlotsViewOnSmallScreen: 'true',
+      }}
       className='min-h-[38rem] w-full'
     />
   );

@@ -113,7 +113,7 @@ export function ContactChannels({
       {channel === 'calendar' ? (
         <div
           id='contact-calendar'
-          className='mt-8 overflow-hidden border border-line bg-surface'
+          className='mt-8 overflow-hidden border border-line bg-ink'
         >
           <CalEmbed calLink={calLink} />
         </div>
