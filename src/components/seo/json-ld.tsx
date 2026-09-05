@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site';
+import { paths } from '@/constants/paths';
 
 /** Organization structured data, emitted once from the root layout. */
 export function OrganizationJsonLd() {
@@ -8,7 +9,8 @@ export function OrganizationJsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     logo: `${siteConfig.url}/icon.png`,
-    email: siteConfig.email,
+    // Only published once a real company inbox exists.
+    ...(siteConfig.publicEmail ? { email: siteConfig.publicEmail } : {}),
     foundingDate: String(siteConfig.founded),
     founder: {
       '@type': 'Person',
@@ -22,7 +24,9 @@ export function OrganizationJsonLd() {
     })),
     contactPoint: siteConfig.locations.map((location) => ({
       '@type': 'ContactPoint',
-      email: siteConfig.email,
+      ...(siteConfig.publicEmail
+        ? { email: siteConfig.publicEmail }
+        : { url: `${siteConfig.url}${paths.contact}` }),
       contactType: 'sales',
       areaServed: location.countryCode,
       availableLanguage: ['en', 'de', 'ur'],

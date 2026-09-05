@@ -482,9 +482,9 @@ export const en = {
     statusTitle: 'We are not accepting applications.',
     statusBody:
       'There are no vacancies for engineers, designers or any other role, in Islamabad, in Fellbach or remote.',
-    notifyBefore: 'Want to hear when this changes? Email',
+    notifyBefore: 'Want to hear when this changes? Send us a note through',
     notifyAfter:
-      'with the subject line “Future roles” and we will let you know once a position opens.',
+      'mentioning “Future roles” and we will let you know once a position opens.',
     ctaTitle: 'Rather hire us than join us?',
     ctaAccent: [1, 2],
     ctaBody:

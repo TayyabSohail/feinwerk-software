@@ -500,9 +500,9 @@ export const de: Dictionary = {
     statusBody:
       'Es gibt keine offenen Stellen für Entwicklung, Design oder andere Rollen, weder in Islamabad noch in Fellbach noch remote.',
     notifyBefore:
-      'Möchten Sie erfahren, wenn sich das ändert? Schreiben Sie an',
+      'Möchten Sie erfahren, wenn sich das ändert? Schreiben Sie uns über',
     notifyAfter:
-      'mit dem Betreff „Künftige Stellen“ und wir melden uns, sobald eine Position frei wird.',
+      'mit dem Hinweis „Künftige Stellen“ und wir melden uns, sobald eine Position frei wird.',
     ctaTitle: 'Lieber uns beauftragen als bei uns anfangen?',
     ctaAccent: [1, 2],
     ctaBody:

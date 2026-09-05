@@ -100,7 +100,7 @@ export default async function AboutPage() {
             accentWords={[...t.whereAccent]}
             description={t.whereDescription}
           />
-          <Locations className='mt-14' />
+          <Locations className='mt-14' contactLabel={dict.nav.contact} />
         </div>
       </section>
 

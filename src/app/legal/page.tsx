@@ -126,13 +126,13 @@ export default async function LegalIndexPage() {
               {t.requestsBody}
             </p>
           </div>
-          <a
-            href={`mailto:${siteConfig.email}?subject=Legal%20enquiry`}
+          <Link
+            href={paths.contact}
             className='inline-flex h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition-transform hover:-translate-y-0.5'
           >
             <Mail className='h-4 w-4' />
-            {siteConfig.email}
-          </a>
+            {dict.nav.contact}
+          </Link>
         </Reveal>
       </section>
     </>

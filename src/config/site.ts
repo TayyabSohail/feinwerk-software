@@ -14,8 +14,18 @@ export const siteConfig = {
     'Feinwerks Software is a software engineering studio building and maintaining full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. Fixed or custom quotes, committed dates, support after launch. From Islamabad and Fellbach, shipped worldwide.',
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
-  // Email lives here so it can be swapped once the company inbox exists.
-  email: 'hello@feinwerks.software',
+  /**
+   * Inbox that actually receives enquiries. Delivery only - this is a
+   * placeholder mailbox until the hello@feinwerks.software inbox exists,
+   * so it is deliberately never rendered anywhere on the site.
+   */
+  email: 'feinwerksoftware@gmail.com',
+  /**
+   * The address shown publicly. `null` while the company inbox is pending:
+   * every surface then points at the contact form instead of a mailto link.
+   * Set this to 'hello@feinwerks.software' once that inbox is live.
+   */
+  publicEmail: null as string | null,
   responseTime: 'within one business day',
   availability: 'Accepting new projects',
   locations: [

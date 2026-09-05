@@ -1,4 +1,5 @@
 import { Mail } from 'lucide-react';
+import Link from 'next/link';
 
 import { Flag } from '@/components/brand/flags';
 import { LocalTime } from '@/components/common/local-time';
@@ -7,12 +8,18 @@ import { Stagger, StaggerItem } from '@/components/motion/reveal';
 import { cn } from '@/lib/utils';
 
 import { siteConfig } from '@/config/site';
+import { paths } from '@/constants/paths';
 
 interface LocationsProps {
   className?: string;
+  /** Label for the contact link. Defaults to English. */
+  contactLabel?: string;
 }
 
-export function Locations({ className }: LocationsProps) {
+export function Locations({
+  className,
+  contactLabel = 'Contact us',
+}: LocationsProps) {
   return (
     <Stagger className={cn('grid gap-4 sm:grid-cols-2', className)}>
       {siteConfig.locations.map((location, index) => (
@@ -43,13 +50,13 @@ export function Locations({ className }: LocationsProps) {
 
           <ul className='mt-6 space-y-3 border-t border-line pt-5 text-sm'>
             <li>
-              <a
-                href={`mailto:${siteConfig.email}`}
+              <Link
+                href={paths.contact}
                 className='fw-link inline-flex items-center gap-2.5 text-foreground'
               >
                 <Mail className='h-4 w-4 text-brand-text' />
-                {siteConfig.email}
-              </a>
+                {contactLabel}
+              </Link>
             </li>
           </ul>
         </StaggerItem>

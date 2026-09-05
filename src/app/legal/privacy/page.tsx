@@ -33,8 +33,8 @@ const sectionsEn: LegalSection[] = [
           <Link href={paths.legal.imprint}>imprint</Link>.
         </p>
         <p>
-          Questions about this policy or your data can be sent to{' '}
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          Questions about this policy or your data can be sent through our{' '}
+          <Link href={paths.contact}>contact form</Link>.
         </p>
       </>
     ),
@@ -184,8 +184,8 @@ const sectionsEn: LegalSection[] = [
           </li>
         </ul>
         <p>
-          Write to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-          . We respond within one month. You also have the right to lodge a
+          Reach us through our <Link href={paths.contact}>contact form</Link>.
+          We respond within one month. You also have the right to lodge a
           complaint with a supervisory authority; for our German office that is
           the Landesbeauftragte für den Datenschutz und die Informationsfreiheit
           Baden-Württemberg.
@@ -249,8 +249,8 @@ const sectionsDe: LegalSection[] = [
           <Link href={paths.legal.imprint}>Impressum</Link>.
         </p>
         <p>
-          Fragen zu dieser Erklärung oder zu Ihren Daten richten Sie bitte an{' '}
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          Fragen zu dieser Erklärung oder zu Ihren Daten richten Sie bitte über
+          unser <Link href={paths.contact}>Kontaktformular</Link>.
         </p>
       </>
     ),
@@ -411,9 +411,9 @@ const sectionsDe: LegalSection[] = [
           </li>
         </ul>
         <p>
-          Schreiben Sie an{' '}
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. Wir
-          antworten innerhalb eines Monats. Ihnen steht zudem das Recht zu, sich
+          Schreiben Sie uns über unser{' '}
+          <Link href={paths.contact}>Kontaktformular</Link>. Wir antworten
+          innerhalb eines Monats. Ihnen steht zudem das Recht zu, sich
           bei einer Aufsichtsbehörde zu beschweren; für unser deutsches Büro ist
           das der Landesbeauftragte für den Datenschutz und die
           Informationsfreiheit Baden-Württemberg.

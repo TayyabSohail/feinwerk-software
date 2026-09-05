@@ -46,7 +46,7 @@ const sectionsEn: LegalSection[] = [
     title: 'Contact',
     body: (
       <p>
-        Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        Contact form: <a href={paths.contact}>feinwerks.software/contact</a>
       </p>
     ),
   },
@@ -199,7 +199,7 @@ const sectionsDe: LegalSection[] = [
     title: 'Kontakt',
     body: (
       <p>
-        E-Mail: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        Kontaktformular: <a href={paths.contact}>feinwerks.software/contact</a>
       </p>
     ),
   },

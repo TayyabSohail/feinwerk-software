@@ -1,4 +1,4 @@
-import { Mail } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
 import Link from 'next/link';
 
 import { Reveal } from '@/components/motion/reveal';
@@ -52,13 +52,17 @@ export function CtaBanner({ dict, title, accentWords, body }: CtaBannerProps) {
               {t.button}
               <span className='h-2.5 w-2.5 bg-white' />
             </Link>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className='inline-flex h-14 items-center gap-2 border border-white/25 px-5 font-mono text-[11px] uppercase tracking-[0.18em] text-white transition-colors hover:border-brand'
-            >
-              <Mail className='h-4 w-4' />
-              {siteConfig.email}
-            </a>
+            {siteConfig.calLink ? (
+              <a
+                href={siteConfig.calLink}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex h-14 items-center gap-2 border border-white/25 px-5 font-mono text-[11px] uppercase tracking-[0.18em] text-white transition-colors hover:border-brand'
+              >
+                <CalendarDays className='h-4 w-4' />
+                {dict.contact.book}
+              </a>
+            ) : null}
           </Reveal>
         </div>
       </div>

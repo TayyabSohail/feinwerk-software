@@ -76,12 +76,12 @@ export function Footer({ dict }: FooterProps) {
           </FooterColumn>
 
           <FooterColumn title={t.connect}>
-            <a
-              href={`mailto:${siteConfig.email}`}
+            <Link
+              href={paths.contact}
               className='fw-link w-fit text-sm text-foreground/80 hover:text-foreground'
             >
-              {siteConfig.email}
-            </a>
+              {dict.nav.contact}
+            </Link>
             <p className='text-xs text-muted-foreground'>
               {siteConfig.responseTime}
             </p>

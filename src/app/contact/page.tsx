@@ -55,13 +55,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <div className='space-y-4 lg:sticky lg:top-32 lg:self-start'>
           <Reveal delay={0.1} className='fw-card p-7'>
             <p className='fw-kicker'>{t.direct}</p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className='mt-4 flex items-center gap-3 text-lg font-medium text-foreground'
-            >
-              <Mail className='h-5 w-5 text-brand-text' />
-              <span className='fw-link'>{siteConfig.email}</span>
-            </a>
+            <p className='mt-4 flex items-start gap-3 text-base leading-relaxed text-muted-foreground'>
+              <Mail className='mt-0.5 h-5 w-5 shrink-0 text-brand-text' />
+              {t.formNote}
+            </p>
             {siteConfig.calLink ? (
               <a
                 href={siteConfig.calLink}
@@ -79,7 +76,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               </p>
             )}
           </Reveal>
-          <Locations className='sm:grid-cols-1' />
+          <Locations className='sm:grid-cols-1' contactLabel={dict.nav.contact} />
         </div>
       </section>
 

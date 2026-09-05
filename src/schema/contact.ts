@@ -53,3 +53,16 @@ export const contactSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
+
+/**
+ * Fields validated at each step of the wizard, so "Next" can block on the
+ * current step only. Keep in sync with the steps rendered in ContactForm.
+ */
+export const CONTACT_STEP_FIELDS = [
+  ['service'],
+  ['budget'],
+  ['message'],
+  ['name', 'email', 'company', 'consent'],
+] as const satisfies ReadonlyArray<ReadonlyArray<keyof ContactInput>>;
+
+export const CONTACT_STEP_COUNT = CONTACT_STEP_FIELDS.length;

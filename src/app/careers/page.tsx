@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 import { PageHero } from '@/components/common/page-hero';
@@ -54,12 +55,12 @@ export default async function CareersPage() {
           </p>
           <p className='mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground'>
             {t.notifyBefore}{' '}
-            <a
-              href={`mailto:${siteConfig.email}`}
+            <Link
+              href={paths.contact}
               className='text-foreground underline underline-offset-4'
             >
-              {siteConfig.email}
-            </a>{' '}
+              {dict.nav.contact.toLowerCase()}
+            </Link>{' '}
             {t.notifyAfter}
           </p>
         </Reveal>
