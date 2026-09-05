@@ -1,17 +1,11 @@
-import { CalendarDays, Mail } from 'lucide-react';
 import type { Metadata } from 'next';
 
-import { PageHero } from '@/components/common/page-hero';
-import { ContactForm } from '@/components/contact/contact-form';
-import { Reveal } from '@/components/motion/reveal';
-import { FaqSection } from '@/components/sections/faq';
-import { Locations } from '@/components/sections/locations';
+import { ContactChannels } from '@/components/contact/contact-channels';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 
 import { siteConfig } from '@/config/site';
 import { paths } from '@/constants/paths';
-import { getFaqs } from '@/data/faqs';
-import { getDictionary, getLocale } from '@/i18n/server';
+import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -24,12 +18,18 @@ interface ContactPageProps {
   searchParams: Promise<{ service?: string }>;
 }
 
+/**
+ * Deliberately the quietest page on the site.
+ *
+ * No hero, no FAQ, no locations, no CTA banner, and (via the route's own
+ * layout) no site header or footer. Someone who reaches this page has already
+ * been sold; everything else is now in the way. What remains is the form, and
+ * the calendar for people who would rather just talk.
+ */
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const { service } = await searchParams;
   const dict = await getDictionary();
-  const locale = await getLocale();
   const t = dict.contact;
-  const faqs = getFaqs(locale);
 
   return (
     <>
@@ -39,53 +39,24 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           { name: dict.nav.contact, href: paths.contact },
         ]}
       />
-      <PageHero
-        kicker={t.kicker}
-        title={t.title}
-        accentWords={[...t.accent]}
-        description={t.description}
-        size='lg'
-      />
 
-      <section className='fw-container grid gap-10 pb-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14'>
-        <Reveal>
-          <ContactForm dict={dict} defaultService={service} />
-        </Reveal>
+      <section className='fw-container max-w-5xl pb-16 pt-10 sm:pt-16'>
+        <header className='mb-10 max-w-2xl'>
+          <p className='fw-kicker'>{t.kicker}</p>
+          <h1 className='fw-display mt-4 text-display-md text-foreground sm:text-display-lg'>
+            {t.title}
+          </h1>
+          <p className='mt-5 max-w-xl text-base leading-relaxed text-muted-foreground'>
+            {t.description}
+          </p>
+        </header>
 
-        <div className='space-y-4 lg:sticky lg:top-32 lg:self-start'>
-          <Reveal delay={0.1} className='fw-card p-7'>
-            <p className='fw-kicker'>{t.direct}</p>
-            <p className='mt-4 flex items-start gap-3 text-base leading-relaxed text-muted-foreground'>
-              <Mail className='mt-0.5 h-5 w-5 shrink-0 text-brand-text' />
-              {t.formNote}
-            </p>
-            {siteConfig.calLink ? (
-              <a
-                href={siteConfig.calLink}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='mt-3 flex items-center gap-3 text-lg font-medium text-foreground'
-              >
-                <CalendarDays className='h-5 w-5 text-brand-text' />
-                <span className='fw-link'>{t.book}</span>
-              </a>
-            ) : (
-              <p className='mt-3 flex items-center gap-3 text-sm text-muted-foreground'>
-                <CalendarDays className='h-5 w-5 text-brand-text' />
-                {t.callNote}
-              </p>
-            )}
-          </Reveal>
-          <Locations className='sm:grid-cols-1' contactLabel={dict.nav.contact} />
-        </div>
+        <ContactChannels
+          dict={dict}
+          defaultService={service}
+          calHandle={siteConfig.calHandle}
+        />
       </section>
-
-      <FaqSection
-        items={faqs.slice(0, 4)}
-        kicker={t.faqKicker}
-        title={t.faqTitle}
-        accentWords={[...t.faqAccent]}
-      />
     </>
   );
 }

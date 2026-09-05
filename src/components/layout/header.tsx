@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { Logo } from '@/components/brand/logo';
+import { isBareRoute } from '@/components/layout/bare-route';
 import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { MobileMenu } from '@/components/layout/mobile-menu';
 
@@ -30,9 +31,15 @@ export function Header({ dict }: HeaderProps) {
     setScrolled(latest > 12);
   });
 
+  // The contact route renders its own minimal chrome.
+  const bare = isBareRoute(pathname);
+
   // Section links such as /#pricing never read as the current page.
+
   const isActive = (href: string) =>
     !isSectionLink(href) && pathname.startsWith(href);
+
+  if (bare) return null;
 
   return (
     <motion.header

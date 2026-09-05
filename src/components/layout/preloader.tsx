@@ -60,7 +60,10 @@ export function Preloader() {
     };
   }, []);
 
-  const filled = Math.round((progress / 100) * BAR_CELLS);
+  const filled = Math.min(
+    BAR_CELLS,
+    Math.max(0, Math.round((progress / 100) * BAR_CELLS)),
+  );
 
   return (
     <AnimatePresence>
