@@ -64,7 +64,9 @@ const MAX_PACKETS = 6;
 const BAND_W = 0.32;
 /** Whole plate on wide screens; as the box narrows the view crops towards
     the tiles so the labels stay legible and the plate bleeds off both edges.
-    The crop follows the measured box width rather than a viewport media
+    Below lg the stage runs edge to edge and fades at the sides (see
+    `.fw-map-stage`), so the bleed dissolves rather than being cut off.
+    The crop follows the measured stage width rather than a viewport media
     query, so the map reads the same in the hero column at any breakpoint. */
 const VIEW_WIDE = { x: -316, y: -44, w: 632, h: 336 };
 const VIEW_TIGHT = { x: -178, y: 6, w: 356, h: 290 };
@@ -420,7 +422,8 @@ function PacketView({ packet, onArrive, onDone }: PacketViewProps) {
 export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
   const reduce = useReducedMotion() === true;
   const rootRef = useRef<HTMLDivElement>(null);
-  const viewBox = useViewBox(rootRef);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const viewBox = useViewBox(stageRef);
   const inView = useInView(rootRef, { amount: 0.4 });
   const inViewRef = useRef(false);
   inViewRef.current = inView;
@@ -485,109 +488,113 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
       aria-label={`${copy.kicker}: ${labels}`}
       className={cn('fw-map', className)}
     >
-      <svg
-        aria-hidden='true'
-        viewBox={viewBox}
-        className='block h-auto w-full overflow-visible'
-      >
-        <g className='fw-map-plate'>
-          <polygon className='fw-map-plate-side' points={PLATE.left} />
-          <polygon className='fw-map-plate-side' points={PLATE.right} />
-          <polygon className='fw-map-plate-top' points={PLATE.top} />
-          <g className='fw-map-grid'>
-            {GRID.map((l, i) => (
-              <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />
-            ))}
+      {/* Full-bleed below lg, with the sides faded (`.fw-map-stage`) so the
+          plate dissolves at the screen edges rather than being cut off. */}
+      <div ref={stageRef} className='fw-map-stage'>
+        <svg
+          aria-hidden='true'
+          viewBox={viewBox}
+          className='block h-auto w-full overflow-visible'
+        >
+          <g className='fw-map-plate'>
+            <polygon className='fw-map-plate-side' points={PLATE.left} />
+            <polygon className='fw-map-plate-side' points={PLATE.right} />
+            <polygon className='fw-map-plate-top' points={PLATE.top} />
+            <g className='fw-map-grid'>
+              {GRID.map((l, i) => (
+                <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />
+              ))}
+            </g>
+            <motion.polygon
+              className='fw-map-sweep'
+              points={BAND.points}
+              initial={{ x: 0, y: 0, opacity: 0 }}
+              animate={
+                live
+                  ? { x: [0, BAND.dx], y: [0, BAND.dy], opacity: [0.7, 0.7] }
+                  : undefined
+              }
+              transition={{
+                duration: 5.5,
+                ease: 'linear',
+                repeat: Infinity,
+                repeatDelay: 4,
+                delay: 2.5,
+              }}
+            />
           </g>
-          <motion.polygon
-            className='fw-map-sweep'
-            points={BAND.points}
-            initial={{ x: 0, y: 0, opacity: 0 }}
-            animate={
-              live
-                ? { x: [0, BAND.dx], y: [0, BAND.dy], opacity: [0.7, 0.7] }
-                : undefined
-            }
-            transition={{
-              duration: 5.5,
-              ease: 'linear',
-              repeat: Infinity,
-              repeatDelay: 4,
-              delay: 2.5,
-            }}
-          />
-        </g>
 
-        <g>
-          {EDGES.map(([a, b], i) => {
-            const pa = project(NODES[a].x, NODES[a].y);
-            const pb = project(NODES[b].x, NODES[b].y);
+          <g>
+            {EDGES.map(([a, b], i) => {
+              const pa = project(NODES[a].x, NODES[a].y);
+              const pb = project(NODES[b].x, NODES[b].y);
+              return (
+                <motion.line
+                  key={`${a}-${b}`}
+                  className='fw-map-edge'
+                  x1={pa.px}
+                  y1={pa.py}
+                  x2={pb.px}
+                  y2={pb.py}
+                  initial={reduce ? false : { pathLength: 0, opacity: 0 }}
+                  animate={ready ? { pathLength: 1, opacity: 1 } : undefined}
+                  transition={{ duration: 0.6, ease, delay: 0.55 + i * 0.08 }}
+                />
+              );
+            })}
+          </g>
+
+          {BLOCKS.map((b, i) => {
+            const { px, py } = project(b.x, b.y);
             return (
-              <motion.line
-                key={`${a}-${b}`}
-                className='fw-map-edge'
-                x1={pa.px}
-                y1={pa.py}
-                x2={pb.px}
-                y2={pb.py}
-                initial={reduce ? false : { pathLength: 0, opacity: 0 }}
-                animate={ready ? { pathLength: 1, opacity: 1 } : undefined}
-                transition={{ duration: 0.6, ease, delay: 0.55 + i * 0.08 }}
-              />
+              <motion.g
+                key={i}
+                initial={reduce ? false : { opacity: 0 }}
+                animate={ready ? { opacity: 1 } : undefined}
+                transition={{ duration: 0.6, ease, delay: 0.9 + i * 0.08 }}
+              >
+                <polygon
+                  className='fw-map-shadow'
+                  points={diamond(px, py + 2, b.size + 2, b.size / 2 + 1)}
+                />
+                <motion.g
+                  style={{ x: px, y: py }}
+                  animate={live ? { y: [py, py - 6, py] } : undefined}
+                  transition={{
+                    duration: b.duration,
+                    ease: 'easeInOut',
+                    repeat: Infinity,
+                    delay: b.delay,
+                  }}
+                >
+                  <Cube tone={b.tone} size={b.size} className='fw-map-block' />
+                </motion.g>
+              </motion.g>
             );
           })}
-        </g>
 
-        {BLOCKS.map((b, i) => {
-          const { px, py } = project(b.x, b.y);
-          return (
-            <motion.g
-              key={i}
-              initial={reduce ? false : { opacity: 0 }}
-              animate={ready ? { opacity: 1 } : undefined}
-              transition={{ duration: 0.6, ease, delay: 0.9 + i * 0.08 }}
-            >
-              <polygon
-                className='fw-map-shadow'
-                points={diamond(px, py + 2, b.size + 2, b.size / 2 + 1)}
-              />
-              <motion.g
-                style={{ x: px, y: py }}
-                animate={live ? { y: [py, py - 6, py] } : undefined}
-                transition={{
-                  duration: b.duration,
-                  ease: 'easeInOut',
-                  repeat: Infinity,
-                  delay: b.delay,
-                }}
-              >
-                <Cube tone={b.tone} size={b.size} className='fw-map-block' />
-              </motion.g>
-            </motion.g>
-          );
-        })}
+          {packets.map((packet) => (
+            <PacketView
+              key={packet.id}
+              packet={packet}
+              onArrive={onArrive}
+              onDone={onDone}
+            />
+          ))}
 
-        {packets.map((packet) => (
-          <PacketView
-            key={packet.id}
-            packet={packet}
-            onArrive={onArrive}
-            onDone={onDone}
-          />
-        ))}
-
-        {NODE_ORDER.map((id, i) => (
-          <Tile
-            key={id}
-            id={id}
-            label={copy.nodes[id]}
-            index={i}
-            ready={ready}
-            pulse={pulses[id]}
-            reduce={reduce}
-          />
-        ))}
-      </svg>
+          {NODE_ORDER.map((id, i) => (
+            <Tile
+              key={id}
+              id={id}
+              label={copy.nodes[id]}
+              index={i}
+              ready={ready}
+              pulse={pulses[id]}
+              reduce={reduce}
+            />
+          ))}
+        </svg>
+      </div>
 
       <p aria-hidden='true' className='fw-kicker mt-3 text-[10px]'>
         {copy.kicker}

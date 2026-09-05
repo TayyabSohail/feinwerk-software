@@ -62,11 +62,11 @@ export function ProjectGrid({
 
   return (
     <>
-      <div className='flex flex-wrap items-center justify-between gap-4'>
+      <div className='flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between'>
         <div
           role='group'
           aria-label={filterLabel}
-          className='flex max-w-full gap-px overflow-x-auto border border-ink/15 bg-ink/15 p-px [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
+          className='flex max-w-full flex-wrap gap-1.5'
         >
           {filters.map((filter) => {
             const isActive = filter === active;
@@ -77,10 +77,10 @@ export function ProjectGrid({
                 onClick={() => setActive(filter)}
                 aria-pressed={isActive}
                 className={cn(
-                  'shrink-0 whitespace-nowrap px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.12em] transition',
+                  'border px-3 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.12em] transition-colors sm:px-4 sm:py-2.5 sm:text-[11px]',
                   isActive
-                    ? 'bg-ink text-white'
-                    : 'bg-background text-ink/70 hover:bg-brand-soft hover:text-ink',
+                    ? 'border-ink bg-ink text-white'
+                    : 'border-ink/15 bg-background text-ink/70 hover:bg-brand-soft hover:text-ink',
                 )}
               >
                 {labels[filter] ?? filter}
@@ -100,7 +100,7 @@ export function ProjectGrid({
         key={active}
         projects={visible}
         columnCount={1}
-        className='mt-10 flex flex-col gap-6 sm:hidden'
+        className='mt-8 flex flex-col gap-5 sm:hidden'
         actionLabel={actionLabel}
         reduce={Boolean(reduce)}
       />

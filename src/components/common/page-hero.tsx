@@ -27,7 +27,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'fw-container pb-12 pt-36 sm:pt-44 lg:pb-16 lg:pt-52',
+        'fw-container pb-10 pt-28 sm:pb-12 sm:pt-44 lg:pb-16 lg:pt-52',
         className,
       )}
     >
@@ -48,7 +48,7 @@ export function PageHero({
       />
       {description && (
         <Reveal delay={0.4}>
-          <p className='mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl'>
+          <p className='mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:mt-7 sm:text-lg lg:text-xl'>
             {description}
           </p>
         </Reveal>

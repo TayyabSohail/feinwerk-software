@@ -57,7 +57,7 @@
 
   body {
     @apply bg-background font-sans text-foreground antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -520,6 +520,9 @@
   .fw-halo {
     position: relative;
     padding: 1px;
+    /* The ::before glow spills 40% past the card. clip-path hides it, but
+       it still counts as scrollable overflow and widened the page on phones. */
+    overflow: hidden;
     clip-path: polygon(
       0 0,
       calc(100% - 14px) 0,
@@ -634,6 +637,34 @@ html.fw-no-cursor * {
 .fw-map rect {
   vector-effect: non-scaling-stroke;
   stroke-linejoin: round;
+}
+/* Below lg the map sits under the copy, so the stage breaks out of the
+   container padding (mirroring .fw-container) and fades at both sides;
+   the cropped plate then dissolves at the screen edges instead of being
+   cut off. At lg it lives in its own column and needs neither. */
+@media (max-width: 1023.98px) {
+  .fw-map-stage {
+    margin-inline: -1.25rem;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+  }
+}
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  .fw-map-stage {
+    margin-inline: -2rem;
+  }
 }
 .fw-map-plate-top {
   fill: hsl(var(--surface) / 0.55);

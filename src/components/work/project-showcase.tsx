@@ -27,7 +27,7 @@ type Filter = 'All' | ProjectCategory;
 const ease = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Typographic category filters, then every project on a device mockup.
+ * Chip category filters, then every project on a device mockup.
  * The first tile (and the last, when the count is even) is a lead: full
  * width, mockup beside the copy.
  */
@@ -55,42 +55,29 @@ export function ProjectShowcase({
 
   return (
     <>
+      {/* Same compact chip filters as the projects page, at every width. */}
       <div
         role='group'
         aria-label={filterLabel}
-        className='flex flex-wrap items-baseline gap-x-6 gap-y-2'
+        className='flex flex-wrap gap-1.5'
       >
-        {filters.map((filter, index) => {
+        {filters.map((filter) => {
           const isActive = filter === active;
           return (
-            <span key={filter} className='flex items-baseline gap-x-6'>
-              {index > 0 && (
-                <span
-                  aria-hidden='true'
-                  className='fw-display text-2xl text-ink/15 sm:text-3xl'
-                >
-                  /
-                </span>
+            <button
+              key={filter}
+              type='button'
+              onClick={() => setActive(filter)}
+              aria-pressed={isActive}
+              className={cn(
+                'border px-3 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.12em] transition-colors sm:px-4 sm:py-2.5 sm:text-[11px]',
+                isActive
+                  ? 'border-ink bg-ink text-white'
+                  : 'border-ink/15 bg-background text-ink/70 hover:bg-brand-soft hover:text-ink',
               )}
-              <button
-                type='button'
-                onClick={() => setActive(filter)}
-                aria-pressed={isActive}
-                className={cn(
-                  'fw-display group relative text-2xl uppercase transition-colors duration-300 sm:text-3xl',
-                  isActive ? 'text-ink' : 'text-ink/30 hover:text-ink/70',
-                )}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId='project-filter-dot'
-                    transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                    className='absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 bg-brand'
-                  />
-                )}
-                {labels[filter] ?? filter}
-              </button>
-            </span>
+            >
+              {labels[filter] ?? filter}
+            </button>
           );
         })}
       </div>
