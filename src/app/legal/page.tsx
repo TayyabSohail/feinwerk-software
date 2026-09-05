@@ -13,7 +13,6 @@ import { PageHero } from '@/components/common/page-hero';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 
-import { siteConfig } from '@/config/site';
 import { paths } from '@/constants/paths';
 import { getDictionary } from '@/i18n/server';
 

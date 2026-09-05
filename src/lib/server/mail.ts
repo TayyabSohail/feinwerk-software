@@ -10,6 +10,7 @@ export const isMailConfigured = Boolean(
 interface SendMailInput {
   subject: string;
   text: string;
+  html?: string;
   replyTo?: string;
 }
 
@@ -17,6 +18,7 @@ interface SendMailInput {
 export async function sendInternalMail({
   subject,
   text,
+  html,
   replyTo,
 }: SendMailInput) {
   if (!isMailConfigured) return { skipped: true as const };
@@ -28,6 +30,7 @@ export async function sendInternalMail({
     replyTo,
     subject,
     text,
+    ...(html ? { html } : {}),
   });
 
   if (error) throw new Error(error.message);

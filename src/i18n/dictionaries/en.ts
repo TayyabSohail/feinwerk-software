@@ -354,6 +354,7 @@ export const en = {
     email: 'Work email',
     emailPlaceholder: 'jane@company.com',
     company: 'Company',
+    optional: 'optional',
     companyPlaceholder: 'Company or product name',
     service: 'What do you need?',
     servicePlaceholder: 'Choose a service',
@@ -369,13 +370,42 @@ export const en = {
     consentAfter: '.',
     submit: 'Send enquiry',
     replyNote: 'We reply {time}. No newsletters, no drip campaigns.',
-    errorGeneric:
-      'Something went wrong. Please try again or email us directly.',
+    errorGeneric: 'Something went wrong. Please try again in a moment.',
     sentTitle: 'Message received.',
     sentBody:
-      'Thank you. We read every enquiry personally and reply {time}. If it is urgent, email us directly.',
-    sentEmail: 'Email us',
+      'Thank you. We read every enquiry personally and reply {time}, straight to the address you gave us.',
     sentAgain: 'Send another',
+    // Multi-step wizard
+    stepLabel: 'Step {current} of {total}',
+    next: 'Continue',
+    back: 'Back',
+    steps: {
+      service: {
+        title: 'What can we build for you?',
+        subtitle: 'Pick the closest match. We will refine it together.',
+        kicker: 'The work',
+      },
+      budget: {
+        title: 'What is the budget?',
+        subtitle:
+          'A rough range is enough. It tells us what shape of team fits.',
+        kicker: 'The range',
+      },
+      message: {
+        title: 'Tell us about the project.',
+        subtitle:
+          'What are you building, who is it for, and when does it need to exist?',
+        kicker: 'The detail',
+      },
+      details: {
+        title: 'Where do we send the reply?',
+        subtitle: 'Last step. We only use this to answer your enquiry.',
+        kicker: 'Your details',
+      },
+    },
+    reviewTitle: 'Your enquiry',
+    charactersLeft: '{count} characters left',
+    minChars: 'At least 20 characters',
     budgets: {
       'under-10k': 'Under €10k',
       '10k-25k': '€10k - €25k',
@@ -587,7 +617,9 @@ export const en = {
     accent: [5, 6],
     description:
       'A few sentences are enough. We reply within one business day with a first take on scope, timeline and price, standard package or custom, and on who would build and maintain it.',
-    direct: 'Direct',
+    direct: 'How to reach us',
+    formNote:
+      'The form is the fastest way in. It comes straight to us and we answer every enquiry personally.',
     book: 'Book a 30-minute intro call',
     callNote: 'Prefer a call? Mention it and we will send a booking link.',
     faqKicker: 'Before you write',

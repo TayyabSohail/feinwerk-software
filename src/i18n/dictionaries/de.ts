@@ -369,6 +369,7 @@ export const de: Dictionary = {
     email: 'Geschäftliche E-Mail',
     emailPlaceholder: 'erika@unternehmen.de',
     company: 'Unternehmen',
+    optional: 'optional',
     companyPlaceholder: 'Unternehmens- oder Produktname',
     service: 'Was brauchen Sie?',
     servicePlaceholder: 'Leistung auswählen',
@@ -385,12 +386,44 @@ export const de: Dictionary = {
     submit: 'Anfrage senden',
     replyNote: 'Wir antworten {time}. Keine Newsletter, keine Kampagnen.',
     errorGeneric:
-      'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.',
+      'Etwas ist schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.',
     sentTitle: 'Nachricht erhalten.',
     sentBody:
-      'Vielen Dank. Wir lesen jede Anfrage persönlich und antworten {time}. Wenn es dringend ist, schreiben Sie uns direkt.',
-    sentEmail: 'Schreiben Sie uns',
+      'Vielen Dank. Wir lesen jede Anfrage persönlich und antworten {time}, direkt an die von Ihnen angegebene Adresse.',
     sentAgain: 'Weitere senden',
+    // Mehrstufiges Formular
+    stepLabel: 'Schritt {current} von {total}',
+    next: 'Weiter',
+    back: 'Zurück',
+    steps: {
+      service: {
+        title: 'Was dürfen wir für Sie bauen?',
+        subtitle:
+          'Wählen Sie das Passendste. Die Details klären wir gemeinsam.',
+        kicker: 'Die Aufgabe',
+      },
+      budget: {
+        title: 'Wie hoch ist das Budget?',
+        subtitle:
+          'Ein grober Rahmen genügt. Er zeigt uns, welches Team passt.',
+        kicker: 'Der Rahmen',
+      },
+      message: {
+        title: 'Erzählen Sie uns vom Projekt.',
+        subtitle:
+          'Was bauen Sie, für wen ist es, und bis wann muss es stehen?',
+        kicker: 'Die Details',
+      },
+      details: {
+        title: 'Wohin dürfen wir antworten?',
+        subtitle:
+          'Letzter Schritt. Wir nutzen das nur für die Antwort auf Ihre Anfrage.',
+        kicker: 'Ihre Daten',
+      },
+    },
+    reviewTitle: 'Ihre Anfrage',
+    charactersLeft: 'Noch {count} Zeichen',
+    minChars: 'Mindestens 20 Zeichen',
     budgets: {
       'under-10k': 'Unter 10.000 €',
       '10k-25k': '10.000 € - 25.000 €',
@@ -605,7 +638,9 @@ export const de: Dictionary = {
     accent: [5, 6],
     description:
       'Ein paar Sätze genügen. Wir antworten innerhalb eines Werktags mit einer ersten Einschätzung zu Umfang, Zeitplan und Preis, Standardpaket oder individuell, und dazu, wer das Produkt bauen und warten würde.',
-    direct: 'Direkt',
+    direct: 'So erreichen Sie uns',
+    formNote:
+      'Das Formular ist der schnellste Weg zu uns. Es kommt direkt bei uns an und wir beantworten jede Anfrage persönlich.',
     book: 'Ein 30-minütiges Kennenlerngespräch buchen',
     callNote:
       'Lieber telefonieren? Erwähnen Sie es und wir senden Ihnen einen Buchungslink.',

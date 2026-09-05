@@ -1,6 +1,5 @@
-import { paths } from '@/constants/paths';
-
 import { siteConfig } from '@/config/site';
+import { paths } from '@/constants/paths';
 
 /**
  * Where to send someone who wants to reach us.

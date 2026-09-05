@@ -3,6 +3,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { headers } from 'next/headers';
 
+import { renderEnquiryHtml } from '@/lib/server/enquiry-email';
 import { isMailConfigured, sendInternalMail } from '@/lib/server/mail';
 import { isRateLimited } from '@/lib/server/rate-limit';
 import { safeActionClient } from '@/lib/server/safe-action';
@@ -59,14 +60,25 @@ export const submitContact = safeActionClient
     ].join('\n');
 
     let delivered = false;
+    let mailError: unknown = null;
 
     if (isMailConfigured) {
-      await sendInternalMail({
-        subject: `New enquiry: ${parsedInput.name} (${service})`,
-        text: summary,
-        replyTo: parsedInput.email,
-      });
-      delivered = true;
+      try {
+        await sendInternalMail({
+          subject: `New enquiry: ${parsedInput.name} (${service})`,
+          text: summary,
+          html: renderEnquiryHtml({ ...parsedInput, service, budget }),
+          replyTo: parsedInput.email,
+        });
+        delivered = true;
+      } catch (error) {
+        // Remember it, but let the Supabase fallback below still run.
+        mailError = error;
+        Logger.error(
+          'Contact email failed',
+          error instanceof Error ? error.message : String(error),
+        );
+      }
     }
 
     if (isSupabaseConfigured && env.SUPABASE_SERVICE_ROLE_KEY) {
@@ -89,9 +101,15 @@ export const submitContact = safeActionClient
     }
 
     if (!delivered) {
-      Logger.info(
-        'Contact enquiry (no delivery channel configured)\n' + summary,
-      );
+      // Nothing accepted the message. Always log it so it is not lost, then
+      // tell the visitor the truth instead of showing a false success screen.
+      Logger.info('Contact enquiry (undelivered)\n' + summary);
+
+      if (mailError || isMailConfigured) {
+        throw new Error(
+          'We could not send your message just now. Please try again in a moment.',
+        );
+      }
     }
 
     return { delivered };
