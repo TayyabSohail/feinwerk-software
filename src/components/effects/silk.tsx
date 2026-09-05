@@ -128,11 +128,16 @@ export function Silk({ className, brightness = 1.02, speed = 1 }: SilkProps) {
 
     resize();
     window.addEventListener('resize', resize);
+    // Phones resize the band without a window resize event (address bar
+    // collapse, orientation, font load), so track the element itself too.
+    const sizeObserver = new ResizeObserver(resize);
+    sizeObserver.observe(canvas);
     frame = requestAnimationFrame(render);
 
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      sizeObserver.disconnect();
       window.removeEventListener('resize', resize);
       start = 0;
     };

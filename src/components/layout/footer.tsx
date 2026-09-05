@@ -107,18 +107,31 @@ export function Footer({ dict }: FooterProps) {
         </div>
       </div>
 
-      {/* Wordmark on silk, clipped at the bottom edge of the page. The type
-          scales with the viewport so the whole word fits on a phone; the band
-          keeps pace with it rather than sitting at a fixed minimum height. */}
-      <div className='relative h-[30vw] max-h-[20rem] min-h-[5.5rem] overflow-hidden border-t sm:min-h-[9rem]'>
+      {/* Wordmark on silk, clipped at the bottom edge of the page. The word
+          is an SVG whose text is stretched to the full viewBox width, so it
+          spans edge to edge on every screen, phones included, regardless of
+          font metrics. The band's height tracks the viewport so the type
+          never outgrows it. */}
+      <div className='relative h-[30vw] max-h-[20rem] min-h-[5.5rem] w-full overflow-hidden border-t sm:min-h-[9rem]'>
         <Silk brightness={0.98} speed={0.8} />
         <div className='absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent' />
-        <p
+        <svg
           aria-hidden='true'
-          className='absolute inset-x-0 bottom-[-0.18em] select-none text-center font-display text-[clamp(2.25rem,15vw,17rem)] font-bold uppercase leading-none tracking-[0.04em] text-ink/85 mix-blend-multiply sm:tracking-[0.06em]'
+          viewBox='0 0 1000 112'
+          preserveAspectRatio='xMidYMax meet'
+          className='pointer-events-none absolute inset-x-0 bottom-[-2px] block w-full select-none mix-blend-multiply'
         >
-          Feinwerks
-        </p>
+          <text
+            x='0'
+            y='110'
+            textLength='1000'
+            lengthAdjust='spacingAndGlyphs'
+            className='fill-ink/85 font-display font-bold uppercase'
+            style={{ fontSize: 150 }}
+          >
+            Feinwerks
+          </text>
+        </svg>
       </div>
     </footer>
   );
