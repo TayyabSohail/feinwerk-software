@@ -8,7 +8,10 @@ import { cn } from '@/lib/utils';
 
 import { paths } from '@/constants/paths';
 import { INDUSTRY_IDS, industryProjects } from '@/data/industries';
-import { getProjectBySlug, type Project } from '@/data/projects';
+import {
+  getProjectBySlugLocalised,
+  type Project,
+} from '@/data/projects';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface IndustriesProps {
@@ -35,7 +38,7 @@ export function Industries({ dict }: IndustriesProps) {
           {INDUSTRY_IDS.map((id, index) => {
             const item = t.items[id];
             const proofs = industryProjects[id]
-              .map(getProjectBySlug)
+              .map((slug) => getProjectBySlugLocalised(slug, dict.locale))
               .filter((project): project is Project => Boolean(project));
 
             return (

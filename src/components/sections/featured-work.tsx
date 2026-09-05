@@ -5,7 +5,10 @@ import { SectionHeading } from '@/components/common/section-heading';
 import { ProjectShowcase } from '@/components/work/project-showcase';
 
 import { paths } from '@/constants/paths';
-import { getCategories, getShowcaseProjects } from '@/data/projects';
+import {
+  getCategories,
+  getShowcaseProjectsLocalised,
+} from '@/data/projects';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface FeaturedWorkProps {
@@ -18,7 +21,7 @@ interface FeaturedWorkProps {
  */
 export function FeaturedWork({ dict }: FeaturedWorkProps) {
   const t = dict.work;
-  const showcase = getShowcaseProjects();
+  const showcase = getShowcaseProjectsLocalised(dict.locale);
 
   return (
     <section id='work' className='fw-section fw-rule fw-band-white'>

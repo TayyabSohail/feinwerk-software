@@ -5,6 +5,8 @@ import { Logo } from '@/components/brand/logo';
 import { Silk } from '@/components/effects/silk';
 import { BackToTop } from '@/components/layout/back-to-top';
 
+import { legalLabel } from '@/lib/legal-labels';
+
 import { siteConfig } from '@/config/site';
 import { primaryNav } from '@/constants/navigation';
 import { isSectionLink, paths } from '@/constants/paths';
@@ -97,7 +99,7 @@ export function Footer({ dict }: FooterProps) {
                 href={item.href}
                 className='fw-link hover:text-foreground'
               >
-                {item.label}
+                {legalLabel(item.href, dict) ?? item.label}
               </Link>
             ))}
           </div>

@@ -15,7 +15,7 @@ import { ProjectCard } from '@/components/work/project-card';
 import { getTechMeta } from '@/lib/tech-icons';
 
 import { paths } from '@/constants/paths';
-import { getProjectsBySlugs } from '@/data/projects';
+import { getProjectsBySlugsLocalised } from '@/data/projects';
 import {
   getServiceBySlug,
   getServiceBySlugLocalised,
@@ -52,7 +52,10 @@ export default async function ServicePage({ params }: PageProps) {
   if (!service) notFound();
 
   const Icon = SERVICE_ICONS[service.icon];
-  const proof = getProjectsBySlugs(service.proof).slice(0, 3);
+  const proof = getProjectsBySlugsLocalised(service.proof, dict.locale).slice(
+    0,
+    3,
+  );
   const others = getServices(dict.locale).filter(
     (item) => item.slug !== service.slug,
   );
@@ -231,7 +234,7 @@ export default async function ServicePage({ params }: PageProps) {
           <Stagger className='mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {proof.map((project) => (
               <StaggerItem key={project.slug}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} actionLabel={dict.work.view} />
               </StaggerItem>
             ))}
           </Stagger>

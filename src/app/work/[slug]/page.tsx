@@ -17,12 +17,13 @@ import { cn } from '@/lib/utils';
 
 import { paths } from '@/constants/paths';
 import {
-  getAdjacentProjects,
+  getAdjacentProjectsLocalised,
   getProjectBySlug,
+  getProjectBySlugLocalised,
   type Project,
   projects,
 } from '@/data/projects';
-import { getServiceBySlug } from '@/data/services';
+import { getServiceBySlugLocalised } from '@/data/services';
 import { getDictionary } from '@/i18n/server';
 
 interface PageProps {
@@ -65,12 +66,16 @@ export async function generateMetadata({
 export default async function CaseStudyPage({ params }: PageProps) {
   const dict = await getDictionary();
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const t = dict.workPage;
+  const project = getProjectBySlugLocalised(slug, dict.locale);
   if (!project) notFound();
 
-  const { previous, next } = getAdjacentProjects(project.slug);
+  const { previous, next } = getAdjacentProjectsLocalised(
+    project.slug,
+    dict.locale,
+  );
   const relatedServices = project.services
-    .map((serviceSlug) => getServiceBySlug(serviceSlug))
+    .map((serviceSlug) => getServiceBySlugLocalised(serviceSlug, dict.locale))
     .filter((service): service is NonNullable<typeof service> =>
       Boolean(service),
     );
@@ -79,8 +84,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
     <article>
       <BreadcrumbJsonLd
         items={[
-          { name: 'Home', href: paths.home },
-          { name: 'Work', href: paths.work },
+          { name: dict.nav.home, href: paths.home },
+          { name: dict.nav.work, href: paths.work },
           { name: project.title, href: paths.caseStudy(project.slug) },
         ]}
       />
@@ -93,7 +98,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             className='group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground'
           >
             <ArrowLeft className='h-3.5 w-3.5 transition-transform group-hover:-translate-x-1' />
-            All projects
+            {t.back}
           </Link>
         </Reveal>
 
@@ -118,8 +123,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <Reveal delay={0.45} className='mt-8 flex flex-wrap gap-3'>
               <span className='inline-flex h-12 items-center rounded-full border border-line px-5 text-sm text-muted-foreground'>
                 {project.anonymised
-                  ? 'Client project, name changed on request'
-                  : 'Private deployment, client project'}
+                  ? t.anonymised
+                  : t.private}
               </span>
             </Reveal>
           </div>
@@ -128,13 +133,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
             delay={0.2}
             className='grid grid-cols-2 gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-4 lg:grid-cols-2'
           >
-            <Meta label='Category' value={project.category} />
-            <Meta label='Year' value={project.year} />
+            <Meta label={t.category} value={project.category} />
+            <Meta label={t.year} value={project.year} />
             <Meta
-              label='Capabilities'
+              label={t.capabilities}
               value={project.capabilities.join(', ')}
             />
-            <Meta label='Industry' value={project.industry} highlight />
+            <Meta label={t.industry} value={project.industry} highlight />
           </Reveal>
         </div>
 
@@ -168,13 +173,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <section className='fw-container'>
         <Stagger className='grid gap-4 md:grid-cols-2'>
           <StaggerItem className='fw-card p-7 sm:p-9'>
-            <p className='fw-kicker'>The problem</p>
+            <p className='fw-kicker'>{t.problem}</p>
             <p className='mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg'>
               {project.problem}
             </p>
           </StaggerItem>
           <StaggerItem className='fw-card p-7 sm:p-9'>
-            <p className='fw-kicker'>Our approach</p>
+            <p className='fw-kicker'>{t.approach}</p>
             <p className='mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg'>
               {project.approach}
             </p>
@@ -183,13 +188,23 @@ export default async function CaseStudyPage({ params }: PageProps) {
       </section>
 
       {/* More screens of the product */}
-      <ProjectGallery project={project} />
+      <ProjectGallery
+        project={project}
+        labels={{
+          gallery: t.gallery,
+          galleryTitle: t.galleryTitle,
+          galleryAnonymised: t.galleryAnonymised,
+          galleryMore: t.galleryMore,
+          onThePhone: t.onThePhone,
+          homeScreen: t.homeScreen,
+        }}
+      />
 
       {/* Architecture + features */}
       <section className='fw-container pb-16 lg:pb-24'>
         <div className='grid gap-10 lg:grid-cols-[0.8fr_1.2fr]'>
           <Reveal className='lg:sticky lg:top-32 lg:self-start'>
-            <p className='fw-kicker'>How it is built</p>
+            <p className='fw-kicker'>{t.architecture}</p>
             <h2 className='fw-display mt-5 text-display-sm text-foreground'>
               Architecture
             </h2>
@@ -200,7 +215,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <div>
             <Reveal>
               <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-                Key features
+                {t.keyFeatures}
               </p>
             </Reveal>
             <Stagger className='mt-4 grid gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-2'>
@@ -223,9 +238,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
       {/* Challenges */}
       <section className='fw-container'>
         <Reveal>
-          <p className='fw-kicker'>Challenges &amp; solutions</p>
+          <p className='fw-kicker'>{t.challengesKicker}</p>
           <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-            Where it got hard.
+            {t.challengesTitle}
           </h2>
         </Reveal>
         <Stagger className='mt-10 grid gap-4'>
@@ -236,7 +251,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             >
               <div>
                 <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-                  Challenge
+                  {t.challenge}
                 </p>
                 <p className='mt-3 text-base leading-relaxed text-foreground sm:text-lg'>
                   {item.challenge}
@@ -244,7 +259,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </div>
               <div className='border-l-2 border-brand pl-5'>
                 <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-brand-text'>
-                  Solution
+                  {t.solution}
                 </p>
                 <p className='mt-3 text-base leading-relaxed text-muted-foreground'>
                   {item.solution}
@@ -258,9 +273,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
       {/* Results */}
       <section className='fw-container py-16 lg:py-24'>
         <Reveal>
-          <p className='fw-kicker'>Results</p>
+          <p className='fw-kicker'>{t.resultsKicker}</p>
           <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-            What shipping it changed.
+            {t.resultsTitle}
           </h2>
         </Reveal>
         <Stagger className='mt-10 grid gap-px overflow-hidden rounded-none border border-line bg-line md:grid-cols-3'>
@@ -276,7 +291,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <section className='fw-container'>
         <div className='grid gap-4 lg:grid-cols-[1.2fr_0.8fr]'>
           <Reveal className='fw-card p-7 sm:p-9'>
-            <p className='fw-kicker'>Stack</p>
+            <p className='fw-kicker'>{t.stack}</p>
             <ul className='mt-6 grid gap-6 sm:grid-cols-2'>
               {project.techStack.map((group) => (
                 <li key={group.category}>
@@ -302,7 +317,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </ul>
           </Reveal>
           <Reveal delay={0.1} className='fw-card p-7 sm:p-9'>
-            <p className='fw-kicker'>Services involved</p>
+            <p className='fw-kicker'>{t.servicesInvolved}</p>
             <ul className='mt-6 divide-y divide-line'>
               {relatedServices.map((service) => (
                 <li key={service.slug}>
@@ -327,20 +342,28 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       {/* Prev / next */}
       <nav
-        aria-label='More case studies'
+        aria-label={t.more}
         className='fw-container py-16 lg:py-24'
       >
         <div className='grid gap-4 sm:grid-cols-2'>
-          {previous && <AdjacentLink project={previous} direction='previous' />}
-          {next && <AdjacentLink project={next} direction='next' />}
+          {previous && (
+            <AdjacentLink
+              project={previous}
+              direction='previous'
+              label={t.previous}
+            />
+          )}
+          {next && (
+            <AdjacentLink project={next} direction='next' label={t.next} />
+          )}
         </div>
       </nav>
 
       <CtaBanner
         dict={dict}
-        title='Building something similar?'
-        accentWords={[1, 2]}
-        body='We can usually tell within one call whether the approach above transfers to your problem, and what would need to change.'
+        title={t.ctaTitle}
+        accentWords={[...t.ctaAccent]}
+        body={t.ctaBody}
       />
     </article>
   );
@@ -400,9 +423,11 @@ function Metric({ text }: { text: string }) {
 function AdjacentLink({
   project,
   direction,
+  label,
 }: {
   project: Project;
   direction: 'previous' | 'next';
+  label: string;
 }) {
   const isNext = direction === 'next';
   return (
@@ -432,7 +457,7 @@ function AdjacentLink({
           ) : (
             <ArrowLeft className='h-3 w-3' />
           )}
-          {direction}
+          {label}
         </span>
         <span className='mt-1 block truncate text-lg font-semibold text-foreground transition-colors group-hover:text-brand-text'>
           {project.title}

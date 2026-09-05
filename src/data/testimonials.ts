@@ -1,3 +1,5 @@
+import type { Locale } from '@/i18n/config';
+
 export interface Testimonial {
   quote: string;
   /** Who said it, as a role. Add the person's name once they approve it. */
@@ -64,3 +66,59 @@ export const testimonials: Testimonial[] = [
     result: '50% shorter audit turnaround',
   },
 ];
+
+/** German copy, in the same order as `testimonials`. */
+const testimonialsDe: Testimonial[] = [
+  {
+    quote:
+      'Jeder Schilling auf der Plattform muss stimmen, und er stimmt. Feinwerk hat die Wallet, die Mietausschüttung und den Zweitmarkt so gebaut, dass nichts zu unseren Gunsten gerundet wird und sich nichts bewegt, ohne dass die Administration es sieht. Genau diese Sorgfalt braucht ein Mitgliederclub, der mit echtem Geld arbeitet.',
+    author: 'Gründer',
+    company: 'Immobilien-Mitgliederclub (vertraulich)',
+    project: 'brickfold',
+    result: '42 Screens, ein exaktes Hauptbuch',
+  },
+  {
+    quote:
+      'Wir haben für fünf SEO-Werkzeuge bezahlt und trotzdem von Hand gearbeitet. Feinwerk hat sie durch eine Plattform ersetzt, die aufwendige Generierung in Hintergrundjobs verlagert und nebenbei unsere Kosten für Keyword-Tracking halbiert. Dreißig Artikel in zehn Minuten war keine Folie. Das war eine Demo.',
+    author: 'Produktleitung',
+    company: 'SEO-Plattform (vertraulich)',
+    project: 'rankloom',
+    result: '3x geringere Kosten pro Artikel',
+  },
+  {
+    quote:
+      'Live-Gebote mit tausend Studierenden auf demselben Angebot sind genau die Art Sache, die still und leise bricht. Sie hat es nie getan. Gebote stehen in unter zweihundert Millisekunden fest, und der Server entscheidet, wer gewinnt, nicht der schnellste Browser. Das Eltern-Dashboard war das Detail, das unsere Vermietenden überzeugt hat.',
+    author: 'Mitgründerin',
+    company: 'Marktplatz für Studierendenwohnungen (vertraulich)',
+    project: 'bidnest',
+    result: '1.000+ gleichzeitig Bietende',
+  },
+  {
+    quote:
+      'Die Support-Tickets sind um siebzig Prozent gefallen, in dem Monat, in dem Auszahlungen und Versand automatisch liefen. Anbieter sehen ihre Bestellungen, ihr Geld und ihre DHL-Sendungsverfolgung an einem Ort, und der personalisierte Feed hat Kundinnen und Kunden deutlich länger auf der Seite gehalten als der allgemeine je zuvor.',
+    author: 'Leitung Betrieb',
+    company: 'E-Commerce-Marktplatz (vertraulich)',
+    project: 'curio-market',
+    result: '70 % weniger Support-Tickets',
+  },
+  {
+    quote:
+      'Unsere Personalarbeit lief über E-Mail, Chat und Papier. Jetzt ist jeder Antrag ein Datensatz mit Status, jede Freigabe fließt in genau einen Abrechnungslauf, und Lohnabrechnungen werden gesperrt, sobald die Periode schließt. Das Team hakt niemandem mehr hinterher, weil das System die Updates selbst verschickt.',
+    author: 'Geschäftsführung',
+    company: 'Bitsmiths Studio',
+    project: 'bitsmiths-hrm',
+    result: '12 automatisierte E-Mails, kein Nachhaken',
+  },
+  {
+    quote:
+      'Der Prüf-Agent liefert Feststellungen auf Klauselebene, mit der Norm, aus der sie stammen, und einer verständlichen Begründung. Die Prüfenden vertrauen ihm, weil sie ihn nachprüfen können. Die Durchlaufzeit der Prüfung ist von rund einer Woche auf die Hälfte gefallen, ohne eine einzige zusätzliche Person im Team.',
+    author: 'Leitung Qualität',
+    company: 'Wirtschaftsprüfung (vertraulich)',
+    project: 'qa-compliance-agent',
+    result: '50 % kürzere Durchlaufzeit',
+  },
+];
+
+export function getTestimonials(locale: Locale): Testimonial[] {
+  return locale === 'de' ? testimonialsDe : testimonials;
+}

@@ -4,10 +4,12 @@ import { PageHero } from '@/components/common/page-hero';
 import { Reveal } from '@/components/motion/reveal';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 
+import { legalLabel } from '@/lib/legal-labels';
 import { cn } from '@/lib/utils';
 
 import { siteConfig } from '@/config/site';
 import { paths } from '@/constants/paths';
+import type { Dictionary } from '@/i18n/dictionaries/en';
 
 export interface LegalSection {
   id: string;
@@ -16,6 +18,7 @@ export interface LegalSection {
 }
 
 interface LegalPageProps {
+  dict: Dictionary;
   kicker: string;
   title: string;
   accentWords?: number[];
@@ -27,6 +30,7 @@ interface LegalPageProps {
 
 /** Shared layout for the policy pages: sticky table of contents + prose. */
 export function LegalPage({
+  dict,
   kicker,
   title,
   accentWords,
@@ -35,11 +39,12 @@ export function LegalPage({
   href,
   sections,
 }: LegalPageProps) {
+  const t = dict.legal;
   return (
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: 'Home', href: paths.home },
+          { name: dict.nav.home, href: paths.home },
           { name: title, href },
         ]}
       />
@@ -51,15 +56,15 @@ export function LegalPage({
         size='lg'
       >
         <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-          Last updated {updated}
+          {t.updatedLabel} {updated}
         </p>
       </PageHero>
 
       <section className='fw-container grid gap-12 pb-24 lg:grid-cols-[0.3fr_0.7fr]'>
         <Reveal className='lg:sticky lg:top-32 lg:self-start'>
-          <nav aria-label='On this page' className='fw-card p-6'>
+          <nav aria-label={t.onThisPage} className='fw-card p-6'>
             <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-              Contents
+              {t.contents}
             </p>
             <ol className='mt-4 space-y-2 text-sm'>
               {sections.map((section) => (
@@ -74,7 +79,7 @@ export function LegalPage({
               ))}
             </ol>
             <div className='mt-6 border-t border-line pt-5 text-xs text-muted-foreground'>
-              Other policies:{' '}
+              {t.otherPolicies}{' '}
               {siteConfig.footerNav.legal
                 .filter((item) => item.href !== href)
                 .map((item, index, all) => (
@@ -83,7 +88,7 @@ export function LegalPage({
                       href={item.href}
                       className='text-foreground underline underline-offset-4'
                     >
-                      {item.label}
+                      {legalLabel(item.href, dict) ?? item.label}
                     </Link>
                     {index < all.length - 1 ? ', ' : ''}
                   </span>

@@ -13,8 +13,8 @@ import { TextReveal } from '@/components/motion/text-reveal';
 import { cn } from '@/lib/utils';
 
 import { paths } from '@/constants/paths';
-import { getProjectBySlug } from '@/data/projects';
-import { testimonials } from '@/data/testimonials';
+import { getProjectBySlugLocalised } from '@/data/projects';
+import { getTestimonials } from '@/data/testimonials';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface TestimonialsProps {
@@ -31,6 +31,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
  */
 export function Testimonials({ dict, className }: TestimonialsProps) {
   const t = dict.testimonials;
+  const testimonials = getTestimonials(dict.locale);
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -54,7 +55,9 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
   if (total === 0) return null;
 
   const item = testimonials[index];
-  const project = item.project ? getProjectBySlug(item.project) : null;
+  const project = item.project
+    ? getProjectBySlugLocalised(item.project, dict.locale)
+    : null;
 
   return (
     <section className={cn('fw-section fw-rule fw-band-white', className)}>

@@ -401,6 +401,204 @@ export const de: Dictionary = {
       unsure: 'Noch unklar',
     },
   },
+  workPage: {
+    back: 'Alle Projekte',
+    anonymised: 'Kundenprojekt, Name auf Wunsch geändert',
+    private: 'Nicht öffentlich betrieben, Kundenprojekt',
+    category: 'Kategorie',
+    year: 'Jahr',
+    capabilities: 'Kompetenzen',
+    industry: 'Branche',
+    problem: 'Das Problem',
+    approach: 'Unser Vorgehen',
+    architecture: 'Wie es gebaut ist',
+    keyFeatures: 'Kernfunktionen',
+    challengesKicker: 'Herausforderungen & Lösungen',
+    challengesTitle: 'Wo es schwierig wurde.',
+    challenge: 'Herausforderung',
+    solution: 'Lösung',
+    resultsKicker: 'Ergebnisse',
+    resultsTitle: 'Was der Launch verändert hat.',
+    gallery: 'Im Produkt',
+    onThePhone: 'Auf dem Telefon',
+    galleryTitle: 'Mehr als ein Screen.',
+    galleryAnonymised:
+      'Produktname und Daten wurden auf Wunsch des Kunden geändert; diese Screens bilden {title} so nach, wie es gebaut wurde.',
+    galleryMore:
+      '{n} weitere Screens aus {title}, in Gerätegröße aufgenommen.',
+    homeScreen: 'Start',
+    stack: 'Stack',
+    servicesInvolved: 'Beteiligte Leistungen',
+    more: 'Weitere Projekte',
+    previous: 'zurück',
+    next: 'weiter',
+    notFound: 'Projekt nicht gefunden',
+    ctaTitle: 'Bauen Sie etwas Ähnliches?',
+    ctaAccent: [1, 2],
+    ctaBody:
+      'Meist lässt sich in einem Gespräch sagen, ob sich das obige Vorgehen auf Ihr Problem übertragen lässt und was sich dafür ändern müsste.',
+  },
+  aboutPage: {
+    kicker: 'Über Feinwerk',
+    title: 'Ein Softwarestudio, benannt nach einem Anspruch.',
+    accent: [6, 7],
+    description:
+      'Feinwerk steht für die Tradition der Feinwerktechnik aus der Region Stuttgart, in der unser europäisches Büro sitzt. An Software legen wir denselben Maßstab an: Sie muss exakt stimmen, und zwar an dem Tag, der zugesagt wurde.',
+    story: [
+      'Wir haben Feinwerk gegründet, nachdem wir jahrelang Produkte für Unternehmen gebaut hatten, die schlechte Erfahrungen gemacht hatten: Agenturen, die den Termin rissen, Teams, die fast das Gewünschte lieferten, Schätzungen, die sich auf halbem Weg verdoppelten.',
+      'Also haben wir das Studio um die vier Dinge herum aufgebaut, die Kundinnen und Kunden anderswo nicht bekamen. Termin und Preis, vereinbart bevor die Arbeit beginnt, für ein Standardpaket oder einen individuellen Umfang. Ein erfahrenes Team, das das ganze Produkt verantwortet, von der Oberfläche bis zur Cloud-Rechnung. Ein Ergebnis, das Sie nach dem Launch messen können, berichtet von Ihnen, nicht von uns. Und ein Team, das bleibt: Wir warten, was wir bauen, und übernehmen dafür im Produktivbetrieb die Verantwortung.',
+      'Unser asiatisches Büro ist in Islamabad. Kundinnen und Kunden in Europa haben einen Ansprechpartner vor Ort in Fellbach. Zwischen beiden Büros arbeitet immer jemand während Ihres Arbeitstages.',
+    ],
+    facts: [
+      {
+        label: 'Was wir bauen',
+        value:
+          'Webplattformen, KI-Produkte, Cloud-Automatisierung, Marketing-Websites',
+      },
+      {
+        label: 'Für wen',
+        value:
+          'Gründerinnen, Gründer und Produktteams in Europa, Asien und Nordamerika',
+      },
+      {
+        label: 'Wie',
+        value:
+          'Fester Umfang, Fest- oder Individualpreis, wöchentliche Demos, Wartung nach dem Launch',
+      },
+      {
+        label: 'Wo',
+        value: 'Islamabad und Fellbach, mit überlappenden Arbeitszeiten',
+      },
+    ],
+    principlesKicker: 'Grundsätze',
+    principlesTitle: 'Vier Regeln, an denen sich jedes Projekt messen lässt.',
+    principlesAccent: [0, 1],
+    whereKicker: 'Wo wir sind',
+    whereTitle: 'Zwei Büros, ein Arbeitstag.',
+    whereAccent: [3, 4],
+    whereDescription:
+      'Ein asiatisches Büro in Islamabad und ein europäisches in Fellbach. Rufen Sie an, wo es näher ist; es antwortet dasselbe Team.',
+    careersKicker: 'Karriere',
+    careersTitle: 'Derzeit keine offenen Stellen.',
+    careersBody:
+      'Wir stellen momentan nicht ein. Sobald sich das ändert, werden Stellen auf der Karriereseite ausgeschrieben.',
+    careersLink: 'Karriere',
+    ctaTitle: 'Möchten Sie sehen, wie wir Ihr Projekt führen würden?',
+    ctaAccent: [7, 8],
+    ctaBody:
+      'Senden Sie uns ein kurzes Briefing. Sie erhalten innerhalb einer Woche einen schriftlichen Leistungsumfang, einen Fest- oder Individualpreis und einen Launch-Termin, unverbindlich, und ein Team, das das Produkt nach dem Launch weiter wartet.',
+  },
+  careersPage: {
+    kicker: 'Karriere',
+    title: 'Derzeit keine offenen Stellen.',
+    accent: [1, 2],
+    description:
+      'Feinwerk Software ist ein kleines Studio, das langsam einstellt. Wir rekrutieren momentan nicht, und es gibt keine Stellen, auf die Sie sich bewerben könnten. Sobald sich das ändert, werden die Stellen auf dieser Seite ausgeschrieben.',
+    badge: '0 offene Stellen',
+    statusKicker: 'Aktueller Stand',
+    statusTitle: 'Wir nehmen keine Bewerbungen an.',
+    statusBody:
+      'Es gibt keine offenen Stellen für Entwicklung, Design oder andere Rollen, weder in Islamabad noch in Fellbach noch remote.',
+    notifyBefore:
+      'Möchten Sie erfahren, wenn sich das ändert? Schreiben Sie an',
+    notifyAfter:
+      'mit dem Betreff „Künftige Stellen“ und wir melden uns, sobald eine Position frei wird.',
+    ctaTitle: 'Lieber uns beauftragen als bei uns anfangen?',
+    ctaAccent: [1, 2],
+    ctaBody:
+      'Unser dediziertes Team bringt erfahrene Entwicklerinnen und Entwickler in Ihre Roadmap, Ihre Werkzeuge und Ihren Zeitplan.',
+  },
+  legal: {
+    kicker: 'Rechtliches',
+    title: 'Die Formalitäten, verständlich formuliert.',
+    accent: [3, 4],
+    description:
+      'Alles, was den Betrieb dieser Website und die Zusammenarbeit mit Kundinnen und Kunden regelt, geschrieben zum Lesen und nicht zum Überfliegen. Fragen gehen direkt an einen Menschen, nicht an ein Formular.',
+    reviewed: 'Alle Dokumente zuletzt geprüft am {date}',
+    updatedLabel: 'Zuletzt aktualisiert',
+    read: 'Lesen',
+    contents: 'Inhalt',
+    onThisPage: 'Auf dieser Seite',
+    otherPolicies: 'Weitere Dokumente:',
+    backToLegal: 'Alle Rechtsdokumente',
+    policies: {
+      privacy: {
+        title: 'Datenschutzerklärung',
+        summary:
+          'Welche personenbezogenen Daten diese Website erhebt, warum, wer sie verarbeitet und welche Rechte Ihnen nach der DSGVO zustehen.',
+        audience: 'Besuchende, Anfragende und Kundschaft',
+      },
+      terms: {
+        title: 'Allgemeine Geschäftsbedingungen',
+        summary:
+          'Die allgemeinen Bedingungen für die Nutzung dieser Website und die Beauftragung von Feinwerk Software, zu Leistungsumfang, Zahlung, geistigem Eigentum und Haftung.',
+        audience: 'Geschäftskunden',
+      },
+      cookies: {
+        title: 'Cookie-Richtlinie',
+        summary:
+          'Die zwei Präferenzeinträge, die die Website speichert, und das eine Analyse-Cookie, das nur bei Ihrer Zustimmung geladen wird.',
+        audience: 'Besuchende',
+      },
+      imprint: {
+        title: 'Impressum',
+        summary:
+          'Impressum mit den Unternehmensangaben, Kontaktdaten und verantwortlichen Personen, wie nach deutschem Recht vorgeschrieben.',
+        audience: 'Alle',
+      },
+    },
+    intros: {
+      privacy:
+        'Was wir erheben, warum, und worum Sie uns bitten können. Geschrieben für Menschen, nicht für Juristen.',
+      terms:
+        'Die Bedingungen für diese Website und unsere Kundenprojekte, in einer Sprache, die man tatsächlich lesen kann.',
+      cookies:
+        'Zwei kleine Speichereinträge für Ihre Präferenzen und ein Analyse-Cookie, nur wenn Sie zustimmen.',
+      imprint:
+        'Wer diese Website betreibt, wo wir eingetragen sind und wie Sie eine verantwortliche Person erreichen.',
+    },
+    commitmentsKicker: 'Wie wir Verträge schließen',
+    commitmentsTitle: 'Vier Zusagen in jedem Projekt.',
+    commitments: [
+      {
+        title: 'Ihnen gehört, was wir bauen',
+        body: 'Individueller Code, Designs und Dokumentation gehen mit der Zahlung auf Sie über. Wir arbeiten in Repositories und Konten, die auf Ihr Unternehmen laufen.',
+      },
+      {
+        title: 'DSGVO als Standard',
+        body: 'Für jedes Projekt mit personenbezogenen Daten stellen wir einen Auftragsverarbeitungsvertrag bereit, und unsere eigene Website erhebt nur das Nötigste, um Ihnen zu antworten.',
+      },
+      {
+        title: 'NDA vor der Analysephase',
+        body: 'Auf Wunsch unterzeichnen wir vor jedem Gespräch über den Leistungsumfang eine beidseitige Vertraulichkeitsvereinbarung und behandeln ohnehin jedes Briefing vertraulich.',
+      },
+      {
+        title: 'Zwei Vertragspartner',
+        body: 'Kundinnen und Kunden können mit unserem deutschen Büro nach deutschem Recht oder mit unserem asiatischen Büro nach pakistanischem Recht kontrahieren. Der Leistungsschein benennt, welcher gilt.',
+      },
+    ],
+    requestsKicker: 'Rechts- und Datenanfragen',
+    requestsBody:
+      'Um ein Datenrecht auszuüben, einen Auftragsverarbeitungsvertrag oder ein NDA anzufordern, ein Sicherheitsproblem zu melden oder etwas zu diesen Dokumenten zu fragen, schreiben Sie uns. Ein Mensch antwortet innerhalb von fünf Werktagen; Datenanfragen werden innerhalb eines Monats beantwortet, wie es die DSGVO verlangt.',
+  },
+  notFound: {
+    kicker: 'Fehler 404',
+    title: 'Diese Seite wurde nie gebaut.',
+    accent: [4],
+    body: 'Die Adresse hat sich vielleicht geändert, oder der Link war falsch. Alles, was wir gebaut haben, ist einen Klick entfernt.',
+    home: 'Zurück zur Startseite',
+    work: 'Arbeiten ansehen',
+  },
+  cookies: {
+    label: 'Cookie-Einwilligung',
+    kicker: 'Cookies',
+    bodyBefore:
+      'Wir nutzen ein datenschutzfreundliches Analyse-Cookie, um zu verstehen, welche Seiten nützlich sind. Keine Werbung, kein seitenübergreifendes Tracking. Lesen Sie die',
+    link: 'Cookie-Richtlinie',
+    bodyAfter: '.',
+    accept: 'Akzeptieren',
+    decline: 'Ablehnen',
+  },
   contact: {
     kicker: 'Kontakt',
     title: 'Sagen Sie uns, was stimmen muss.',
@@ -440,6 +638,4 @@ export const de: Dictionary = {
     rights: 'Alle Rechte vorbehalten.',
     backToTop: 'Nach oben',
   },
-  languageNotice:
-    'Projektseiten, Leistungsdetails und Rechtstexte sind derzeit nur auf Englisch verfügbar.',
 };

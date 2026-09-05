@@ -5,6 +5,8 @@ import { LegalPage, type LegalSection } from '@/components/legal/legal-page';
 
 import { siteConfig } from '@/config/site';
 import { paths } from '@/constants/paths';
+import type { Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Imprint',
@@ -17,7 +19,7 @@ const UPDATED = '5 September 2026';
 
 const [islamabad, fellbach] = siteConfig.locations;
 
-const sections: LegalSection[] = [
+const sectionsEn: LegalSection[] = [
   {
     id: 'provider',
     title: 'Service provider',
@@ -169,15 +171,181 @@ const sections: LegalSection[] = [
   },
 ];
 
-export default function ImprintPage() {
+
+const sectionsDe: LegalSection[] = [
+  {
+    id: 'provider',
+    title: 'Diensteanbieter',
+    body: (
+      <>
+        <p>
+          <strong>{siteConfig.legalName}</strong>
+          <br />
+          Inhaber: {siteConfig.founder.name}
+          <br />
+          {fellbach.city}, Baden-Württemberg, {fellbach.country}
+        </p>
+        <p>
+          Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz) und § 18 Abs. 2 MStV.
+          Die vollständige Postanschrift des europäischen Büros wird auf jedem
+          Angebot, Vertrag und jeder Rechnung sowie auf Anfrage per E-Mail
+          mitgeteilt.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'contact',
+    title: 'Kontakt',
+    body: (
+      <p>
+        E-Mail: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+      </p>
+    ),
+  },
+  {
+    id: 'pakistani-office',
+    title: 'Asiatisches Büro',
+    body: (
+      <p>
+        {siteConfig.legalName}
+        <br />
+        {islamabad.city}, Islamabad Capital Territory, {islamabad.country}
+      </p>
+    ),
+  },
+  {
+    id: 'register',
+    title: 'Register- und Steuerangaben',
+    body: (
+      <p>
+        {siteConfig.legalName} wird als inhabergeführtes Unternehmen betrieben.
+        Soweit für eine Vertragspartei ein Handelsregistereintrag oder eine
+        Umsatzsteuer-Identifikationsnummer nach § 27a UStG besteht, wird diese
+        auf dem Angebot und der Rechnung des jeweiligen Projekts angegeben.
+      </p>
+    ),
+  },
+  {
+    id: 'responsible',
+    title: 'Verantwortlich für den Inhalt',
+    body: (
+      <p>
+        Verantwortlich für den Inhalt dieser Website nach § 18 Abs. 2 MStV:{' '}
+        {siteConfig.founder.name}, {siteConfig.founder.role}, {fellbach.city},{' '}
+        {fellbach.country}.
+      </p>
+    ),
+  },
+  {
+    id: 'professional',
+    title: 'Art der Leistungen',
+    body: (
+      <p>
+        Softwaredesign, Entwicklung, Beratung und verwandte Leistungen für
+        Geschäftskunden. Die Leistungen richten sich nicht an Verbraucher. Die
+        Projektbeschreibungen auf dieser Website stellen für die genannten
+        Kunden erbrachte Arbeiten dar; Produktnamen und Bildschirmfotos gehören
+        den jeweiligen Rechteinhabern.
+      </p>
+    ),
+  },
+  {
+    id: 'dispute-resolution',
+    title: 'Streitbeilegung',
+    body: (
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur
+        Online-Streitbeilegung bereit unter{' '}
+        <a
+          href='https://ec.europa.eu/consumers/odr/'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          ec.europa.eu/consumers/odr
+        </a>
+        . Wir sind nicht verpflichtet und nicht bereit, an
+        Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+        teilzunehmen (§ 36 VSBG). Unsere Leistungen richten sich an Unternehmen.
+      </p>
+    ),
+  },
+  {
+    id: 'liability',
+    title: 'Haftung für Inhalte und Links',
+    body: (
+      <>
+        <p>
+          Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach
+          den allgemeinen Gesetzen verantwortlich. Wir sind nicht verpflichtet,
+          übermittelte oder gespeicherte fremde Informationen zu überwachen oder
+          nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
+          hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung
+          von Informationen nach den allgemeinen Gesetzen bleiben hiervon
+          unberührt; eine Haftung ist erst ab dem Zeitpunkt der Kenntnis einer
+          konkreten Rechtsverletzung möglich, und wir entfernen entsprechende
+          Inhalte umgehend.
+        </p>
+        <p>
+          Unsere Website enthält Links zu externen Websites, auf deren Inhalte
+          wir keinen Einfluss haben. Für die Inhalte verlinkter Seiten ist stets
+          der jeweilige Anbieter oder Betreiber verantwortlich. Die verlinkten
+          Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche
+          Rechtsverstöße überprüft; rechtswidrige Inhalte waren zu diesem
+          Zeitpunkt nicht erkennbar. Eine dauerhafte Überwachung verlinkter
+          Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
+          zumutbar.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'copyright',
+    title: 'Urheberrecht',
+    body: (
+      <p>
+        Die von uns erstellten Inhalte und Werke auf diesen Seiten unterliegen
+        dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung
+        und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts
+        bedürfen unserer schriftlichen Zustimmung. Downloads und Kopien dieser
+        Website sind nur für den privaten, nicht kommerziellen Gebrauch
+        gestattet. Soweit die Inhalte nicht von uns erstellt wurden, werden die
+        Urheberrechte Dritter beachtet und entsprechend gekennzeichnet. Sollten
+        Sie auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um
+        einen Hinweis; wir entfernen den Inhalt umgehend.
+      </p>
+    ),
+  },
+  {
+    id: 'privacy',
+    title: 'Datenschutz',
+    body: (
+      <p>
+        Informationen zur Verarbeitung personenbezogener Daten finden Sie in
+        unserer <Link href={paths.legal.privacy}>Datenschutzerklärung</Link>.
+        Alle Rechtsdokumente sind auf der{' '}
+        <Link href={paths.legal.index}>Rechtsseite</Link> aufgeführt.
+      </p>
+    ),
+  },
+];
+
+function getSections(locale: Locale): LegalSection[] {
+  return locale === 'de' ? sectionsDe : sectionsEn;
+}
+
+export default async function ImprintPage() {
+  const dict = await getDictionary();
+
   return (
     <LegalPage
-      kicker='Legal'
-      title='Imprint'
-      description='Legal notice (Impressum) required under German law, with the details of the company operating this website.'
+      dict={dict}
+      kicker={dict.legal.kicker}
+      title={dict.legal.policies.imprint.title}
+      description={dict.legal.intros.imprint}
       updated={UPDATED}
       href={paths.legal.imprint}
-      sections={sections}
+      sections={getSections(dict.locale)}
     />
   );
 }

@@ -6,7 +6,10 @@ import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 import { ProjectGrid } from '@/components/work/project-grid';
 
 import { paths } from '@/constants/paths';
-import { getCategories, getShowcaseProjects } from '@/data/projects';
+import {
+  getCategories,
+  getShowcaseProjectsLocalised,
+} from '@/data/projects';
 import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
 export default async function WorkPage() {
   const dict = await getDictionary();
   const t = dict.work;
-  const showcase = getShowcaseProjects();
+  const showcase = getShowcaseProjectsLocalised(dict.locale);
 
   return (
     <>

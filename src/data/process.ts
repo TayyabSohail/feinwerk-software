@@ -1,3 +1,5 @@
+import type { Locale } from '@/i18n/config';
+
 export interface ProcessStep {
   title: string;
   duration: string;
@@ -73,3 +75,73 @@ export const values: Value[] = [
     body: 'Decisions and handover notes are documented as we go, so your team can run what we built without us.',
   },
 ];
+
+const valuesDe: Value[] = [
+  {
+    title: 'Präzision statt Menge',
+    body: 'Feinwerk heißt feine Arbeit. Uns ist ein System lieber, das bis zur letzten Einheit stimmt, als drei, die größtenteils funktionieren.',
+  },
+  {
+    title: 'Das ganze Problem übernehmen',
+    body: 'Oberfläche, API, Daten, Infrastruktur und die E-Mails dazwischen. Ein Team verantwortet das Ergebnis, nicht eine Schicht.',
+  },
+  {
+    title: 'Unaufgeregte Infrastruktur',
+    body: 'Robuste Jobs, geprüfte Richtlinien und Monitoring, das alarmiert, bevor es Kundinnen und Kunden merken. Spannung gehört ins Produkt.',
+  },
+  {
+    title: 'Alles aufschreiben',
+    body: 'Entscheidungen und Übergabenotizen entstehen laufend, damit Ihr Team ohne uns betreiben kann, was wir gebaut haben.',
+  },
+];
+
+const processStepsDe: ProcessStep[] = [
+  {
+    title: 'Briefing',
+    duration: 'Woche 1',
+    summary:
+      'Ein Gespräch, um das Problem zu verstehen, dann ein schriftlicher Leistungsumfang, ein Festpreis für ein Standardpaket oder ein individuelles Angebot und ein Launch-Termin innerhalb von fünf Werktagen.',
+    outcome: 'Sie wissen genau, was Sie bekommen, wann und zu welchem Preis.',
+  },
+  {
+    title: 'Umsetzung',
+    duration: 'Wochen 2-8',
+    summary:
+      'Jeden Freitag eine lauffähige Version zum Durchklicken, mit einem kurzen schriftlichen Update. Wenn Sie früh umdenken, kostet es nichts.',
+    outcome: 'Keine Überraschungen am Ende, weil es kein „Ende“ gibt.',
+  },
+  {
+    title: 'Launch',
+    duration: 'Launch-Woche und danach',
+    summary:
+      'Wir liefern aus, überwachen den Livebetrieb, beheben, was bricht, und warten weiter. Bleiben Sie im Wartungsvertrag oder übernehmen Sie selbst, mit vollständiger Dokumentation. Wir übergeben nicht und verschwinden.',
+    outcome:
+      'Ein Produkt, das Ihnen gehört, läuft, gewartet wird und wachsen kann.',
+  },
+];
+
+const guaranteesDe: Guarantee[] = [
+  {
+    title: 'Festpreis',
+    body: 'Schriftlich je Phase kalkuliert. Auch für individuelle Umfänge.',
+  },
+  { title: 'Fester Termin', body: 'Vereinbart, bevor die Arbeit beginnt.' },
+  {
+    title: 'Wartung nach dem Launch',
+    body: 'Support, Fehlerbehebung und Updates. Wir bleiben verantwortlich.',
+  },
+  { title: 'Alles gehört Ihnen', body: 'Code, Zugänge und Designs.' },
+  { title: '1 Werktag', body: 'Antwortzeit auf jede Nachricht.' },
+];
+
+export function getValues(locale: Locale): Value[] {
+  return locale === 'de' ? valuesDe : values;
+}
+
+export function getProcessSteps(locale: Locale): ProcessStep[] {
+  return locale === 'de' ? processStepsDe : processSteps;
+}
+
+export function getGuarantees(locale: Locale): Guarantee[] {
+  return locale === 'de' ? guaranteesDe : guarantees;
+}

@@ -8,6 +8,14 @@ import type { Project, ProjectGalleryScreen } from '@/data/projects';
 
 interface ProjectGalleryProps {
   project: Project;
+  labels: {
+    gallery: string;
+    galleryTitle: string;
+    galleryAnonymised: string;
+    galleryMore: string;
+    onThePhone: string;
+    homeScreen: string;
+  };
 }
 
 /**
@@ -16,7 +24,7 @@ interface ProjectGalleryProps {
  * one dashboard. Web products get a laptop per screen and a row of phones;
  * app products get a phone per screen.
  */
-export function ProjectGallery({ project }: ProjectGalleryProps) {
+export function ProjectGallery({ project, labels }: ProjectGalleryProps) {
   const { gallery } = project;
   if (gallery.length === 0) return null;
 
@@ -32,14 +40,16 @@ export function ProjectGallery({ project }: ProjectGalleryProps) {
   return (
     <section className='fw-container py-16 lg:py-24'>
       <Reveal>
-        <p className='fw-kicker'>Inside the product</p>
+        <p className='fw-kicker'>{labels.gallery}</p>
         <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-          More than one screen.
+          {labels.galleryTitle}
         </h2>
         <p className='mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg'>
           {project.anonymised
-            ? `The product name and data have been changed at the client's request; these screens recreate ${project.title} as it was built.`
-            : `${gallery.length} more screens from ${project.title}, captured at device size.`}
+            ? labels.galleryAnonymised.replace('{title}', project.title)
+            : labels.galleryMore
+                .replace('{n}', String(gallery.length))
+                .replace('{title}', project.title)}
         </p>
       </Reveal>
 
@@ -89,12 +99,12 @@ export function ProjectGallery({ project }: ProjectGalleryProps) {
 
           <Reveal className='mt-10'>
             <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-              On the phone
+              {labels.onThePhone}
             </p>
           </Reveal>
           <Stagger className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4'>
             {[
-              { title: 'Home', mobile: project.screens.mobile },
+              { title: labels.homeScreen, mobile: project.screens.mobile },
               ...gallery,
             ].map((screen) => (
               <StaggerItem key={screen.title}>
