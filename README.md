@@ -1,158 +1,112 @@
-# Next.js Supabase React-Query Boilerplate
+# Feinwerk Software
 
-A modern boilerplate for building full-featured web applications with a powerful tech stack. This repository is configured with Next.js, shadcn UI, TypeScript, Supabase, Tailwind CSS, React Query, ESLint, and Prettier to help you jumpstart your project with best practices and a robust development environment.
+Company website for **Feinwerk Software**, a software engineering studio with
+engineering in Rawalpindi, Pakistan and a European office in Fellbach, Germany.
 
----
-
-## Table of Contents
-
-- [Next.js Supabase React-Query Boilerplate](#nextjs-supabase-react-query-boilerplate)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Tech Stack](#tech-stack)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Environment Variables](#environment-variables)
-    - [Development](#development)
-    - [Production Build](#production-build)
-    - [Linting, Formatting, and Typechecking](#linting-formatting-and-typechecking)
-  - [Contributing](#contributing)
-  - [Contact](#contact)
+Built on Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, shadcn/ui,
+Framer Motion, Lenis and cobe (globe). Single light theme with a WebGL silk
+backdrop, English and German UI (flag switch in the header, cookie-based), works
+with zero environment variables; email, database storage, analytics and booking
+light up as keys are added.
 
 ---
 
-## Features
-
-- **Next.js** for server-rendered React applications.
-- **Shadcn UI** components built on Radix UI and Tailwind CSS.
-- **TypeScript** for static typing and enhanced developer experience.
-- **Supabase** integration for scalable backend services.
-- **Tailwind CSS** for rapid and responsive UI development.
-- **React Query** for efficient data fetching and caching.
-- **ESLint & Prettier** for code quality and formatting.
-- **pnpm** as the package manager.
-- **Turbopack** enabled for a blazing-fast development server.
-
----
-
-## Tech Stack
-
-- **Next.js**: `15.1.6`
-- **React**: `^19.0.0`
-- **TypeScript**: `^5.8.3`
-- **Tailwind CSS**: `^3.4.17`
-- **Supabase**:
-  - `@supabase/ssr` `^0.6.1`
-  - `@supabase/supabase-js` `^2.49.4`
-- **React Query**: `@tanstack/react-query` `^5.76.1` (plus devtools)
-- **ESLint**: `^9.27.0` (with various plugins and configs)
-- **Prettier**: `^3.5.3` (with Tailwind CSS plugin)
-- **pnpm**: Package manager
-
-For complete version details, please refer to the [`package.json`](./package.json).
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (version 14 or higher)
-- [pnpm](https://pnpm.io/) package manager
-
-### Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/abbassays/nextjs-supabase-boilerplate.git
-   cd nextjs-supabase-boilerplate
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   pnpm install
-   ```
-
-### Environment Variables
-
-Create a `.env.local` file in the root directory and add the following:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL="https://project-id.supabase.co"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="<anon-key-here>"
-```
-
-Replace `<anon-key-here>` with your actual Supabase anonymous key.
-
-### Development
-
-Start the development server with Turbopack enabled:
+## Getting started
 
 ```bash
-pnpm dev
+pnpm install
+cp .env.example .env.local   # then fill in what you have
+pnpm dev                      # http://localhost:3000
 ```
 
-Your application will be available at [http://localhost:3000](http://localhost:3000).
+Other scripts:
 
-### Production Build
-
-To build the application for production, run:
-
-```bash
-pnpm build
-```
-
-Then start the production server with:
-
-```bash
-pnpm start
-```
-
-### Linting, Formatting, and Typechecking
-
-This project includes ESLint and Prettier for maintaining code quality and consistency, along with TypeScript typechecking.
-
-- **Lint your code (with auto-fix):**
-
-  ```bash
-  pnpm lint
-  ```
-
-- **Format your code using Prettier:**
-
-  ```bash
-  pnpm format
-  ```
-
-- **Run both linting and formatting:**
-
-  ```bash
-  pnpm style
-  ```
-
-- **Typecheck your project:**
-
-  ```bash
-  pnpm typecheck
-  ```
-
-- **Add new shadcn UI components:**
-
-  ```bash
-  pnpm ui
-  ```
+| Script           | What it does                        |
+| ---------------- | ----------------------------------- |
+| `pnpm build`     | Production build (also typechecks)  |
+| `pnpm start`     | Serve the production build          |
+| `pnpm typecheck` | `tsc --noEmit`                      |
+| `pnpm lint`      | ESLint with auto-fix                |
+| `pnpm format`    | Prettier                            |
 
 ---
 
-## Contributing
+## Environment variables
 
-Contributions are welcome! Feel free to open issues or submit pull requests if you have improvements or bug fixes. For major changes, please open an issue first to discuss what you would like to change.
+All optional except `NEXT_PUBLIC_APP_URL`. See [`.env.example`](./.env.example).
+
+| Variable                                             | Enables                                               |
+| ---------------------------------------------------- | ----------------------------------------------------- |
+| `NEXT_PUBLIC_APP_URL`                                | Canonical URLs, sitemap, Open Graph, structured data  |
+| `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | Contact form delivery by email via Resend        |
+| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | Contact form storage in `contact_messages` (see `supabase/migrations`) |
+| `NEXT_PUBLIC_CAL_LINK`                               | "Book a call" link on the contact page (`user/event`) |
+| `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST` | Analytics, loaded only after cookie consent          |
+
+Without Resend or Supabase, contact submissions are validated and logged on
+the server so nothing is lost during development.
 
 ---
 
-## Contact
+## Where the content lives
 
-For questions, issues, or further information, please open an issue in this repository or contact the maintainer at [abbassays514@gmail.com].
+Everything visible on the site is data-driven from a handful of typed files.
+Edit these; the pages update themselves.
+
+| File                          | Controls                                                                 |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| `src/config/site.ts`          | Company name, tagline, email, **phone numbers and offices**, socials, founder, nav, stats |
+| `src/data/projects.ts`        | Every case study: copy, cover image, metrics, stack. Drives `/work`, `/work/[slug]`, the homepage showcase, outcomes and sitemap |
+| `src/data/services.ts`        | The six services. Drives `/services`, `/services/[slug]`, the homepage grid, footer and contact form select |
+| `src/data/process.ts`         | Engagement steps and company values                                      |
+| `src/data/faqs.ts`            | Questions on the homepage, services and contact pages                    |
+| `src/data/testimonials.ts`    | Client quotes attributed by role and company, linked to their case studies    |
+| `src/app/legal/*/page.tsx`    | Privacy, Terms, Cookie policy, Imprint                                   |
+| `src/i18n/dictionaries/*.ts` | UI and marketing copy in English and German (nav, hero, sections, footer) |
+
+### Adding a case study
+
+1. Drop the cover into `public/work/` (keep it under ~1800px wide).
+2. Append a `Project` to `src/data/projects.ts`. Set `visual` to
+   `render` (3D device render), `screenshot` (gets a browser-frame mockup),
+   `mark` (logo on a plate) or `poster` (wide art).
+3. Give it a `featured` number to place it in the homepage stack.
+
+### Brand
+
+- Logo mark and wordmark: `src/components/brand/logo.tsx`
+- Favicon frames (rotate every 5 s, theme-aware): `src/components/brand/favicon-frames.ts`
+- Static icons and Open Graph image: `public/icon.*`, `src/app/opengraph-image.tsx`
+- Colour tokens, clipped-corner panels and fill-animation buttons: `src/app/globals.css`
+- Effects: `src/components/effects/` (silk shader, circuit backdrop, globe, cursor spotlight), scroll text highlight: `src/components/motion/scroll-highlight.tsx`, intro: `src/components/layout/preloader.tsx`
+- Device mockups: `src/components/mockups/` (laptop, phone, browser)
+
+---
+
+## Pages
+
+| Route                         | Notes                                              |
+| ----------------------------- | -------------------------------------------------- |
+| `/`                           | Hero, services, sticky work showcase, outcomes, process, values, stack, FAQ, CTA |
+| `/services`, `/services/[slug]` | Six services, statically generated                |
+| `/work`, `/work/[slug]`       | Filterable grid, twelve case studies               |
+| `/about`                      | Story, founder, principles, process, locations     |
+| `/contact`                    | Form (server action, rate limited, honeypot), offices with live clocks |
+| `/careers`                    | Speculative applications                           |
+| `/legal` plus `/legal/privacy`, `/legal/terms`, `/legal/cookies`, `/legal/imprint` | Legal hub and policies |
+| `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, `/opengraph-image` | Generated |
+
+---
+
+## Before launch
+
+- Add the full postal address of the Fellbach office plus any register or VAT
+  number to `src/app/legal/imprint/page.tsx` once they exist; German law
+  requires them for a business site.
+- Replace the testimonial `author` roles in `src/data/testimonials.ts` with
+  the real names once each client has approved their quote.
+- Replace `hello@feinwerk.software` in `src/config/site.ts` with the real
+  inbox once it exists, and set `CONTACT_TO_EMAIL`.
+- Have the Terms of Service and Privacy Policy reviewed by counsel; they are
+  written as a solid starting point, not legal advice.
+- Set `NEXT_PUBLIC_APP_URL` to the production domain.
