@@ -1,0 +1,58 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#d97706}
+html.light{--bg:#f6f4ef;--panel:#ffffff;--panel-2:#f1ede4;--line:rgba(60,45,20,.11);--soft:rgba(60,45,20,.06)}
+.pr{display:flex;align-items:center;gap:8px;min-width:120px}
+.pr .bar{flex:1}
+.pr span{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;width:34px;text-align:right}
+.up{border:1px dashed var(--line);border-radius:10px;padding:18px;text-align:center;font-size:12px;color:var(--muted)}
+.up b{display:block;color:var(--text);margin-bottom:3px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Clause</div>
+  <div class="lab">Review</div>
+  <div class="nav on"><b></b>Review queue<span class="cnt">9</span></div><div class="nav"><b></b>Findings</div><div class="nav"><b></b>Audit packs</div><div class="nav"><b></b>Standards library</div>
+  <div class="lab">Workspace</div>
+  <div class="nav"><b></b>Team</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Jonas Weber<small>Senior auditor</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Review queue / <b>All clients</b></div><div class="right"><span class="pill on"><span class="dot"></span>3 documents in review</span><span class="btn d-only">Upload documents</span></div></div>
+  <div class="content">
+   <div class="kpis">
+    <div class="card kpi"><div class="l">In queue</div><div class="v">9</div><div class="d m">3 running · 6 waiting</div></div>
+    <div class="card kpi"><div class="l">Clauses reviewed today</div><div class="v">1,412</div><div class="d">≈ 38 auditor hours</div></div>
+    <div class="card kpi"><div class="l">Findings raised</div><div class="v">64</div><div class="d n">9 high</div></div>
+    <div class="card kpi"><div class="l">Avg time per document</div><div class="v">11 min</div><div class="d">was 3.5 h manually</div></div>
+   </div>
+   <div class="grid2" style="grid-template-columns:1.7fr 1fr">
+    <div class="card">
+     <h3>Documents <span>Sorted by status</span></h3>
+     <table>
+      <tr><th>Document</th><th class="d-only">Client</th><th>Progress</th><th class="r">Findings</th><th>Status</th></tr>
+      <tr><td><b>Revenue recognition policy v4</b><div class="faint small">31 pages · 168 clauses</div></td><td class="d-only">Helios Manufacturing</td><td><div class="pr"><div class="bar"><i style="width:84%"></i></div><span>84%</span></div></td><td class="r">8</td><td><span class="tag a">Reviewing</span></td></tr>
+      <tr><td><b>Lease schedule FY2025</b><div class="faint small">12 pages · 54 clauses</div></td><td class="d-only">Helios Manufacturing</td><td><div class="pr"><div class="bar"><i style="width:41%"></i></div><span>41%</span></div></td><td class="r">3</td><td><span class="tag a">Reviewing</span></td></tr>
+      <tr><td><b>Group consolidation memo</b><div class="faint small">48 pages · 210 clauses</div></td><td class="d-only">Nordlicht Energie AG</td><td><div class="pr"><div class="bar"><i style="width:12%"></i></div><span>12%</span></div></td><td class="r">1</td><td><span class="tag a">Reviewing</span></td></tr>
+      <tr><td><b>Impairment assessment · CGU North</b><div class="faint small">19 pages · 88 clauses</div></td><td class="d-only">Nordlicht Energie AG</td><td><div class="pr"><div class="bar"><i style="width:0"></i></div><span>0%</span></div></td><td class="r">–</td><td><span class="tag n">Queued</span></td></tr>
+      <tr class="m-hide"><td><b>Provisions and contingencies note</b><div class="faint small">9 pages · 37 clauses</div></td><td class="d-only">Vertex Logistics</td><td><div class="pr"><div class="bar"><i style="width:100%"></i></div><span>100%</span></div></td><td class="r">6</td><td><span class="tag g">Ready for review</span></td></tr>
+      <tr class="m-hide"><td><b>Related party disclosures</b><div class="faint small">6 pages · 22 clauses</div></td><td class="d-only">Vertex Logistics</td><td><div class="pr"><div class="bar"><i style="width:100%"></i></div><span>100%</span></div></td><td class="r">2</td><td><span class="tag g">Exported</span></td></tr>
+     </table>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Add to queue</h3>
+      <div class="up"><b>Drop .docx or .pdf files</b>Each document is split into clauses and checked against the standards you select.</div>
+      <div class="stack" style="gap:8px;margin-top:12px"><div class="check on"><i></i>IFRS 15 · Revenue</div><div class="check on"><i></i>IFRS 16 · Leases</div><div class="check"><i></i>IAS 36 · Impairment</div><div class="check m-hide"><i></i>Firm methodology · v2026.1</div></div>
+     </div>
+     <div class="card flat m-hide">
+      <h3>Agent activity <span>Live</span></h3>
+      <div class="list"><div><span class="dot"></span><div class="t"><b>Clause 4.3 flagged</b><small>Revenue policy v4 · 40 s ago</small></div></div><div><span class="dot"></span><div class="t"><b>Lease schedule · section 3 complete</b><small>2 min ago</small></div></div></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Queue</span><span><b></b>Findings</span><span><b></b>Packs</span><span><b></b>Standards</span><span><b></b>Team</span></div>
+ </div>
+</div></body></html>

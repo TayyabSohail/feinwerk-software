@@ -1,0 +1,54 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0ea5e9}
+html.light{--bg:#f6f9fb;--panel:#ffffff;--panel-2:#eef5f9;--line:rgba(10,40,70,.1);--soft:rgba(10,40,70,.05)}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.04em}.logo b{color:var(--accent)}
+h1{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.svc div{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12px;background:var(--panel)}
+.svc b{display:block;font-size:12.5px}
+.svc small{color:var(--muted);display:block;margin:3px 0 8px}
+.svc .btn{height:28px;padding:0 10px;font-size:11px;background:#08252f;color:#fff}
+.kpi .v{font-weight:800}
+@media (max-width:600px){.svc{grid-template-columns:1fr}}
+</style></head><body>
+<div class="site">
+ <div class="appbar"><div class="logo">Bid<b>nest</b></div><div class="links"><span>Browse</span><span class="on">My bids</span><span>Messages</span><span>Lease</span><span>Roommates</span></div><div class="right"><span class="pill on"><span class="dot"></span>Student · verified</span><span class="avatar"></span></div></div>
+ <div class="body">
+  <div class="row between"><div><h1>Hi Maya, 2 of your bids are winning</h1><div class="sub">Fairfield University · 2026/27 · Budget $1,400/mo</div></div><span class="btn dark d-only">Invite a parent</span></div>
+  <div class="kpis">
+   <div class="card kpi"><div class="l">Active bids</div><div class="v">3</div><div class="d">2 winning</div></div>
+   <div class="card kpi"><div class="l">Won</div><div class="v">1</div><div class="d m">Lease in progress</div></div>
+   <div class="card kpi"><div class="l">Unread messages</div><div class="v">4</div><div class="d m">1 from landlord</div></div>
+   <div class="card kpi"><div class="l">Lease progress</div><div class="v">2 / 5</div><div class="d m">Parent signature next</div></div>
+  </div>
+  <div class="grid2">
+   <div class="card">
+    <h3>My bids <span>Live positions</span></h3>
+    <table>
+     <tr><th>Listing</th><th class="r">My bid</th><th class="d-only r">Current</th><th>Status</th><th class="d-only r">Ends</th></tr>
+     <tr><td><b>2BR · Beachside Heaven, Unit 3</b><div class="faint small">0.4 mi · furnished</div></td><td class="r"><b>$1,320</b></td><td class="d-only r">$1,320</td><td><span class="tag g">Winning</span></td><td class="d-only r">2 h 14 m</td></tr>
+     <tr><td><b>Studio · North Gate Lofts 7</b><div class="faint small">0.2 mi · utilities incl.</div></td><td class="r"><b>$1,050</b></td><td class="d-only r">$1,050</td><td><span class="tag g">Winning</span></td><td class="d-only r">1 d 3 h</td></tr>
+     <tr><td><b>3BR · Post Road House</b><div class="faint small">1.1 mi · with 2 roommates</div></td><td class="r"><b>$2,100</b></td><td class="d-only r">$2,250</td><td><span class="tag w">Outbid</span></td><td class="d-only r">6 h 40 m</td></tr>
+     <tr class="m-hide"><td><b>1BR · Maple Court 12</b><div class="faint small">0.8 mi</div></td><td class="r"><b>$1,180</b></td><td class="d-only r">$1,180</td><td><span class="tag b">Won · lease</span></td><td class="d-only r">Closed</td></tr>
+    </table>
+   </div>
+   <div class="stack">
+    <div class="card">
+     <h3>Lease · Maple Court 12 <span>Landlord: R. Alvarez</span></h3>
+     <div class="steps">
+      <div class="step"><i></i><div>Offer accepted<small>28 Aug · $1,180/mo</small></div></div>
+      <div class="step"><i></i><div>Lease drafted by landlord<small>30 Aug · 12 months</small></div></div>
+      <div class="step todo"><i></i><div>Parent co-signature<small>Sent to dad · reminder in 2 days</small></div></div>
+      <div class="step todo m-hide"><i></i><div>Deposit via Stripe<small>$1,180 · held in escrow</small></div></div>
+      <div class="step todo m-hide"><i></i><div>Keys and move-in checklist</div></div>
+     </div>
+    </div>
+    <div class="card flat m-hide">
+     <h3>Book a service <span>Bidnest partners</span></h3>
+     <div class="svc"><div><b>Moving</b><small>From $180 · Sat slots</small><span class="btn">Book</span></div><div><b>Cleaning</b><small>Move-in deep clean $95</small><span class="btn">Book</span></div><div><b>Repairs</b><small>Report to landlord</small><span class="btn">Report</span></div></div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="tabs"><span><b></b>Browse</span><span class="on"><b></b>Bids</span><span><b></b>Messages</span><span><b></b>Lease</span><span><b></b>Profile</span></div>
+</div></body></html>

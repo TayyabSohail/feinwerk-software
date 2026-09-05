@@ -1,0 +1,66 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#ec4899}
+.head{display:flex;align-items:center;gap:14px}
+.head .big{font-size:34px;font-weight:600;letter-spacing:-.02em;margin-left:auto;text-align:right}
+.head .big small{display:block;font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.rub{display:grid;gap:10px}
+.rub div{display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center;font-size:12px}
+.rub .bar{grid-column:1/-1}
+.rub b{font-variant-numeric:tabular-nums}
+.pts li{font-size:12px;line-height:1.5;margin:0 0 6px 14px;color:rgba(255,255,255,.82)}
+.hl{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:12px}
+.hl:last-child{border-bottom:0}
+.hl .t{font-size:10px;color:var(--accent);font-variant-numeric:tabular-nums;flex:none;padding-top:2px;width:44px}
+.hl p{line-height:1.5;color:rgba(255,255,255,.8)}
+.rec{border-color:var(--accent)}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Cadence</div>
+  <div class="lab">Interviews</div>
+  <div class="nav"><b></b>Live sessions</div><div class="nav on"><b></b>Candidates</div><div class="nav"><b></b>Roles</div><div class="nav"><b></b>Question bank</div>
+  <div class="lab">Insights</div>
+  <div class="nav"><b></b>Reports</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Priya Natarajan<small>Talent lead</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Candidates / Tomasz Nowak / <b>Round 2 report</b></div><div class="right"><span class="pill">38 min · transcript ready</span><span class="btn ghost d-only">Share with panel</span></div></div>
+  <div class="content">
+   <div class="card"><div class="head"><span class="avatar lg" style="background:#f59e0b"></span><div><b style="font-size:15px">Tomasz Nowak</b><div class="muted small">Senior Backend Engineer · Round 2 · 4 Sep, 14:00 · Kraków</div></div><div class="big">7.9<small>Overall · 10</small></div></div></div>
+   <div class="grid2" style="grid-template-columns:1fr 1.3fr">
+    <div class="stack">
+     <div class="card">
+      <h3>Rubric</h3>
+      <div class="rub">
+       <div><span>Communication</span><b>8.6</b><div class="bar"><i style="width:86%"></i></div></div>
+       <div><span>System design</span><b>8.2</b><div class="bar"><i style="width:82%"></i></div></div>
+       <div><span>Problem solving</span><b>7.8</b><div class="bar"><i style="width:78%"></i></div></div>
+       <div><span>Depth of experience</span><b>7.1</b><div class="bar"><i style="width:71%"></i></div></div>
+      </div>
+     </div>
+     <div class="card rec">
+      <h3>Recommendation <span>AI · reviewed by P. Natarajan</span></h3>
+      <p style="font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.85)"><b>Advance to onsite.</b> Strong on distributed-systems fundamentals and clear under follow-up questions. Probe ownership of production incidents in the next round.</p>
+      <div class="row" style="margin-top:12px"><span class="btn">Advance</span><span class="btn ghost">Hold</span></div>
+     </div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Highlights <span>Click to jump to audio</span></h3>
+      <div class="hl"><span class="t">04:12</span><p>Explained idempotency keys with a request hash and TTL, then handled the concurrent-duplicate case with a unique constraint inside a transaction without prompting.</p></div>
+      <div class="hl"><span class="t">11:48</span><p>Proposed per-listing fan-out to avoid broadcast storms; quantified the saving with a back-of-envelope calculation.</p></div>
+      <div class="hl"><span class="t">19:05</span><p>Hesitated on retry storms; recovered after the follow-up about backoff and circuit breakers.</p></div>
+      <div class="hl m-hide"><span class="t">27:30</span><p>Described leading a migration off a monolith, but the answer stayed at team level; ownership of outcomes was unclear.</p></div>
+     </div>
+     <div class="grid2 even m-hide">
+      <div class="card"><h3>Strengths</h3><ul class="pts"><li>Concrete, numbers-first reasoning</li><li>Asked clarifying questions before designing</li><li>Comfortable with trade-offs</li></ul></div>
+      <div class="card"><h3>Risks</h3><ul class="pts"><li>Limited incident ownership evidence</li><li>Less experience with event sourcing</li></ul></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Live</span><span class="on"><b></b>Candidates</span><span><b></b>Roles</span><span><b></b>Questions</span><span><b></b>Reports</span></div>
+ </div>
+</div></body></html>

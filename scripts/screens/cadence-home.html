@@ -1,0 +1,65 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#ec4899}
+.tr{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.tr:last-child{border-bottom:0}
+.tr .who{width:84px;flex:none;font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+.tr .who.ai{color:var(--accent)}
+.tr p{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.82)}
+.tr .t{font-size:10px;color:var(--faint);margin-top:4px}
+.rub{display:grid;gap:12px}
+.rub div{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;font-size:12px}
+.rub .bar{grid-column:1/-1}
+.rub b{font-variant-numeric:tabular-nums}
+@media (max-width:600px){.tr .who{width:70px;font-size:9px}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Cadence</div>
+  <div class="lab">Interviews</div>
+  <div class="nav on"><b></b>Live sessions</div><div class="nav"><b></b>Candidates</div><div class="nav"><b></b>Roles</div><div class="nav"><b></b>Question bank</div>
+  <div class="lab">Insights</div>
+  <div class="nav"><b></b>Reports</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Priya Natarajan<small>Talent lead</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Senior Backend Engineer / <b>Interview #0421</b></div><div class="right"><span class="pill"><span class="dot red"></span>LIVE · 12:34</span><span class="btn ghost d-only">End session</span></div></div>
+  <div class="content">
+   <div class="grid2" style="grid-template-columns:1.3fr 1fr">
+    <div class="stack">
+     <div class="card">
+      <div class="row between">
+       <div class="row"><span class="avatar lg"></span><div><b>Amelia Okafor</b><div class="muted small">Senior Backend Engineer · Round 2 · Speaking…</div></div></div>
+       <div class="wave"><i style="height:10px"></i><i style="height:22px"></i><i style="height:34px"></i><i style="height:18px"></i><i style="height:40px"></i><i style="height:26px"></i><i style="height:12px"></i><i style="height:30px"></i><i style="height:42px"></i><i style="height:20px"></i><i style="height:8px"></i><i style="height:24px"></i><i style="height:36px"></i><i style="height:14px"></i><i style="height:28px"></i><i style="height:10px"></i></div>
+      </div>
+     </div>
+     <div class="card">
+      <h3>Live transcript <span>620 ms speech-to-response</span></h3>
+      <div class="tr"><div class="who ai">Interviewer</div><div><p>Walk me through how you would design an idempotent payments API that survives client retries.</p><div class="t">12:02:14</div></div></div>
+      <div class="tr"><div class="who">Candidate</div><div><p>I'd start with an idempotency key supplied by the client, stored with the request hash and a TTL. On a repeat call with the same key we return the stored response rather than re-executing the charge.</p><div class="t">12:02:41</div></div></div>
+      <div class="tr"><div class="who ai">Interviewer</div><div><p>What happens if two identical requests arrive at the same moment, before the first has finished?</p><div class="t">12:03:20</div></div></div>
+      <div class="tr"><div class="who">Candidate</div><div><p>You need a lock on the key. I'd insert the key row first inside a transaction so the second writer blocks or fails on the unique constraint, then…</p><div class="t">12:03:38 · transcribing</div></div></div>
+     </div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Live evaluation <span>Updates every answer</span></h3>
+      <div class="rub">
+       <div><span>Communication</span><b>8.4</b><div class="bar"><i style="width:84%"></i></div></div>
+       <div><span>System design</span><b>7.9</b><div class="bar"><i style="width:79%"></i></div></div>
+       <div><span>Problem solving</span><b>8.1</b><div class="bar"><i style="width:81%"></i></div></div>
+       <div class="m-hide"><span>Depth of experience</span><b>7.2</b><div class="bar"><i style="width:72%"></i></div></div>
+      </div>
+     </div>
+     <div class="card">
+      <h3>Suggested follow-up</h3>
+      <p style="font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.8)">The candidate has not mentioned retry storms. Ask how the API behaves when a downstream provider times out and clients retry with backoff.</p>
+      <div class="row" style="margin-top:12px"><span class="btn">Ask now</span><span class="btn ghost">Skip</span></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span class="on"><b></b>Live</span><span><b></b>Candidates</span><span><b></b>Roles</span><span><b></b>Questions</span><span><b></b>Reports</span></div>
+ </div>
+</div></body></html>

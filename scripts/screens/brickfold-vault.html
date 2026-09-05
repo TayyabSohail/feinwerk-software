@@ -1,0 +1,55 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#16a34a;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#f8f5ee;--panel:#fffdf8;--panel-2:#f2ede2;--line:rgba(60,45,20,.1);--soft:rgba(60,45,20,.06)}
+.logo{font-family:var(--display);font-weight:600;font-size:19px;display:flex;align-items:center;gap:8px}
+.logo i{width:9px;height:9px;background:var(--accent);border-radius:50%;display:inline-block}
+h1{font-family:var(--display);font-weight:500;font-size:26px}
+.bal{background:#173b2a;color:#fff;border-radius:14px;padding:22px 24px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px}
+.bal .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.bal .v{font-family:var(--display);font-size:38px;font-weight:500;letter-spacing:-.02em;margin-top:6px}
+.bal .eq{font-size:11.5px;color:rgba(255,255,255,.62);margin-top:8px}
+.bal .eq b{color:#fff}
+.bal .btn{background:#fff;color:#173b2a}
+.bal .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.amt{font-variant-numeric:tabular-nums;font-weight:600}
+.amt.neg{color:var(--bad)}.amt.pos{color:var(--good)}
+@media (max-width:600px){.bal{grid-template-columns:1fr}.bal .v{font-size:32px}}
+</style></head><body>
+<div class="site">
+ <div class="appbar"><div class="logo"><i></i>Brickfold</div><div class="links"><span>Apartments</span><span class="on">Vault</span><span>My ownership</span><span>Exit window</span><span>Announcements</span></div><div class="right"><span class="pill on"><span class="dot"></span>Member · Rank 3</span><span class="avatar"></span></div></div>
+ <div class="body">
+  <div class="row between"><div><h1>Your vault</h1><div class="sub">Every shilling that enters or leaves the club passes through here.</div></div></div>
+  <div class="bal">
+   <div><div class="l">Available balance</div><div class="v">UGX 4,850,000</div><div class="eq">Deposits <b>UGX 22,600,000</b> − Investments <b>UGX 17,000,000</b> − Withdrawals <b>UGX 750,000</b></div></div>
+   <div class="row"><span class="btn">Deposit</span><span class="btn ghost">Withdraw</span></div>
+  </div>
+  <div class="grid2">
+   <div class="card">
+    <h3>Ledger <span>Whole shillings · no rounding</span></h3>
+    <table>
+     <tr><th>Date</th><th>Entry</th><th class="d-only">Reference</th><th>Status</th><th class="r">Amount</th></tr>
+     <tr><td>02 Sep</td><td><b>Rent distribution</b><div class="faint small">Kololo Terrace 4B · Aug</div></td><td class="d-only mono">RD-2026-0817</td><td><span class="tag g">Credited</span></td><td class="r"><span class="amt pos">+ 318,500</span></td></tr>
+     <tr><td>28 Aug</td><td><b>Investment</b><div class="faint small">Ntinda Court 7D · 2.5% stake</div></td><td class="d-only mono">INV-4471</td><td><span class="tag g">Approved</span></td><td class="r"><span class="amt neg">− 6,000,000</span></td></tr>
+     <tr><td>26 Aug</td><td><b>Deposit</b><div class="faint small">Mobile money · MTN</div></td><td class="d-only mono">DEP-9120</td><td><span class="tag g">Cleared</span></td><td class="r"><span class="amt pos">+ 6,000,000</span></td></tr>
+     <tr><td>15 Aug</td><td><b>Withdrawal</b><div class="faint small">To bank · Stanbic ···4471</div></td><td class="d-only mono">WD-1187</td><td><span class="tag w">Admin review</span></td><td class="r"><span class="amt neg">− 750,000</span></td></tr>
+     <tr class="m-hide"><td>02 Aug</td><td><b>Rent distribution</b><div class="faint small">Kololo Terrace 4B · Jul</div></td><td class="d-only mono">RD-2026-0714</td><td><span class="tag g">Credited</span></td><td class="r"><span class="amt pos">+ 318,500</span></td></tr>
+     <tr class="m-hide"><td>02 Aug</td><td><b>Rent distribution</b><div class="faint small">Naguru Skyline 12C · Jul</div></td><td class="d-only mono">RD-2026-0713</td><td><span class="tag g">Credited</span></td><td class="r"><span class="amt pos">+ 204,166</span></td></tr>
+    </table>
+   </div>
+   <div class="stack">
+    <div class="card">
+     <h3>Rent this month <span>Credited on the 2nd</span></h3>
+     <div class="stat"><span>Kololo Terrace 4B · 3.1% stake</span><b>UGX 318,500</b></div>
+     <div class="stat"><span>Naguru Skyline 12C · 1.4% stake</span><b>UGX 204,166</b></div>
+     <div class="stat"><span>Ntinda Court 7D · 2.5% stake</span><b class="faint">from October</b></div>
+     <div class="stat"><span><b>Total</b></span><b class="accent">UGX 522,666</b></div>
+    </div>
+    <div class="card flat m-hide">
+     <h3>Withdrawal in review</h3>
+     <p style="font-size:12.5px;line-height:1.55;color:var(--muted)">UGX 750,000 to Stanbic ···4471 was submitted on 15 Aug. An admin approves every money movement; most clear within one business day.</p>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="tabs"><span><b></b>Apartments</span><span class="on"><b></b>Vault</span><span><b></b>Ownership</span><span><b></b>Exit</span><span><b></b>Profile</span></div>
+</div></body></html>

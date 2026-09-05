@@ -1,0 +1,35 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#16a34a;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#f8f5ee;--panel:#fffdf8;--panel-2:#f2ede2;--line:rgba(60,45,20,.1);--soft:rgba(60,45,20,.06)}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.logo i{width:10px;height:10px;background:var(--accent);border-radius:50%;display:inline-block}
+.hero h1{font-family:var(--display);font-weight:500;font-size:54px;line-height:1.05;letter-spacing:-.02em;max-width:860px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{font-size:15.5px;max-width:520px}
+.note{font-family:var(--display);font-style:italic;color:var(--accent);font-size:15px;margin-top:22px}
+.how{margin-top:34px;padding:26px 40px 0;border-top:1px solid var(--line)}
+.how .eyebrow{color:var(--accent)}
+.how .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:16px}
+.how h4{font-family:var(--display);font-weight:500;font-size:18px;margin-bottom:6px}
+.how p{font-size:12.5px;color:var(--muted);line-height:1.55}
+@media (max-width:600px){.hero h1{font-size:38px}.how{padding:22px 22px 0}.how .cols{grid-template-columns:1fr;gap:16px}}
+</style></head><body>
+<div class="site">
+ <div class="navbar"><div class="logo"><i></i>Brickfold</div><div class="links"><span>How it works</span><span>Do the math</span><span>Members abroad</span><span>Life inside</span></div><div class="row"><span class="d-only" style="font-size:13px;font-weight:500">Sign in</span><span class="btn pillb">Apply</span><span class="burger"></span></div></div>
+ <div class="page">
+  <div class="hero">
+   <h1>They told you apartment income was for the chosen few. <em>Turns out there was another door.</em></h1>
+   <p>Brickfold is a members club that co-owns real, rent-paying apartments in Kampala. Some members own whole units, most own a slice, and every month, while the city pays rent, they collect.</p>
+   <div class="note">Membership is not bought. It is applied for.</div>
+   <div class="cta"><span class="btn pillb lg">Apply to join the club</span><span class="btn ghost pillb lg d-only">Do the math</span></div>
+  </div>
+  <div class="how">
+   <div class="eyebrow">How to get in</div>
+   <div class="cols">
+    <div><h4>You can own the unit, not the block.</h4><p>Vetted members pool capital into a specific apartment. Ownership is recorded to the exact shilling and never rounded in the club's favour.</p></div>
+    <div class="m-hide"><h4>Rent lands monthly, split by stake.</h4><p>Tenants pay, the club distributes. Your share of the month's rent is credited to your vault, proportional to what you hold.</p></div>
+    <div class="m-hide"><h4>Leave through the exit window.</h4><p>Twice a year, members sell stakes to other members. No brokers, no waiting for a buyer of the whole building.</p></div>
+   </div>
+  </div>
+ </div>
+</div></body></html>

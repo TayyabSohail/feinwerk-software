@@ -1,0 +1,59 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#ec4899}
+.score{display:inline-flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;font-weight:600}
+.score .bar{width:56px}
+.nm{display:flex;align-items:center;gap:10px}
+.nm b{display:block}.nm small{color:var(--faint);font-size:11px}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Cadence</div>
+  <div class="lab">Interviews</div>
+  <div class="nav"><b></b>Live sessions<span class="cnt">2</span></div><div class="nav on"><b></b>Candidates</div><div class="nav"><b></b>Roles</div><div class="nav"><b></b>Question bank</div>
+  <div class="lab">Insights</div>
+  <div class="nav"><b></b>Reports</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Priya Natarajan<small>Talent lead</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Candidates / <b>Senior Backend Engineer</b></div><div class="right"><span class="pill on"><span class="dot"></span>2 interviews live now</span><span class="btn d-only">Invite candidates</span></div></div>
+  <div class="content">
+   <div class="kpis">
+    <div class="card kpi"><div class="l">Interviews this week</div><div class="v">42</div><div class="d">+18 vs last week</div></div>
+    <div class="card kpi"><div class="l">Average score</div><div class="v">7.6</div><div class="d m">Round 2 · 10-point rubric</div></div>
+    <div class="card kpi"><div class="l">Advanced</div><div class="v">11</div><div class="d m">26% pass rate</div></div>
+    <div class="card kpi"><div class="l">Time to decision</div><div class="v">1.8 d</div><div class="d">was 9 d with panel scheduling</div></div>
+   </div>
+   <div class="grid2" style="grid-template-columns:1.7fr 1fr">
+    <div class="card">
+     <h3>Candidates <span>Round 2 · sorted by score</span></h3>
+     <div class="row" style="margin-bottom:10px"><span class="pill on">All</span><span class="pill">Advance</span><span class="pill">Hold</span><span class="pill d-only">Decline</span><span class="pill d-only">Scheduled</span></div>
+     <table>
+      <tr><th>Candidate</th><th class="d-only">Interviewed</th><th>Score</th><th class="d-only">Transcript</th><th>Recommendation</th></tr>
+      <tr><td><div class="nm"><span class="avatar"></span><div><b>Amelia Okafor</b><small>Lagos · 9 yrs</small></div></div></td><td class="d-only">Today · in progress</td><td><span class="score">8.1<span class="bar"><i style="width:81%"></i></span></span></td><td class="d-only">Live</td><td><span class="tag g">Advance</span></td></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#f59e0b"></span><div><b>Tomasz Nowak</b><small>Kraków · 7 yrs</small></div></div></td><td class="d-only">Yesterday · 38 min</td><td><span class="score">7.9<span class="bar"><i style="width:79%"></i></span></span></td><td class="d-only">Ready</td><td><span class="tag g">Advance</span></td></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#8b5cf6"></span><div><b>Sara Lindqvist</b><small>Stockholm · 6 yrs</small></div></div></td><td class="d-only">Yesterday · 41 min</td><td><span class="score">7.2<span class="bar"><i style="width:72%"></i></span></span></td><td class="d-only">Ready</td><td><span class="tag w">Hold</span></td></tr>
+      <tr><td><div class="nm"><span class="avatar" style="background:#06b6d4"></span><div><b>Rahul Iyer</b><small>Bengaluru · 11 yrs</small></div></div></td><td class="d-only">2 Sep · 44 min</td><td><span class="score">6.8<span class="bar"><i style="width:68%"></i></span></span></td><td class="d-only">Ready</td><td><span class="tag w">Hold</span></td></tr>
+      <tr class="m-hide"><td><div class="nm"><span class="avatar" style="background:#22c55e"></span><div><b>Chloé Martin</b><small>Lyon · 5 yrs</small></div></div></td><td class="d-only">2 Sep · 36 min</td><td><span class="score">5.9<span class="bar"><i style="width:59%"></i></span></span></td><td class="d-only">Ready</td><td><span class="tag r">Decline</span></td></tr>
+      <tr class="m-hide"><td><div class="nm"><span class="avatar" style="background:#64748b"></span><div><b>Daniel Adeyemi</b><small>Abuja · 8 yrs</small></div></div></td><td class="d-only">Scheduled · Thu 10:00</td><td><span class="score muted">–</span></td><td class="d-only">–</td><td><span class="tag n">Scheduled</span></td></tr>
+     </table>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Live now</h3>
+      <div class="list">
+       <div><span class="dot red"></span><div class="t"><b>Amelia Okafor</b><small>Senior Backend · 12:34 elapsed</small></div><span class="tag a">Join</span></div>
+       <div><span class="dot red"></span><div class="t"><b>Marcus Bell</b><small>Platform Engineer · 04:12 elapsed</small></div><span class="tag a">Join</span></div>
+      </div>
+     </div>
+     <div class="card m-hide">
+      <h3>Rubric calibration <span>Last 30 days</span></h3>
+      <p class="small muted" style="line-height:1.55">AI scores agree with human panel scores within ±0.6 points on 91% of interviews. Two questions were flagged for rewording.</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Live</span><span class="on"><b></b>Candidates</span><span><b></b>Roles</span><span><b></b>Questions</span><span><b></b>Reports</span></div>
+ </div>
+</div></body></html>

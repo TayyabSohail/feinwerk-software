@@ -1,0 +1,35 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#16a34a;--display:"Fraunces",Georgia,serif}
+html.light{--bg:#f8f5ee;--panel:#fffdf8;--panel-2:#f2ede2;--line:rgba(60,45,20,.1);--soft:rgba(60,45,20,.06);--img-2:linear-gradient(135deg,#d9c9b0,#b59f7f)}
+.logo{font-family:var(--display);font-weight:600;font-size:19px;display:flex;align-items:center;gap:8px}
+.logo i{width:9px;height:9px;background:var(--accent);border-radius:50%;display:inline-block}
+h1{font-family:var(--display);font-weight:500;font-size:26px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.apts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.apt{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.apt .ph{border-radius:0;aspect-ratio:16/9;min-height:0}
+.apt .in2{padding:12px 14px}
+.apt b{display:block;font-size:13.5px}
+.apt .meta{color:var(--muted);font-size:11.5px;margin-top:2px}
+.apt .nums{display:flex;justify-content:space-between;margin-top:10px;font-size:11.5px;color:var(--muted)}
+.apt .nums b{font-size:12.5px;display:inline}
+.apt .bar{margin-top:8px}
+.badge{position:absolute;top:10px;left:10px;z-index:1;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--panel);color:var(--text)}
+@media (max-width:600px){.apts{grid-template-columns:1fr}.filters .pill:nth-child(n+4){display:none}}
+</style></head><body>
+<div class="site">
+ <div class="appbar"><div class="logo"><i></i>Brickfold</div><div class="links"><span class="on">Apartments</span><span>Vault</span><span>My ownership</span><span>Exit window</span><span>Announcements</span></div><div class="right"><span class="pill on"><span class="dot"></span>Member · Rank 3</span><span class="avatar"></span></div></div>
+ <div class="body">
+  <div class="row between"><div><h1>Apartments open for ownership</h1><div class="sub">6 units funding · 14 fully owned · Minimum stake UGX 1,000,000</div></div><span class="btn ghost d-only">Sort: Yield</span></div>
+  <div class="filters"><span class="pill on">All areas</span><span class="pill">Kololo</span><span class="pill">Naguru</span><span class="pill">Bugolobi</span><span class="pill">Ntinda</span><span class="pill">2 bed +</span><span class="pill">Funding now</span></div>
+  <div class="apts">
+   <div class="apt"><div class="ph warm"><span class="badge">Fractional</span></div><div class="in2"><b>Kololo Terrace, Apt 4B</b><div class="meta">2 bed · 96 m² · Tenanted since Mar 2025</div><div class="nums"><span>Unit price <b>UGX 420M</b></span><span>Yield <b>9.4%</b></span></div><div class="bar"><i style="width:72%"></i></div><div class="nums"><span>72% owned · 31 members</span><span class="accent">UGX 117.6M open</span></div></div></div>
+   <div class="apt"><div class="ph warm" style="--img-2:linear-gradient(135deg,#cbbfae,#8f8272)"><span class="badge">Live</span></div><div class="in2"><b>Naguru Skyline, Apt 12C</b><div class="meta">3 bed · 128 m² · Tenanted since Jan 2024</div><div class="nums"><span>Unit price <b>UGX 610M</b></span><span>Yield <b>8.7%</b></span></div><div class="bar"><i style="width:91%"></i></div><div class="nums"><span>91% owned · 58 members</span><span class="accent">UGX 54.9M open</span></div></div></div>
+   <div class="apt m-hide"><div class="ph warm" style="--img-2:linear-gradient(135deg,#e2d3bd,#a89274)"><span class="badge">Prime</span></div><div class="in2"><b>Bugolobi Gardens, Apt 2A</b><div class="meta">2 bed · 88 m² · Whole-unit ownership</div><div class="nums"><span>Unit price <b>UGX 380M</b></span><span>Yield <b>9.9%</b></span></div><div class="bar"><i style="width:18%"></i></div><div class="nums"><span>3 prime interests registered</span><span class="accent">Interest open</span></div></div></div>
+   <div class="apt"><div class="ph warm" style="--img-2:linear-gradient(135deg,#d3c6b6,#9c8c78)"><span class="badge">Fractional</span></div><div class="in2"><b>Ntinda Court, Apt 7D</b><div class="meta">1 bed · 62 m² · Tenanted since Aug 2025</div><div class="nums"><span>Unit price <b>UGX 240M</b></span><span>Yield <b>10.2%</b></span></div><div class="bar"><i style="width:44%"></i></div><div class="nums"><span>44% owned · 19 members</span><span class="accent">UGX 134.4M open</span></div></div></div>
+   <div class="apt m-hide"><div class="ph warm" style="--img-2:linear-gradient(135deg,#cfc2b0,#8a7c68)"><span class="badge">Fractional</span></div><div class="in2"><b>Kololo Terrace, Apt 6A</b><div class="meta">2 bed · 94 m² · Tenanted since Mar 2025</div><div class="nums"><span>Unit price <b>UGX 415M</b></span><span>Yield <b>9.3%</b></span></div><div class="bar"><i style="width:100%"></i></div><div class="nums"><span>Fully owned · 44 members</span><span class="muted">Resale in exit window</span></div></div></div>
+   <div class="apt m-hide"><div class="ph warm" style="--img-2:linear-gradient(135deg,#dccdb9,#a39177)"><span class="badge">Live</span></div><div class="in2"><b>Muyenga Heights, Apt 9B</b><div class="meta">3 bed · 140 m² · Tenanted since Nov 2024</div><div class="nums"><span>Unit price <b>UGX 680M</b></span><span>Yield <b>8.4%</b></span></div><div class="bar"><i style="width:63%"></i></div><div class="nums"><span>63% owned · 37 members</span><span class="accent">UGX 251.6M open</span></div></div></div>
+  </div>
+ </div>
+ <div class="tabs"><span class="on"><b></b>Apartments</span><span><b></b>Vault</span><span><b></b>Ownership</span><span><b></b>Exit</span><span><b></b>Profile</span></div>
+</div></body></html>

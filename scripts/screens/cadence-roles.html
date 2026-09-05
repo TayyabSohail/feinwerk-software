@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#ec4899}
+.q{display:grid;grid-template-columns:24px 1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:start;font-size:12.5px}
+.q:last-child{border-bottom:0}
+.q .h{width:18px;height:18px;border-radius:5px;background:var(--soft);display:grid;place-items:center;font-size:9px;color:var(--faint)}
+.q small{display:block;color:var(--faint);font-size:11px;margin-top:3px}
+.q .tags{display:flex;gap:4px}
+.set{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;font-size:12.5px;padding:9px 0;border-bottom:1px solid var(--line)}
+.set:last-child{border-bottom:0}
+.set small{display:block;color:var(--faint);font-size:11px}
+.set .in{height:30px;font-size:12px;min-width:120px;justify-content:flex-end}
+.sw{width:32px;height:18px;border-radius:99px;background:var(--accent);position:relative}
+.sw::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="brand"><i></i>Cadence</div>
+  <div class="lab">Interviews</div>
+  <div class="nav"><b></b>Live sessions</div><div class="nav"><b></b>Candidates</div><div class="nav on"><b></b>Roles</div><div class="nav"><b></b>Question bank</div>
+  <div class="lab">Insights</div>
+  <div class="nav"><b></b>Reports</div><div class="nav"><b></b>Settings</div>
+  <div class="grow"></div>
+  <div class="user"><span class="avatar"></span><div>Priya Natarajan<small>Talent lead</small></div></div>
+ </aside>
+ <div class="main">
+  <div class="status"><span>9:41</span><span class="r"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="bat"><i></i></span></span></div>
+  <div class="top"><div class="crumb d-only">Roles / <b>Senior Backend Engineer · Round 2</b></div><div class="right"><span class="pill on"><span class="dot"></span>Published · 14 scheduled</span><span class="btn ghost d-only">Preview as candidate</span><span class="btn d-only">Save</span></div></div>
+  <div class="content">
+   <div class="grid2" style="grid-template-columns:1.4fr 1fr">
+    <div class="card">
+     <h3>Interview structure <span>≈ 40 min · 7 questions + adaptive follow-ups</span></h3>
+     <div class="q"><span class="h">1</span><div><b>Introduce yourself and the system you are proudest of.</b><small>Warm-up · 3 min · no scoring</small></div><div class="tags"><span class="tag n">Intro</span></div></div>
+     <div class="q"><span class="h">2</span><div><b>Design an idempotent payments API that survives client retries.</b><small>Follow-ups: concurrent duplicates, downstream timeouts, retry storms</small></div><div class="tags"><span class="tag a">System design</span><span class="tag n">Adaptive</span></div></div>
+     <div class="q"><span class="h">3</span><div><b>How would you cut fan-out on a real-time bidding feed at peak?</b><small>Follow-ups: per-topic subscriptions, backpressure</small></div><div class="tags"><span class="tag a">System design</span></div></div>
+     <div class="q"><span class="h">4</span><div><b>Tell me about a production incident you owned end to end.</b><small>Scores depth of experience · ask for numbers</small></div><div class="tags"><span class="tag b">Behavioural</span></div></div>
+     <div class="q m-hide"><span class="h">5</span><div><b>A migration is slipping. What do you cut and how do you tell the team?</b><small>Scores communication</small></div><div class="tags"><span class="tag b">Behavioural</span></div></div>
+     <div class="q m-hide"><span class="h">6</span><div><b>Candidate questions</b><small>5 min · answered from the role brief and company FAQ</small></div><div class="tags"><span class="tag n">Open</span></div></div>
+    </div>
+    <div class="stack">
+     <div class="card">
+      <h3>Voice &amp; timing</h3>
+      <div class="set"><div>Interviewer voice<small>Neutral, warm</small></div><div class="in">Nova ▾</div></div>
+      <div class="set"><div>Target response latency<small>Speech to first word</small></div><div class="in">600 ms</div></div>
+      <div class="set"><div>Language</div><div class="in">English (US) ▾</div></div>
+      <div class="set"><div>Allow interruptions<small>Candidate can talk over</small></div><span class="sw"></span></div>
+      <div class="set m-hide"><div>Transcript to candidate<small>Sent after the session</small></div><span class="sw"></span></div>
+     </div>
+     <div class="card flat m-hide">
+      <h3>Scoring rubric <span>4 dimensions</span></h3>
+      <div class="stat"><span>Communication</span><b>25%</b></div><div class="stat"><span>System design</span><b>35%</b></div><div class="stat"><span>Problem solving</span><b>25%</b></div><div class="stat"><span>Depth of experience</span><b>15%</b></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tabs"><span><b></b>Live</span><span><b></b>Candidates</span><span class="on"><b></b>Roles</span><span><b></b>Questions</span><span><b></b>Reports</span></div>
+ </div>
+</div></body></html>

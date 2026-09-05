@@ -1,0 +1,57 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0ea5e9}
+html.light{--bg:#ffffff;--panel:#ffffff;--panel-2:#f2f8fc;--line:rgba(10,40,70,.1);--soft:rgba(10,40,70,.05);--img:linear-gradient(135deg,#dbe7f0,#b7c9d8)}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.04em}.logo b{color:var(--accent)}
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:120px 120px;gap:8px}
+.gal .ph:first-child{grid-row:1/3}
+.gal .ph{min-height:0;border-radius:10px}
+h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.bidc{border:2px solid #08252f;border-radius:14px}
+.bidc .now{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.bidc .amt{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.bidc .amt small{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
+.bidc .btn{width:100%;height:44px;border-radius:10px;background:linear-gradient(90deg,#a3e635,#22d3ee);color:#08252f;font-size:13px;margin-top:12px}
+.hist div{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.hist div:last-child{border-bottom:0}
+.hist b{font-variant-numeric:tabular-nums}
+.hist small{color:var(--faint)}
+.hist .me b{color:var(--accent)}
+.timer{display:flex;gap:6px;font-variant-numeric:tabular-nums}
+.timer span{background:#08252f;color:#fff;font-weight:700;border-radius:6px;padding:3px 7px;font-size:12px}
+@media (max-width:600px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:140px 70px}.gal .ph:first-child{grid-row:1;grid-column:1/3}}
+</style></head><body>
+<div class="site">
+ <div class="appbar"><div class="logo">Bid<b>nest</b></div><div class="links"><span class="on">Browse</span><span>My bids</span><span>Messages</span><span>Lease</span><span>Roommates</span></div><div class="right"><span class="pill on"><span class="dot"></span>Student · verified</span><span class="avatar"></span></div></div>
+ <div class="body">
+  <div class="grid2" style="grid-template-columns:1.3fr .9fr">
+   <div class="stack">
+    <div class="gal"><span class="ph"></span><span class="ph" style="--img:linear-gradient(135deg,#e6ecf1,#c2ccd6)"></span><span class="ph" style="--img:linear-gradient(135deg,#d7e3ea,#a9bbc9)"></span><span class="ph d-only" style="--img:linear-gradient(135deg,#eef2f5,#cfd8df)"></span><span class="ph d-only" style="--img:linear-gradient(135deg,#dde6ec,#b5c4cf)"></span></div>
+    <div><div class="row between"><h1>2BR · Beachside Heaven, Unit 3</h1><span class="tag g">Verified landlord</span></div><div class="sub">0.4 mi from Fairfield University · Aug 2026 – May 2027 · Furnished</div></div>
+    <div class="chips"><span class="pill">2 bed</span><span class="pill">1 bath</span><span class="pill">Laundry in unit</span><span class="pill">Parking</span><span class="pill d-only">Utilities included</span><span class="pill d-only">Pets on request</span></div>
+    <div class="card m-hide"><h3>About this place <span>Landlord · Karen M. · responds in ~2 h</span></h3><p style="font-size:12.5px;line-height:1.6;color:var(--muted)">Bright two-bedroom on the second floor, ten minutes on foot from the north gate. Lease runs the academic year with an optional summer extension. Cleaning and repairs can be booked through Bidnest partners.</p></div>
+   </div>
+   <div class="stack">
+    <div class="card bidc">
+     <div class="row between"><span class="now">Current bid</span><span class="timer"><span>02</span>:<span>14</span>:<span>37</span></span></div>
+     <div class="amt" style="margin-top:8px">$1,320 <small>/ month</small></div>
+     <div class="muted small" style="margin-top:6px">3 bidders · ask $1,400 · updates in under 200 ms</div>
+     <span class="btn">Place bid · $1,340</span>
+     <div class="row between" style="margin-top:10px"><span class="small muted">Parent co-signer</span><span class="tag g">Approved · Dad</span></div>
+    </div>
+    <div class="card">
+     <h3>Bid history <span>Live</span></h3>
+     <div class="hist">
+      <div class="me"><span><b>$1,320</b> · you</span><small>just now</small></div>
+      <div><span><b>$1,300</b> · student #4127</span><small>12 s ago</small></div>
+      <div><span><b>$1,280</b> · student #2210</span><small>1 min ago</small></div>
+      <div class="m-hide"><span><b>$1,250</b> · you</span><small>4 min ago</small></div>
+      <div class="m-hide"><span><b>$1,200</b> · student #4127</span><small>9 min ago</small></div>
+     </div>
+    </div>
+    <div class="row m-hide"><span class="btn ghost" style="flex:1">Message landlord</span><span class="btn ghost" style="flex:1">Book a viewing</span></div>
+   </div>
+  </div>
+ </div>
+ <div class="tabs"><span class="on"><b></b>Browse</span><span><b></b>Bids</span><span><b></b>Messages</span><span><b></b>Lease</span><span><b></b>Profile</span></div>
+</div></body></html>

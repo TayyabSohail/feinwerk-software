@@ -1,0 +1,52 @@
+<!doctype html><html class="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="base.css"><style>
+:root{--accent:#0ea5e9}
+html.light{--bg:#f6f9fb;--panel:#ffffff;--panel-2:#eef5f9;--line:rgba(10,40,70,.1);--soft:rgba(10,40,70,.05)}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.04em}.logo b{color:var(--accent)}
+.three{display:grid;grid-template-columns:260px 1fr 240px;gap:14px;min-height:0;height:100%}
+.rooms .list>div{padding:10px 8px;border-radius:8px;border-bottom:0}
+.rooms .list>div.on{background:var(--panel-2)}
+.rooms .t b{font-size:12.5px}
+.rooms .t small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rooms .n{width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}
+.thread{display:flex;flex-direction:column;min-height:0}
+.thread .chat{flex:1}
+.msg.me{background:#08252f;color:#fff}
+.msg.me small{color:rgba(255,255,255,.55)}
+.quote{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel);margin-top:6px;font-size:12px}
+.quote b{display:block}
+.quote .btn{height:28px;font-size:11px;padding:0 10px;margin-top:8px}
+.body{padding-bottom:22px}
+@media (max-width:600px){.three{grid-template-columns:1fr}.rooms,.ctx{display:none}}
+</style></head><body>
+<div class="site">
+ <div class="appbar"><div class="logo">Bid<b>nest</b></div><div class="links"><span>Browse</span><span>My bids</span><span class="on">Messages</span><span>Lease</span><span>Roommates</span></div><div class="right"><span class="pill on"><span class="dot"></span>Student · verified</span><span class="avatar"></span></div></div>
+ <div class="body">
+  <div class="three">
+   <div class="card rooms">
+    <h3>Messages <span>4 unread</span></h3>
+    <div class="list">
+     <div class="on"><span class="avatar" style="background:#f59e0b"></span><div class="t"><b>Karen M. · Landlord</b><small>Viewing works Thursday at 5 if…</small></div><span class="n">2</span></div>
+     <div><span class="avatar" style="background:#a855f7"></span><div class="t"><b>Swift Movers · Partner</b><small>Quote attached for Sat 29 Aug</small></div><span class="n">1</span></div>
+     <div><span class="avatar" style="background:#22c55e"></span><div class="t"><b>Dad · Parent</b><small>Signed. Let me know the deposit…</small></div><span class="n">1</span></div>
+     <div><span class="avatar" style="background:#1d4ed8"></span><div class="t"><b>R. Alvarez · Landlord</b><small>Lease draft uploaded</small></div></div>
+     <div><span class="avatar" style="background:#94a3b8"></span><div class="t"><b>Jordan · Roommate</b><small>I'm in for Post Road if we split…</small></div></div>
+    </div>
+   </div>
+   <div class="card thread">
+    <div class="row between" style="padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px"><div class="row"><span class="avatar" style="background:#f59e0b"></span><div><b>Karen M.</b><div class="faint small">Landlord · Beachside Heaven, Unit 3</div></div></div><span class="tag g">Online</span></div>
+    <div class="chat">
+     <div class="msg me">Hi Karen, I'm the current high bid on Unit 3. Could I see the place before the auction closes?<small>You · 13:02</small></div>
+     <div class="msg bot">Of course. Viewing works Thursday at 5 pm if that suits. The unit is furnished as in the photos, minus the desk lamp.<small>Karen · 13:10</small></div>
+     <div class="msg me">Thursday works. My dad is co-signing, is it OK if he joins by video?<small>You · 13:11</small></div>
+     <div class="msg bot">No problem at all. I'll send the calendar invite through Bidnest so it's on the record.<div class="quote"><b>Viewing · Thu 27 Aug · 17:00</b><span class="muted">Beachside Heaven, Unit 3 · 45 min</span><span class="btn">Add to calendar</span></div><small>Karen · 13:14</small></div>
+    </div>
+    <div class="compose">Write a message…<b></b></div>
+   </div>
+   <div class="stack ctx">
+    <div class="card"><div class="ph" style="height:96px;--img:linear-gradient(135deg,#dbe7f0,#b7c9d8)"></div><b style="display:block;margin-top:10px">2BR · Beachside Heaven, Unit 3</b><div class="muted small">Your bid $1,320 · winning</div><div class="row" style="margin-top:10px"><span class="btn ghost" style="flex:1;font-size:11px">View listing</span></div></div>
+    <div class="card flat"><h3>Notifications</h3><div class="check on"><i></i>In-app</div><div class="check on"><i></i>Email</div><div class="check on"><i></i>SMS when outbid</div></div>
+   </div>
+  </div>
+ </div>
+ <div class="tabs"><span><b></b>Browse</span><span><b></b>Bids</span><span class="on"><b></b>Messages</span><span><b></b>Lease</span><span><b></b>Profile</span></div>
+</div></body></html>
