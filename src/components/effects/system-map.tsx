@@ -62,10 +62,15 @@ const LAUNCH_MS = 900;
 const MAX_PACKETS = 6;
 /** Width of the light band that sweeps the plate, in plate units. */
 const BAND_W = 0.32;
-/** Whole plate on wide screens; on narrow phones the view crops to the
-    tiles so the labels stay legible and the plate bleeds off both edges. */
-const VIEW_WIDE = '-316 -44 632 336';
-const VIEW_COMPACT = '-184 12 368 278';
+/** Whole plate on wide screens; as the box narrows the view crops towards
+    the tiles so the labels stay legible and the plate bleeds off both edges.
+    The crop follows the measured box width rather than a viewport media
+    query, so the map reads the same in the hero column at any breakpoint. */
+const VIEW_WIDE = { x: -316, y: -44, w: 632, h: 336 };
+const VIEW_TIGHT = { x: -178, y: 6, w: 356, h: 290 };
+/** Box widths the two crops are tuned for; between them we interpolate. */
+const CROP_WIDE = 620;
+const CROP_TIGHT = 340;
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const NODES: Record<MapNodeId, { x: number; y: number; tone: TileTone }> = {
@@ -202,17 +207,41 @@ function waitForCurtain(): Promise<void> {
   });
 }
 
-/** True on narrow phones, where the map shows the cropped view. */
-function useCompact(): boolean {
-  const [compact, setCompact] = useState(false);
+/** The crop for a given rendered width, interpolated between the two tunings. */
+function viewBoxAt(width: number): string {
+  const t = Math.min(
+    1,
+    Math.max(0, (CROP_WIDE - width) / (CROP_WIDE - CROP_TIGHT)),
+  );
+  const lerp = (a: number, b: number) => Math.round(a + (b - a) * t);
+  return [
+    lerp(VIEW_WIDE.x, VIEW_TIGHT.x),
+    lerp(VIEW_WIDE.y, VIEW_TIGHT.y),
+    lerp(VIEW_WIDE.w, VIEW_TIGHT.w),
+    lerp(VIEW_WIDE.h, VIEW_TIGHT.h),
+  ].join(' ');
+}
+
+/**
+ * The viewBox for the map's current rendered width: the whole plate once the
+ * box is wide, tightening towards the tiles as it narrows. Holds the wide
+ * view until the box has been measured, so server and first client paint
+ * agree.
+ */
+function useViewBox(ref: React.RefObject<HTMLElement | null>): string {
+  const [width, setWidth] = useState(0);
+
   useEffect(() => {
-    const query = window.matchMedia('(max-width: 519px)');
-    const apply = () => setCompact(query.matches);
-    apply();
-    query.addEventListener('change', apply);
-    return () => query.removeEventListener('change', apply);
-  }, []);
-  return compact;
+    const el = ref.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setWidth(entry.contentRect.width);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return viewBoxAt(width > 0 ? width : CROP_WIDE);
 }
 
 interface CubeProps {
@@ -390,8 +419,8 @@ function PacketView({ packet, onArrive, onDone }: PacketViewProps) {
  */
 export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
   const reduce = useReducedMotion() === true;
-  const compact = useCompact();
   const rootRef = useRef<HTMLDivElement>(null);
+  const viewBox = useViewBox(rootRef);
   const inView = useInView(rootRef, { amount: 0.4 });
   const inViewRef = useRef(false);
   inViewRef.current = inView;
@@ -458,7 +487,7 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
     >
       <svg
         aria-hidden='true'
-        viewBox={compact ? VIEW_COMPACT : VIEW_WIDE}
+        viewBox={viewBox}
         className='block h-auto w-full overflow-visible'
       >
         <g className='fw-map-plate'>

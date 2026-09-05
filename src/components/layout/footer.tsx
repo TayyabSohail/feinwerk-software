@@ -104,13 +104,15 @@ export function Footer({ dict }: FooterProps) {
         </div>
       </div>
 
-      {/* Wordmark on silk, clipped at the bottom edge of the page. */}
-      <div className='relative h-[30vw] max-h-[20rem] min-h-[9rem] overflow-hidden border-t'>
+      {/* Wordmark on silk, clipped at the bottom edge of the page. The type
+          scales with the viewport so the whole word fits on a phone; the band
+          keeps pace with it rather than sitting at a fixed minimum height. */}
+      <div className='relative h-[30vw] max-h-[20rem] min-h-[5.5rem] overflow-hidden border-t sm:min-h-[9rem]'>
         <Silk brightness={0.98} speed={0.8} />
         <div className='absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent' />
         <p
           aria-hidden='true'
-          className='absolute inset-x-0 bottom-[-0.18em] select-none text-center font-display text-[clamp(4rem,16vw,17rem)] font-bold uppercase leading-none tracking-[0.06em] text-ink/85 mix-blend-multiply'
+          className='absolute inset-x-0 bottom-[-0.18em] select-none text-center font-display text-[clamp(2.25rem,15vw,17rem)] font-bold uppercase leading-none tracking-[0.04em] text-ink/85 mix-blend-multiply sm:tracking-[0.06em]'
         >
           Feinwerk
         </p>
