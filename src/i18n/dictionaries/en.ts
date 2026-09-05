@@ -361,6 +361,9 @@ export const en = {
     serviceOther: 'Something else',
     budget: 'Budget range',
     budgetPlaceholder: 'Choose a range',
+    budgetHeading: 'Rough budget',
+    budgetHint:
+      'A range is enough. It tells us what shape of team fits - it is not a quote.',
     message: 'About the project',
     messagePlaceholder:
       'What are you building, who is it for, and when does it need to exist?',
@@ -385,17 +388,11 @@ export const en = {
         subtitle: 'Pick the closest match. We will refine it together.',
         kicker: 'The work',
       },
-      budget: {
-        title: 'What is the budget?',
-        subtitle:
-          'A rough range is enough. It tells us what shape of team fits.',
-        kicker: 'The range',
-      },
       message: {
         title: 'Tell us about the project.',
         subtitle:
           'What are you building, who is it for, and when does it need to exist?',
-        kicker: 'The detail',
+        kicker: 'The brief',
       },
       details: {
         title: 'Where do we send the reply?',
@@ -622,6 +619,14 @@ export const en = {
       'The form is the fastest way in. It comes straight to us and we answer every enquiry personally.',
     book: 'Book a 30-minute intro call',
     callNote: 'Prefer a call? Mention it and we will send a booking link.',
+    /** Two ways to start: write to us, or book a slot straight away. */
+    choose: {
+      formTab: 'Write to us',
+      formHint: 'Reply within one business day',
+      callTab: 'Book a call',
+      callHint: '30 minutes, pick a slot',
+      calendarLoading: 'Loading the calendar',
+    },
     faqKicker: 'Before you write',
     faqTitle: 'The questions we get most.',
     faqAccent: [4],

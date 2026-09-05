@@ -60,8 +60,7 @@ export type ContactInput = z.infer<typeof contactSchema>;
  */
 export const CONTACT_STEP_FIELDS = [
   ['service'],
-  ['budget'],
-  ['message'],
+  ['message', 'budget'],
   ['name', 'email', 'company', 'consent'],
 ] as const satisfies ReadonlyArray<ReadonlyArray<keyof ContactInput>>;
 

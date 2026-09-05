@@ -2,6 +2,19 @@ import { paths } from '@/constants/paths';
 import { env } from '@/env';
 
 /**
+ * Accepts "username" or "username/event-slug" only. Rejects API keys
+ * (cal_live_..., cal_test_...), and tolerates a pasted full cal.com URL.
+ */
+function parseCalHandle(value: string | undefined) {
+  if (!value) return null;
+  const handle = value.trim().replace(/^https?:\/\/(www\.)?cal\.com\//i, '');
+  if (/^cal_(live|test)_/i.test(handle)) return null;
+  return /^[a-z0-9._-]+(\/[a-z0-9._-]+)?$/i.test(handle) ? handle : null;
+}
+
+const calHandle = parseCalHandle(env.NEXT_PUBLIC_CAL_LINK);
+
+/**
  * Single source of truth for company facts that appear across the site:
  * header, footer, contact page, legal pages, structured data and metadata.
  */
@@ -52,9 +65,18 @@ export const siteConfig = {
     name: 'Tayyab Sohail',
     role: 'Founder & Lead Engineer',
   },
-  calLink: env.NEXT_PUBLIC_CAL_LINK
-    ? `https://cal.com/${env.NEXT_PUBLIC_CAL_LINK}`
-    : null,
+  /**
+   * Cal.com booking link, built from NEXT_PUBLIC_CAL_LINK.
+   *
+   * That variable must hold the booking handle - "username" or
+   * "username/event", e.g. feinwerks/intro - never a Cal.com API key. A key
+   * was set here once and produced a dead https://cal.com/cal_live_... URL
+   * that still rendered as a working button, so anything that does not look
+   * like a handle is now ignored instead of linked.
+   */
+  calLink: calHandle ? `https://cal.com/${calHandle}` : null,
+  /** The bare handle, for the inline embed. Null when not configured. */
+  calHandle,
   nav: [
     { label: 'Services', href: paths.services },
     { label: 'Projects', href: paths.work },

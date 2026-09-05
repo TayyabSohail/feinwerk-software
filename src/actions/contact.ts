@@ -3,12 +3,20 @@
 import { createClient } from '@supabase/supabase-js';
 import { headers } from 'next/headers';
 
-import { renderEnquiryHtml } from '@/lib/server/enquiry-email';
-import { isMailConfigured, sendInternalMail } from '@/lib/server/mail';
+import {
+  renderAcknowledgementHtml,
+  renderEnquiryHtml,
+} from '@/lib/server/enquiry-email';
+import {
+  isMailConfigured,
+  sendInternalMail,
+  sendVisitorMail,
+} from '@/lib/server/mail';
 import { isRateLimited } from '@/lib/server/rate-limit';
 import { safeActionClient } from '@/lib/server/safe-action';
 import Logger from '@/utils/logger';
 
+import { siteConfig } from '@/config/site';
 import { env, isSupabaseConfigured } from '@/env';
 import {
   BUDGET_OPTIONS,
@@ -71,6 +79,36 @@ export const submitContact = safeActionClient
           replyTo: parsedInput.email,
         });
         delivered = true;
+
+        // Acknowledgement to the visitor. Best effort: the enquiry is
+        // already delivered, so a failure here must not fail the action.
+        try {
+          const firstName = parsedInput.name.split(' ')[0] || parsedInput.name;
+          await sendVisitorMail({
+            to: parsedInput.email,
+            subject: `We have your message - ${siteConfig.name}`,
+            text: [
+              `Hi ${firstName},`,
+              '',
+              `Thanks for getting in touch about ${service}. A real person reads`,
+              `every enquiry and you will hear back ${siteConfig.responseTime}.`,
+              '',
+              'What you sent:',
+              parsedInput.message,
+            ].join('\n'),
+            html: renderAcknowledgementHtml({
+              name: parsedInput.name,
+              service,
+              message: parsedInput.message,
+              responseTime: siteConfig.responseTime,
+            }),
+          });
+        } catch (error) {
+          Logger.error(
+            'Contact acknowledgement failed',
+            error instanceof Error ? error.message : String(error),
+          );
+        }
       } catch (error) {
         // Remember it, but let the Supabase fallback below still run.
         mailError = error;
@@ -98,6 +136,15 @@ export const submitContact = safeActionClient
       });
       if (error) Logger.error('contact_messages insert failed', error.message);
       else delivered = true;
+    }
+
+    if (mailError && delivered) {
+      // Stored in Supabase, but nothing reached the inbox. Nobody watches
+      // the table, so log the enquiry where it will actually be noticed.
+      Logger.error(
+        'Contact enquiry stored but NOT emailed - check Resend config\n' +
+          summary,
+      );
     }
 
     if (!delivered) {

@@ -376,6 +376,9 @@ export const de: Dictionary = {
     serviceOther: 'Etwas anderes',
     budget: 'Budgetrahmen',
     budgetPlaceholder: 'Rahmen auswählen',
+    budgetHeading: 'Ungefähres Budget',
+    budgetHint:
+      'Ein Rahmen genügt. Er zeigt uns, welches Team passt - es ist kein Angebot.',
     message: 'Über das Projekt',
     messagePlaceholder:
       'Was bauen Sie, für wen ist es, und bis wann muss es stehen?',
@@ -402,17 +405,11 @@ export const de: Dictionary = {
           'Wählen Sie das Passendste. Die Details klären wir gemeinsam.',
         kicker: 'Die Aufgabe',
       },
-      budget: {
-        title: 'Wie hoch ist das Budget?',
-        subtitle:
-          'Ein grober Rahmen genügt. Er zeigt uns, welches Team passt.',
-        kicker: 'Der Rahmen',
-      },
       message: {
         title: 'Erzählen Sie uns vom Projekt.',
         subtitle:
           'Was bauen Sie, für wen ist es, und bis wann muss es stehen?',
-        kicker: 'Die Details',
+        kicker: 'Das Briefing',
       },
       details: {
         title: 'Wohin dürfen wir antworten?',
@@ -644,6 +641,13 @@ export const de: Dictionary = {
     book: 'Ein 30-minütiges Kennenlerngespräch buchen',
     callNote:
       'Lieber telefonieren? Erwähnen Sie es und wir senden Ihnen einen Buchungslink.',
+    choose: {
+      formTab: 'Schreiben Sie uns',
+      formHint: 'Antwort innerhalb eines Werktags',
+      callTab: 'Gespräch buchen',
+      callHint: '30 Minuten, Termin wählen',
+      calendarLoading: 'Kalender wird geladen',
+    },
     faqKicker: 'Bevor Sie schreiben',
     faqTitle: 'Die Fragen, die wir am häufigsten hören.',
     faqAccent: [4],

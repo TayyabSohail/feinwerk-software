@@ -167,7 +167,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
     );
   }
 
-  const steps = [t.steps.service, t.steps.budget, t.steps.message, t.steps.details];
+  const steps = [t.steps.service, t.steps.message, t.steps.details];
   const active = steps[step];
   const isLast = step === CONTACT_STEP_COUNT - 1;
   const messageLength = form.watch('message')?.length ?? 0;
@@ -226,7 +226,10 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <div className='grid gap-3 sm:grid-cols-2'>
+                          {/* Three across on a wide card: seven services in
+                              two columns ran four rows deep and pushed the
+                              buttons below the fold. */}
+                          <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
                             {SERVICE_OPTIONS.map((option) => {
                               const service =
                                 option.value === 'other'
@@ -258,64 +261,76 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 )}
 
                 {step === 1 && (
-                  <FormField
-                    control={form.control}
-                    name='budget'
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <div className='grid gap-3 sm:grid-cols-2'>
-                            {BUDGET_OPTIONS.map((option) => (
-                              <ChoiceCard
-                                key={option.value}
-                                selected={field.value === option.value}
-                                onSelect={() => field.onChange(option.value)}
-                                icon={Wallet}
-                                title={t.budgets[option.value]}
-                                meter={BUDGET_ACCENT[option.value]}
-                              />
-                            ))}
+                  <div className='space-y-8'>
+                    <FormField
+                      control={form.control}
+                      name='message'
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Textarea
+                              rows={9}
+                              autoFocus
+                              maxLength={MESSAGE_MAX}
+                              placeholder={t.messagePlaceholder}
+                              className='min-h-[13rem] rounded-none border-line bg-surface px-4 py-3 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0'
+                              {...field}
+                            />
+                          </FormControl>
+                          <div className='mt-2 flex items-center justify-between'>
+                            <FormMessage />
+                            <p className='ml-auto font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground'>
+                              {messageLength < 20
+                                ? t.minChars
+                                : t.charactersLeft.replace(
+                                    '{count}',
+                                    String(MESSAGE_MAX - messageLength),
+                                  )}
+                            </p>
                           </div>
-                        </FormControl>
-                        <FormMessage className='mt-3' />
-                      </FormItem>
-                    )}
-                  />
-                )}
+                        </FormItem>
+                      )}
+                    />
 
+                    {/* Budget sits with the brief rather than on a screen of
+                        its own: it reads as one more detail about the project
+                        instead of a gate to get past. */}
+                    <FormField
+                      control={form.control}
+                      name='budget'
+                      render={({ field }) => (
+                        <FormItem>
+                          <div className='border-t border-line pt-6'>
+                            <FormLabel className='fw-kicker'>
+                              {t.budgetHeading}
+                            </FormLabel>
+                            <p className='mt-2 text-sm leading-relaxed text-muted-foreground'>
+                              {t.budgetHint}
+                            </p>
+                            <FormControl>
+                              <div className='mt-4 grid gap-3 sm:grid-cols-2'>
+                                {BUDGET_OPTIONS.map((option) => (
+                                  <ChoiceCard
+                                    key={option.value}
+                                    selected={field.value === option.value}
+                                    onSelect={() =>
+                                      field.onChange(option.value)
+                                    }
+                                    icon={Wallet}
+                                    title={t.budgets[option.value]}
+                                    meter={BUDGET_ACCENT[option.value]}
+                                  />
+                                ))}
+                              </div>
+                            </FormControl>
+                            <FormMessage className='mt-3' />
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
                 {step === 2 && (
-                  <FormField
-                    control={form.control}
-                    name='message'
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Textarea
-                            rows={9}
-                            autoFocus
-                            maxLength={MESSAGE_MAX}
-                            placeholder={t.messagePlaceholder}
-                            className='min-h-[13rem] rounded-none border-line bg-surface px-4 py-3 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0'
-                            {...field}
-                          />
-                        </FormControl>
-                        <div className='mt-2 flex items-center justify-between'>
-                          <FormMessage />
-                          <p className='ml-auto font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground'>
-                            {messageLength < 20
-                              ? t.minChars
-                              : t.charactersLeft.replace(
-                                  '{count}',
-                                  String(MESSAGE_MAX - messageLength),
-                                )}
-                          </p>
-                        </div>
-                      </FormItem>
-                    )}
-                  />
-                )}
-
-                {step === 3 && (
                   <div className='space-y-5'>
                     <div className='grid gap-5 sm:grid-cols-2'>
                       <FormField
