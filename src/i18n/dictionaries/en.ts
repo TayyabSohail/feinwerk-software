@@ -55,6 +55,16 @@ export const en = {
       Web: 'Web',
     },
     count: '{n} projects',
+    /** Homepage pointer to the projects page; the work itself lives there. */
+    teaser: {
+      kicker: 'Projects',
+      title: 'Every project, with its result',
+      accent: [3, 4],
+      body: 'Marketplaces, SaaS platforms, AI agents and websites, each shown with the problem, the approach and the measured outcome. They have a page of their own so the numbers get the room they need.',
+      cta: 'Browse all projects',
+      listLabel: 'A few of them',
+      more: '{n} more on the projects page',
+    },
   },
   services: {
     kicker: 'Services',
@@ -80,6 +90,7 @@ export const en = {
     customPeriod: 'fixed quote',
     customCta: 'Request a custom quote',
     cta: 'Get started now',
+    all: 'Compare plans in detail',
     note: 'Prices in EUR, excluding VAT. Nothing here fits exactly? Every brief gets a custom scope and a fixed quote within five working days, and every plan comes with maintenance and support after launch.',
     includes: {
       title: 'Included in every plan, custom solutions too',
@@ -328,6 +339,16 @@ export const en = {
     stack: 'Tools we use',
     proof: 'Proof',
     faqTitle: 'Questions about this service',
+  },
+  pricingPage: {
+    kicker: 'Pricing',
+    title: 'A price in writing, before work starts.',
+    accent: [3, 4],
+    description:
+      'Three fixed-price packages for the common cases and a custom quote for everything else. Every plan comes with a written scope, a committed launch date and maintenance after launch, so there is nothing to negotiate once the work is under way.',
+    faqKicker: 'Pricing questions',
+    faqTitle: 'What people ask before they sign',
+    faqAccent: [4],
   },
   servicePage: {
     back: 'All services',
@@ -628,6 +649,14 @@ export const en = {
     faqKicker: 'Before you write',
     faqTitle: 'The questions we get most.',
     faqAccent: [4],
+    /** Closing section of the homepage: the same form, without leaving. */
+    home: {
+      kicker: 'Contact',
+      title: 'Tell us what has to be right.',
+      accent: [5, 6],
+      description:
+        'A few sentences are enough. We reply within one business day with a first take on scope, timeline and price, and on who would build and maintain it.',
+    },
   },
   faq: {
     kicker: 'Questions',
