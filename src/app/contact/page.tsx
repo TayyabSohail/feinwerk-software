@@ -44,7 +44,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <ContactChannels
           dict={dict}
           defaultService={service}
-          calHandle={siteConfig.calHandle}
+          calLink={siteConfig.calLink}
           header={
             <header className='max-w-2xl'>
               <p className='fw-kicker'>{t.kicker}</p>

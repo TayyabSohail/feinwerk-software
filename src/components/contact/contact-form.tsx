@@ -112,7 +112,13 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
   });
 
   const { execute, isExecuting } = useAction(submitContact, {
-    onSuccess: () => {
+    onSuccess: ({ data }) => {
+      // The action only logs when no delivery channel is configured. Do not
+      // show a success screen for a message that reached nobody.
+      if (!data?.delivered) {
+        toast.error(t.errorGeneric);
+        return;
+      }
       toast.success(t.sentToast.replace('{time}', siteConfig.responseTime));
       setSent(true);
       setStep(0);
