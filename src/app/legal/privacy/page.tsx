@@ -5,17 +5,19 @@ import { LegalPage, type LegalSection } from '@/components/legal/legal-page';
 
 import { siteConfig } from '@/config/site';
 import { paths } from '@/constants/paths';
+import type { Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'How Feinwerk Software collects, uses and protects personal data on this website and in client engagements, in line with the GDPR.',
+    'How Feinwerks Software collects, uses and protects personal data on this website and in client engagements, in line with the GDPR.',
   alternates: { canonical: paths.legal.privacy },
 };
 
 const UPDATED = '5 September 2026';
 
-const sections: LegalSection[] = [
+const sectionsEn: LegalSection[] = [
   {
     id: 'controller',
     title: 'Who is responsible',
@@ -229,16 +231,253 @@ const sections: LegalSection[] = [
   },
 ];
 
-export default function PrivacyPage() {
+
+const sectionsDe: LegalSection[] = [
+  {
+    id: 'controller',
+    title: 'Wer verantwortlich ist',
+    body: (
+      <>
+        <p>
+          Verantwortlich für die über diese Website verarbeiteten
+          personenbezogenen Daten ist <strong>{siteConfig.legalName}</strong>{' '}
+          mit Büros in{' '}
+          {siteConfig.locations
+            .map((location) => `${location.city}, ${location.country}`)
+            .join(' und ')}
+          . Die vollständigen Kontaktdaten finden Sie im{' '}
+          <Link href={paths.legal.imprint}>Impressum</Link>.
+        </p>
+        <p>
+          Fragen zu dieser Erklärung oder zu Ihren Daten richten Sie bitte an{' '}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'data-we-collect',
+    title: 'Was wir erheben',
+    body: (
+      <>
+        <p>
+          Wir beschränken die Datenerhebung auf das, was die Website zum
+          Funktionieren braucht und was nötig ist, um Ihnen zu antworten.
+        </p>
+        <ul>
+          <li>
+            <strong>Kontaktanfragen.</strong> Name, E-Mail-Adresse, Unternehmen
+            (optional), die von Ihnen gewählte Leistung und der Budgetrahmen
+            sowie Ihre Nachricht. Zudem erfassen wir die IP-Adresse, von der die
+            Anfrage kam, um das Formular vor Missbrauch zu schützen.
+          </li>
+          <li>
+            <strong>Serverprotokolle.</strong> Unser Hosting-Anbieter erfasst
+            übliche Anfragedaten (IP-Adresse, User Agent, aufgerufene URL,
+            Zeitstempel) zur Sicherheit und Zuverlässigkeit. Protokolle werden
+            kurz aufbewahrt und dann gelöscht.
+          </li>
+          <li>
+            <strong>Analyse, nur mit Einwilligung.</strong> Wenn Sie
+            Analyse-Cookies akzeptieren, nutzen wir PostHog, um zu verstehen,
+            welche Seiten nützlich sind. Wir setzen keine Werbetracker ein und
+            verkaufen keine Daten.
+          </li>
+          <li>
+            <strong>Präferenzen.</strong> Ihre Wahl des Erscheinungsbildes und
+            Ihre Cookie-Entscheidung werden nur in Ihrem Browser gespeichert und
+            nie an uns übermittelt.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: 'purposes',
+    title: 'Wozu wir sie nutzen und auf welcher Grundlage',
+    body: (
+      <>
+        <ul>
+          <li>
+            <strong>Beantwortung von Anfragen</strong> und Erstellung von
+            Angeboten: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen)
+            und Art. 6 Abs. 1 lit. f (unser berechtigtes Interesse, Ihnen zu
+            antworten).
+          </li>
+          <li>
+            <strong>Sicherer Betrieb der Website</strong>, einschließlich
+            Ratenbegrenzung und Protokollaufbewahrung: Art. 6 Abs. 1 lit. f
+            DSGVO.
+          </li>
+          <li>
+            <strong>Analyse</strong>: Art. 6 Abs. 1 lit. a DSGVO, Ihre
+            Einwilligung, die Sie jederzeit widerrufen können, indem Sie die
+            Websitedaten in Ihrem Browser löschen.
+          </li>
+          <li>
+            <strong>Gesetzliche Pflichten</strong>, etwa die steuerliche
+            Aufbewahrung von Rechnungen: Art. 6 Abs. 1 lit. c DSGVO.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: 'processors',
+    title: 'Mit wem wir sie teilen',
+    body: (
+      <>
+        <p>
+          Wir setzen eine kleine Zahl von Dienstleistern ein, die Daten in
+          unserem Auftrag auf Grundlage von Auftragsverarbeitungsverträgen
+          verarbeiten:
+        </p>
+        <ul>
+          <li>
+            <strong>Vercel Inc.</strong> (USA / EU-Regionen) für Hosting und
+            Auslieferung der Inhalte.
+          </li>
+          <li>
+            <strong>Resend</strong> für den Versand der Benachrichtigungen aus
+            dem Kontaktformular per E-Mail.
+          </li>
+          <li>
+            <strong>Supabase</strong> (EU-Region) zur Speicherung von
+            Kontaktanfragen, soweit aktiviert.
+          </li>
+          <li>
+            <strong>PostHog</strong> (EU-Cloud) für die Analyse, nur nach
+            Einwilligung.
+          </li>
+          <li>
+            <strong>Cal.com</strong>, wenn Sie über einen von uns
+            bereitgestellten Link einen Termin buchen; für die Buchung gilt
+            deren Datenschutzerklärung.
+          </li>
+        </ul>
+        <p>
+          Soweit ein Anbieter außerhalb der EU oder des EWR sitzt, sind
+          Übermittlungen durch die EU-Standardvertragsklauseln oder einen
+          Angemessenheitsbeschluss abgedeckt. Wir verkaufen niemals
+          personenbezogene Daten.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'retention',
+    title: 'Wie lange wir sie aufbewahren',
+    body: (
+      <>
+        <ul>
+          <li>
+            Kontaktanfragen: bis zu 24 Monate nach unserem letzten Austausch,
+            sofern kein Vertrag folgt.
+          </li>
+          <li>
+            Vertrags- und Rechnungsunterlagen: so lange es das Handels- und
+            Steuerrecht verlangt (in Deutschland üblicherweise 10 Jahre).
+          </li>
+          <li>Serverprotokolle: bis zu 30 Tage.</li>
+          <li>Analysedaten: bis zu 12 Monate, in aggregierter Form.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: 'rights',
+    title: 'Ihre Rechte',
+    body: (
+      <>
+        <p>Nach der DSGVO können Sie von uns verlangen,</p>
+        <ul>
+          <li>
+            zu bestätigen, ob wir Daten über Sie führen, und eine Kopie zu
+            erhalten (Auskunft);
+          </li>
+          <li>unrichtige Daten zu berichtigen (Berichtigung);</li>
+          <li>
+            Ihre Daten zu löschen, wenn kein Grund zur Aufbewahrung mehr besteht
+            (Löschung);
+          </li>
+          <li>
+            die Verarbeitung auf Grundlage berechtigter Interessen
+            einzuschränken oder ihr zu widersprechen;
+          </li>
+          <li>Ihre Daten in einem übertragbaren Format zu erhalten;</li>
+          <li>
+            eine Einwilligung jederzeit zu widerrufen, ohne dass die bis dahin
+            erfolgte Verarbeitung berührt wird.
+          </li>
+        </ul>
+        <p>
+          Schreiben Sie an{' '}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. Wir
+          antworten innerhalb eines Monats. Ihnen steht zudem das Recht zu, sich
+          bei einer Aufsichtsbehörde zu beschweren; für unser deutsches Büro ist
+          das der Landesbeauftragte für den Datenschutz und die
+          Informationsfreiheit Baden-Württemberg.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'security',
+    title: 'Sicherheit',
+    body: (
+      <p>
+        Der gesamte Datenverkehr zu dieser Website ist bei der Übertragung
+        verschlüsselt (TLS). Kontaktanfragen werden so gespeichert, dass der
+        Zugriff auf die Personen beschränkt ist, die sie bearbeiten, geschützt
+        durch Row-Level Security in der Datenbank und durch ausschließlich
+        serverseitige Zugangsdaten. Zugriffe und Anbieter prüfen wir regelmäßig.
+      </p>
+    ),
+  },
+  {
+    id: 'clients',
+    title: 'Daten in Kundenprojekten',
+    body: (
+      <p>
+        Wenn wir Software für einen Kunden entwickeln oder betreiben, handeln
+        wir hinsichtlich der personenbezogenen Daten in diesem System als
+        Auftragsverarbeiter, und der Kunde bleibt Verantwortlicher. Geregelt
+        wird dies in einem gesonderten Auftragsverarbeitungsvertrag, den wir für
+        jedes Projekt mit personenbezogenen Daten bereitstellen. Diese Erklärung
+        betrifft ausschließlich diese Website.
+      </p>
+    ),
+  },
+  {
+    id: 'changes',
+    title: 'Änderungen dieser Erklärung',
+    body: (
+      <p>
+        Wir aktualisieren diese Erklärung, wenn sich unsere Praxis oder die
+        Rechtslage ändert. Das Datum oben zeigt die aktuelle Fassung.
+        Wesentliche Änderungen werden auf dieser Seite bekannt gegeben.
+      </p>
+    ),
+  },
+];
+
+function getSections(locale: Locale): LegalSection[] {
+  return locale === 'de' ? sectionsDe : sectionsEn;
+}
+
+export default async function PrivacyPage() {
+  const dict = await getDictionary();
+
   return (
     <LegalPage
-      kicker='Legal'
-      title='Privacy Policy'
+      dict={dict}
+      kicker={dict.legal.kicker}
+      title={dict.legal.policies.privacy.title}
       accentWords={[0]}
-      description='Plain-language explanation of what personal data this website collects, why, who sees it, and the rights you have over it.'
+      description={dict.legal.intros.privacy}
       updated={UPDATED}
       href={paths.legal.privacy}
-      sections={sections}
+      sections={getSections(dict.locale)}
     />
   );
 }

@@ -4,17 +4,19 @@ import Link from 'next/link';
 import { LegalPage, type LegalSection } from '@/components/legal/legal-page';
 
 import { paths } from '@/constants/paths';
+import type { Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
   description:
-    'Which cookies and browser storage the Feinwerk Software website uses, what they do, and how to change your choice.',
+    'Which cookies and browser storage the Feinwerks Software website uses, what they do, and how to change your choice.',
   alternates: { canonical: paths.legal.cookies },
 };
 
 const UPDATED = '5 September 2026';
 
-const sections: LegalSection[] = [
+const sectionsEn: LegalSection[] = [
   {
     id: 'what',
     title: 'What cookies are',
@@ -105,16 +107,118 @@ const sections: LegalSection[] = [
   },
 ];
 
-export default function CookiesPage() {
+const sectionsDe: LegalSection[] = [
+  {
+    id: 'what',
+    title: 'Was Cookies sind',
+    body: (
+      <p>
+        Cookies und ähnliche Browserspeicher (Local Storage) sind kleine
+        Datenmengen, die eine Website in Ihrem Browser ablegt. Einige sind
+        nötig, damit eine Website funktioniert; andere messen, wie sie genutzt
+        wird. Diese Website nutzt sehr wenige, und keine für Werbung.
+      </p>
+    ),
+  },
+  {
+    id: 'essential',
+    title: 'Unbedingt erforderliche Speicherung',
+    body: (
+      <>
+        <p>
+          Diese werden ohne Einwilligung gesetzt, weil die Website ohne sie
+          nicht richtig funktionieren kann:
+        </p>
+        <ul>
+          <li>
+            <strong>fw-cookie-consent</strong> (Local Storage): merkt sich, ob
+            Sie Analyse akzeptiert oder abgelehnt haben. Bleibt, bis Sie die
+            Websitedaten löschen.
+          </li>
+          <li>
+            <strong>theme</strong> (Local Storage): merkt sich Ihre Wahl von
+            hellem oder dunklem Modus. Bleibt, bis Sie die Websitedaten löschen.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: 'analytics',
+    title: 'Analyse, mit Ihrer Einwilligung',
+    body: (
+      <>
+        <p>
+          Wenn Sie im Cookie-Banner auf &bdquo;Akzeptieren&ldquo; klicken, laden
+          wir die Analyse von PostHog. Sie setzt ein Erstanbieter-Cookie und
+          einen Local-Storage-Eintrag (mit dem Präfix <strong>ph_</strong>) mit
+          einer zufälligen Kennung, damit wiederholte Besuche nur einmal gezählt
+          werden. Erfasst werden aufgerufene Seiten, verweisende Website,
+          Gerätetyp und ungefähres Land. Was Sie in Formulare eintippen, wird
+          nicht erfasst.
+        </p>
+        <p>
+          Die Kennung wird bis zu 12 Monate aufbewahrt. Die Daten werden von
+          PostHog in der EU verarbeitet. Wenn Sie ablehnen, wird nichts von
+          PostHog geladen.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'third-party',
+    title: 'Inhalte Dritter',
+    body: (
+      <p>
+        Links zu Cal.com führen Sie zu diesem Dienst, der eigene Cookies nach
+        seiner eigenen Richtlinie setzt. Wir binden keine Widgets Dritter ein,
+        die auf dieser Website Cookies setzen.
+      </p>
+    ),
+  },
+  {
+    id: 'change',
+    title: 'Ihre Wahl ändern',
+    body: (
+      <p>
+        Um die Einwilligung zu widerrufen oder zu ändern, löschen Sie die Daten
+        dieser Website in Ihren Browsereinstellungen (meist unter Datenschutz
+        oder Website-Einstellungen). Beim nächsten Besuch erscheint das Banner
+        erneut. Sie können Cookies auch vollständig im Browser blockieren; die
+        Website funktioniert weiterhin.
+      </p>
+    ),
+  },
+  {
+    id: 'more',
+    title: 'Weitere Informationen',
+    body: (
+      <p>
+        Wie wir mit personenbezogenen Daten allgemein umgehen, ist in der{' '}
+        <Link href={paths.legal.privacy}>Datenschutzerklärung</Link>{' '}
+        beschrieben.
+      </p>
+    ),
+  },
+];
+
+function getSections(locale: Locale): LegalSection[] {
+  return locale === 'de' ? sectionsDe : sectionsEn;
+}
+
+export default async function CookiesPage() {
+  const dict = await getDictionary();
+
   return (
     <LegalPage
-      kicker='Legal'
-      title='Cookie Policy'
+      dict={dict}
+      kicker={dict.legal.kicker}
+      title={dict.legal.policies.cookies.title}
       accentWords={[0]}
-      description='Two small pieces of storage to remember your preferences, and one analytics cookie only if you say yes.'
+      description={dict.legal.intros.cookies}
       updated={UPDATED}
       href={paths.legal.cookies}
-      sections={sections}
+      sections={getSections(dict.locale)}
     />
   );
 }

@@ -5,6 +5,8 @@ import { Logo } from '@/components/brand/logo';
 import { Silk } from '@/components/effects/silk';
 import { BackToTop } from '@/components/layout/back-to-top';
 
+import { legalLabel } from '@/lib/legal-labels';
+
 import { siteConfig } from '@/config/site';
 import { primaryNav } from '@/constants/navigation';
 import { isSectionLink, paths } from '@/constants/paths';
@@ -97,7 +99,7 @@ export function Footer({ dict }: FooterProps) {
                 href={item.href}
                 className='fw-link hover:text-foreground'
               >
-                {item.label}
+                {legalLabel(item.href, dict) ?? item.label}
               </Link>
             ))}
           </div>
@@ -115,7 +117,7 @@ export function Footer({ dict }: FooterProps) {
           aria-hidden='true'
           className='absolute inset-x-0 bottom-[-0.18em] select-none text-center font-display text-[clamp(2.25rem,15vw,17rem)] font-bold uppercase leading-none tracking-[0.04em] text-ink/85 mix-blend-multiply sm:tracking-[0.06em]'
         >
-          Feinwerk
+          Feinwerks
         </p>
       </div>
     </footer>

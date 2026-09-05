@@ -98,7 +98,7 @@ export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {
           }
         }}
         className='h-full w-full cursor-grab [contain:layout_paint_size] active:cursor-grabbing'
-        aria-label='Globe showing Feinwerk offices and client locations'
+        aria-label='Globe showing Feinwerks offices and client locations'
       />
     </div>
   );

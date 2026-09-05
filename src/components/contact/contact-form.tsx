@@ -31,16 +31,15 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 
 import { siteConfig } from '@/config/site';
-import { getServiceBySlugLocalised } from '@/data/services';
 import { paths } from '@/constants/paths';
+import { getServiceBySlugLocalised } from '@/data/services';
+import type { Dictionary } from '@/i18n/dictionaries/en';
 import {
   BUDGET_OPTIONS,
   type ContactInput,
   contactSchema,
   SERVICE_OPTIONS,
 } from '@/schema/contact';
-
-import type { Dictionary } from '@/i18n/dictionaries/en';
 
 const FIELD =
   'h-12 rounded-none border-line bg-surface px-4 text-[15px] focus-visible:ring-brand/60 focus-visible:ring-offset-0';

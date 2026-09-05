@@ -1,3 +1,7 @@
+import type { Locale } from '@/i18n/config';
+
+import { projectsDe } from './projects.de';
+
 /**
  * Single source of truth for every case study on the site.
  *
@@ -1494,5 +1498,71 @@ export function getAdjacentProjects(slug: string): {
   return {
     previous: projects[(index - 1 + projects.length) % projects.length] ?? null,
     next: projects[(index + 1) % projects.length] ?? null,
+  };
+}
+
+/** Merge German copy over a project, preserving images, tech and ordering. */
+function localiseProject(project: Project, locale: Locale): Project {
+  if (locale !== 'de') return project;
+  const t = projectsDe[project.slug];
+  if (!t) return project;
+
+  const { gallery, techStackCategories, ...rest } = t;
+
+  return {
+    ...project,
+    ...rest,
+    gallery: project.gallery.map((screen, index) => {
+      const copy = gallery?.[index];
+      return copy ? { ...screen, ...copy } : screen;
+    }),
+    techStack: project.techStack.map((group, index) => {
+      const category = techStackCategories?.[index];
+      return category ? { ...group, category } : group;
+    }),
+  };
+}
+
+export function getProjects(locale: Locale): Project[] {
+  return projects.map((project) => localiseProject(project, locale));
+}
+
+export function getProjectBySlugLocalised(
+  slug: string,
+  locale: Locale,
+): Project | undefined {
+  const project = getProjectBySlug(slug);
+  return project ? localiseProject(project, locale) : undefined;
+}
+
+export function getFeaturedProjectsLocalised(locale: Locale): Project[] {
+  return getFeaturedProjects().map((project) =>
+    localiseProject(project, locale),
+  );
+}
+
+export function getProjectsBySlugsLocalised(
+  slugs: readonly string[],
+  locale: Locale,
+): Project[] {
+  return getProjectsBySlugs(slugs).map((project) =>
+    localiseProject(project, locale),
+  );
+}
+
+export function getShowcaseProjectsLocalised(locale: Locale): Project[] {
+  return getShowcaseProjects().map((project) =>
+    localiseProject(project, locale),
+  );
+}
+
+export function getAdjacentProjectsLocalised(
+  slug: string,
+  locale: Locale,
+): { previous: Project | null; next: Project | null } {
+  const { previous, next } = getAdjacentProjects(slug);
+  return {
+    previous: previous ? localiseProject(previous, locale) : null,
+    next: next ? localiseProject(next, locale) : null,
   };
 }

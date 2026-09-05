@@ -19,7 +19,7 @@ export const en = {
     badge: 'Product engineering studio',
     title: 'Precision software,\nshipped on time',
     accent: [2, 3, 4],
-    body: 'Feinwerk Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
+    body: 'Feinwerks Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
     primary: 'Request a proposal',
     secondary: 'View our work',
     /** The living system map beside the hero copy. */
@@ -364,7 +364,7 @@ export const en = {
     messagePlaceholder:
       'What are you building, who is it for, and when does it need to exist?',
     consentBefore:
-      'I agree that Feinwerk Software may store and process this enquiry to respond to me, as described in the',
+      'I agree that Feinwerks Software may store and process this enquiry to respond to me, as described in the',
     consentLink: 'privacy policy',
     consentAfter: '.',
     submit: 'Send enquiry',
@@ -385,6 +385,201 @@ export const en = {
       retainer: 'Monthly retainer',
       unsure: 'Not sure yet',
     },
+  },
+  workPage: {
+    back: 'All projects',
+    anonymised: 'Client project, name changed on request',
+    private: 'Private deployment, client project',
+    category: 'Category',
+    year: 'Year',
+    capabilities: 'Capabilities',
+    industry: 'Industry',
+    problem: 'The problem',
+    approach: 'Our approach',
+    architecture: 'How it is built',
+    keyFeatures: 'Key features',
+    challengesKicker: 'Challenges & solutions',
+    challengesTitle: 'Where it got hard.',
+    challenge: 'Challenge',
+    solution: 'Solution',
+    resultsKicker: 'Results',
+    resultsTitle: 'What shipping it changed.',
+    gallery: 'Inside the product',
+    onThePhone: 'On the phone',
+    galleryTitle: 'More than one screen.',
+    galleryAnonymised:
+      "The product name and data have been changed at the client's request; these screens recreate {title} as it was built.",
+    galleryMore: '{n} more screens from {title}, captured at device size.',
+    homeScreen: 'Home',
+    stack: 'Stack',
+    servicesInvolved: 'Services involved',
+    more: 'More case studies',
+    previous: 'previous',
+    next: 'next',
+    notFound: 'Case study not found',
+    ctaTitle: 'Building something similar?',
+    ctaAccent: [1, 2],
+    ctaBody:
+      'We can usually tell within one call whether the approach above transfers to your problem, and what would need to change.',
+  },
+  aboutPage: {
+    kicker: 'About Feinwerks',
+    title: 'A software studio named after a standard.',
+    accent: [6, 7],
+    description:
+      'Feinwerks takes its name from Feinwerk, German for fine work, the precision-engineering tradition of the Stuttgart region where our client office sits. We hold software to the same bar: it has to be exactly right, on the day it was promised.',
+    story: [
+      'We started Feinwerks after years of building products for companies that had been burned before: agencies that missed the date, teams that shipped almost what was asked, estimates that doubled halfway through.',
+      'So we structured the studio around the four things clients said they could not get elsewhere. A date and a price agreed before work starts, for a standard package or a custom scope. One senior team that owns the whole product, from the interface to the cloud bill. A result you can measure after launch, reported by you, not by us. And a team that stays: we maintain what we build and take accountability for it in production.',
+      'Our Asian office is in Islamabad. Clients in Europe have a local contact in Fellbach. Between the two offices, someone is working during your working day.',
+    ],
+    facts: [
+      {
+        label: 'What we build',
+        value:
+          'Web platforms, AI products, cloud automation, marketing sites',
+      },
+      {
+        label: 'Who for',
+        value: 'Founders and product teams in Europe, Asia and North America',
+      },
+      {
+        label: 'How',
+        value:
+          'Fixed scope, fixed or custom price, weekly demos, maintained after launch',
+      },
+      {
+        label: 'Where',
+        value: 'Islamabad and Fellbach, with overlapping working hours',
+      },
+    ],
+    principlesKicker: 'Principles',
+    principlesTitle: 'Four rules every project is held to.',
+    principlesAccent: [0, 1],
+    whereKicker: 'Where we are',
+    whereTitle: 'Two offices, one working day.',
+    whereAccent: [3, 4],
+    whereDescription:
+      'An Asian office in Islamabad and a European office in Fellbach. Call whichever is closer; the same team answers.',
+    careersKicker: 'Careers',
+    careersTitle: 'No open positions right now.',
+    careersBody:
+      'We are not hiring at the moment. When that changes, roles will be listed on the careers page.',
+    careersLink: 'Careers',
+    ctaTitle: 'Want to see how we would run your project?',
+    ctaAccent: [7, 8],
+    ctaBody:
+      'Send a short brief. You get a written scope, a fixed or custom price and a launch date within a week, with no obligation, and a team that keeps maintaining the product after launch.',
+  },
+  careersPage: {
+    kicker: 'Careers',
+    title: 'No open positions right now.',
+    accent: [1, 2],
+    description:
+      'Feinwerks Software is a small studio that hires slowly. We are not recruiting at the moment, and there are no vacancies to apply for. When that changes, the roles will be listed on this page.',
+    badge: '0 open positions',
+    statusKicker: 'Current status',
+    statusTitle: 'We are not accepting applications.',
+    statusBody:
+      'There are no vacancies for engineers, designers or any other role, in Islamabad, in Fellbach or remote.',
+    notifyBefore: 'Want to hear when this changes? Email',
+    notifyAfter:
+      'with the subject line “Future roles” and we will let you know once a position opens.',
+    ctaTitle: 'Rather hire us than join us?',
+    ctaAccent: [1, 2],
+    ctaBody:
+      'Our dedicated team service embeds senior engineers in your roadmap, in your tools, on your schedule.',
+  },
+  legal: {
+    kicker: 'Legal',
+    title: 'The paperwork, in plain language.',
+    accent: [3, 4],
+    description:
+      'Everything that governs how we run this website and how we work with clients, written to be read rather than skimmed. Questions go straight to a person, not a form.',
+    reviewed: 'All documents last reviewed {date}',
+    updatedLabel: 'Last updated',
+    read: 'Read',
+    contents: 'Contents',
+    onThisPage: 'On this page',
+    otherPolicies: 'Other policies:',
+    backToLegal: 'All legal documents',
+    policies: {
+      privacy: {
+        title: 'Privacy Policy',
+        summary:
+          'What personal data this website collects, why, who processes it and the rights you have under the GDPR.',
+        audience: 'Visitors, enquirers and clients',
+      },
+      terms: {
+        title: 'Terms of Service',
+        summary:
+          'The general terms for using this site and for engaging Feinwerks Software, covering scope, payment, intellectual property and liability.',
+        audience: 'Business clients',
+      },
+      cookies: {
+        title: 'Cookie Policy',
+        summary:
+          'The two preference entries the site stores and the single analytics cookie that loads only if you accept it.',
+        audience: 'Visitors',
+      },
+      imprint: {
+        title: 'Imprint',
+        summary:
+          'Legal notice (Impressum) with the company details, contact information and responsible persons required under German law.',
+        audience: 'Everyone',
+      },
+    },
+    intros: {
+      privacy:
+        'What we collect, why, and what you can ask us to do about it. Written for people, not for lawyers.',
+      terms:
+        'The terms that govern this website and our client engagements, in language you can actually read.',
+      cookies:
+        'Two small pieces of storage to remember your preferences, and one analytics cookie only if you say yes.',
+      imprint:
+        'Who runs this website, where we are registered and how to reach a responsible person.',
+    },
+    commitmentsKicker: 'How we contract',
+    commitmentsTitle: 'Four commitments in every engagement.',
+    commitments: [
+      {
+        title: 'You own what we build',
+        body: 'Custom code, designs and documentation are assigned to you on payment. We work in repositories and accounts registered to your company.',
+      },
+      {
+        title: 'GDPR by default',
+        body: 'A data processing agreement is provided for every project that touches personal data, and our own site collects the minimum needed to reply to you.',
+      },
+      {
+        title: 'NDA before discovery',
+        body: 'We sign a mutual non-disclosure agreement on request before any scoping conversation, and treat every brief as confidential regardless.',
+      },
+      {
+        title: 'Two contracting entities',
+        body: 'Clients can contract with our German office under German law or with our Asian office under Pakistani law. The statement of work names which.',
+      },
+    ],
+    requestsKicker: 'Legal and data requests',
+    requestsBody:
+      'To exercise a data right, request a data processing agreement or NDA, report a security issue, or ask anything about these documents, email us. A person replies within five business days; data requests are answered within one month as the GDPR requires.',
+  },
+  notFound: {
+    kicker: 'Error 404',
+    title: 'This page was never engineered.',
+    accent: [4],
+    body: 'The address may have changed, or the link was wrong. Everything we have built is one click away.',
+    home: 'Back home',
+    work: 'See the work',
+  },
+  cookies: {
+    label: 'Cookie consent',
+    kicker: 'Cookies',
+    bodyBefore:
+      'We use a privacy-friendly analytics cookie to understand which pages are useful. No advertising, no cross-site tracking. Read the',
+    link: 'cookie policy',
+    bodyAfter: '.',
+    accept: 'Accept',
+    decline: 'Decline',
   },
   contact: {
     kicker: 'Contact',
@@ -424,8 +619,6 @@ export const en = {
     rights: 'All rights reserved.',
     backToTop: 'Back to top',
   },
-  languageNotice:
-    'Project pages, service details and legal documents are currently available in English only.',
 };
 
 export type Dictionary = typeof en;

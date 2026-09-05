@@ -6,16 +6,16 @@ import { env } from '@/env';
  * header, footer, contact page, legal pages, structured data and metadata.
  */
 export const siteConfig = {
-  name: 'Feinwerk Software',
-  shortName: 'Feinwerk',
-  legalName: 'Feinwerk Software',
+  name: 'Feinwerks Software',
+  shortName: 'Feinwerks',
+  legalName: 'Feinwerks Software',
   tagline: 'Precision-engineered software.',
   description:
-    'Feinwerk Software is a software engineering studio building and maintaining full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. Fixed or custom quotes, committed dates, support after launch. From Islamabad and Fellbach, shipped worldwide.',
+    'Feinwerks Software is a software engineering studio building and maintaining full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. Fixed or custom quotes, committed dates, support after launch. From Islamabad and Fellbach, shipped worldwide.',
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
   // Email lives here so it can be swapped once the company inbox exists.
-  email: 'hello@feinwerk.software',
+  email: 'hello@feinwerks.software',
   responseTime: 'within one business day',
   availability: 'Accepting new projects',
   locations: [

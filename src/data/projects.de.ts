@@ -8,6 +8,7 @@ import type { Project } from './projects';
 export type ProjectTranslation = Partial<
   Pick<
     Project,
+    | 'title'
     | 'client'
     | 'tagline'
     | 'summary'
@@ -614,5 +615,294 @@ export const projectsDe: Record<string, ProjectTranslation> = {
       },
     ],
     techStackCategories: ['Frontend & Backend', 'KI'],
+  },
+  snobbots: {
+    tagline: 'Mandantenfähige KI-Support-Agenten für Onlineshops',
+    summary: 'Mandantenfähige KI-Chatbot-Plattform.',
+    description:
+      'Wiederverkäufer richten KI-Support-Agenten für ihre Shops in großer Zahl ein, wobei jeder Mandant getrennt ist und jede Antwort in den Inhalten des jeweiligen Shops verankert wird.',
+    industry: 'E-Commerce / Kundenservice',
+    headline: { value: '60 %', label: 'schnellere Bereitstellung der Agenten' },
+    problem:
+      'Wiederverkäufer wollten ihren eigenen Kunden KI-Support-Agenten anbieten, doch jede Bereitstellung war Maßarbeit, sodass die Einrichtung eines neuen Shops Tage manueller Arbeit kostete.',
+    approach:
+      'Wir haben eine mandantenfähige MERN-Architektur gebaut, in der jeder Shop einen eigenständigen, kontextbewussten Agenten betreibt, und darüber eine automatisierte Bereitstellung gelegt, sodass Wiederverkäufer Bots in großer Zahl statt einzeln aufsetzen können.',
+    outcomes: [
+      '60 % schnellere Bereitstellung durch automatisierte Orchestrierung.',
+      '1 Namensraum je Mandant, sodass kein Shop die Inhalte eines anderen lesen kann.',
+    ],
+    architecture:
+      'MERN: React, eine API aus Express und Node.js und MongoDB für Mandanten- und Gesprächsdaten. Pinecone hält die Embeddings je Mandant, sodass der Abruf auf die Wissensbasis eines Shops begrenzt ist und die Bereitstellung ohne manuelle Einrichtung läuft.',
+    keyFeatures: [
+      'Mandantenfähige Architektur mit getrennten Agenten',
+      'RAG für kontextbewusste, geschäftsspezifische Antworten',
+      'Automatisierte Bereitstellung vieler Bots auf einmal',
+      'Verwaltungs-Dashboard für Wiederverkäufer',
+      'Einbettbares Support-Widget',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Der Abruf über einen gemeinsamen Vektorindex brachte Inhalte eines Shops in den Antworten eines anderen zum Vorschein.',
+        solution:
+          'Wir haben die Embeddings in Pinecone je Mandant partitioniert, sodass der Abruf immer nur den Namensraum des anfragenden Shops erreichen kann.',
+      },
+      {
+        challenge:
+          'Die manuelle Einrichtung je Shop machte das Onboarding der Wiederverkäufer zum Engpass für Wachstum.',
+        solution:
+          'Wir haben die Bereitstellung durchgängig automatisiert und damit aus einem mehrtägigen manuellen Vorgang eine Massenoperation gemacht.',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Übergabe-Postfach',
+        caption:
+          'Gespräche, die der Bot nicht abschließen konnte, mit Bestellung und Kunde daneben.',
+      },
+      {
+        title: 'Wissensbasis',
+        caption:
+          'Katalog, Bestell-API und Richtlinien, aus denen jeder Bot antworten darf.',
+      },
+      {
+        title: 'Shop-Widget',
+        caption: 'Der Kundenchat erscheint im Shop des Kunden.',
+      },
+    ],
+    techStackCategories: ['Frontend', 'Backend', 'Datenbank', 'KI'],
+  },
+  'ai-physiotherapy': {
+    title: 'KI-Assistent für Physiotherapie',
+    client: 'Vertraulich (Gesundheitswesen)',
+    tagline: 'Adaptive Rehabilitation, von KI begleitet',
+    summary: 'Full-Stack-KI-Plattform für adaptive Rehabilitation.',
+    description:
+      'Ein durchgängiger Rehabilitationsverlauf von der Aufnahme über die Bewegungsanalyse und adaptive Trainingsplanung bis zu täglichem Fortschritt und KI-gestütztem Videofeedback.',
+    industry: 'Gesundheitswesen',
+    headline: { value: '90 %+', label: 'Genauigkeit der Analyse' },
+    problem:
+      'Der Rehabilitationsverlauf war zersplittert: manuelle Aufnahme, Bewegungsanalyse, allgemeine Trainingspläne und seltene Nachkontrollen. Zwischen den betreuten Terminen hatten Patientinnen und Patienten kaum Anleitung, und die Pläne reagierten nicht schnell auf die tatsächliche Leistung.',
+    approach:
+      'Wir haben den Verlauf um einen Aufnahme-Agenten, eine angeleitete Bewegungsanalyse und die automatische Erstellung von Trainingsplänen herum gebaut. Tägliche Einträge steuern die Steigerung oder Reduktion des Plans, während hochgeladene Übungsvideos KI-Feedback erhalten und Fachartikel zu Verletzungen in künftige Pläne einfließen.',
+    outcomes: [
+      '90 %+ Genauigkeit bei der KI-gestützten Bewegungs- und Ausführungsanalyse.',
+      'Tägliche Steigerung und Reduktion des Plans, automatisiert aus der Leistung der Patientinnen und Patienten.',
+    ],
+    architecture:
+      'Ein React-Frontend verbindet sich mit einem Backend aus Python und FastAPI. LangChain koordiniert Aufnahme, Analysekontext und Planerstellung, während OpenAI die adaptive Anleitung erzeugt. Hochgeladene Videos fließen in die Ausführungsanalyse, und hochgeladene Fachartikel zu Verletzungen liefern das Quellenmaterial für die Planerstellung.',
+    keyFeatures: [
+      'Aufnahme-Agent, der den Patientenverlauf startet',
+      'Bewegungsanalyse mit Anleitungsvideos und Tutorials',
+      'Automatische Erstellung von Trainingsplänen',
+      'Tägliche Einträge mit automatischer Steigerung oder Reduktion',
+      'Ausführungsanalyse hochgeladener Videos mit KI-Feedback',
+      'Planerstellung auf Basis hochgeladener Fachartikel zu Verletzungen',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Statische Trainingspläne konnten nicht reagieren, wenn sich die tägliche Leistung verbesserte oder verschlechterte.',
+        solution:
+          'Wir haben die täglichen Einträge mit Regeln für Steigerung und Reduktion verbunden, sodass sich der Plan automatisch anpasst, statt auf eine manuelle Durchsicht zu warten.',
+      },
+      {
+        challenge:
+          'Die Planerstellung brauchte verletzungsspezifischen Kontext, statt sich auf allgemeines Modellwissen zu verlassen.',
+        solution:
+          'Wir haben hochgeladene Artikel zu häufigen Verletzungen für den Erstellungsablauf verfügbar gemacht, sodass Empfehlungen auf einschlägiges Quellenmaterial zurückgreifen können.',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Bewegungsanalyse',
+        caption:
+          'Haltungsanalyse an einem hochgeladenen Clip, mit Gelenkwinkeln und Rückmeldung zur Ausführung.',
+      },
+      {
+        title: 'Achtwochenplan',
+        caption:
+          'Phasen, die Einheiten dieser Woche und jede Anpassung samt Begründung.',
+      },
+      {
+        title: 'Ansicht für Behandelnde',
+        caption:
+          'Patientinnen und Patienten nach Dringlichkeit, mit KI-Planänderungen zur Freigabe.',
+      },
+    ],
+    techStackCategories: ['Frontend', 'Backend', 'KI'],
+  },
+  'new-web-order': {
+    tagline: 'Unternehmenswebsite, neu gebaut für Tempo und SEO',
+    summary: 'Unternehmenswebsite, gebaut für Performance und SEO.',
+    description:
+      'Eine Unternehmenswebsite, auf Next.js neu gebaut für Tempo und Suche. 40 % schneller, und endlich mit guten Rankings.',
+    industry: 'Professionelle Dienstleistungen',
+    headline: { value: '40 %', label: 'schnellere Ladezeiten' },
+    problem:
+      'Die bestehende Website lud langsam und rankte schlecht, was das Unternehmen Anfragen kostete, noch bevor Besuchende das Angebot überhaupt sahen.',
+    approach:
+      'Wir haben die Website auf Next.js mit TypeScript für Typsicherheit und Tailwind für das Styling neu gebaut und uns dann durch das Performance-Budget gearbeitet: Code-Splitting, Bildoptimierung und je Route abgestimmte Rendering-Strategien.',
+    outcomes: [
+      '40 % schneller durch gezielte Performance-Arbeit.',
+      '100 % der Routen erreichen ihren Handlungsaufruf in einem Scrollvorgang.',
+    ],
+    architecture:
+      'Static-First-Build mit dem Next.js App Router. Routen werden vorgerendert, wo die Inhalte es zulassen, Bilder laufen über next/image mit expliziten Maßen, und JavaScript wird je Route aufgeteilt, um die anfängliche Last klein zu halten.',
+    keyFeatures: [
+      'Static-First-Rendering für schnelles erstes Bild',
+      'Code-Splitting auf Routenebene',
+      'Optimierte Bilder ohne Layoutsprünge',
+      'SEO-Metadaten über alle Routen',
+      'Vollständig responsives Layout',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Große Marketingbilder dominierten das Seitengewicht und verzögerten das erste Bild.',
+        solution:
+          'Wir haben alle Bilder auf next/image mit expliziten Maßen und modernen Formaten umgestellt und nur das Hero-Bild oberhalb der Falz priorisiert.',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Projekte',
+        caption: 'Die Projektübersicht, neu gebaute Seiten.',
+      },
+      {
+        title: 'Leistungen',
+        caption: 'Leistungsseiten, aus strukturierten Inhalten erzeugt.',
+      },
+      {
+        title: 'Über uns',
+        caption: 'Die Unternehmensseite auf demselben Layoutsystem.',
+      },
+    ],
+    techStackCategories: ['Frontend', 'Styling'],
+  },
+  'bidnest-mobile': {
+    title: 'Bidnest Mobile App',
+    client: 'Vertraulich (Marktplatz für Studierendenwohnungen)',
+    tagline: 'Der Auktionsmarktplatz, verpackt für iOS und Android',
+    summary:
+      'Der Bidnest-Marktplatz, mit Capacitor verpackt, damit Studierende und Eltern vom Telefon aus bieten können.',
+    description:
+      'Dieselbe Codebasis, die die Bidnest-Webplattform betreibt, mit Capacitor zu nativen iOS- und Android-Apps verpackt. Ein Team liefert die Webplattform und beide App Stores aus einem einzigen Repository, und jeder Ablauf des Marktplatzes funktioniert innerhalb der nativen Hülle, ohne neu gebaut zu werden.',
+    industry: 'Immobilientechnologie',
+    headline: { value: '1', label: 'Codebasis für Web, iOS und Android' },
+    problem:
+      'Studierende leben auf ihrem Telefon. Ein vom Laptop abgegebenes Gebot kann überboten werden, während sie in der Vorlesung sitzen, und ein Browser-Tab weckt niemanden. Zwei native Apps von Grund auf zu bauen, hätte die Arbeit für einen bereits bestehenden Marktplatz verdoppelt.',
+    approach:
+      'Statt das Produkt nativ neu zu bauen, haben wir die bestehende Next.js-Anwendung mit Capacitor verpackt, die Screens für Gebote und Nachrichten auf Touch und sichere Bereiche abgestimmt und das Ergebnis aus demselben Repository in beide Stores geliefert.',
+    outcomes: [
+      '1 Codebasis liefert die Website, die iOS-App und die Android-App.',
+      '2 App Stores, bedient aus demselben Release-Branch.',
+      '0 neu gebaute Funktionen: jeder Ablauf des Marktplatzes funktioniert in der nativen Hülle.',
+    ],
+    architecture:
+      'Capacitor betreibt den produktiven Web-Build in einer nativen WebView auf iOS und Android. Native Plugins decken ab, was der Browser nicht kann; alles andere, von Echtzeitgeboten bis zum Stripe-Checkout, ist derselbe Code, der die Webplattform bedient, sodass eine Korrektur auf drei Plattformen zugleich ausgeliefert wird.',
+    keyFeatures: [
+      'Native iOS- und Android-Builds aus der Web-Codebasis',
+      'Dieselben Abläufe für Gebote, Nachrichten und Zahlungen',
+      'Touch-orientierte Layouts mit Beachtung sicherer Bereiche',
+      'Sitzung bleibt zwischen Starts auf dem Gerät erhalten',
+      'Deep Links aus Benachrichtigungen direkt zum passenden Angebot',
+      'Offline-Screen statt einer Browser-Fehlermeldung',
+    ],
+    challenges: [
+      {
+        challenge:
+          'WebSocket-Verbindungen brechen ab, wenn die App in den Hintergrund wechselt, sodass Gebote nach dem Fortsetzen verspätet eintreffen konnten.',
+        solution:
+          'Beim Fortsetzen wird neu verbunden und der Zustand vollständig abgeglichen, sodass das Angebot die verbindliche Gebotshistorie zeigt, sobald die App zurückkehrt.',
+      },
+      {
+        challenge:
+          'Die Store-Prüfung lehnt Apps ab, die sich wie eine Website in einem Rahmen verhalten.',
+        solution:
+          'Native Navigationsgesten, Layouts für sichere Bereiche und ein Offline-Screen, wobei die Web-Navigation innerhalb der Hülle entfernt wurde.',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Dashboard für Studierende',
+        caption:
+          'Gebote, Schritte zum Mietvertrag und Dienste innerhalb der nativen Hülle.',
+      },
+      {
+        title: 'Nachrichten',
+        caption:
+          'Verläufe mit Vermietenden und Anbietern, per Deep Link aus Benachrichtigungen geöffnet.',
+      },
+      {
+        title: 'Stöbern',
+        caption:
+          'Karte und Suche der Webplattform, auf Touch abgestimmt.',
+      },
+    ],
+    techStackCategories: [
+      'Native Hülle',
+      'Frontend',
+      'Styling',
+      'Backend',
+      'Echtzeit',
+      'Zahlungen',
+      'Benachrichtigungen',
+      'Analytics',
+    ],
+  },
+  'tayyab-sohail-portfolio': {
+    tagline: 'Referenz-Portfolio für einen erfahrenen Entwickler',
+    summary:
+      'Eine persönliche Website, auf der jedes Projekt eine vollständige Fallstudie ist, erzeugt aus einer einzigen typisierten Datendatei.',
+    description:
+      'Das Portfolio unseres Gründers: eine Next.js-Website, bei der das Projektraster, jede Fallstudienseite, die Sitemap und die Social-Vorschauen aus einer einzigen typisierten Datendatei erzeugt werden. Sie liefert HTML aus, animiert ohne Einbußen bei der Ladezeit und ermöglicht Terminbuchungen über einen eingebetteten Kalender.',
+    industry: 'Softwareentwicklung',
+    headline: { value: '12', label: 'Fallstudien aus einer Datendatei' },
+    problem:
+      'Ein Lebenslauf zählt Technologien auf; er zeigt nicht, wie ein Produkt gebaut wurde oder was sich nach dem Launch verändert hat. Die meisten Portfolio-Websites sind ein Raster aus Vorschaubildern ohne Substanz dahinter, und ein Dutzend Projektseiten von Hand konsistent zu halten, ist genau die Stelle, an der sie auseinanderfallen.',
+    approach:
+      'Wir haben das Portfolio wie ein Produkt behandelt. Jedes Projekt ist ein typisierter Datensatz mit Problem, Vorgehen, Architektur, Funktionen, Herausforderungen und Ergebnissen, und die Website erzeugt Raster, Fallstudienseiten, Sitemap und Social-Vorschauen aus diesem einen Array.',
+    outcomes: [
+      '12 Fallstudien, erzeugt aus einer einzigen typisierten Datendatei.',
+      '0 CMS und 0 Datenbank: jede Seite wird beim Deploy statisch gebaut.',
+      '1 Klick von jeder Fallstudie zum gebuchten Termin.',
+    ],
+    architecture:
+      'Next.js App Router mit statischer Generierung für jede Fallstudien-Route. Die Projektdaten liegen in einem einzigen TypeScript-Array, sodass die Typprüfung einen Build verweigert, wenn ein Abschnitt fehlt. Die Bewegung läuft über Framer Motion nach dem ersten Bild; die Terminbuchung ist ein eingebettetes Cal.com-Widget.',
+    keyFeatures: [
+      'Filterbares Projektraster nach Kategorie und Kompetenz',
+      'Je Projekt erzeugte Fallstudienseite',
+      'Navigation zum vorherigen und nächsten Projekt',
+      'Sitemap und Social-Bilder aus denselben Daten abgeleitet',
+      'Eingebettete Terminbuchung',
+      'Lebenslauf zum Herunterladen',
+    ],
+    challenges: [
+      {
+        challenge:
+          'Zwölf von Hand geschriebene Fallstudien liefen in Struktur und Tonfall auseinander.',
+        solution:
+          'Ein typisiertes Schema für alle Projekte, wobei der Compiler den Build scheitern lässt, wenn ein Feld fehlt.',
+      },
+      {
+        challenge:
+          'Animierte Seiten schneiden bei Ladezeit und Layoutstabilität meist schlecht ab.',
+        solution:
+          'Statische Generierung, Schriften über next/font geladen und Bewegung, die erst nach dem ersten Bild startet.',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Tech-Stack',
+        caption: 'Werkzeuge und Frameworks, nach Ebene gruppiert.',
+      },
+      {
+        title: 'Kontakt',
+        caption:
+          'Ein Nachrichtenformular und eine eingebettete Cal.com-Buchung auf einem Screen.',
+      },
+    ],
+    techStackCategories: ['Frontend', 'Styling & Motion', 'Buchung', 'Hosting'],
   },
 };

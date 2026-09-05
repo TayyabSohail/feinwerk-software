@@ -15,99 +15,58 @@ import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 
 import { siteConfig } from '@/config/site';
 import { paths } from '@/constants/paths';
+import { getDictionary } from '@/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Legal',
   description:
-    'Legal information for Feinwerk Software: privacy policy, terms of service, cookie policy and imprint, plus how to reach us about data or contracts.',
+    'Legal information for Feinwerks Software: privacy policy, terms of service, cookie policy and imprint, plus how to reach us about data or contracts.',
   alternates: { canonical: paths.legal.index },
 };
 
 const UPDATED = '5 September 2026';
 
-const POLICIES = [
-  {
-    href: paths.legal.privacy,
-    icon: ShieldCheck,
-    title: 'Privacy Policy',
-    summary:
-      'What personal data this website collects, why, who processes it and the rights you have under the GDPR.',
-    audience: 'Visitors, enquirers and clients',
-  },
-  {
-    href: paths.legal.terms,
-    icon: ScrollText,
-    title: 'Terms of Service',
-    summary:
-      'The general terms for using this site and for engaging Feinwerk Software, covering scope, payment, intellectual property and liability.',
-    audience: 'Business clients',
-  },
-  {
-    href: paths.legal.cookies,
-    icon: Cookie,
-    title: 'Cookie Policy',
-    summary:
-      'The two preference entries the site stores and the single analytics cookie that loads only if you accept it.',
-    audience: 'Visitors',
-  },
-  {
-    href: paths.legal.imprint,
-    icon: FileText,
-    title: 'Imprint',
-    summary:
-      'Legal notice (Impressum) with the company details, contact information and responsible persons required under German law.',
-    audience: 'Everyone',
-  },
+const POLICY_META = [
+  { key: 'privacy' as const, href: paths.legal.privacy, icon: ShieldCheck },
+  { key: 'terms' as const, href: paths.legal.terms, icon: ScrollText },
+  { key: 'cookies' as const, href: paths.legal.cookies, icon: Cookie },
+  { key: 'imprint' as const, href: paths.legal.imprint, icon: FileText },
 ];
 
-const COMMITMENTS = [
-  {
-    title: 'You own what we build',
-    body: 'Custom code, designs and documentation are assigned to you on payment. We work in repositories and accounts registered to your company.',
-  },
-  {
-    title: 'GDPR by default',
-    body: 'A data processing agreement is provided for every project that touches personal data, and our own site collects the minimum needed to reply to you.',
-  },
-  {
-    title: 'NDA before discovery',
-    body: 'We sign a mutual non-disclosure agreement on request before any scoping conversation, and treat every brief as confidential regardless.',
-  },
-  {
-    title: 'Two contracting entities',
-    body: 'Clients can contract with our German office under German law or with our Asian office under Pakistani law. The statement of work names which.',
-  },
-];
 
-export default function LegalIndexPage() {
+
+export default async function LegalIndexPage() {
+  const dict = await getDictionary();
+  const t = dict.legal;
   return (
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: 'Home', href: paths.home },
-          { name: 'Legal', href: paths.legal.index },
+          { name: dict.nav.home, href: paths.home },
+          { name: t.kicker, href: paths.legal.index },
         ]}
       />
       <PageHero
-        kicker='Legal'
-        title='The paperwork, in plain language.'
-        accentWords={[3, 4]}
-        description='Everything that governs how we run this website and how we work with clients, written to be read rather than skimmed. Questions go straight to a person, not a form.'
+        kicker={t.kicker}
+        title={t.title}
+        accentWords={[...t.accent]}
+        description={t.description}
         size='lg'
       >
         <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
-          All documents last reviewed {UPDATED}
+          {t.reviewed.replace('{date}', UPDATED)}
         </p>
       </PageHero>
 
       <section className='fw-container pb-16 lg:pb-24'>
         <Stagger className='grid gap-4 md:grid-cols-2'>
-          {POLICIES.map((policy) => {
-            const Icon = policy.icon;
+          {POLICY_META.map((meta) => {
+            const Icon = meta.icon;
+            const policy = t.policies[meta.key];
             return (
-              <StaggerItem key={policy.href}>
+              <StaggerItem key={meta.href}>
                 <Link
-                  href={policy.href}
+                  href={meta.href}
                   className='fw-card fw-card-link group flex h-full flex-col p-7 sm:p-8'
                 >
                   <div className='flex items-center justify-between'>
@@ -125,7 +84,7 @@ export default function LegalIndexPage() {
                     {policy.summary}
                   </p>
                   <span className='mt-auto flex items-center gap-2 pt-8 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground transition-colors group-hover:text-foreground'>
-                    Read
+                    {t.read}
                     <ArrowUpRight className='h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5' />
                   </span>
                 </Link>
@@ -137,13 +96,13 @@ export default function LegalIndexPage() {
 
       <section className='fw-container pb-16 lg:pb-24'>
         <Reveal>
-          <p className='fw-kicker'>How we contract</p>
+          <p className='fw-kicker'>{t.commitmentsKicker}</p>
           <h2 className='fw-display mt-5 text-display-sm text-foreground'>
-            Four commitments in every engagement.
+            {t.commitmentsTitle}
           </h2>
         </Reveal>
         <Stagger className='mt-10 grid gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-2 lg:grid-cols-4'>
-          {COMMITMENTS.map((item) => (
+          {t.commitments.map((item) => (
             <StaggerItem
               key={item.title}
               className='flex flex-col bg-background p-7'
@@ -162,12 +121,9 @@ export default function LegalIndexPage() {
       <section className='fw-container pb-24'>
         <Reveal className='fw-card grid gap-8 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center'>
           <div>
-            <p className='fw-kicker'>Legal and data requests</p>
+            <p className='fw-kicker'>{t.requestsKicker}</p>
             <p className='mt-4 max-w-2xl text-lg leading-relaxed text-foreground/85'>
-              To exercise a data right, request a data processing agreement or
-              NDA, report a security issue, or ask anything about these
-              documents, email us. A person replies within five business days;
-              data requests are answered within one month as the GDPR requires.
+              {t.requestsBody}
             </p>
           </div>
           <a

@@ -75,7 +75,7 @@ export default async function RootLayout({
               {children}
             </main>
             <Footer dict={dict} />
-            <CookieConsent />
+            <CookieConsent dict={dict} />
           </SmoothScroll>
         </AppProviders>
       </body>
