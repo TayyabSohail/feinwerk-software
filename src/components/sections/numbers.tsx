@@ -28,14 +28,14 @@ export function Numbers({ dict }: NumbersProps) {
               <div
                 key={item.label}
                 className={cn(
-                  'relative border-white/10 p-8 sm:p-10 lg:p-12',
+                  'relative border-white/10 p-8 text-center sm:p-10 lg:p-12',
                   i > 0 && 'border-t sm:border-l sm:border-t-0',
                 )}
               >
                 <p className='fw-display text-6xl tabular-nums text-white sm:text-7xl lg:text-8xl'>
                   <CountUp value={item.value} delay={i * 0.08} />
                 </p>
-                <p className='mt-5 max-w-[20ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-white/55'>
+                <p className='mx-auto mt-5 max-w-[20ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-white/55'>
                   {item.label}
                 </p>
               </div>

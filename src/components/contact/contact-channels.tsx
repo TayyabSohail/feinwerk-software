@@ -51,61 +51,36 @@ export function ContactChannels({
 
   return (
     <div>
-      <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:items-end lg:gap-12'>
+      <div className='grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:items-end lg:gap-12'>
         {header}
 
-        <div className='fw-card divide-y divide-line overflow-hidden'>
+        <div className='flex flex-wrap gap-2'>
           <button
             type='button'
             onClick={() => setChannel('form')}
             aria-pressed={channel === 'form'}
-            className={`relative flex w-full items-center gap-4 px-5 py-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 ${
+            className={`inline-flex h-12 items-center gap-2 rounded-full border px-5 text-left text-[15px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 ${
               channel === 'form'
-                ? 'bg-brand/[0.06] hover:bg-brand/[0.1]'
-                : 'bg-surface hover:bg-brand/[0.03]'
+                ? 'border-brand bg-brand text-brand-foreground'
+                : 'border-line bg-surface text-foreground hover:border-brand hover:text-brand-text'
             }`}
           >
-            <span
-              aria-hidden='true'
-              className='absolute inset-y-0 left-0 w-[3px] bg-brand'
-            />
-            <span className='flex h-10 w-10 shrink-0 items-center justify-center border border-brand bg-brand text-brand-foreground'>
-              <PenLine className='h-[18px] w-[18px]' />
-            </span>
-            <span className='min-w-0 flex-1'>
-              <span className='block text-[15px] font-medium text-foreground'>
-                {t.formTab}
-              </span>
-            </span>
+            <PenLine className='h-4 w-4' />
+            {t.formTab}
           </button>
 
           <button
             type='button'
             onClick={() => setChannel('calendar')}
             aria-pressed={channel === 'calendar'}
-            className={`relative flex w-full items-center gap-4 px-5 py-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 ${
+            className={`inline-flex h-12 items-center gap-2 rounded-full border px-5 text-left text-[15px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 ${
               channel === 'calendar'
-                ? 'bg-brand/[0.06] hover:bg-brand/[0.1]'
-                : 'bg-surface hover:bg-brand/[0.03]'
+                ? 'border-brand bg-brand text-brand-foreground'
+                : 'border-line bg-surface text-foreground hover:border-brand hover:text-brand-text'
             }`}
           >
-            <span
-              className={`flex h-10 w-10 shrink-0 items-center justify-center border ${
-                channel === 'calendar'
-                  ? 'border-brand bg-brand text-brand-foreground'
-                  : 'border-line text-muted-foreground'
-              }`}
-            >
-              <CalendarDays className='h-[18px] w-[18px]' />
-            </span>
-            <span className='min-w-0 flex-1'>
-              <span className='block text-[15px] font-medium text-foreground'>
-                {t.callTab}
-              </span>
-              <span className='mt-0.5 block text-sm text-muted-foreground'>
-                {t.callHint}
-              </span>
-            </span>
+            <CalendarDays className='h-4 w-4' />
+            {t.callTab}
           </button>
         </div>
       </div>
@@ -118,7 +93,7 @@ export function ContactChannels({
           <CalEmbed calLink={calLink} />
         </div>
       ) : (
-        <div id='contact-form' className='mt-8'>
+        <div id='contact-form' className='mt-6 sm:mt-8'>
           <ContactForm dict={dict} defaultService={defaultService} />
         </div>
       )}

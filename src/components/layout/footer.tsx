@@ -117,7 +117,7 @@ export function Footer({ dict }: FooterProps) {
 
         {/* The wordmark shares the footer canvas so the company name fades out
           of the information above instead of starting a separate section. */}
-      <div className='relative z-10 mt-0 h-[34vw] max-h-[22rem] min-h-[7rem] w-full overflow-hidden sm:min-h-[10rem]'>
+      <div className='relative z-10 mt-0 h-[18vw] max-h-[22rem] min-h-[4rem] w-full overflow-hidden sm:h-[34vw] sm:min-h-[10rem]'>
         <svg
           aria-hidden='true'
           viewBox='0 0 1000 112'

@@ -105,6 +105,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
   }
 
   const messageLength = form.watch('message')?.length ?? 0;
+  const selectedService = form.watch('service');
   const consentGiven = form.watch('consent') === true;
   const stepContent = [t.steps.service, t.steps.message, t.steps.details][step];
 
@@ -112,7 +113,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((values) => execute(values))}
-        className='fw-card overflow-hidden bg-ink text-white'
+        className='fw-card overflow-hidden rounded-2xl border border-white/10 bg-ink text-white [clip-path:none] shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.8)]'
         noValidate
       >
         <div aria-hidden='true' className='absolute -left-[9999px] top-0'>
@@ -125,7 +126,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
           />
         </div>
 
-        <div className='px-6 py-8 sm:px-8 lg:px-10 lg:py-10'>
+        <div className='px-5 py-6 sm:px-7 sm:py-8 lg:px-9 lg:py-9'>
           <div className='flex items-start justify-between gap-6 border-b border-white/15 pb-6'>
             <div>
               <p className='fw-kicker'>
@@ -154,7 +155,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                   <FormItem>
                     <FormLabel className='text-white'>{t.service}</FormLabel>
                     <FormControl>
-                      <div className='mt-3 grid sm:grid-cols-2 sm:gap-x-8'>
+                      <div className='mt-3 grid sm:grid-cols-2 sm:gap-x-7'>
                         {SERVICE_OPTIONS.map((option) => {
                           const service =
                             option.value === 'other'
@@ -276,7 +277,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
             ) : null}
           </div>
 
-          <div className='mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between'>
+          <div className='mt-6 flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between'>
             <p className='text-xs text-muted-foreground sm:hidden'>
               {t.replyNote.replace('{time}', siteConfig.responseTime)}
             </p>
@@ -299,6 +300,7 @@ export function ContactForm({ dict, defaultService }: ContactFormProps) {
                 size='xl'
                 icon={ArrowUpRight}
                 onClick={() => setStep((current) => current + 1)}
+                disabled={step === 0 && !selectedService}
               >
                 {t.next}
               </Button>
@@ -386,22 +388,22 @@ function ChoiceCard({
       onClick={onSelect}
       aria-pressed={selected}
       className={cn(
-        'group relative flex min-h-[4.5rem] cursor-pointer items-center gap-3 border-b py-4 pr-9 text-left transition-colors',
-        'hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60',
+        'group relative flex min-h-[5.25rem] cursor-pointer items-center gap-4 rounded-xl border px-4 py-4 pr-12 text-left transition-all',
+        'hover:-translate-y-0.5 hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60',
         selected
-          ? 'border-brand text-brand'
+          ? 'border-brand bg-brand text-brand-foreground shadow-[0_12px_30px_-18px_hsl(var(--brand))]'
           : dark
-            ? 'border-white/15 text-white'
-            : 'border-line text-foreground',
+            ? 'border-white/15 bg-white/[0.04] text-white'
+            : 'border-line bg-surface text-foreground',
       )}
     >
       <span
         className={cn(
-          'flex h-9 w-9 shrink-0 items-center justify-center border transition-colors',
+          'flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border transition-colors',
           selected
             ? 'border-brand bg-brand text-brand-foreground'
             : dark
-              ? 'border-white/25 text-white/60 group-hover:border-brand group-hover:text-brand'
+              ? 'border-white/25 bg-white/[0.04] text-white/60 group-hover:border-brand group-hover:text-brand'
               : 'border-line text-muted-foreground group-hover:border-brand group-hover:text-brand-text',
         )}
       >
@@ -422,7 +424,7 @@ function ChoiceCard({
       </span>
       <span
         className={cn(
-          'absolute right-0 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center border transition-colors',
+          'absolute right-4 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border transition-colors',
           selected
             ? 'border-brand bg-brand text-brand-foreground'
             : dark
