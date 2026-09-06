@@ -15,6 +15,8 @@ export const en = {
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     language: 'Language',
+    next: 'Next',
+    top: 'Back to top',
   },
   hero: {
     badge: 'Product engineering for founders',
@@ -290,10 +292,12 @@ export const en = {
     title: 'Delivering worldwide, from Germany and Pakistan.',
     description:
       'Clients across Europe, North America, the Middle East, Africa and Asia, served from Fellbach and Islamabad.',
+    legend: 'Offices and client locations',
   },
   numbers: {
     kicker: 'By the numbers',
     title: 'Proof, not promises',
+    description: 'Figures from projects we have delivered.',
     items: [
       { value: '150+', label: 'Projects delivered' },
       { value: '40+', label: 'Clients on four continents' },
