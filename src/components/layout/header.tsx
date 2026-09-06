@@ -51,12 +51,15 @@ export function Header({ dict }: HeaderProps) {
     <motion.header
       initial={false}
       className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500',
+        'fixed inset-x-0 top-0 border-b transition-[background-color,border-color,backdrop-filter] duration-500',
+        // The header is the stacking context for the menu overlay it renders,
+        // so while the menu is open it has to sit above the cookie banner
+        // (z-60) or the banner covers the menu's CTAs.
         mobileMenuOpen
-          ? 'border-line bg-background'
+          ? 'z-[70] border-line bg-background'
           : scrolled
-            ? 'border-line bg-background/85 backdrop-blur-xl'
-            : 'border-transparent bg-transparent',
+            ? 'z-50 border-line bg-background/85 backdrop-blur-xl'
+            : 'z-50 border-transparent bg-transparent',
       )}
     >
       <div className='fw-container flex h-[4.25rem] items-center justify-between'>
@@ -101,7 +104,9 @@ export function Header({ dict }: HeaderProps) {
           />
           <Link
             href={paths.contact}
-            className='fw-btn fw-btn-primary hidden h-10 items-center px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] sm:inline-flex'
+            // Shown at every width so phones get a CTA beside the hamburger,
+            // not only the icon.
+            className='fw-btn fw-btn-primary inline-flex h-10 items-center px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] sm:px-5'
           >
             {dict.nav.contact}
           </Link>

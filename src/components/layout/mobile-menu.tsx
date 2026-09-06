@@ -6,11 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { Flag } from '@/components/brand/flags';
-
 import { cn } from '@/lib/utils';
 
-import { siteConfig } from '@/config/site';
 import { primaryNav } from '@/constants/navigation';
 import { isSectionLink, paths } from '@/constants/paths';
 import type { Dictionary } from '@/i18n/dictionaries/en';
@@ -20,9 +17,19 @@ const ease = [0.16, 1, 0.3, 1] as const;
 interface MobileMenuProps {
   dict: Dictionary;
   onOpenChange?: (open: boolean) => void;
+  /**
+   * Wrapper classes. The header hides the trigger on desktop, where the
+   * full nav is shown; the contact page, which has no other nav, passes an
+   * empty string so the hamburger is the menu at every width.
+   */
+  className?: string;
 }
 
-export function MobileMenu({ dict, onOpenChange }: MobileMenuProps) {
+export function MobileMenu({
+  dict,
+  onOpenChange,
+  className = 'md:hidden',
+}: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -48,7 +55,7 @@ export function MobileMenu({ dict, onOpenChange }: MobileMenuProps) {
   ];
 
   return (
-    <div className='md:hidden'>
+    <div className={className}>
       <button
         type='button'
         onClick={() => setOpen((isOpen) => !isOpen)}
@@ -67,14 +74,18 @@ export function MobileMenu({ dict, onOpenChange }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className='fixed inset-0 z-[60] bg-background/98 backdrop-blur-xl'
+            // Solid, not `bg-background/98`: the colour is defined as
+            // hsl(var(--background)) with no alpha slot, so Tailwind dropped
+            // the modifier and only the blur remained, showing the page
+            // through the menu.
+            className='fixed inset-0 z-[65] flex h-[100dvh] flex-col bg-background'
             data-lenis-prevent
           >
-            <div className='absolute inset-x-0 top-0 h-[4.25rem] border-b border-line/10 bg-background' />
+            <div className='h-[4.25rem] shrink-0 border-b border-line/10' />
 
             <nav
               aria-label='Mobile'
-              className='fw-container relative flex min-h-[100svh] flex-1 flex-col overflow-y-auto pt-[5.25rem] pb-6'
+              className='fw-container flex min-h-0 flex-1 flex-col overflow-y-auto pb-4 pt-4'
             >
               {links.map((item, index) => {
                 const active =
@@ -130,7 +141,7 @@ export function MobileMenu({ dict, onOpenChange }: MobileMenuProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease, delay: 0.4 }}
-              className='fw-container border-t border-line/10 py-6'
+              className='fw-container shrink-0 border-t border-line/10 py-5'
             >
               <Link
                 href={paths.contact}
@@ -138,20 +149,6 @@ export function MobileMenu({ dict, onOpenChange }: MobileMenuProps) {
               >
                 {dict.nav.cta}
               </Link>
-              <div className='mt-6 grid grid-cols-2 gap-4 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground'>
-                {siteConfig.locations.map((location) => (
-                  <div key={location.id}>
-                    <p className='flex items-center gap-2 text-foreground'>
-                      <Flag
-                        countryCode={location.countryCode}
-                        className='h-3 w-[18px]'
-                      />
-                      {location.city}
-                    </p>
-                    <p className='mt-1'>{location.country}</p>
-                  </div>
-                ))}
-              </div>
             </motion.div>
           </motion.div>
         )}

@@ -12,6 +12,7 @@ export const de: Dictionary = {
     home: 'Start',
     careers: 'Karriere',
     cta: 'Projekt starten',
+    bookCall: 'Gespräch buchen',
     menuOpen: 'Menü öffnen',
     menuClose: 'Menü schließen',
     language: 'Sprache',

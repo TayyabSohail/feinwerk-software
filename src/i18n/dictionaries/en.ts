@@ -11,6 +11,7 @@ export const en = {
     home: 'Home',
     careers: 'Careers',
     cta: 'Start a project',
+    bookCall: 'Book a call',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     language: 'Language',
