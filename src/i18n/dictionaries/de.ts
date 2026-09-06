@@ -318,44 +318,44 @@ export const de: Dictionary = {
   howItWorks: {
     kicker: 'Zusammenarbeit',
     title: 'So läuft ein Projekt ab',
-    description:
-      'Sie kennen Kosten und Termin, bevor es Code gibt. Sie sehen lauffähige Software während des Projekts, nicht erst am Ende. Und Sie behalten ein Team, das auch nach dem Livegang noch ans Telefon geht.',
     stepLabel: 'Schritt',
     cta: 'Mit einem Gespräch starten',
-    note: 'Ein kurzes Gespräch zum Start. Schriftliches Angebot und Launch-Termin innerhalb einer Woche. Ein Team, das nach dem Livegang erreichbar bleibt.',
     steps: [
       {
         title: 'Kosten kennen, bevor Code entsteht',
-        when: 'Vor der Umsetzung',
+        when: 'Kick-off',
         summary:
-          'Wir beginnen mit einem kurzen Gespräch darüber, was das Produkt leistet, wer darauf angewiesen ist und wann es live sein muss. Innerhalb einer Woche erhalten Sie einen schriftlichen Leistungsumfang, einen Preis als Standardpaket oder individuelles Angebot und einen Launch-Termin, an dem wir uns messen lassen.',
-        outputs: [
-          'Schriftlicher Leistungsumfang',
-          'Paketpreis oder individuelles Angebot',
-          'Launch-Termin, zu dem wir stehen',
-        ],
+          'Ein kurzes Gespräch darüber, was das Produkt leistet und wann es live sein muss. Innerhalb einer Woche halten Sie Leistungsumfang, Preis und Launch-Termin in der Hand.',
+      },
+      {
+        title: 'Den ersten Release schärfen',
+        when: 'Umfang',
+        summary:
+          'Wir machen aus dem Briefing das kleinste Produkt, das ab dem ersten Tag nützlich ist, und klären die Entscheidungen, die den Bau sonst bremsen.',
+      },
+      {
+        title: 'Sehen, bevor gebaut wird',
+        when: 'Design',
+        summary:
+          'Klickbare Screens der wichtigsten Abläufe, gemeinsam geprüft, bevor Produktionscode entsteht. Einen Screen jetzt zu ändern kostet eine Stunde, keinen Sprint.',
       },
       {
         title: 'Nutzen, während es entsteht',
-        when: 'Während der Umsetzung',
+        when: 'Umsetzung',
         summary:
-          'Fortschritt zeigen wir in Software, nicht in Folien. Am Ende jedes Sprints erhalten Sie einen Staging-Link mit dem neuesten Stand und eine kurze Zusammenfassung: was fertig ist und was als Nächstes ansteht. Ein früher Richtungswechsel kostet nichts.',
-        outputs: [
-          'Sprint-Durchgang',
-          'Dauerhafter Staging-Link',
-          'Schriftlicher Fortschrittsbericht',
-        ],
+          'Fortschritt zeigen wir in Software, nicht in Folien. Jeder Sprint endet mit einem Staging-Link und einer kurzen Zusammenfassung, was als Nächstes kommt.',
+      },
+      {
+        title: 'Sicher live gehen',
+        when: 'Launch',
+        summary:
+          'Wir testen die Abläufe, auf die es ankommt, richten Monitoring ein und proben die Übergabe, damit der Livegang ein kontrollierter Schritt ist.',
       },
       {
         title: 'Das Eigentum bleibt bei Ihnen',
-        when: 'Nach dem Livegang',
+        when: 'Betrieb',
         summary:
-          'Wir veröffentlichen, behalten den Produktivbetrieb im Blick und reparieren, was bricht. Danach entscheiden Sie: Wartung über uns im Retainer, oder eigener Betrieb mit vollständig übergebenem Quellcode, allen Zugängen und der Dokumentation.',
-        outputs: [
-          'Live-Monitoring',
-          'Laufende Fehlerbehebung',
-          'Vollständige Übergabe von Code und Zugängen',
-        ],
+          'Wir behalten den Produktivbetrieb im Blick und reparieren, was bricht. Bleiben Sie im Retainer, oder übernehmen Sie Code, Zugänge und Dokumentation vollständig.',
       },
     ],
   },
@@ -702,7 +702,8 @@ export const de: Dictionary = {
   },
   faq: {
     kicker: 'Unsere FAQs',
-    title: 'Transparente Antworten von Gründern mit mehr als 10 gebauten und verkauften Start-ups',
+    title:
+      'Transparente Antworten von Gründern mit mehr als 10 gebauten und verkauften Start-ups',
     description:
       'Klare Antworten darauf, wie wir Produkte planen, bauen, launchen und weiter betreuen.',
     accent: [0],

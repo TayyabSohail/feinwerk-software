@@ -312,44 +312,44 @@ export const en = {
   howItWorks: {
     kicker: 'Working with us',
     title: 'How a project runs',
-    description:
-      'You know the cost and the date before any code exists. You see working software throughout, not at the end. You keep a team that still picks up the phone once it is live.',
     stepLabel: 'Step',
     cta: 'Start with a call',
-    note: 'One short call to start. A written quote and a launch date within a week. A team that stays reachable once the product is live.',
     steps: [
       {
         title: 'Know the cost before the code',
-        when: 'Before we build',
+        when: 'Kick-off',
         summary:
-          'We start with a short conversation about what the product does, who depends on it and the date it has to be live. Within a week you receive a written scope, a price as a standard package or a custom quote, and a launch date we will hold ourselves to.',
-        outputs: [
-          'Written scope',
-          'Package price or custom quote',
-          'Launch date we stand behind',
-        ],
+          'A short call about what the product does and when it has to be live. Within a week you hold a written scope, a price and a launch date.',
+      },
+      {
+        title: 'Shape the first release',
+        when: 'Scope',
+        summary:
+          'We cut the brief down to the smallest product that is useful on day one and settle the decisions that would stall the build later.',
+      },
+      {
+        title: 'See it before it is built',
+        when: 'Design',
+        summary:
+          'Clickable screens of the main flows, reviewed together before any production code exists. Changing a screen now costs an hour, not a sprint.',
       },
       {
         title: 'Use it while it is being built',
-        when: 'During the build',
+        when: 'Build',
         summary:
-          'Progress is shown in software, not slides. At the end of each sprint you get a staging link with the newest work and a short summary of what was finished and what is planned next. Changing direction early costs nothing.',
-        outputs: [
-          'Sprint walkthrough',
-          'Always-on staging link',
-          'Written progress summary',
-        ],
+          'Progress is shown in software, not slides. Every sprint ends with a staging link and a short written summary of what is next.',
+      },
+      {
+        title: 'Launch with confidence',
+        when: 'Launch',
+        summary:
+          'We test the paths that matter, set up monitoring and rehearse the handover, so going live is a controlled moment.',
       },
       {
         title: 'Ownership stays with you',
-        when: 'After it goes live',
+        when: 'Live',
         summary:
-          'We release it, keep an eye on it in production and repair anything that breaks. From there it is your call: keep us on retainer for maintenance, or run it yourself with the source code, the accounts and the documentation handed over in full.',
-        outputs: [
-          'Live monitoring',
-          'Ongoing fixes',
-          'Full handover of code and access',
-        ],
+          'We watch production and fix what breaks. Keep us on retainer, or take over the code, the accounts and the documentation in full.',
       },
     ],
   },
@@ -692,7 +692,8 @@ export const en = {
   },
   faq: {
     kicker: 'Our FAQs',
-    title: 'Transparent answers from founders who have built and sold 10+ startups',
+    title:
+      'Transparent answers from founders who have built and sold 10+ startups',
     description:
       'Straight answers about how we scope, build, launch and support products.',
     accent: [2],

@@ -1,7 +1,11 @@
+'use client';
+
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 import { SectionHeading } from '@/components/common/section-heading';
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
+import { Reveal, Stagger } from '@/components/motion/reveal';
 
 import { cn } from '@/lib/utils';
 
@@ -13,14 +17,15 @@ interface HowItWorksProps {
   className?: string;
 }
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 /**
- * Three moments on the calendar, side by side on the same hairline grid as
- * the rest of the page: when it happens in big type, what happens, and what
- * you hold at the end of it. No cards, no numbering, about one screen tall.
+ * Six step cards in a responsive grid. Each card fades up in turn and a
+ * brand hairline draws across its top edge as it lands.
  */
 export function HowItWorks({ dict, className }: HowItWorksProps) {
   const t = dict.howItWorks;
-  const last = t.steps.length - 1;
+  const reduce = Boolean(useReducedMotion());
 
   return (
     <section
@@ -31,50 +36,62 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
         <SectionHeading kicker={t.kicker} title={t.title} />
 
         <Stagger
-          stagger={0.15}
-          className='mt-14 grid border-t lg:mt-16 lg:grid-cols-3'
+          stagger={0.12}
+          className='mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-5'
         >
           {t.steps.map((step, index) => (
-            <StaggerItem
+            <motion.article
               key={step.title}
-              className={cn(
-                'flex flex-col py-8 lg:py-10',
-                index > 0 && 'border-t lg:border-l lg:border-t-0 lg:pl-10',
-                index < last && 'lg:pr-10',
-              )}
+              variants={{
+                hidden: reduce ? {} : { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.7, ease },
+                },
+              }}
+              className='fw-card fw-grid-surface group relative flex flex-col p-6 transition-shadow duration-300 hover:shadow-glow lg:p-7'
             >
-              <p className='fw-display text-4xl text-ink lg:text-5xl'>
-                {step.when}
+              <motion.span
+                aria-hidden='true'
+                variants={{
+                  hidden: reduce ? {} : { scaleX: 0 },
+                  visible: {
+                    scaleX: 1,
+                    transition: { duration: 0.7, ease: 'linear', delay: 0.1 },
+                  },
+                }}
+                className='absolute inset-x-0 top-0 z-[4] h-px origin-left bg-brand'
+              />
+              <span
+                aria-hidden='true'
+                className='fw-display pointer-events-none absolute -right-1 -top-2 select-none text-[5.5rem] leading-none text-brand/10 transition-colors duration-300 group-hover:text-brand/20 lg:text-[6rem]'
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <p className='font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-text'>
+                {t.stepLabel} {String(index + 1).padStart(2, '0')}
+                <span className='mx-2 text-muted-foreground/50'>/</span>
+                <span className='text-muted-foreground'>{step.when}</span>
               </p>
-              <h3 className='fw-display mt-5 text-2xl text-ink'>
+              <h3 className='fw-display mt-8 max-w-[15ch] text-2xl text-foreground lg:mt-10'>
                 {step.title}
               </h3>
-              <p className='mb-8 mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base'>
+              <p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
                 {step.summary}
               </p>
-
-              <ul className='mt-auto space-y-2.5 border-t pt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink'>
-                {step.outputs.map((output) => (
-                  <li key={output} className='flex items-center gap-3'>
-                    <span
-                      aria-hidden='true'
-                      className='h-1.5 w-1.5 shrink-0 bg-brand'
-                    />
-                    {output}
-                  </li>
-                ))}
-              </ul>
-            </StaggerItem>
+            </motion.article>
           ))}
         </Stagger>
 
-        <Reveal className='border-t pt-8'>
+        <Reveal className='mt-10 border-t pt-8 lg:mt-14'>
           <Link
             href={paths.contact}
-            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em]'
+            className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] shadow-[0_16px_30px_-22px_hsl(var(--ink))]'
           >
             {t.cta}
-            <span className='h-2.5 w-2.5 bg-brand' />
+            <ArrowUpRight className='h-4 w-4' />
           </Link>
         </Reveal>
       </div>
