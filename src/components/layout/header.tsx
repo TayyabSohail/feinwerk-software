@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { Logo } from '@/components/brand/logo';
-import { isBareRoute } from '@/components/layout/bare-route';
 import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { MobileMenu } from '@/components/layout/mobile-menu';
 
@@ -35,17 +34,12 @@ export function Header({ dict }: HeaderProps) {
     setScrolled(latest > 12);
   });
 
-  // The contact route renders its own minimal chrome.
-  const bare = isBareRoute(pathname);
-
   // Home only matches exactly, so it doesn't light up on every route.
   // Section links such as /about#how-it-works never read as the current page.
   const isActive = (href: string) =>
     href === paths.home
       ? pathname === href
       : !isSectionLink(href) && pathname.startsWith(href);
-
-  if (bare) return null;
 
   return (
     <motion.header
@@ -102,14 +96,17 @@ export function Header({ dict }: HeaderProps) {
             label={dict.nav.language}
             className='hidden sm:inline-flex'
           />
-          <Link
-            href={paths.contact}
-            // Shown at every width so phones get a CTA beside the hamburger,
-            // not only the icon.
-            className='fw-btn fw-btn-primary inline-flex h-10 items-center px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] sm:px-5'
-          >
-            {dict.nav.contact}
-          </Link>
+          {/* Shown at every width so phones get a CTA beside the hamburger,
+              not only the icon. Dropped on the contact page itself, where it
+              would only point at the form already on screen. */}
+          {!isActive(paths.contact) && (
+            <Link
+              href={paths.contact}
+              className='fw-btn fw-btn-primary inline-flex h-10 items-center px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] sm:px-5'
+            >
+              {dict.nav.contact}
+            </Link>
+          )}
           <MobileMenu dict={dict} onOpenChange={setMobileMenuOpen} />
         </div>
       </div>

@@ -7,7 +7,6 @@ import './globals.css';
 import { Cursor } from '@/components/effects/cursor';
 import { SpotlightEffect } from '@/components/effects/spotlight';
 import { Backdrop } from '@/components/layout/backdrop';
-import { BareRouteGate } from '@/components/layout/bare-route-gate';
 import { CookieConsent } from '@/components/layout/cookie-consent';
 import { DynamicFavicon } from '@/components/layout/dynamic-favicon';
 import { Footer } from '@/components/layout/footer';
@@ -66,9 +65,7 @@ export default async function RootLayout({
             <DynamicFavicon />
             <OrganizationJsonLd />
             <Toaster richColors position='bottom-center' />
-            <BareRouteGate>
-              <Preloader />
-            </BareRouteGate>
+            <Preloader />
             <ScrollProgress />
             <Backdrop />
             <SpotlightEffect />
@@ -77,9 +74,7 @@ export default async function RootLayout({
             <main id='main' className='relative'>
               {children}
             </main>
-            <BareRouteGate>
-              <Footer dict={dict} />
-            </BareRouteGate>
+            <Footer dict={dict} />
             <CookieConsent dict={dict} />
           </SmoothScroll>
         </AppProviders>

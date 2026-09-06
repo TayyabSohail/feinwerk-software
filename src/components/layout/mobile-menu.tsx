@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { LocaleSwitcher } from '@/components/layout/locale-switcher';
+
 import { cn } from '@/lib/utils';
 
 import { primaryNav } from '@/constants/navigation';
@@ -136,19 +138,19 @@ export function MobileMenu({
               })}
             </nav>
 
+            {/* The header only shows the language switcher from `sm` up, so
+                on phones this is the one place to change language. */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease, delay: 0.4 }}
-              className='fw-container shrink-0 border-t border-line/10 py-5'
+              className='fw-container flex shrink-0 items-center justify-between border-t border-line/10 py-5 sm:hidden'
             >
-              <Link
-                href={paths.contact}
-                className='fw-btn fw-btn-primary flex h-12 w-full items-center justify-center font-mono text-[11px] font-semibold uppercase tracking-[0.2em]'
-              >
-                {dict.nav.cta}
-              </Link>
+              <span className='font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground'>
+                {dict.nav.language}
+              </span>
+              <LocaleSwitcher current={dict.locale} label={dict.nav.language} />
             </motion.div>
           </motion.div>
         )}

@@ -1,6 +1,6 @@
-import { CalendarDays } from 'lucide-react';
 import Link from 'next/link';
 
+import { BookCallButton } from '@/components/contact/book-call-button';
 import { Reveal } from '@/components/motion/reveal';
 import { TextReveal } from '@/components/motion/text-reveal';
 
@@ -52,16 +52,13 @@ export function CtaBanner({ dict, title, accentWords, body }: CtaBannerProps) {
               {t.button}
               <span className='h-2.5 w-2.5 bg-white' />
             </Link>
-            {siteConfig.calLink ? (
-              <a
-                href={siteConfig.calLink}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='inline-flex h-14 items-center gap-2 border border-white/25 px-5 font-mono text-[11px] uppercase tracking-[0.18em] text-white transition-colors hover:border-brand'
+            {siteConfig.calHandle ? (
+              <BookCallButton
+                calHandle={siteConfig.calHandle}
+                className='h-14 border border-white/25 px-5 font-mono text-[11px] uppercase tracking-[0.18em] text-white transition-colors hover:border-brand'
               >
-                <CalendarDays className='h-4 w-4' />
                 {dict.contact.book}
-              </a>
+              </BookCallButton>
             ) : null}
           </Reveal>
         </div>

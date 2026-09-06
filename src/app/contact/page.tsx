@@ -21,10 +21,9 @@ interface ContactPageProps {
 /**
  * Deliberately the quietest page on the site.
  *
- * No hero, no FAQ, no locations, no CTA banner, and (via the route's own
- * layout) no site header or footer. Someone who reaches this page has already
- * been sold; everything else is now in the way. What remains is the form, and
- * the calendar for people who would rather just talk.
+ * No hero, no FAQ, no locations, no CTA banner. Someone who reaches this
+ * page has already been sold; everything else is now in the way. What remains
+ * is the form, and the calendar for people who would rather just talk.
  */
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const { service } = await searchParams;
@@ -40,7 +39,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         ]}
       />
 
-      <section className='fw-container max-w-7xl pb-16 pt-10 sm:pt-16'>
+      <section className='fw-container max-w-7xl pb-16 pt-28 sm:pt-44 lg:pb-24 lg:pt-52'>
         <ContactChannels
           dict={dict}
           defaultService={service}
