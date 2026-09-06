@@ -101,7 +101,7 @@ export function Header({ dict }: HeaderProps) {
           />
           <Link
             href={paths.contact}
-            className='fw-btn fw-btn-ink hidden h-10 items-center px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] sm:inline-flex'
+            className='fw-btn fw-btn-primary hidden h-10 items-center px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] sm:inline-flex'
           >
             {dict.nav.contact}
           </Link>

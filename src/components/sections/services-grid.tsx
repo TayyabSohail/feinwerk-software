@@ -152,7 +152,7 @@ function CapabilityCard({
             );
           })}
         </ul>
-        <span className='fw-btn fw-btn-ink mt-5 inline-flex h-11 w-full items-center justify-center gap-2 px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 group-hover:bg-brand group-hover:text-white'>
+        <span className='fw-btn fw-btn-primary mt-5 inline-flex h-11 w-full items-center justify-center gap-2 px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em]'>
           {explore}
           <ArrowUpRight className='h-4 w-4' />
         </span>

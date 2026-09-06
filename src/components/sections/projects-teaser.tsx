@@ -60,7 +60,7 @@ export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
               {t.body}
             </p>
           </Reveal>
-          <Reveal delay={0.3} className='mt-9'>
+          <Reveal delay={0.3} className='mt-9 max-sm:flex max-sm:justify-center'>
             <Link
               href={paths.work}
               className='fw-btn fw-btn-primary inline-flex h-16 items-center gap-3 px-8 font-mono text-xs font-semibold uppercase tracking-[0.22em] shadow-[0_16px_30px_-18px_hsl(var(--brand-strong))]'
