@@ -78,18 +78,22 @@ export const siteConfig = {
   /** The bare handle, for the inline embed. Null when not configured. */
   calHandle,
   nav: [
+    { label: 'Home', href: paths.home },
     { label: 'Services', href: paths.services },
     { label: 'Projects', href: paths.work },
     { label: 'Pricing', href: paths.pricing },
     { label: 'About', href: paths.about },
+    { label: 'Careers', href: paths.careers },
     { label: 'Contact', href: paths.contact },
   ],
   footerNav: {
     company: [
+      { label: 'Home', href: paths.home },
       { label: 'Services', href: paths.services },
       { label: 'Projects', href: paths.work },
       { label: 'Pricing', href: paths.pricing },
       { label: 'About', href: paths.about },
+      { label: 'Careers', href: paths.careers },
       { label: 'Contact', href: paths.contact },
     ],
     legal: [

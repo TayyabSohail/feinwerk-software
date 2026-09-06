@@ -9,7 +9,8 @@ export interface NavItem {
 /**
  * The primary links in the order the header shows them. The mobile menu and
  * the footer's Company column build on this same list, so the three never
- * drift apart.
+ * drift apart. Home stays outside this list because it is handled explicitly
+ * by each surface to preserve its exact-route active state.
  */
 export function primaryNav(dict: Dictionary): NavItem[] {
   return [
@@ -17,5 +18,6 @@ export function primaryNav(dict: Dictionary): NavItem[] {
     { label: dict.nav.work, href: paths.work },
     { label: dict.nav.about, href: paths.about },
     { label: dict.nav.pricing, href: paths.pricing },
+    { label: dict.nav.careers, href: paths.careers },
   ];
 }
