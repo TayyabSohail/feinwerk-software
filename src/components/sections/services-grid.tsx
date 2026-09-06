@@ -132,7 +132,7 @@ function CapabilityCard({
         ))}
       </ul>
 
-      <div className='mt-auto flex items-center justify-between gap-4 pt-7'>
+      <div className='mt-auto pt-7'>
         <ul className='flex items-center gap-1.5' aria-label='Core tools'>
           {service.stack.slice(0, 5).map((tool) => {
             const { icon: ToolIcon, color } = getTechMeta(tool);
@@ -152,9 +152,9 @@ function CapabilityCard({
             );
           })}
         </ul>
-        <span className='flex h-9 w-9 shrink-0 items-center justify-center border border-ink/15 text-ink/50 transition-all duration-300 group-hover:border-brand group-hover:bg-brand group-hover:text-white'>
+        <span className='fw-btn fw-btn-ink mt-5 inline-flex h-11 w-full items-center justify-center gap-2 px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 group-hover:bg-brand group-hover:text-white'>
+          {explore}
           <ArrowUpRight className='h-4 w-4' />
-          <span className='sr-only'>{explore}</span>
         </span>
       </div>
     </Link>

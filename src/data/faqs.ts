@@ -15,7 +15,7 @@ export const faqs: Faq[] = [
   {
     question: 'How does you pricing work?',
     answer:
-      'Three fixed-price packages cover consulting, an MVP and a full product. Everything else is a custom solution: send a brief and you have a written scope and a fixed quote within five working days. Ongoing product work, maintenance and dedicated teams run on a monthly retainer. We quote in EUR or USD and invoice from Germany or Pakistan, whichever suits your accounting.',
+      'Six distinct options cover strategy, maintenance, an MVP, a full product and dedicated product work. Everything else is a custom solution: send a brief and you have a written scope and a fixed quote within five working days. We quote in EUR or USD and invoice from Germany or Pakistan, whichever suits your accounting.',
   },
   {
     question: 'Do you maintain what you build after launch?',
@@ -94,7 +94,7 @@ const faqsDe: Faq[] = [
   {
     question: 'Wie kalkulieren Sie Ihre Preise?',
     answer:
-      'Drei Festpreispakete decken Beratung, ein MVP und ein vollständiges Produkt ab. Alles Weitere ist eine Individuallösung: Senden Sie uns ein kurzes Briefing und Sie erhalten innerhalb von fünf Werktagen einen schriftlichen Leistungsumfang und ein verbindliches Angebot. Laufende Produktarbeit, Wartung und dedizierte Teams rechnen wir über eine monatliche Pauschale ab. Wir kalkulieren in EUR oder USD und stellen aus Deutschland oder Pakistan in Rechnung, je nachdem, was Ihrer Buchhaltung entgegenkommt.',
+      'Sechs unterschiedliche Optionen decken Strategie, Wartung, MVP, vollständige Produkte und dedizierte Produktarbeit ab. Alles Weitere ist eine Individuallösung: Senden Sie uns ein kurzes Briefing und Sie erhalten innerhalb von fünf Werktagen einen schriftlichen Leistungsumfang und ein verbindliches Angebot. Wir kalkulieren in EUR oder USD und stellen aus Deutschland oder Pakistan in Rechnung, je nachdem, was Ihrer Buchhaltung entgegenkommt.',
   },
   {
     question: 'Warten Sie nach dem Launch, was Sie gebaut haben?',

@@ -27,7 +27,7 @@ export default async function HomePage() {
       <GlobalReach dict={dict} />
       <HowItWorks dict={dict} />
       <Testimonials dict={dict} />
-      <Pricing dict={dict} withLink />
+      <Pricing dict={dict} withLink compact />
       <FaqSection
         items={faqs}
         kicker={dict.faq.kicker}

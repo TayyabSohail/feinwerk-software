@@ -84,27 +84,30 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
           </div>
         </div>
 
-        <Reveal className='fw-card fw-spot mt-14 grid overflow-hidden lg:grid-cols-[1fr_0.75fr]'>
+        <Reveal className='fw-card fw-spot mt-10 grid overflow-hidden sm:mt-14 lg:grid-cols-[1fr_0.75fr]'>
           <div
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             className='contents'
           >
             {/* Quote */}
-            <div className='relative z-[2] flex flex-col p-8 sm:p-10 lg:p-12'>
-              <Quote className='h-7 w-7 text-brand' />
+            <div className='relative z-[2] flex flex-col bg-ink p-5 text-white sm:p-10 lg:p-12'>
+              <Quote className='h-8 w-8 text-brand-2' />
               {/* Sized to the tallest quote so the nav row below never moves */}
               <div className='relative mt-6 grid'>
                 {sizerQuotes.map((q, i) => (
                   <div
                     key={i}
                     aria-hidden
-                    className='invisible col-start-1 row-start-1'
+                    className={cn(
+                      'invisible col-start-1 row-start-1',
+                      i !== index && 'hidden sm:block',
+                    )}
                   >
-                    <p className='fw-display text-2xl leading-[1.25] sm:text-3xl'>
+                    <p className='fw-display text-xl leading-[1.3] sm:text-3xl'>
                       &ldquo;{q.quote}&rdquo;
                     </p>
-                    <footer className='mt-8 flex flex-wrap items-center justify-between gap-4'>
+                    <footer className='mt-6 flex flex-wrap items-center justify-between gap-4 sm:mt-8'>
                       <div>
                         <p className='font-semibold'>{q.author}</p>
                         <p className='text-sm'>{q.company}</p>
@@ -129,13 +132,13 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                     }}
                     className='absolute inset-0 cursor-grab active:cursor-grabbing'
                   >
-                    <p className='fw-display text-2xl leading-[1.25] text-ink sm:text-3xl'>
+                    <p className='fw-display text-xl leading-[1.3] text-white sm:text-3xl'>
                       &ldquo;{item.quote}&rdquo;
                     </p>
-                    <footer className='mt-8 flex flex-wrap items-center justify-between gap-4'>
+                    <footer className='mt-6 flex flex-wrap items-center justify-between gap-4 sm:mt-8'>
                       <div>
-                        <p className='font-semibold text-ink'>{item.author}</p>
-                        <p className='text-sm text-muted-foreground'>
+                        <p className='font-semibold text-white'>{item.author}</p>
+                        <p className='text-sm text-white/55'>
                           {item.company}
                         </p>
                       </div>
@@ -144,7 +147,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                 </AnimatePresence>
               </div>
 
-              <div className='mt-10 flex items-center justify-between border-t pt-6'>
+              <div className='mt-6 flex items-center justify-between border-t border-white/15 pt-5 sm:mt-10 sm:pt-6'>
                 <div className='flex gap-1.5' role='tablist' aria-label={t.title}>
                   {testimonials.map((_, dot) => (
                     <button
@@ -162,7 +165,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                         'h-[3px] transition-all duration-500',
                         dot === index
                           ? 'w-8 bg-brand'
-                          : 'w-3 bg-ink/15 hover:bg-ink/40',
+                          : 'w-3 bg-white/25 hover:bg-white/50',
                       )}
                     />
                   ))}
@@ -172,7 +175,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                     type='button'
                     onClick={() => go(-1)}
                     aria-label={t.prev}
-                    className='flex h-11 w-11 items-center justify-center border border-ink/20 text-ink transition-colors hover:border-brand hover:text-brand-text'
+                    className='flex h-11 w-11 items-center justify-center border border-white/20 text-white transition-colors hover:border-brand hover:text-brand-2'
                   >
                     <ArrowLeft className='h-4 w-4' />
                   </button>

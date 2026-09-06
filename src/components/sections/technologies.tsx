@@ -28,12 +28,35 @@ const TOOLS = [
   'Vercel',
   'Docker',
   'Kubernetes',
+  'Terraform',
+  'Stripe',
+  'WebSockets',
+  'Directus',
+  'OpenRouter',
+  'PostHog',
 ];
 
 /** Tools per layer, in the same order as `dict.technologies.layers`. */
 const LAYERS = [
-  ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'ShadCN', 'Framer Motion'],
-  ['React Native', 'Expo', 'Flutter', 'Swift', 'Kotlin', 'Firebase'],
+  [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Tailwind CSS',
+    'ShadCN',
+    'Framer Motion',
+    'TanStack',
+  ],
+  [
+    'React Native',
+    'Expo',
+    'Flutter',
+    'Swift',
+    'Kotlin',
+    'Firebase',
+    'Capacitor',
+    'iOS',
+  ],
   [
     'Python',
     'FastAPI',
@@ -43,6 +66,10 @@ const LAYERS = [
     'Supabase',
     'Redis',
     'Pandas',
+    'Zod',
+    'Stripe',
+    'WebSockets',
+    'Resend',
   ],
   [
     'OpenAI',
@@ -53,6 +80,9 @@ const LAYERS = [
     'PyTorch',
     'Ollama',
     'Pinecone',
+    'OpenRouter',
+    'DataForSEO',
+    'Google Maps API',
   ],
   [
     'n8n',
@@ -63,8 +93,21 @@ const LAYERS = [
     'Apache Airflow',
     'Puppeteer',
     'Twilio',
+    'pg_cron',
+    'PostHog',
   ],
-  ['AWS', 'Vercel', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD'],
+  [
+    'AWS',
+    'Vercel',
+    'Docker',
+    'Kubernetes',
+    'Terraform',
+    'CI/CD',
+    'AWS EC2',
+    'AWS Lambda',
+    'Google Cloud',
+    'Directus',
+  ],
 ];
 
 /**
