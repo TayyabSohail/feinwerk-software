@@ -8,10 +8,7 @@ import { cn } from '@/lib/utils';
 
 import { paths } from '@/constants/paths';
 import { INDUSTRY_IDS, industryProjects } from '@/data/industries';
-import {
-  getProjectBySlugLocalised,
-  type Project,
-} from '@/data/projects';
+import { getProjectBySlugLocalised, type Project } from '@/data/projects';
 import type { Dictionary } from '@/i18n/dictionaries/en';
 
 interface IndustriesProps {
@@ -26,7 +23,7 @@ export function Industries({ dict }: IndustriesProps) {
   const t = dict.industries;
 
   return (
-    <section className='fw-section fw-rule fw-band-stone'>
+    <section className='fw-section fw-rule fw-band-stone' data-rail={t.kicker}>
       <div className='fw-container'>
         <SectionHeading
           kicker={t.kicker}

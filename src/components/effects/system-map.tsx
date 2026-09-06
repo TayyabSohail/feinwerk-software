@@ -625,7 +625,7 @@ export function SystemMap({ copy, delay = 0.5, className }: SystemMapProps) {
         </svg>
       </div>
 
-      <p aria-hidden='true' className='fw-kicker mt-3 text-[10px]'>
+      <p aria-hidden='true' className='fw-kicker mt-3 text-[11px] sm:text-xs'>
         {copy.kicker}
       </p>
     </div>

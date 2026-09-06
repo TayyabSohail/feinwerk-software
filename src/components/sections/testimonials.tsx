@@ -68,6 +68,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
       role='tabpanel'
       aria-labelledby={`${sectionId}-title`}
       className={cn('fw-section fw-rule fw-band-white', className)}
+      data-rail={t.kicker}
     >
       <div className='fw-container'>
         <div>
@@ -84,7 +85,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
           </div>
         </div>
 
-        <Reveal className='fw-card fw-spot mt-10 grid overflow-hidden sm:mt-14 lg:grid-cols-[1fr_0.75fr]'>
+        <Reveal className='fw-card fw-spot mt-8 grid overflow-hidden sm:mt-14 lg:grid-cols-[1fr_0.75fr]'>
           <div
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
@@ -137,10 +138,10 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
                     </p>
                     <footer className='mt-6 flex flex-wrap items-center justify-between gap-4 sm:mt-8'>
                       <div>
-                        <p className='font-semibold text-white'>{item.author}</p>
-                        <p className='text-sm text-white/55'>
-                          {item.company}
+                        <p className='font-semibold text-white'>
+                          {item.author}
                         </p>
+                        <p className='text-sm text-white/55'>{item.company}</p>
                       </div>
                     </footer>
                   </motion.blockquote>
@@ -148,7 +149,11 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
               </div>
 
               <div className='mt-6 flex items-center justify-between border-t border-white/15 pt-5 sm:mt-10 sm:pt-6'>
-                <div className='flex gap-1.5' role='tablist' aria-label={t.title}>
+                <div
+                  className='flex gap-1.5'
+                  role='tablist'
+                  aria-label={t.title}
+                >
                   {testimonials.map((_, dot) => (
                     <button
                       key={dot}
@@ -193,7 +198,7 @@ export function Testimonials({ dict, className }: TestimonialsProps) {
 
             {/* Product on a laptop */}
             <div
-              className='fw-plate relative z-[2] flex min-h-[22rem] flex-col justify-center border-t p-8 lg:border-l lg:border-t-0'
+              className='fw-plate relative z-[2] flex flex-col justify-center border-t p-5 sm:min-h-[22rem] sm:p-8 lg:border-l lg:border-t-0'
               style={
                 {
                   '--plate-accent': `${project?.accent ?? '#10b981'}66`,

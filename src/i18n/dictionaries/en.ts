@@ -287,15 +287,13 @@ export const en = {
   },
   globalReach: {
     kicker: 'Offices',
-    title: 'Two offices, one working day.',
+    title: 'Delivering worldwide, from Germany and Pakistan.',
     description:
-      'Islamabad and Fellbach, near Stuttgart. Whenever you work, someone on the team is online.',
-    legend: 'Offices and client locations',
+      'Clients across Europe, North America, the Middle East, Africa and Asia, served from Fellbach and Islamabad.',
   },
   numbers: {
     kicker: 'By the numbers',
     title: 'Proof, not promises',
-    description: 'Figures from shipped work.',
     items: [
       { value: '150+', label: 'Projects delivered' },
       { value: '40+', label: 'Clients on four continents' },

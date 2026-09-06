@@ -116,7 +116,7 @@ const LAYERS = [
  */
 function cellClasses(index: number) {
   return cn(
-    'flex flex-col py-9',
+    'flex flex-col py-7 sm:py-9',
     index > 0 && 'border-t',
     // two columns
     index < 2 ? 'sm:border-t-0' : 'sm:border-t',
@@ -141,14 +141,14 @@ export function Technologies({ dict }: TechnologiesProps) {
   const t = dict.technologies;
 
   return (
-    <section className='fw-rule fw-band-stone'>
-      <div className='fw-container pt-14 text-center'>
+    <section className='fw-rule fw-band-stone' data-rail={t.kicker}>
+      <div className='fw-container pt-12 text-center sm:pt-14'>
         <Reveal>
           <p className='fw-kicker'>{t.kicker}</p>
         </Reveal>
       </div>
 
-      <div className='mt-10 border-b py-8'>
+      <div className='mt-6 border-b py-6 sm:mt-10 sm:py-8'>
         <Marquee duration={60}>
           {TOOLS.map((name) => {
             const { icon: Icon, color } = getTechMeta(name);
@@ -170,7 +170,7 @@ export function Technologies({ dict }: TechnologiesProps) {
         </Marquee>
       </div>
 
-      <div className='fw-container py-20 sm:py-28'>
+      <div className='fw-container py-14 sm:py-28'>
         <ScrollHighlight
           text={`${t.statement} ${t.statementMuted}`}
           accentWords={Array.from(
@@ -181,7 +181,7 @@ export function Technologies({ dict }: TechnologiesProps) {
         />
       </div>
 
-      <div className='fw-container pb-20 sm:pb-24'>
+      <div className='fw-container pb-14 sm:pb-24'>
         <Reveal>
           <p className='fw-kicker'>{t.stackLabel}</p>
         </Reveal>
@@ -192,7 +192,7 @@ export function Technologies({ dict }: TechnologiesProps) {
               <p className='mt-2 text-sm leading-relaxed text-muted-foreground'>
                 {layer.note}
               </p>
-              <ul className='mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t pt-6'>
+              <ul className='mt-4 flex flex-wrap gap-x-5 gap-y-2.5 border-t pt-4 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-3 sm:pt-6'>
                 {LAYERS[index].map((name) => {
                   const { icon: Icon, color } = getTechMeta(name);
                   return (

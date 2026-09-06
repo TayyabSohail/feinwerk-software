@@ -20,7 +20,7 @@ export function CtaBanner({ dict, title, accentWords, body }: CtaBannerProps) {
   const t = dict.cta;
 
   return (
-    <section className='fw-container pb-6 pt-10'>
+    <section className='fw-container pb-6 pt-10' data-rail={t.kicker}>
       <div className='fw-card fw-card-ink fw-grid-surface relative px-6 py-16 text-center sm:px-12 sm:py-20 lg:py-24'>
         <div
           aria-hidden='true'

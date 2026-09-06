@@ -18,7 +18,11 @@ export function ContactSection({ dict }: ContactSectionProps) {
   const t = dict.contact.home;
 
   return (
-    <section id='contact' className='fw-section fw-rule fw-band-stone'>
+    <section
+      id='contact'
+      data-rail={t.kicker}
+      className='fw-section fw-rule fw-band-stone'
+    >
       <div className='fw-container max-w-7xl'>
         <ContactChannels
           dict={dict}

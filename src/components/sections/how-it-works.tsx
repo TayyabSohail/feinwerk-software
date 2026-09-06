@@ -31,13 +31,14 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
     <section
       id='how-it-works'
       className={cn('fw-section fw-rule fw-band-stone', className)}
+      data-rail={t.kicker}
     >
       <div className='fw-container'>
         <SectionHeading kicker={t.kicker} title={t.title} />
 
         <Stagger
           stagger={0.12}
-          className='mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-5'
+          className='mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:mt-14 lg:grid-cols-3 lg:gap-5'
         >
           {t.steps.map((step, index) => (
             <motion.article
@@ -75,7 +76,7 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
                 <span className='mx-2 text-muted-foreground/50'>/</span>
                 <span className='text-muted-foreground'>{step.when}</span>
               </p>
-              <h3 className='fw-display mt-8 max-w-[15ch] text-2xl text-foreground lg:mt-10'>
+              <h3 className='fw-display mt-6 max-w-[15ch] text-2xl text-foreground sm:mt-8 lg:mt-10'>
                 {step.title}
               </h3>
               <p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
@@ -85,7 +86,7 @@ export function HowItWorks({ dict, className }: HowItWorksProps) {
           ))}
         </Stagger>
 
-        <Reveal className='mt-10 border-t pt-8 lg:mt-14'>
+        <Reveal className='mt-8 border-t pt-6 sm:mt-10 sm:pt-8 lg:mt-14'>
           <Link
             href={paths.contact}
             className='fw-btn fw-btn-ink inline-flex h-14 items-center gap-3 px-8 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] shadow-[0_16px_30px_-22px_hsl(var(--ink))]'

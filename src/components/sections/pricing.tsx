@@ -59,6 +59,7 @@ export function Pricing({
     <section
       id='pricing'
       className={cn('fw-section fw-rule fw-band-white', className)}
+      data-rail={t.kicker}
     >
       <div className='fw-container'>
         {withHeading && (
@@ -79,10 +80,7 @@ export function Pricing({
         )}
 
         {compact ? (
-          <Reveal
-            delay={0.1}
-            className={cn('mt-10', !withHeading && 'mt-0')}
-          >
+          <Reveal delay={0.1} className={cn('mt-10', !withHeading && 'mt-0')}>
             <Link
               href={paths.pricing}
               className='fw-card fw-card-ink fw-card-link group flex flex-col gap-6 rounded-xl p-5 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.6)] [clip-path:none] sm:flex-row sm:items-center sm:justify-between sm:gap-10 sm:p-8'
@@ -121,7 +119,9 @@ export function Pricing({
 
         {!compact && (
           <Reveal delay={0.15} className='mt-12 border-t pt-8'>
-            <p className='fw-kicker text-[10px]'>{t.includes.title}</p>
+            <p className='fw-kicker text-[11px] sm:text-xs'>
+              {t.includes.title}
+            </p>
             <dl className='mt-6 grid gap-px border bg-line sm:grid-cols-2 xl:grid-cols-4'>
               {t.includes.items.map((item) => (
                 <div key={item.title} className='bg-surface p-5 sm:p-6'>

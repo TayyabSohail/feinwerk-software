@@ -16,6 +16,8 @@ export const de: Dictionary = {
     menuOpen: 'Menü öffnen',
     menuClose: 'Menü schließen',
     language: 'Sprache',
+    next: 'Weiter',
+    top: 'Nach oben',
   },
   hero: {
     badge: 'Produktentwicklung für Gründer',
@@ -293,9 +295,9 @@ export const de: Dictionary = {
   },
   globalReach: {
     kicker: 'Standorte',
-    title: 'Zwei Büros, ein Arbeitstag.',
+    title: 'Weltweit im Einsatz, aus Deutschland und Pakistan.',
     description:
-      'Islamabad und Fellbach bei Stuttgart. Wann immer Sie arbeiten, ist jemand aus dem Team online.',
+      'Kunden in Europa, Nordamerika, dem Nahen Osten, Afrika und Asien, betreut aus Fellbach bei Stuttgart und Islamabad. Wann immer Sie arbeiten, ist jemand aus dem Team online.',
     legend: 'Standorte und Kundenorte',
   },
   numbers: {

@@ -102,7 +102,7 @@
 
   /* Bracketed mono kicker: [ SECTION ] */
   .fw-kicker {
-    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground;
+    @apply inline-flex items-center gap-2 font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-sm sm:tracking-[0.22em];
   }
   .fw-kicker::before {
     content: '[';
@@ -118,7 +118,7 @@
   }
 
   .fw-section {
-    @apply py-14 sm:py-20 lg:py-28;
+    @apply py-12 sm:py-20 lg:py-28;
   }
 
   /* Full-width hairline between sections. */

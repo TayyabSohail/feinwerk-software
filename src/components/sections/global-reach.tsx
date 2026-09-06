@@ -15,8 +15,11 @@ export function GlobalReach({ dict }: GlobalReachProps) {
   const t = dict.globalReach;
 
   return (
-    <section className='fw-section fw-rule fw-band-white overflow-hidden'>
-      <div className='fw-container grid items-center gap-12 lg:grid-cols-[1fr_0.95fr]'>
+    <section
+      className='fw-section fw-rule fw-band-white overflow-hidden'
+      data-rail={t.kicker}
+    >
+      <div className='fw-container grid items-center gap-8 sm:gap-12 lg:grid-cols-[1fr_0.95fr]'>
         <div>
           <Reveal>
             <p className='fw-kicker'>{t.kicker}</p>
@@ -31,9 +34,12 @@ export function GlobalReach({ dict }: GlobalReachProps) {
               {t.description}
             </p>
           </Reveal>
-          <Stagger className='mt-10 grid gap-px border bg-ink/10 sm:grid-cols-2'>
+          <Stagger className='mt-8 grid grid-cols-2 gap-px border bg-ink/10 sm:mt-10'>
             {siteConfig.locations.map((location) => (
-              <StaggerItem key={location.id} className='bg-background p-5'>
+              <StaggerItem
+                key={location.id}
+                className='bg-background p-4 sm:p-5'
+              >
                 <p className='flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground'>
                   <Flag
                     countryCode={location.countryCode}
@@ -41,7 +47,7 @@ export function GlobalReach({ dict }: GlobalReachProps) {
                   />
                   {location.label}
                 </p>
-                <p className='fw-display mt-3 text-xl text-ink'>
+                <p className='fw-display mt-2 text-base text-ink sm:mt-3 sm:text-xl'>
                   {location.city}, {location.country}
                 </p>
               </StaggerItem>
@@ -49,7 +55,10 @@ export function GlobalReach({ dict }: GlobalReachProps) {
           </Stagger>
         </div>
 
-        <Reveal delay={0.1} className='relative mx-auto w-full max-w-[560px]'>
+        <Reveal
+          delay={0.1}
+          className='relative mx-auto w-full max-w-[400px] sm:max-w-[560px]'
+        >
           <div
             aria-hidden='true'
             className='absolute inset-[10%] rounded-full bg-brand/10 blur-[80px]'

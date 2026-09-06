@@ -39,12 +39,12 @@ export function FaqSection({
   };
 
   return (
-    <section className={cn('fw-section', className)}>
+    <section className={cn('fw-section', className)} data-rail={kicker}>
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className='fw-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]'>
+      <div className='fw-container grid gap-8 sm:gap-12 lg:grid-cols-[0.8fr_1.2fr]'>
         <SectionHeading
           kicker={kicker}
           title={title}
@@ -52,7 +52,7 @@ export function FaqSection({
           description={description}
           className='md:grid-cols-1 lg:sticky lg:top-32 lg:self-start'
         />
-        <Reveal className='fw-card px-6 sm:px-8'>
+        <Reveal className='fw-card px-5 sm:px-8'>
           <Accordion type='single' collapsible className='divide-y divide-line'>
             {items.map((item, index) => (
               <AccordionItem
@@ -60,7 +60,7 @@ export function FaqSection({
                 value={`faq-${index}`}
                 className='border-b-0'
               >
-                <AccordionTrigger className='py-6 text-left text-lg font-medium tracking-tight hover:no-underline [&[data-state=open]]:text-brand-text'>
+                <AccordionTrigger className='py-5 text-left text-base font-medium tracking-tight hover:no-underline sm:py-6 sm:text-lg [&[data-state=open]]:text-brand-text'>
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className='pb-7 text-base leading-relaxed text-muted-foreground'>

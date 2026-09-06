@@ -54,17 +54,21 @@ export function ServicesGrid({
   const capabilities = getCapabilities(dict.locale);
 
   return (
-    <section id='services' className={cn('fw-section fw-rule', className)}>
+    <section
+      id='services'
+      data-rail={t.kicker}
+      className={cn('fw-section fw-rule', className)}
+    >
       <div className='fw-container'>
         {withHeading && <SectionHeading kicker={t.kicker} title={t.title} />}
 
         <GroupLabel
           label={t.groups.capability.label}
-          className={cn(withHeading && 'mt-16')}
+          className={cn(withHeading && 'mt-10 sm:mt-16')}
         />
         <Stagger
           stagger={0.08}
-          className='mt-6 grid gap-px overflow-hidden border bg-line sm:grid-cols-2 lg:grid-cols-4'
+          className='mt-5 grid gap-px overflow-hidden border bg-line sm:mt-6 sm:grid-cols-2 lg:grid-cols-4'
         >
           {capabilities.map((service, index) => (
             <StaggerItem key={service.slug} className='bg-surface'>
@@ -113,7 +117,7 @@ function CapabilityCard({
   return (
     <Link
       href={paths.service(service.slug)}
-      className='group relative flex h-full min-h-[31rem] flex-col bg-surface p-6 transition-colors duration-300 hover:bg-brand-soft/35 sm:p-7'
+      className='group relative flex h-full flex-col bg-surface p-5 transition-colors duration-300 hover:bg-brand-soft/35 sm:min-h-[31rem] sm:p-7'
     >
       <div className='flex items-center justify-between'>
         <span className='flex h-10 w-10 items-center justify-center border bg-surface-2 text-ink transition-colors duration-300 group-hover:border-brand group-hover:bg-brand-soft group-hover:text-brand-text'>
@@ -124,14 +128,14 @@ function CapabilityCard({
         </span>
       </div>
 
-      <h4 className='fw-display mt-9 max-w-[13ch] text-[1.65rem] text-ink sm:text-[1.8rem]'>
+      <h4 className='fw-display mt-6 max-w-[13ch] text-[1.65rem] text-ink sm:mt-9 sm:text-[1.8rem]'>
         {service.title}
       </h4>
       <p className='mt-3 max-w-[24ch] text-sm leading-relaxed text-muted-foreground'>
         {service.tagline}
       </p>
 
-      <ul className='mt-7 space-y-2.5 border-t pt-5 text-[13px] leading-snug text-ink/80'>
+      <ul className='mt-5 space-y-2.5 border-t pt-4 text-[13px] leading-snug text-ink/80 sm:mt-7 sm:pt-5'>
         {service.deliverables.slice(0, 3).map((item) => (
           <li key={item} className='flex items-start gap-2.5'>
             <span
@@ -143,7 +147,7 @@ function CapabilityCard({
         ))}
       </ul>
 
-      <div className='mt-auto pt-7'>
+      <div className='mt-auto pt-6 sm:pt-7'>
         <ul className='flex items-center gap-1.5' aria-label='Core tools'>
           {service.stack.slice(0, 5).map((tool) => {
             const { icon: ToolIcon, color } = getTechMeta(tool);
@@ -163,9 +167,9 @@ function CapabilityCard({
             );
           })}
         </ul>
-        <span className='mt-6 flex h-10 w-full items-center justify-between border border-brand bg-brand px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-foreground transition-colors duration-300 group-hover:bg-transparent group-hover:text-brand-text'>
+        <span className='mt-5 flex h-10 w-full items-center justify-between border border-brand bg-brand px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-foreground transition-colors duration-300 group-hover:bg-transparent group-hover:text-brand-text'>
           {explore}
-          <ArrowUpRight className='h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+          <ArrowUpRight className='h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5' />
         </span>
       </div>
     </Link>

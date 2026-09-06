@@ -41,13 +41,19 @@ export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
 
   const activeProject = listed[activeIndex];
   const move = (delta: number) => {
-    setActiveIndex((current) => (current + delta + listed.length) % listed.length);
+    setActiveIndex(
+      (current) => (current + delta + listed.length) % listed.length,
+    );
   };
 
   return (
-    <section id='work' className='fw-section fw-rule fw-band-white'>
+    <section
+      id='work'
+      data-rail={t.kicker}
+      className='fw-section fw-rule fw-band-white'
+    >
       <div className='fw-container'>
-        <div className='relative overflow-hidden p-5 sm:p-8 lg:p-12'>
+        <div className='relative overflow-hidden sm:p-8 lg:p-12'>
           <div className='grid gap-9 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12'>
             <div className='flex max-w-xl flex-col lg:h-full lg:justify-self-start'>
               <Reveal>
@@ -66,7 +72,7 @@ export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
               </Reveal>
               <Reveal
                 delay={0.3}
-                className='mt-9 max-sm:flex max-sm:justify-center lg:mt-auto lg:pt-10'
+                className='mt-7 max-sm:flex max-sm:justify-center sm:mt-9 lg:mt-auto lg:pt-10'
               >
                 <Link
                   href={paths.work}
@@ -84,7 +90,9 @@ export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
               onMouseLeave={() => setPaused(false)}
             >
               <Reveal>
-                <p className='fw-kicker text-[10px]'>{t.listLabel}</p>
+                <p className='fw-kicker text-[11px] sm:text-xs'>
+                  {t.listLabel}
+                </p>
               </Reveal>
               {activeProject && (
                 <>
@@ -106,7 +114,7 @@ export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
                           <ProjectMockup
                             project={activeProject}
                             priority={activeIndex === 0}
-                            className='h-full w-full aspect-auto'
+                            className='aspect-auto h-full w-full'
                             sizes='(min-width: 1024px) 43vw, 100vw'
                           />
                         </Link>
