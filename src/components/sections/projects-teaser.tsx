@@ -17,8 +17,6 @@ interface ProjectsTeaserProps {
   dict: Dictionary;
 }
 
-/** How many featured projects the homepage cycles through. */
-const LISTED = 6;
 const AUTO_MS = 3000;
 
 /**
@@ -28,7 +26,7 @@ const AUTO_MS = 3000;
 export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
   const t = dict.work.teaser;
   const showcase = getShowcaseProjectsLocalised(dict.locale);
-  const listed = showcase.slice(0, LISTED);
+  const listed = showcase;
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();

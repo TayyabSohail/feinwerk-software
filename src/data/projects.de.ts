@@ -38,7 +38,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Immobilien werden als ein unteilbares Ganzes verkauft, und dieses Ganze kostet mehr, als die meisten Menschen je auf einmal auf dem Konto haben. Brickfold teilt es auf. Geprüfte Mitglieder bündeln Kapital, besitzen gemeinsam echte, ertragsstarke Wohnungen in Uganda, erhalten ihren anteiligen Anteil an der Monatsmiete und verkaufen ihren Anteil an andere Mitglieder, wenn sie aussteigen möchten.',
     industry: 'Fintech / Immobilien',
-    headline: { value: '3', label: 'Möglichkeiten, Immobilien zu besitzen' },
+    headline: { value: '1 Mio. UGX', label: 'für den Einstieg in Eigentum' },
     problem:
       'Die meisten Menschen in Ostafrika werden nie eine Wohnung besitzen, nicht aus Mangel an Ersparnissen, sondern weil Immobilien als unteilbares Ganzes verkauft werden. Kapital ist über Jahre gebunden, Mieteinnahmen bedeuten, Vermieter zu werden, und es gibt keine Transparenz darüber, was ein Gebäude tatsächlich einbringt.',
     approach:
@@ -111,7 +111,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Eine Plattform für Keyword-Recherche, KI-Content-Erstellung und Rank-Tracking, die dem Hin und Her zwischen Werkzeugen ein Ende macht, das SEO-Teams ganze Tage gekostet hat.',
     industry: 'Marketingtechnologie',
-    headline: { value: '30', label: 'Artikel in 10 Minuten' },
+    headline: { value: '3x', label: 'geringere Kosten pro Artikel' },
     problem:
       'SEO-Teams wechselten zwischen fünf verschiedenen Werkzeugen, nur um von der Keyword-Recherche bis zum Tracking zu kommen, verloren dabei Stunden und riskierten uneinheitliche Daten. Die meisten Werkzeuge stützen sich zudem auf veraltete Keyword- und Ranking-Daten, sodass Teams langsam auf Suchtrends reagieren.',
     approach:
@@ -311,7 +311,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Eine interne HR-Plattform, auf der Mitarbeitende eingeladen, eingearbeitet und aktiviert werden; sie reichen Urlaub, Krankheitskosten und Überstunden ein, die Administration gibt jeden Vorgang frei, und die freigegebenen Posten fließen in einen monatlichen Abrechnungslauf, der Lohnabrechnungen berechnet, sperrt und nach Payoneer exportiert.',
     industry: 'HR-Technologie',
-    headline: { value: '12', label: 'Updates automatisch versendet' },
+    headline: { value: '0', label: 'manuelle Payroll-Berechnungen' },
     problem:
       'Die Personalarbeit war über E-Mail, Chat und Papier verstreut: Onboarding per E-Mail, Urlaub und Überstunden in Nachrichten, Krankheitskosten auf Papier und eine Lohnabrechnung, die jeden Monat von Hand aus all dem zusammengesetzt wurde. Nichts stimmte überein, und nichts war prüfbar.',
     approach:

@@ -199,7 +199,7 @@ export const projects: Project[] = [
     year: '2025-2026',
     anonymised: true,
     featured: 1,
-    headline: { value: '3', label: 'ways to own property' },
+    headline: { value: '1M UGX', label: 'to start owning property' },
     problem:
       'Most people in East Africa will never own an apartment, not for lack of savings, but because property sells in one indivisible lump. Capital is locked up for years, rental income means becoming a landlord, and there is no transparency on what a building actually earns.',
     approach:
@@ -317,7 +317,7 @@ export const projects: Project[] = [
     year: '2024-2025',
     anonymised: true,
     featured: 2,
-    headline: { value: '30', label: 'articles in 10 minutes' },
+    headline: { value: '3x', label: 'lower cost per article' },
     problem:
       'SEO teams switched between five different tools just to get from keyword discovery to tracking, wasting hours and risking inconsistent data. Most tools also lean on stale keyword and ranking data, so teams react slowly to search trends.',
     approach:
@@ -621,7 +621,7 @@ export const projects: Project[] = [
     industry: 'HR technology',
     year: '2026',
     featured: 5,
-    headline: { value: '12', label: 'updates sent automatically' },
+    headline: { value: '0', label: 'manual payroll calculations' },
     problem:
       'People operations were scattered across email, chat and paper: onboarding by email, leave and overtime in messages, medical claims on paper, and payroll assembled by hand each month from all of it. Nothing reconciled, and nothing was auditable.',
     approach:
