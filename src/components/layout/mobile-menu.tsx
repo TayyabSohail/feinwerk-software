@@ -20,8 +20,8 @@ interface MobileMenuProps {
   dict: Dictionary;
   onOpenChange?: (open: boolean) => void;
   /**
-   * Wrapper classes. The header hides the trigger on desktop, where the
-   * full nav is shown; the contact page, which has no other nav, passes an
+   * Wrapper classes. The header hides the trigger from `lg` up, where the
+   * full nav fits; the contact page, which has no other nav, passes an
    * empty string so the hamburger is the menu at every width.
    */
   className?: string;
@@ -30,7 +30,7 @@ interface MobileMenuProps {
 export function MobileMenu({
   dict,
   onOpenChange,
-  className = 'md:hidden',
+  className = 'lg:hidden',
 }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();

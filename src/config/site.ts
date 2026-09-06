@@ -22,9 +22,9 @@ export const siteConfig = {
   name: 'Feinwerks Software',
   shortName: 'Feinwerks',
   legalName: 'Feinwerks Software',
-  tagline: 'Products built to scale with your growth.',
+  tagline: 'Products engineered from MVP to scale.',
   description:
-    'Feinwerks Software is a software engineering studio building and maintaining full-stack products, AI systems and cloud automation for companies in Europe, Asia and beyond. Fixed or custom quotes, committed dates, support after launch. From Islamabad and Fellbach, shipped worldwide.',
+    'Feinwerks Software designs, builds and maintains web platforms, AI systems and cloud automation. Written scope, fixed or custom quote, committed launch date, support after launch.',
   url: env.NEXT_PUBLIC_APP_URL,
   founded: 2024,
   /**

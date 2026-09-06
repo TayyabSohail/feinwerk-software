@@ -18,10 +18,10 @@ export const de: Dictionary = {
     language: 'Sprache',
   },
   hero: {
-    badge: 'Studio für Produktentwicklung',
-    title: 'Produkte, die mit Ihrem\nWachstum skalieren.',
-    accent: [2, 3],
-    body: 'Feinwerks Software konzipiert und entwickelt Webplattformen, KI-Systeme und Cloud-Infrastruktur für Unternehmen in Europa und Asien. Jedes Projekt beginnt mit definiertem Umfang, Fest- oder Individualpreis und verbindlichem Liefertermin, und wir warten, was wir bauen, auch nach dem Launch.',
+    badge: 'Produktentwicklung für Gründer',
+    title: 'Produkte, entwickelt\nvom MVP bis zur Skalierung.',
+    accent: [3, 4, 5, 6],
+    body: 'Wir begleiten Gründer beim Aufbau und Wachstum nutzerzentrierter Produkte, mit der Engineering- und Marketing-Expertise, die jede Phase erfordert.',
     primary: 'Angebot anfordern',
     secondary: 'Unsere Arbeit ansehen',
     map: {
@@ -60,7 +60,7 @@ export const de: Dictionary = {
       kicker: 'Projekte',
       title: 'Jedes Projekt, mit seinem Ergebnis',
       accent: [3, 4],
-      body: 'Echte Produkte mit echten Anforderungen: Marktplätze, die Geld bewegen, SaaS-Plattformen, KI-Systeme und Websites. Entdecken Sie Entscheidungen, Funktionen und messbare Ergebnisse hinter jedem Projekt.',
+      body: 'Marktplätze, SaaS-Plattformen, KI-Systeme und Websites im Einsatz, jeweils mit den Entscheidungen und Ergebnissen dahinter.',
       cta: 'Alle Projekte ansehen',
       listLabel: 'Einige davon',
       more: '{n} weitere auf der Projektseite',
@@ -92,7 +92,7 @@ export const de: Dictionary = {
     cta: 'Jetzt starten',
     all: 'Pakete im Detail vergleichen',
     promoTitle: 'Bauen Sie das Richtige als Nächstes.',
-    note: 'Sie wissen noch nicht, wo Sie starten sollen? Vergleichen Sie sechs Wege der Zusammenarbeit mit Feinwerks, vom klar definierten Projekt bis zum laufenden Produktteam. Jede Zusammenarbeit beginnt mit einem schriftlichen Umfang, einem transparenten Preis und Support nach dem Launch.',
+    note: 'Sechs Wege der Zusammenarbeit, vom klar definierten Projekt bis zum laufenden Produktteam. Jeder beginnt mit schriftlichem Umfang und klarem Preis.',
     includes: {
       title: 'In jedem Paket enthalten, auch bei individuellen Lösungen',
       items: [
@@ -225,8 +225,7 @@ export const de: Dictionary = {
   technologies: {
     kicker: 'Bewährte Technologie',
     statement: 'Gebaut auf den Werkzeugen, die zählen.',
-    statementMuted:
-      'Bewährte Modelle, Frameworks und Infrastruktur. Keine Experimente auf Ihre Kosten.',
+    statementMuted: 'Bewährte Werkzeuge. Keine Experimente auf Ihre Kosten.',
     stackLabel: 'Der Stack, nach Ebene',
     layers: [
       { label: 'Oberfläche', note: 'Was Ihre Nutzer sehen und bedienen.' },
@@ -293,23 +292,16 @@ export const de: Dictionary = {
     },
   },
   globalReach: {
-    kicker: 'Weltweit',
-    title: 'Technische Tiefe, geliefert über Zeitzonen hinweg',
+    kicker: 'Standorte',
+    title: 'Zwei Büros, ein Arbeitstag.',
     description:
-      'Kunden in Europa, Asien, Afrika und Nordamerika. Ein asiatisches Büro in Islamabad, ein europäisches Büro in Fellbach, und ein Arbeitstag, der beides abdeckt.',
-    bullets: [
-      'Fest- oder Individualpreis und fester Termin in jedem Angebot',
-      'Wartung und Support nach dem Launch, bei jedem Projekt',
-      'DSGVO-konforme Verarbeitung, AVV und NDA auf Anfrage',
-      'Ausschließlich Senior-Entwickler, in CET und PKT',
-    ],
+      'Islamabad und Fellbach bei Stuttgart. Wann immer Sie arbeiten, ist jemand aus dem Team online.',
     legend: 'Standorte und Kundenorte',
   },
   numbers: {
     kicker: 'In Zahlen',
     title: 'Belege statt Versprechen',
-    description:
-      'Unternehmenskennzahlen und Ergebnisse, die Kunden nach dem Launch berichtet haben.',
+    description: 'Zahlen aus gelieferten Projekten.',
     items: [
       { value: '150+', label: 'Abgeschlossene Projekte' },
       { value: '40+', label: 'Kunden auf vier Kontinenten' },
@@ -326,37 +318,37 @@ export const de: Dictionary = {
         title: 'Kosten kennen, bevor Code entsteht',
         when: 'Kick-off',
         summary:
-          'Ein kurzes Gespräch darüber, was das Produkt leistet und wann es live sein muss. Innerhalb einer Woche halten Sie Leistungsumfang, Preis und Launch-Termin in der Hand.',
+          'Ein kurzes Gespräch über das Produkt und den Termin. Innerhalb einer Woche haben Sie Umfang, Preis und Launch-Datum schriftlich.',
       },
       {
         title: 'Den ersten Release schärfen',
         when: 'Umfang',
         summary:
-          'Wir machen aus dem Briefing das kleinste Produkt, das ab dem ersten Tag nützlich ist, und klären die Entscheidungen, die den Bau sonst bremsen.',
+          'Wir reduzieren das Briefing auf das kleinste Produkt, das ab dem ersten Tag nützlich ist.',
       },
       {
         title: 'Sehen, bevor gebaut wird',
         when: 'Design',
         summary:
-          'Klickbare Screens der wichtigsten Abläufe, gemeinsam geprüft, bevor Produktionscode entsteht. Einen Screen jetzt zu ändern kostet eine Stunde, keinen Sprint.',
+          'Klickbare Screens der wichtigsten Abläufe, gemeinsam geprüft, bevor Produktionscode entsteht.',
       },
       {
         title: 'Nutzen, während es entsteht',
         when: 'Umsetzung',
         summary:
-          'Fortschritt zeigen wir in Software, nicht in Folien. Jeder Sprint endet mit einem Staging-Link und einer kurzen Zusammenfassung, was als Nächstes kommt.',
+          'Jeder Sprint endet mit einem Staging-Link und einer kurzen Notiz, was als Nächstes kommt.',
       },
       {
         title: 'Sicher live gehen',
         when: 'Launch',
         summary:
-          'Wir testen die Abläufe, auf die es ankommt, richten Monitoring ein und proben die Übergabe, damit der Livegang ein kontrollierter Schritt ist.',
+          'Wir testen die Abläufe, auf die es ankommt, richten Monitoring ein und proben die Übergabe.',
       },
       {
         title: 'Das Eigentum bleibt bei Ihnen',
         when: 'Betrieb',
         summary:
-          'Wir behalten den Produktivbetrieb im Blick und reparieren, was bricht. Bleiben Sie im Retainer, oder übernehmen Sie Code, Zugänge und Dokumentation vollständig.',
+          'Wir behalten den Betrieb im Blick und reparieren, was bricht. Bleiben Sie im Retainer, oder übernehmen Sie Code und Zugänge vollständig.',
       },
     ],
   },
@@ -698,16 +690,14 @@ export const de: Dictionary = {
       title: 'Sagen Sie uns, was stimmen muss.',
       accent: [5, 6],
       description:
-        'Ein paar Sätze genügen. Wir antworten innerhalb eines Werktags mit einer ersten Einschätzung zu Umfang, Zeitplan und Preis und dazu, wer das Produkt bauen und warten würde.',
+        'Ein paar Sätze genügen. Wir antworten innerhalb eines Werktags mit einer ersten Einschätzung zu Umfang, Zeitplan und Preis.',
     },
   },
   faq: {
-    kicker: 'Unsere FAQs',
-    title:
-      'Transparente Antworten von Gründern mit mehr als 10 gebauten und verkauften Start-ups',
-    description:
-      'Klare Antworten darauf, wie wir Produkte planen, bauen, launchen und weiter betreuen.',
-    accent: [0],
+    kicker: 'FAQ',
+    title: 'Klare Antworten, bevor Sie sich festlegen.',
+    description: 'Wie wir planen, bauen, launchen und betreuen.',
+    accent: [0, 1],
   },
   cta: {
     kicker: 'Sprechen wir',

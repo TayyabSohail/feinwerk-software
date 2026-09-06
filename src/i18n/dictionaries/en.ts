@@ -17,10 +17,10 @@ export const en = {
     language: 'Language',
   },
   hero: {
-    badge: 'Product engineering studio',
-    title: 'Products built to scale\nwith your growth.',
-    accent: [2, 3, 4],
-    body: 'Feinwerks Software designs and builds web platforms, AI systems and cloud infrastructure for businesses in Europe and Asia. Every engagement starts with a defined scope, a fixed or custom price and a committed delivery date, and we keep maintaining what we build after launch.',
+    badge: 'Product engineering for founders',
+    title: 'Products engineered\nfrom MVP to scale.',
+    accent: [3, 4, 5],
+    body: 'We partner with founders to build and grow user-centric products, providing the engineering and marketing expertise each stage requires.',
     primary: 'Request a proposal',
     secondary: 'View our work',
     /** The living system map beside the hero copy. */
@@ -61,7 +61,7 @@ export const en = {
       kicker: 'Projects',
       title: 'Every project, with its result',
       accent: [3, 4],
-      body: 'Real products with real constraints: marketplaces moving money, SaaS platforms, AI systems and websites. Explore the decisions, shipped features and measurable results behind each build.',
+      body: 'Marketplaces, SaaS platforms, AI systems and websites in production, each with the decisions and results behind it.',
       cta: 'Browse all projects',
       listLabel: 'Featured projects',
       more: '{n} more on the projects page',
@@ -93,7 +93,7 @@ export const en = {
     cta: 'Get started now',
     all: 'Compare plans in detail',
     promoTitle: 'Build the next thing right.',
-    note: 'Not sure where to start? Compare six ways to work with Feinwerks, from a fixed-scope build to an ongoing product team. Every engagement starts with a written scope, a clear price and support after launch.',
+    note: 'Six ways to work with us, from a fixed-scope build to an ongoing product team. Every one starts with a written scope and a clear price.',
     includes: {
       title: 'Included in every plan, custom solutions too',
       items: [
@@ -225,8 +225,7 @@ export const en = {
   technologies: {
     kicker: 'Trusted technology',
     statement: 'Built on the tools that matter.',
-    statementMuted:
-      'Proven models, frameworks and infrastructure. No experiments on your budget.',
+    statementMuted: 'Proven tools. No experiments on your budget.',
     stackLabel: 'The stack, by layer',
     layers: [
       { label: 'Interface', note: 'What your users see and touch.' },
@@ -287,23 +286,16 @@ export const en = {
     },
   },
   globalReach: {
-    kicker: 'Global reach',
-    title: 'Engineering depth that ships across time zones',
+    kicker: 'Offices',
+    title: 'Two offices, one working day.',
     description:
-      'Clients in Europe, Asia, Africa and North America. An Asian office in Islamabad, a European office in Fellbach, and a working day that covers both.',
-    bullets: [
-      'Fixed or custom price and a fixed date on every proposal',
-      'Maintenance and support after launch, on every project',
-      'GDPR-compliant processing, DPA and NDA on request',
-      'Senior engineers only, working across CET and PKT',
-    ],
+      'Islamabad and Fellbach, near Stuttgart. Whenever you work, someone on the team is online.',
     legend: 'Offices and client locations',
   },
   numbers: {
     kicker: 'By the numbers',
     title: 'Proof, not promises',
-    description:
-      'Company figures and outcomes clients have reported after launch.',
+    description: 'Figures from shipped work.',
     items: [
       { value: '150+', label: 'Projects delivered' },
       { value: '40+', label: 'Clients on four continents' },
@@ -320,37 +312,37 @@ export const en = {
         title: 'Know the cost before the code',
         when: 'Kick-off',
         summary:
-          'A short call about what the product does and when it has to be live. Within a week you hold a written scope, a price and a launch date.',
+          'A short call about the product and its deadline. Within a week you have a written scope, a price and a launch date.',
       },
       {
         title: 'Shape the first release',
         when: 'Scope',
         summary:
-          'We cut the brief down to the smallest product that is useful on day one and settle the decisions that would stall the build later.',
+          'We cut the brief down to the smallest product that is useful on day one.',
       },
       {
         title: 'See it before it is built',
         when: 'Design',
         summary:
-          'Clickable screens of the main flows, reviewed together before any production code exists. Changing a screen now costs an hour, not a sprint.',
+          'Clickable screens of the main flows, reviewed together before any production code exists.',
       },
       {
         title: 'Use it while it is being built',
         when: 'Build',
         summary:
-          'Progress is shown in software, not slides. Every sprint ends with a staging link and a short written summary of what is next.',
+          'Every sprint ends with a staging link and a short note on what comes next.',
       },
       {
         title: 'Launch with confidence',
         when: 'Launch',
         summary:
-          'We test the paths that matter, set up monitoring and rehearse the handover, so going live is a controlled moment.',
+          'We test the paths that matter, set up monitoring and rehearse the handover.',
       },
       {
         title: 'Ownership stays with you',
         when: 'Live',
         summary:
-          'We watch production and fix what breaks. Keep us on retainer, or take over the code, the accounts and the documentation in full.',
+          'We watch production and fix what breaks. Keep us on retainer, or take over the code and accounts in full.',
       },
     ],
   },
@@ -688,16 +680,14 @@ export const en = {
       title: 'Tell us what has to be right.',
       accent: [5, 6],
       description:
-        'A few sentences are enough. We reply within one business day with a first take on scope, timeline and price, and on who would build and maintain it.',
+        'A few sentences are enough. We reply within one business day with a first take on scope, timeline and price.',
     },
   },
   faq: {
-    kicker: 'Our FAQs',
-    title:
-      'Transparent answers from founders who have built and sold 10+ startups',
-    description:
-      'Straight answers about how we scope, build, launch and support products.',
-    accent: [2],
+    kicker: 'FAQ',
+    title: 'Straight answers, before you commit.',
+    description: 'How we scope, build, launch and support.',
+    accent: [0, 1],
   },
   cta: {
     kicker: "Let's talk",

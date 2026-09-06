@@ -59,7 +59,12 @@ export function Header({ dict }: HeaderProps) {
       <div className='fw-container flex h-[4.25rem] items-center justify-between'>
         <Logo />
 
-        <nav aria-label='Primary' className='hidden items-center gap-8 md:flex'>
+        {/* Five links plus the flags and CTA need about 1000px, so the full
+            nav only appears from `lg`; below that the hamburger takes over. */}
+        <nav
+          aria-label='Primary'
+          className='hidden items-center gap-6 lg:flex xl:gap-8'
+        >
           {items.map((item) => {
             const active = isActive(item.href);
             return (

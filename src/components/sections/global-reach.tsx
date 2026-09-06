@@ -31,17 +31,6 @@ export function GlobalReach({ dict }: GlobalReachProps) {
               {t.description}
             </p>
           </Reveal>
-          <Stagger className='mt-8 space-y-3'>
-            {t.bullets.map((bullet) => (
-              <StaggerItem
-                key={bullet}
-                className='border-l-2 border-brand pl-4 text-sm font-medium text-ink/85'
-              >
-                {bullet}
-              </StaggerItem>
-            ))}
-          </Stagger>
-
           <Stagger className='mt-10 grid gap-px border bg-ink/10 sm:grid-cols-2'>
             {siteConfig.locations.map((location) => (
               <StaggerItem key={location.id} className='bg-background p-5'>
