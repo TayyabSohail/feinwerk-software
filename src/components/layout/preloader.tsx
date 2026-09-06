@@ -4,7 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const LETTERS = 'FEINWERKS'.split('');
-const DURATION_MS = 1500;
+const HINGE_LETTER_INDEX = LETTERS.length - 1;
+const DURATION_MS = 2300;
 const REDUCED_DURATION_MS = 600;
 const HOLD_MS = 250;
 
@@ -12,7 +13,7 @@ const HOLD_MS = 250;
 const BAR_CELLS = 24;
 
 /**
- * First-load intro: a black curtain with the wordmark assembling letter by
+ * First-load intro: a black curtain with the wordmark hinging in letter by
  * letter above a blocky retro loader that fills cell by cell as a counter
  * runs to 100, then the curtain lifts.
  *
@@ -66,7 +67,11 @@ export function Preloader() {
   );
 
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        window.dispatchEvent(new Event('feinwerks:preloader-complete'));
+      }}
+    >
       {visible && (
         <motion.div
           key='preloader'
@@ -78,23 +83,45 @@ export function Preloader() {
           }}
           className='fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink text-white'
           aria-hidden='true'
+          data-preloader
         >
-          <div className='flex overflow-hidden font-display text-[clamp(2.5rem,9vw,7rem)] font-bold tracking-[0.08em]'>
-            {LETTERS.map((letter, index) => (
-              <motion.span
-                key={index}
-                initial={{ y: '110%', opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.7,
-                  ease: [0.16, 1, 0.3, 1],
-                  delay: reduceMotion ? 0 : 0.1 + index * 0.06,
-                }}
-                className='inline-block'
-              >
-                {letter}
-              </motion.span>
-            ))}
+          <div className='flex overflow-visible font-display text-[clamp(2.5rem,9vw,7rem)] font-bold tracking-[0.08em]'>
+            {LETTERS.map((letter, index) => {
+              const hangs = !reduceMotion && index === HINGE_LETTER_INDEX;
+
+              return (
+                <motion.span
+                  key={index}
+                  initial={
+                    reduceMotion
+                      ? { opacity: 0 }
+                      : { y: '110%', opacity: 0, rotate: 0 }
+                  }
+                  animate={
+                    hangs
+                      ? {
+                          y: ['110%', 0, 0, 0, 0],
+                          rotate: [0, 0, 0, -72, 0],
+                          opacity: [0, 1, 1, 1, 1],
+                        }
+                      : { y: 0, opacity: 1 }
+                  }
+                  transition={{
+                    duration: reduceMotion ? 0 : hangs ? 1.45 : 0.7,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: reduceMotion ? 0 : 0.1 + index * 0.06,
+                    ...(hangs && { times: [0, 0.25, 0.5, 0.78, 1] }),
+                  }}
+                  className={
+                    hangs
+                      ? 'inline-block origin-top'
+                      : 'inline-block'
+                  }
+                >
+                  {letter}
+                </motion.span>
+              );
+            })}
           </div>
 
           {/* Blocky cell bar: filled blocks in brand, empty cells dimmed. */}

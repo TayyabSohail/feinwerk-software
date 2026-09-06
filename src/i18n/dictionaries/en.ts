@@ -20,7 +20,7 @@ export const en = {
   },
   hero: {
     badge: 'Product engineering for founders',
-    title: 'Products engineered\nfrom MVP to scale.',
+    title: 'Products engineered\nfrom MVP to scale',
     accent: [3, 4, 5],
     body: 'We partner with founders to build and grow user-centric products, providing the engineering and marketing expertise each stage requires.',
     primary: 'Request a proposal',

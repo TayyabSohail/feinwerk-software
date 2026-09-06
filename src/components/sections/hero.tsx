@@ -42,6 +42,9 @@ export function Hero({ dict }: HeroProps) {
           as='h1'
           text={t.title}
           accentWords={[...t.accent]}
+          afterPreloader
+          stagger={0.04}
+          typingBounce
           delay={0.2}
           className='fw-display mt-6 justify-start text-[clamp(2.4rem,6.4vw,6rem)] leading-[0.98] tracking-[-0.035em] text-ink sm:mt-7'
         />

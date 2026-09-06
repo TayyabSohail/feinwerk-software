@@ -22,7 +22,7 @@ export const siteConfig = {
   name: 'Feinwerks Software',
   shortName: 'Feinwerks',
   legalName: 'Feinwerks Software',
-  tagline: 'Products engineered from MVP to scale.',
+  tagline: 'Products engineered from MVP to scale',
   description:
     'Feinwerks Software designs, builds and maintains web platforms, AI systems and cloud automation. Written scope, fixed or custom quote, committed launch date, support after launch.',
   url: env.NEXT_PUBLIC_APP_URL,
