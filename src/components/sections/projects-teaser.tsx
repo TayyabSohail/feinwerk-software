@@ -1,11 +1,12 @@
 'use client';
 
-import { ArrowUpRight } from 'lucide-react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useReducedMotion } from 'framer-motion';
 
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
+import { ProjectMockup } from '@/components/mockups/project-mockup';
+import { Reveal } from '@/components/motion/reveal';
 import { TextReveal } from '@/components/motion/text-reveal';
 
 import { paths } from '@/constants/paths';
@@ -16,102 +17,168 @@ interface ProjectsTeaserProps {
   dict: Dictionary;
 }
 
-/** How many project names the homepage lists before pointing to the page. */
+/** How many featured projects the homepage cycles through. */
 const LISTED = 6;
+const AUTO_MS = 3000;
 
 /**
- * A pointer to the projects page, not the projects themselves.
- *
- * The homepage used to carry every product on a device mockup, which made
- * it long and left the projects page with nothing of its own. Now the
- * homepage says what is there and how much, names a few, and sends people
- * over. The mockups, filters and case studies all live on /work.
+ * A compact featured-project showcase with the real product screens on
+ * devices, linked to the full case studies on /work.
  */
 export function ProjectsTeaser({ dict }: ProjectsTeaserProps) {
   const t = dict.work.teaser;
   const showcase = getShowcaseProjectsLocalised(dict.locale);
   const listed = showcase.slice(0, LISTED);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (reduce || listed.length < 2) return;
+    if (paused || reduce || listed.length < 2) return;
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % listed.length);
-    }, 3000);
+    }, AUTO_MS);
     return () => window.clearInterval(timer);
-  }, [listed.length, reduce]);
+  }, [listed.length, paused, reduce]);
+
+  const activeProject = listed[activeIndex];
+  const move = (delta: number) => {
+    setActiveIndex((current) => (current + delta + listed.length) % listed.length);
+  };
 
   return (
     <section id='work' className='fw-section fw-rule fw-band-white'>
-      <div className='fw-container grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20'>
-        <div className='max-w-xl'>
-          <Reveal>
-            <p className='fw-kicker'>{t.kicker}</p>
-          </Reveal>
-          <TextReveal
-            as='h2'
-            text={t.title}
-            accentWords={[...t.accent]}
-            className='fw-display mt-5 text-display-md text-foreground'
-          />
-          <Reveal delay={0.2}>
-            <p className='mt-6 text-base leading-relaxed text-muted-foreground md:text-lg'>
-              {t.body}
-            </p>
-          </Reveal>
-          <Reveal delay={0.3} className='mt-9 max-sm:flex max-sm:justify-center'>
-            <Link
-              href={paths.work}
-              className='fw-btn fw-btn-primary inline-flex h-16 items-center gap-3 px-8 font-mono text-xs font-semibold uppercase tracking-[0.22em] shadow-[0_16px_30px_-18px_hsl(var(--brand-strong))]'
-            >
-              {t.cta}
-              <ArrowUpRight className='h-4 w-4' />
-            </Link>
-          </Reveal>
-        </div>
-
-        <div className='self-end'>
-          <Reveal>
-            <p className='fw-kicker text-[10px]'>{t.listLabel}</p>
-          </Reveal>
-          <Stagger className='mt-5 grid gap-2 sm:block sm:border-t sm:border-line'>
-            {listed.map((project, index) => (
-              <StaggerItem key={project.slug}>
+      <div className='fw-container'>
+        <div className='relative overflow-hidden p-5 sm:p-8 lg:p-12'>
+          <div className='grid gap-9 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12'>
+            <div className='flex max-w-xl flex-col lg:h-full lg:justify-self-start'>
+              <Reveal>
+                <p className='fw-kicker'>{t.kicker}</p>
+              </Reveal>
+              <TextReveal
+                as='h2'
+                text={t.title}
+                accentWords={[...t.accent]}
+                className='fw-display mt-5 text-display-lg text-foreground'
+              />
+              <Reveal delay={0.2}>
+                <p className='mt-5 text-sm leading-relaxed text-muted-foreground md:text-base'>
+                  {t.body}
+                </p>
+              </Reveal>
+              <Reveal
+                delay={0.3}
+                className='mt-9 max-sm:flex max-sm:justify-center lg:mt-auto lg:pt-10'
+              >
                 <Link
-                  href={paths.caseStudy(project.slug)}
-                  aria-current={activeIndex === index ? 'true' : undefined}
-                  className={`group flex items-center gap-3 rounded-lg border px-4 py-3.5 transition-all duration-500 sm:items-baseline sm:gap-5 sm:rounded-none sm:border-x-0 sm:border-t-0 sm:px-0 sm:py-4 ${
-                    activeIndex === index
-                      ? 'border-brand-2 bg-brand-soft text-ink shadow-[inset_0_0_0_1px_hsl(var(--brand-2)/0.35)]'
-                      : 'border-line bg-surface hover:border-brand/60 hover:bg-brand-soft'
-                  }`}
+                  href={paths.work}
+                  className='fw-btn fw-btn-primary inline-flex h-16 items-center gap-3 px-8 font-mono text-xs font-semibold uppercase tracking-[0.22em] shadow-[0_16px_30px_-18px_hsl(var(--brand-strong))]'
                 >
-                  <span className='font-mono text-[11px] tabular-nums text-muted-foreground'>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className='min-w-0 flex-1'>
-                    <span
-                      className={`block text-base font-medium leading-snug transition-colors sm:text-lg ${
-                        activeIndex === index
-                          ? 'text-ink'
-                          : 'text-foreground group-hover:text-brand-text'
-                      }`}
-                    >
-                      {project.title}
-                    </span>
-                  </span>
-                  <ArrowUpRight
-                    className={`h-4 w-4 shrink-0 sm:-translate-x-1 sm:transition-all sm:group-hover:translate-x-0 ${
-                      activeIndex === index
-                        ? 'text-ink'
-                        : 'text-brand-text sm:text-muted-foreground sm:opacity-0 sm:group-hover:opacity-100'
-                    }`}
-                  />
+                  {t.cta}
+                  <ArrowUpRight className='h-4 w-4' />
                 </Link>
-              </StaggerItem>
-            ))}
-          </Stagger>
+              </Reveal>
+            </div>
+
+            <div
+              className='min-w-0 self-end lg:w-full lg:justify-self-end'
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              <Reveal>
+                <p className='fw-kicker text-[10px]'>{t.listLabel}</p>
+              </Reveal>
+              {activeProject && (
+                <>
+                  <div className='relative mt-3 aspect-[16/9] min-w-0 overflow-hidden border border-line bg-ink sm:mt-4'>
+                    <AnimatePresence mode='wait' initial={false}>
+                      <motion.div
+                        key={activeProject.slug}
+                        initial={{ opacity: 0, x: 24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -24 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        className='absolute inset-0'
+                      >
+                        <Link
+                          href={paths.caseStudy(activeProject.slug)}
+                          aria-label={`${activeProject.title}: ${activeProject.tagline}`}
+                          className='group block h-full min-w-0'
+                        >
+                          <ProjectMockup
+                            project={activeProject}
+                            priority={activeIndex === 0}
+                            className='h-full w-full aspect-auto'
+                            sizes='(min-width: 1024px) 43vw, 100vw'
+                          />
+                        </Link>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                  <div className='mt-3 border-t border-line pt-3 sm:mt-4 sm:pt-4'>
+                    <div className='flex flex-col gap-3'>
+                      <Link
+                        href={paths.caseStudy(activeProject.slug)}
+                        className='group min-w-0'
+                      >
+                        <h3 className='fw-display min-w-0 text-lg text-foreground transition-colors group-hover:text-brand-text sm:text-xl'>
+                          {activeProject.title}
+                        </h3>
+                      </Link>
+                      <div className='flex flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between'>
+                        <div className='flex min-w-0 flex-1 items-baseline gap-3 border-l-2 border-brand px-4 py-1 sm:gap-4 sm:px-5 sm:py-1.5'>
+                          <span className='fw-display text-3xl leading-none text-brand-text sm:text-4xl'>
+                            {activeProject.headline.value}
+                          </span>
+                          <span className='max-w-[22ch] text-xs font-semibold leading-snug text-ink sm:text-sm'>
+                            {activeProject.headline.label}
+                          </span>
+                        </div>
+                        <div className='flex shrink-0 gap-2 sm:items-center'>
+                          <button
+                            type='button'
+                            onClick={() => move(-1)}
+                            aria-label='Previous featured project'
+                            className='flex h-10 w-10 items-center justify-center border border-line text-foreground transition-colors hover:border-brand hover:bg-brand-soft hover:text-brand-text'
+                          >
+                            <ArrowLeft className='h-4 w-4' />
+                          </button>
+                          <button
+                            type='button'
+                            onClick={() => move(1)}
+                            aria-label='Next featured project'
+                            className='flex h-10 w-10 items-center justify-center bg-ink text-white transition-colors hover:bg-brand'
+                          >
+                            <ArrowRight className='h-4 w-4' />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='mt-3 flex items-center gap-4 sm:mt-4'>
+                      <div
+                        className='relative h-1 min-w-0 flex-1 overflow-hidden bg-line'
+                        role='progressbar'
+                        aria-label='Featured project rotation progress'
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      >
+                        <span
+                          key={activeProject.slug}
+                          className='absolute inset-y-0 left-0 w-0 animate-[fw-project-progress_3s_linear] bg-brand'
+                          style={{
+                            animationPlayState: paused ? 'paused' : 'running',
+                          }}
+                        />
+                      </div>
+                      <span className='shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground'>
+                        Featured work
+                      </span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -59,7 +59,7 @@ export const de: Dictionary = {
       kicker: 'Projekte',
       title: 'Jedes Projekt, mit seinem Ergebnis',
       accent: [3, 4],
-      body: 'Marktplätze, SaaS-Plattformen, KI-Agenten und Websites, jeweils mit dem Problem, dem Ansatz und dem gemessenen Ergebnis. Sie haben eine eigene Seite, damit die Zahlen den Platz bekommen, den sie brauchen.',
+      body: 'Echte Produkte mit echten Anforderungen: Marktplätze, die Geld bewegen, SaaS-Plattformen, KI-Systeme und Websites. Entdecken Sie Entscheidungen, Funktionen und messbare Ergebnisse hinter jedem Projekt.',
       cta: 'Alle Projekte ansehen',
       listLabel: 'Einige davon',
       more: '{n} weitere auf der Projektseite',

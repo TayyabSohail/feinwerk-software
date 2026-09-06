@@ -60,7 +60,7 @@ export const en = {
       kicker: 'Projects',
       title: 'Every project, with its result',
       accent: [3, 4],
-      body: 'Marketplaces, SaaS platforms, AI agents and websites, each shown with the problem, the approach and the measured outcome. They have a page of their own so the numbers get the room they need.',
+      body: 'Real products with real constraints: marketplaces moving money, SaaS platforms, AI systems and websites. Explore the decisions, shipped features and measurable results behind each build.',
       cta: 'Browse all projects',
       listLabel: 'Featured projects',
       more: '{n} more on the projects page',

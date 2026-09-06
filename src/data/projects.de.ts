@@ -38,7 +38,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Immobilien werden als ein unteilbares Ganzes verkauft, und dieses Ganze kostet mehr, als die meisten Menschen je auf einmal auf dem Konto haben. Brickfold teilt es auf. Geprüfte Mitglieder bündeln Kapital, besitzen gemeinsam echte, ertragsstarke Wohnungen in Uganda, erhalten ihren anteiligen Anteil an der Monatsmiete und verkaufen ihren Anteil an andere Mitglieder, wenn sie aussteigen möchten.',
     industry: 'Fintech / Immobilien',
-    headline: { value: '42', label: 'Screens, ein exaktes Hauptbuch' },
+    headline: { value: '3', label: 'Möglichkeiten, Immobilien zu besitzen' },
     problem:
       'Die meisten Menschen in Ostafrika werden nie eine Wohnung besitzen, nicht aus Mangel an Ersparnissen, sondern weil Immobilien als unteilbares Ganzes verkauft werden. Kapital ist über Jahre gebunden, Mieteinnahmen bedeuten, Vermieter zu werden, und es gibt keine Transparenz darüber, was ein Gebäude tatsächlich einbringt.',
     approach:
@@ -111,7 +111,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Eine Plattform für Keyword-Recherche, KI-Content-Erstellung und Rank-Tracking, die dem Hin und Her zwischen Werkzeugen ein Ende macht, das SEO-Teams ganze Tage gekostet hat.',
     industry: 'Marketingtechnologie',
-    headline: { value: '3x', label: 'geringere Kosten pro Artikel' },
+    headline: { value: '30', label: 'Artikel in 10 Minuten' },
     problem:
       'SEO-Teams wechselten zwischen fünf verschiedenen Werkzeugen, nur um von der Keyword-Recherche bis zum Tracking zu kommen, verloren dabei Stunden und riskierten uneinheitliche Daten. Die meisten Werkzeuge stützen sich zudem auf veraltete Keyword- und Ranking-Daten, sodass Teams langsam auf Suchtrends reagieren.',
     approach:
@@ -178,7 +178,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Studierende bieten in Echtzeit auf Wohnungen außerhalb des Campus, mit rollenspezifischen Dashboards für Studierende, Eltern und Vermietende.',
     industry: 'Immobilientechnologie',
-    headline: { value: '1.000+', label: 'gleichzeitig Bietende, ohne Konflikte' },
+    headline: { value: '1.000+', label: 'gleichzeitig Bietende' },
     problem:
       'Der Markt für Studierendenwohnungen ist von Festpreisangeboten ohne Verhandlungsspielraum geprägt, verstreut über unzuverlässige Plattformen. Eltern finanzieren die meisten dieser Mieten, haben aber überhaupt keinen Zugang zum Prozess.',
     approach:
@@ -246,7 +246,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Ein Marktplatz mit vielen Anbietern, personalisierten Empfehlungen, Auszahlungen über Stripe Connect und automatisierter Sendungsverfolgung von DHL.',
     industry: 'E-Commerce',
-    headline: { value: '70 %', label: 'weniger Support-Tickets' },
+    headline: { value: '70 %', label: 'weniger Support-Anfragen' },
     problem:
       'Die meisten Shops zeigen einen allgemeinen Feed und begraben Kundinnen und Kunden unter Optionen, die nicht zu ihrem Stil passen. Anbieter erhalten einfache Werkzeuge ohne Überblick über Bestellungen oder Auszahlungen, und die manuelle Zahlungsabwicklung samt undurchsichtiger Lieferung untergräbt das Vertrauen an der Kasse.',
     approach:
@@ -311,7 +311,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Eine interne HR-Plattform, auf der Mitarbeitende eingeladen, eingearbeitet und aktiviert werden; sie reichen Urlaub, Krankheitskosten und Überstunden ein, die Administration gibt jeden Vorgang frei, und die freigegebenen Posten fließen in einen monatlichen Abrechnungslauf, der Lohnabrechnungen berechnet, sperrt und nach Payoneer exportiert.',
     industry: 'HR-Technologie',
-    headline: { value: '12', label: 'automatisierte E-Mails, kein Nachhaken' },
+    headline: { value: '12', label: 'Updates automatisch versendet' },
     problem:
       'Die Personalarbeit war über E-Mail, Chat und Papier verstreut: Onboarding per E-Mail, Urlaub und Überstunden in Nachrichten, Krankheitskosten auf Papier und eine Lohnabrechnung, die jeden Monat von Hand aus all dem zusammengesetzt wurde. Nichts stimmte überein, und nichts war prüfbar.',
     approach:
@@ -384,7 +384,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Die Marketing-Website des Studios, auf einem CMS gebaut, sodass Referenzen, Artikel und Kundenstimmen ohne Deploy veröffentlicht werden.',
     industry: 'Softwareagentur',
-    headline: { value: '4', label: 'Inhaltstypen, keine Deploys' },
+    headline: { value: '30 Tage', label: 'von der Idee zum fertigen MVP' },
     problem:
       'Das Studio verspricht produktionsreife MVPs in 30 Tagen, und zwar Gründerinnen und Gründern, die es mit Agenturen vergleichen, die ein Vielfaches verlangen. Dieses Versprechen braucht sichtbare Belege, und das Team musste sie ohne Entwicklung veröffentlichen können.',
     approach:
@@ -444,7 +444,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Ein einheitliches Betriebssystem für Maklerbüros, das CRM, Compliance, Marketing, Dokumentenerstellung und E-Signatur in einer mandantenfähigen Plattform zusammenführt.',
     industry: 'Immobilien',
-    headline: { value: '30+', label: 'Maklerbüros auf einer Plattform' },
+    headline: { value: '70 %', label: 'weniger Papierarbeit' },
     problem:
       'Maklerbüros verwalteten CRM, Compliance, Marketing und Dokumentenabläufe über unverbundene Werkzeuge und manuelle Prozesse hinweg. Für Kunden- und Objektverwaltung oder die Erstellung von Verträgen gab es kein einheitliches System.',
     approach:
@@ -505,7 +505,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Ein KI-gestützter Prüfablauf, der hochgeladene Berichte gegen etablierte Normen abgleicht und Änderungsverfolgung auf Klauselebene zurückgibt, mit einer klaren Begründung zu jeder Feststellung.',
     industry: 'Prüfung und Compliance',
-    headline: { value: '50 %', label: 'kürzere Durchlaufzeit der Prüfung' },
+    headline: { value: '2x', label: 'schnellere Dokumentenprüfung' },
     problem:
       'Manuelle Compliance- und Prüfungsdurchsichten gegen etablierte Normen waren langsam und fielen je nach prüfender Person unterschiedlich aus, wobei jeder Bericht rund eine Woche in Anspruch nahm.',
     approach:
@@ -564,7 +564,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Eine durchgängige Interviewplattform, die Live-KI-Sprachinterviews plant, terminiert und durchführt und das Transkript nach Ende der Sitzung automatisch zustellt.',
     industry: 'Personalvermittlung',
-    headline: { value: '30+', label: 'durchgängig geführte Interviews' },
+    headline: { value: '30+', label: 'Interviews abgeschlossen' },
     problem:
       'Strukturierte allgemeine, podcastartige oder Bewerbungsinterviews in größerer Zahl zu führen, erforderte für jede Sitzung manuelle Terminplanung, Moderation und Nachbearbeitung des Transkripts.',
     approach:
@@ -622,7 +622,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Wiederverkäufer richten KI-Support-Agenten für ihre Shops in großer Zahl ein, wobei jeder Mandant getrennt ist und jede Antwort in den Inhalten des jeweiligen Shops verankert wird.',
     industry: 'E-Commerce / Kundenservice',
-    headline: { value: '60 %', label: 'schnellere Bereitstellung der Agenten' },
+    headline: { value: '60 %', label: 'schnellere Shop-Einrichtung' },
     problem:
       'Wiederverkäufer wollten ihren eigenen Kunden KI-Support-Agenten anbieten, doch jede Bereitstellung war Maßarbeit, sodass die Einrichtung eines neuen Shops Tage manueller Arbeit kostete.',
     approach:
@@ -680,7 +680,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Ein durchgängiger Rehabilitationsverlauf von der Aufnahme über die Bewegungsanalyse und adaptive Trainingsplanung bis zu täglichem Fortschritt und KI-gestütztem Videofeedback.',
     industry: 'Gesundheitswesen',
-    headline: { value: '90 %+', label: 'Genauigkeit der Analyse' },
+    headline: { value: '90 %+', label: 'genaue Bewegungsanalysen' },
     problem:
       'Der Rehabilitationsverlauf war zersplittert: manuelle Aufnahme, Bewegungsanalyse, allgemeine Trainingspläne und seltene Nachkontrollen. Zwischen den betreuten Terminen hatten Patientinnen und Patienten kaum Anleitung, und die Pläne reagierten nicht schnell auf die tatsächliche Leistung.',
     approach:
@@ -738,7 +738,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Eine Unternehmenswebsite, auf Next.js neu gebaut für Tempo und Suche. 40 % schneller, und endlich mit guten Rankings.',
     industry: 'Professionelle Dienstleistungen',
-    headline: { value: '40 %', label: 'schnellere Ladezeiten' },
+    headline: { value: '40 %', label: 'schneller ladende Seiten' },
     problem:
       'Die bestehende Website lud langsam und rankte schlecht, was das Unternehmen Anfragen kostete, noch bevor Besuchende das Angebot überhaupt sahen.',
     approach:
@@ -789,7 +789,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Dieselbe Codebasis, die die Bidnest-Webplattform betreibt, mit Capacitor zu nativen iOS- und Android-Apps verpackt. Ein Team liefert die Webplattform und beide App Stores aus einem einzigen Repository, und jeder Ablauf des Marktplatzes funktioniert innerhalb der nativen Hülle, ohne neu gebaut zu werden.',
     industry: 'Immobilientechnologie',
-    headline: { value: '1', label: 'Codebasis für Web, iOS und Android' },
+    headline: { value: '3', label: 'Plattformen aus einem Build' },
     problem:
       'Studierende leben auf ihrem Telefon. Ein vom Laptop abgegebenes Gebot kann überboten werden, während sie in der Vorlesung sitzen, und ein Browser-Tab weckt niemanden. Zwei native Apps von Grund auf zu bauen, hätte die Arbeit für einen bereits bestehenden Marktplatz verdoppelt.',
     approach:
@@ -858,7 +858,7 @@ export const projectsDe: Record<string, ProjectTranslation> = {
     description:
       'Das Portfolio unseres Gründers: eine Next.js-Website, bei der das Projektraster, jede Fallstudienseite, die Sitemap und die Social-Vorschauen aus einer einzigen typisierten Datendatei erzeugt werden. Sie liefert HTML aus, animiert ohne Einbußen bei der Ladezeit und ermöglicht Terminbuchungen über einen eingebetteten Kalender.',
     industry: 'Softwareentwicklung',
-    headline: { value: '12', label: 'Fallstudien aus einer Datendatei' },
+    headline: { value: '12', label: 'Projekte in einem Portfolio' },
     problem:
       'Ein Lebenslauf zählt Technologien auf; er zeigt nicht, wie ein Produkt gebaut wurde oder was sich nach dem Launch verändert hat. Die meisten Portfolio-Websites sind ein Raster aus Vorschaubildern ohne Substanz dahinter, und ein Dutzend Projektseiten von Hand konsistent zu halten, ist genau die Stelle, an der sie auseinanderfallen.',
     approach:

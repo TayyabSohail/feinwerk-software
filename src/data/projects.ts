@@ -199,7 +199,7 @@ export const projects: Project[] = [
     year: '2025-2026',
     anonymised: true,
     featured: 1,
-    headline: { value: '42', label: 'screens, one exact ledger' },
+    headline: { value: '3', label: 'ways to own property' },
     problem:
       'Most people in East Africa will never own an apartment, not for lack of savings, but because property sells in one indivisible lump. Capital is locked up for years, rental income means becoming a landlord, and there is no transparency on what a building actually earns.',
     approach:
@@ -317,7 +317,7 @@ export const projects: Project[] = [
     year: '2024-2025',
     anonymised: true,
     featured: 2,
-    headline: { value: '3x', label: 'lower cost per article' },
+    headline: { value: '30', label: 'articles in 10 minutes' },
     problem:
       'SEO teams switched between five different tools just to get from keyword discovery to tracking, wasting hours and risking inconsistent data. Most tools also lean on stale keyword and ranking data, so teams react slowly to search trends.',
     approach:
@@ -421,7 +421,7 @@ export const projects: Project[] = [
     year: '2024',
     anonymised: true,
     featured: 3,
-    headline: { value: '1,000+', label: 'concurrent bidders, no conflicts' },
+    headline: { value: '1,000+', label: 'people bidding at once' },
     problem:
       'Student housing is dominated by fixed-price listings with no room to negotiate, scattered across unreliable platforms. Parents fund most of these rentals but have no way into the process at all.',
     approach:
@@ -520,7 +520,7 @@ export const projects: Project[] = [
     year: '2024-2025',
     anonymised: true,
     featured: 4,
-    headline: { value: '70%', label: 'fewer support tickets' },
+    headline: { value: '70%', label: 'fewer support requests' },
     problem:
       'Most ecommerce shows a generic feed, burying shoppers in options that do not match their style. Sellers get basic tools with no view of orders or payouts, and manual payment handling plus opaque delivery erodes trust at checkout.',
     approach:
@@ -621,7 +621,7 @@ export const projects: Project[] = [
     industry: 'HR technology',
     year: '2026',
     featured: 5,
-    headline: { value: '12', label: 'automated emails, zero chasing' },
+    headline: { value: '12', label: 'updates sent automatically' },
     problem:
       'People operations were scattered across email, chat and paper: onboarding by email, leave and overtime in messages, medical claims on paper, and payroll assembled by hand each month from all of it. Nothing reconciled, and nothing was auditable.',
     approach:
@@ -713,7 +713,7 @@ export const projects: Project[] = [
     industry: 'Software agency',
     year: '2025',
     featured: 6,
-    headline: { value: '4', label: 'content types, zero deploys' },
+    headline: { value: '30 days', label: 'from idea to shipped MVP' },
     problem:
       'The studio pitches production-ready MVPs in 30 days to founders comparing it against agencies charging many times more. That claim needs visible proof, and the team needed to publish it without a developer in the loop.',
     approach:
@@ -812,7 +812,7 @@ export const projects: Project[] = [
     services: ['ai-automation', 'product-engineering'],
     industry: 'Real estate',
     year: '2025',
-    headline: { value: '30+', label: 'agencies on one platform' },
+    headline: { value: '70%', label: 'less paperwork' },
     problem:
       'Real estate agencies managed CRM, compliance, marketing and document workflows across disconnected tools and manual processes. They had no unified system for client and property management or agreement generation.',
     approach:
@@ -899,7 +899,7 @@ export const projects: Project[] = [
     services: ['ai-automation', 'cloud-devops'],
     industry: 'Audit and compliance',
     year: '2025',
-    headline: { value: '50%', label: 'shorter audit turnaround' },
+    headline: { value: '2x', label: 'faster document review' },
     problem:
       'Manual compliance and audit reviews against established standards were slow and inconsistent between reviewers, with each report taking about a week to complete.',
     approach:
@@ -983,7 +983,7 @@ export const projects: Project[] = [
     services: ['ai-automation', 'mvp-sprint'],
     industry: 'Recruitment',
     year: '2025',
-    headline: { value: '30+', label: 'interviews run end to end' },
+    headline: { value: '30+', label: 'interviews completed' },
     problem:
       'Running structured general, podcast-style or recruitment interviews at scale required manual scheduling, live facilitation and transcript handling for every session.',
     approach:
@@ -1070,7 +1070,7 @@ export const projects: Project[] = [
     services: ['ai-automation'],
     industry: 'Ecommerce / Customer support',
     year: '2023-2024',
-    headline: { value: '60%', label: 'faster agent deployment' },
+    headline: { value: '60%', label: 'faster shop setup' },
     problem:
       'Resellers wanted to offer AI support agents to their own customers, but every deployment was bespoke, so onboarding a new shop took days of manual setup.',
     approach:
@@ -1155,7 +1155,7 @@ export const projects: Project[] = [
     services: ['ai-automation'],
     industry: 'Healthcare',
     year: '2024',
-    headline: { value: '90%+', label: 'assessment accuracy' },
+    headline: { value: '90%+', label: 'accurate movement checks' },
     problem:
       'The rehabilitation journey was fragmented across manual intake, movement assessment, generic exercise plans and infrequent follow-up. Patients had little guidance between supervised sessions, and plans did not respond quickly to performance.',
     approach:
@@ -1237,7 +1237,7 @@ export const projects: Project[] = [
     services: ['web-design-development'],
     industry: 'Professional services',
     year: '2024',
-    headline: { value: '40%', label: 'faster page loads' },
+    headline: { value: '40%', label: 'faster-loading pages' },
     problem:
       'The existing site loaded slowly and ranked poorly, costing the company inbound leads before visitors ever saw the offering.',
     approach:
@@ -1332,7 +1332,7 @@ export const projects: Project[] = [
     year: '2024',
     anonymised: true,
     notable: true,
-    headline: { value: '1', label: 'codebase for web, iOS and Android' },
+    headline: { value: '3', label: 'platforms from one build' },
     problem:
       'Students live on their phones. A bid placed from a laptop can be outbid while they are in a lecture, and a browser tab does not wake anyone up. Building two native apps from scratch would have doubled the work for a marketplace that already existed.',
     approach:
@@ -1421,7 +1421,7 @@ export const projects: Project[] = [
     industry: 'Software engineering',
     year: '2025',
     notable: true,
-    headline: { value: '12', label: 'case studies from one data file' },
+    headline: { value: '12', label: 'projects in one portfolio' },
     problem:
       'A CV lists technologies; it does not show how a product was built or what changed after it shipped. Most portfolio sites are a grid of thumbnails with nothing behind them, and keeping a dozen project pages consistent by hand is where they fall apart.',
     approach:
